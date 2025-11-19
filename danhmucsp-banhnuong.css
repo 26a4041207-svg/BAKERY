@@ -1,0 +1,146 @@
+/* ---------- VARIABLES ---------- */
+:root {
+  --gold: #fff700;
+  --hover-gold: #e3d200;
+  --badge-red: #dc143c;
+  --border-light: #e5e5e5;
+  --text-dark: #333;
+  --bg-light: #fafafa;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #ffffff;
+  color: var(--text-dark);
+}
+
+/* ---------- CATEGORY BAR ---------- */
+#category-bar {
+  display: flex;
+  gap: 25px;
+  padding: 18px 40px;
+  border-bottom: 1px solid var(--border-light);
+  justify-content: center;
+  background: var(--bg-light);
+}
+
+#category-bar .cat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#category-bar .cat-item:hover {
+  transform: translateY(-5px);
+  color: var(--gold);
+}
+
+/* ---------- LAYOUT ---------- */
+.container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 25px;
+  padding: 30px;
+}
+
+/* ---------- FILTER PANEL ---------- */
+#filter-panel {
+  padding: 20px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* ---------- SORT BAR ---------- */
+#sort-bar {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0 20px;
+}
+
+#sort-bar .sort-btn {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#sort-bar .sort-btn:hover {
+  transform: translateY(-3px);
+  color: var(--gold);
+}
+
+/* ---------- PRODUCT GRID ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.product-card {
+  position: relative;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: 0.25s;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- BADGE ---------- */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 6px 10px;
+  background: var(--badge-red);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* ---------- INFO ---------- */
+.card-info {
+  padding: 14px;
+}
+
+.card-info h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.card-info .price {
+  font-weight: bold;
+  color: #d11;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  #filter-panel {
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  #category-bar {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
