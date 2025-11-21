@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm Bánh Mousse Chocolate</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+
+    <!-- Tải Font Awesome cho icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/cdwW7wQYjK/GzIqjT1/Q/Xq8pE4U/k+T9w5K6c1J/38s5k0yQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="container mx-auto px-4 py-8 mt-10">
+    <!-- Breadcrumb (Đường dẫn) -->
+    <nav class="text-sm text-gray-600 mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" class="text-secondary-color hover:text-gray-800 no-underline">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#" class="text-secondary-color hover:text-gray-800 no-underline">Bánh Ngọt</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Bánh Cuộn Quế</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Cột trái: Hình ảnh sản phẩm -->
+        <div class="col-lg-5 mb-4">
+            <div class="shadow-lg rounded-lg overflow-hidden bg-white p-4">
+                <div class="main-image-wrapper mb-4"> 
+                    <img id="main-image" src="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonque.webp" alt="Bánh Cuộn Quế" class="w-full h-auto rounded-lg mb-4 object-cover" onerror="this.onerror=null; this.src='C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonque.webp';">
+                </div>
+                <!-- Ảnh nhỏ (Thumbnails) -->
+                <div class="flex space-x-3 mt-2 justify-center">
+                    <div class="col-3 px-1">
+                        <img src="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonque.webp" alt="Thumbnail 1" class="thumbnail-img active rounded-md" data-full-image="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonque.webp" onclick="changeImage(this)">
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <!-- Cột phải: Thông tin sản phẩm và Tương tác -->
+        <div class="col-lg-7">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Bánh Cuộn Mini</h1>
+            <p class="text-base text-gray-500 mb-4">Loại: <span class="font-semibold text-gray-700">Bánh Kem</span> | Tình trạng: <span class="font-semibold text-green-600">Còn hàng</span></p>
+
+            <!-- Giá -->
+            <div class="mb-4">
+                <span class="text-4xl font-extrabold text-primary-custom">390.000₫</span>
+            </div>
+
+            <!-- Số lượng -->
+            <div class="flex items-center mb-6">
+                <label for="quantity" class="text-lg font-semibold text-gray-700 me-3">Số lượng:</label>
+                <div class="quantity-input-group flex border border-gray-300 rounded-lg overflow-hidden">
+                    <button id="decrement-btn" class="text-xl font-medium text-gray-700 hover:bg-gray-200">-</button>
+                    <input type="number" id="quantity" value="1" min="1" class="h-10 w-12 text-center text-lg font-medium border-x border-gray-300 focus:outline-none" readonly>
+                    <button id="increment-btn" class="text-xl font-medium text-gray-700 hover:bg-gray-200">+</button>
+                </div>
+            </div>
+
+            <!-- Nút Thêm vào giỏ hàng và Yêu thích (Sản phẩm chính) -->
+            <div class="d-flex gap-3 mb-6">
+                <button class="flex-grow-1 flex items-center justify-center p-3 rounded-lg bg-yellow-600 hover:bg-yellow-700 text-white font-semibold shadow-md transition-colors" onclick="addToCart()">
+                    <i class="fas fa-shopping-bag me-2"></i>
+                    THÊM VÀO GIỎ
+                    <span class="ms-2 text-sm">(Giao hàng tận nơi miễn phí)</span>
+                </button>
+                <!-- Icon tim cho sản phẩm chính -->
+                <button class="p-3 rounded-lg border border-yellow-600 text-yellow-600 hover:bg-yellow-50 transition-colors" onclick="addToWishlistMain(this)">
+                    <i id="main-product-heart" class="far fa-heart text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Khu vực Khuyến mãi đặc biệt -->
+            <div class="border border-red-300 rounded-lg p-4 bg-red-50 mb-6 shadow-sm">
+                <p class="text-lg font-bold text-red-700 mb-3"><i class="fas fa-gift me-2 text-red-600"></i> Khuyến mãi đặc biệt !!!</p>
+                <ul class="list-unstyled space-y-2 text-gray-700">
+                    <li><i class="fas fa-check-circle me-2 text-green-500"></i> Áp dụng Phiếu quà tặng/ Mã giảm giá theo ngành hàng.</li>
+                    <li><i class="fas fa-check-circle me-2 text-green-500"></i> Giảm <span class="font-bold">10%</span> khi mua từ <span class="font-bold">5 sản phẩm</span> trở lên.</li>
+                    <li><i class="fas fa-check-circle me-2 text-green-500"></i> Tặng <span class="font-bold">100.000₫</span> mua hàng tại website thành viên Dola Fashion Accessories.</li>
+                </ul>
+            </div>
+
+            <!-- Khu vực Chính sách và Hỗ trợ (Grid 2x2) -->
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <!-- Miễn phí vận chuyển -->
+                <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">
+                    <i class="fas fa-truck text-gold"></i>
+                    <div>
+                        <p class="font-semibold text-gray-800 mb-1">Miễn phí vận chuyển</p>
+                        <p class="text-sm text-gray-500">Áp dụng free ship cho tất cả đơn hàng từ 300 nghìn</p>
+                    </div>
+                </div>
+                <!-- Đổi trả dễ dàng -->
+                <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">
+                    <i class="fas fa-undo text-gold"></i>
+                    <div>
+                        <p class="font-semibold text-gray-800 mb-1">Đổi trả dễ dàng</p>
+                        <p class="text-sm text-gray-500">Đổi ngay trong ngày nếu như bánh không đúng yêu cầu</p>
+                    </div>
+                </div>
+                <!-- Hỗ trợ nhanh chóng -->
+                <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">
+                    <i class="fas fa-headset text-gold"></i>
+                    <div>
+                        <p class="font-semibold text-gray-800 mb-1">Hỗ trợ nhanh chóng</p>
+                        <p class="text-sm text-gray-500">Gọi Hotline: <span class="font-bold text-primary-custom">19006750</span> để được hỗ trợ ngay</p>
+                    </div>
+                </div>
+                <!-- Thanh toán đa dạng -->
+                <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">
+                    <i class="fas fa-credit-card text-gold"></i>
+                    <div>
+                        <p class="font-semibold text-gray-800 mb-1">Thanh toán đa dạng</p>
+                        <p class="text-sm text-gray-500">Thanh toán khi nhận hàng, Napas, Visa, Chuyển khoản</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Mô tả sản phẩm / Hướng dẫn mua hàng -->
+    <div class="mt-8 border-b border-gray-300">
+        <div class="flex space-x-8 justify-center">
+            <button class="tab-button active p-3 text-lg font-semibold text-gray-700 hover:text-gold transition-colors" data-tab="description">
+                <span class="special-heading text-xl">Mô tả sản phẩm</span>
+            </button>
+            <button class="tab-button p-3 text-lg font-semibold text-gray-700 hover:text-gold transition-colors" data-tab="guide">
+                <span class="special-heading text-xl">Hướng dẫn mua hàng</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="tab-content pt-5 pb-8">
+        <!-- Nội dung Tab Mô tả sản phẩm (Mặc định hiển thị) -->
+        <div id="description-content" class="tab-pane active">
+            <p class="text-base text-gray-700 text-center mx-auto max-w-2xl">
+                Bánh mousse sôcôla, cốt bánh 1 lớp chiffon sô cô la chip, sốt sô cô la phủ mặt bánh, trang trí sô cô la và bi bóng dường. Bánh có vị ngọt vừa phải, thơm béo, phù hợp với mọi lứa tuổi.
+            </p>
+        </div>
+
+        <!-- Nội dung Tab Hướng dẫn mua hàng (Ẩn) -->
+        <div id="guide-content" class="tab-pane hidden">
+            <div class="text-gray-700 max-w-3xl mx-auto">
+                <h3 class="text-xl font-bold mb-3 text-gold">Các bước đặt hàng:</h3>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Chọn sản phẩm và số lượng mong muốn.</li>
+                    <li>Nhấn nút "THÊM VÀO GIỎ" và điền thông tin giao hàng.</li>
+                    <li>Chọn phương thức thanh toán phù hợp (Thanh toán khi nhận hàng, Chuyển khoản...).</li>
+                    <li>Đội ngũ giao hàng sẽ xác nhận và giao bánh đến tận nơi cho bạn!</li>
+                </ol>
+                <p class="mt-4 italic text-sm text-gray-500">Lưu ý: Vui lòng đặt bánh trước 24 giờ để đảm bảo chất lượng phục vụ tốt nhất.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khu vực Sản phẩm liên quan -->
+    <div class="py-8">
+        <h2 class="text-center mb-6">
+            <span class="special-heading text-3xl font-bold">Sản phẩm liên quan</span>
+        </h2>
+        <div class="text-center mb-8">
+            <img src="https://placehold.co/150x20/F0D9B5/F0D9B5?text=" alt="Divider" class="mx-auto" style="height: 10px; width: 150px; background-color: var(--text-gold); border-radius: 5px;">
+        </div>
+
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
+            <!-- Sản phẩm 1 -->
+            <div class="col">
+                <a href="product1.html" class="product-link">
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                        <span class="absolute top-2 left-2 bg-yellow-400 text-gray-800 text-xs font-semibold px-2 py-0.5 rounded-full">New</span>
+                        <span class="absolute top-2 right-3 cursor-pointer" onclick="addToWishlistFromCard(event, 'Bánh Cuộn Mini')">
+                            <i class="far fa-heart text-red-500 heart-icon"></i>
+                        </span>
+                        <img src="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonnho.webp" alt="Bánh Cuộn Mini" class="w-full h-40 object-cover rounded-md mb-2">
+                        <p class="text-sm text-gray-600 truncate mb-1">Bánh Cuộn Mini</p>
+                        <p class="text-base font-bold text-red-600">380.000₫</p>
+                    </div>
+                </a>
+            </div>
+            <!-- Sản phẩm 2 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Kem Dreamy Lady')"></i>
+                    <img src="https://placehold.co/200x200/FF8C00/FFF?text=Bánh+Kem+Dreamy" alt="Bánh Kem Dreamy Lady" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Kem Dreamy Lady</p>
+                    <p class="text-base font-bold text-red-600">380.000₫</p>
+                </div>
+            </div>
+            <!-- Sản phẩm 3 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <span class="absolute top-2 left-2 bg-red-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">-20%</span>
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Hoàng Kim')"></i>
+                    <img src="https://placehold.co/200x200/FFD700/603813?text=Bánh+Hoàng+Kim" alt="Bánh Hoàng Kim" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Hoàng Kim</p>
+                    <p class="text-base font-bold text-red-600">320.000₫ <span class="text-xs text-gray-400 line-through">400.000₫</span></p>
+                </div>
+            </div>
+            <!-- Sản phẩm 4 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <span class="absolute top-2 left-2 bg-red-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">-12%</span>
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Kem Sweet Heart 4')"></i>
+                    <img src="https://placehold.co/200x200/F0FFF0/603813?text=Bánh+Sweet+Heart" alt="Bánh Kem Sweet Heart 4" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Kem Sweet Heart 4</p>
+                    <p class="text-base font-bold text-red-600">150.000₫ <span class="text-xs text-gray-400 line-through">170.000₫</span></p>
+                </div>
+            </div>
+            <!-- Sản phẩm 5 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Kem Amazing Chocolate')"></i>
+                    <img src="https://placehold.co/200x200/603813/FFF?text=Bánh+Amazing" alt="Bánh Kem Amazing Chocolate" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Kem Amazing Chocolate</p>
+                    <p class="text-base font-bold text-red-600">380.000₫</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khu vực Sản phẩm đã xem -->
+    <div class="py-8">
+        <h2 class="text-center mb-6">
+            <span class="special-heading text-3xl font-bold">Sản phẩm đã xem</span>
+        </h2>
+        <div class="text-center mb-8">
+            <img src="https://placehold.co/150x20/F0D9B5/F0D9B5?text=" alt="Divider" class="mx-auto" style="height: 10px; width: 150px; background-color: var(--text-gold); border-radius: 5px;">
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
+            <!-- Sản phẩm đã xem 1 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Mì Hạt Óc Chó Sốt Kem')"></i>
+                    <img src="https://placehold.co/200x200/E0BBE4/FFF?text=Bánh+Mì+Hạt+Óc+Chó" alt="Bánh Mì Hạt Óc Chó Sốt Kem" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Mì Hạt Óc Chó Sốt Kem</p>
+                    <p class="text-base font-bold text-red-600">30.000₫</p>
+                </div>
+            </div>
+            <!-- Sản phẩm đã xem 2 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Kem Macaron Delight')"></i>
+                    <img src="https://placehold.co/200x200/4CAF50/FFF?text=Bánh+Kem+Macaron" alt="Bánh Kem Macaron Delight" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Kem Macaron Delight</p>
+                    <p class="text-base font-bold text-red-600">380.000₫</p>
+                </div>
+            </div>
+             <!-- Sản phẩm đã xem 3 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Kem Dreamy Lady')"></i>
+                    <img src="https://placehold.co/200x200/FF8C00/FFF?text=Bánh+Kem+Dreamy" alt="Bánh Kem Dreamy Lady" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Kem Dreamy Lady</p>
+                    <p class="text-base font-bold text-red-600">380.000₫</p>
+                </div>
+            </div>
+            <!-- Sản phẩm đã xem 4 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Hoàng Kim')"></i>
+                    <img src="https://placehold.co/200x200/FFD700/603813?text=Bánh+Hoàng+Kim" alt="Bánh Hoàng Kim" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Hoàng Kim</p>
+                    <p class="text-base font-bold text-red-600">320.000₫</p>
+                </div>
+            </div>
+             <!-- Sản phẩm đã xem 5 -->
+            <div class="col">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full">
+                    <!-- Icon trái tim với onclick cụ thể -->
+                    <i class="far fa-heart absolute top-2 right-3 text-red-500 cursor-pointer heart-icon" onclick="addToWishlistFromCard(event, 'Bánh Kem Amazing Chocolate')"></i>
+                    <img src="https://placehold.co/200x200/603813/FFF?text=Bánh+Amazing" alt="Bánh Kem Amazing Chocolate" class="w-full h-40 object-cover rounded-md mb-2">
+                    <p class="text-sm text-gray-600 truncate mb-1">Bánh Kem Amazing Chocolate</p>
+                    <p class="text-base font-bold text-red-600">380.000₫</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal thông báo tùy chỉnh (thay thế alert()) -->
+<div id="custom-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
+        <h3 class="text-xl font-bold mb-4 text-gray-800" id="modal-title">Thông báo</h3>
+        <p class="text-gray-700 mb-4" id="modal-message">Nội dung thông báo.</p>
+        <div class="flex justify-end">
+            <button class="bg-primary-custom text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" onclick="closeModal()">Đóng</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- JS file -->
+<script src="product.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
