@@ -1,30 +1,217 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Danh Mục Sản Phẩm</title>
-
-  <!-- LINK CSS (bạn tự thay đường dẫn) -->
-  <link rel="stylesheet" href="danhmucsp-banhnuong.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Mục Bánh Nướng</title>
+    <link rel="stylesheet" href="danhmucsp-banhnuong.css">
 </head>
+
 <body>
-  <!-- Header + Banner (bạn tự gắn) -->
 
-  <!-- Thanh danh mục icon -->
-  <section id="category-bar"></section>
+    <!-- CATEGORY BAR -->
+    <div class="category-bar">
 
-  <!-- Layout chính: bộ lọc + danh sách sản phẩm -->
-  <div class="container">
-    <aside id="filter-panel"></aside>
+        <div class="category-item">
+            <img src="Bánh nướng/icon-banhkem.jpg" alt="">
+            <p>BÁNH KEM</p>
+        </div>
 
-    <main>
-      <div id="sort-bar"></div>
-      <div id="product-list" class="product-grid"></div>
-    </main>
-  </div>
+        <div class="category-item">
+            <img src="Bánh nướng/icon-banhnuong.jpg" alt="">
+            <p>BÁNH NƯỚNG</p>
+        </div>
 
-  <!-- LINK JS (bạn tự thay đường dẫn) -->
-  <script src="danhmucsp-banhnuong.js"></script>
+        <div class="category-item">
+            <img src="Bánh nướng/icon-banhngot.jpg" alt="">
+            <p>BÁNH NGỌT</p>
+        </div>
+
+        <div class="category-item">
+            <img src="Bánh nướng/icon-banhquy.jpg" alt="">
+            <p>BÁNH QUY</p>
+        </div>
+
+        <div class="category-item">
+            <img src="Bánh nướng/icon-banhmousse.jpg" alt="">
+            <p>BÁNH MOUSSE</p>
+        </div>
+
+        <div class="category-item">
+            <img src="Bánh nướng/icon-douong.jpg" alt="">
+            <p>ĐỒ UỐNG</p>
+        </div>
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <fieldset class="filter-box">
+                <legend>Chọn mức giá</legend>
+                <label><input type="checkbox"> Từ 50.000đ - 100.000đ</label>
+                <label><input type="checkbox"> Từ 100.000đ - 200.000đ</label>
+                <label><input type="checkbox"> Từ 200.000đ - 300.000đ</label>
+                <label><input type="checkbox"> Từ 300.000đ - 500.000đ</label>
+                <label><input type="checkbox"> Từ 500.000đ - 1 triệu</label>
+                <label><input type="checkbox"> Trên 1 triệu</label>
+            </fieldset>
+
+            <fieldset class="filter-box">
+                <legend>Tình trạng sản phẩm</legend>
+                <label><input type="checkbox"> New</label>
+                <label><input type="checkbox"> Flash Sale</label>
+                <label><input type="checkbox"> Sale</label>
+                <label><input type="checkbox"> Sold Out</label>
+                <label><input type="checkbox"> Best Seller</label>
+            </fieldset>
+        </aside>
+        <div class="content-area">
+            <div class="sort-bar">
+                <span>Xếp theo:</span>
+                <button class="sort-btn">Tên A-Z</button>
+                <button class="sort-btn">Tên Z-A</button>
+                <button class="sort-btn">Giá thấp đến cao</button>
+                <button class="sort-btn">Giá cao xuống thấp</button>
+            </div>
+
+            <!-- PRODUCTS -->
+            <section class="product-grid">
+
+                <!-- SP 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <img src="Bánh nướng/Banana Chocolate Almond Croissant 1.webp" alt="">
+                        <div class="add-to-cart">ADD TO CART</div>
+                    </div>
+                    <h4 class="product-name">Banana Chocolate Almond Croissant</h4>
+                    <p class="price">150.000₫ <span class="old-price">170.000₫</span></p>
+                </div>
+
+                <!-- SP 2 (SLIDER) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="Bánh nướng/Black Truffle Cheese Croissant 1.webp" class="slide active">
+                            <img src="Bánh nướng/Black Truffle Cheese Croissant 2.webp" class="slide">
+                            <img src="Bánh nướng/Black Truffle Cheese Croissant 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Black Truffle Cheese Croissant</h4>
+                    <p class="price">380.000₫</p>
+                </div>
+
+                <!-- SP 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="Bánh nướng/Croissant 1.webp" class="slide active">
+                            <img src="Bánh nướng/Croissant 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Croissant</h4>
+                    <p class="price">480.000₫</p>
+                </div>
+
+                <!-- SP 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="Bánh nướng/French Milk Bun 1.webp" class="slide active">
+                            <img src="Bánh nướng/French Milk Bun 2.webp" class="slide">
+                            <img src="Bánh nướng/French Milk Bun 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">French Milk Bun</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sold Out</div>
+                        <div class="image-slider">
+                            <img src="Bánh nướng/Hazelnut Choco Banana Bread 1.webp" class="slide active">
+                            <img src="Bánh nướng/Hazelnut Choco Banana Bread 2.webp" class="slide">
+                            <img src="Bánh nướng/Hazelnut Choco Banana Bread 3.webp" class="slide">
+                            <img src="Bánh nướng/Hazelnut Choco Banana Bread 4.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Hazelnut Choco Banana Bread</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+                <!-- SP 6 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="Bánh nướng/Nori Miso Pesto Roll 1.webp" class="slide active">
+                            <img src="Bánh nướng/Nori Miso Pesto Roll 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Nori Miso Pesto Roll</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 7 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="image-slider">
+                            <img src="Bánh nướng/Pumpkin Spice Caramel Pecan Bun 1.webp" class="slide active">
+                            <img src="Bánh nướng/Pumpkin Spice Caramel Pecan Bun 2.webp" class="slide">
+                            <img src="Bánh nướng/Pumpkin Spice Caramel Pecan Bun 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Pumpkin Spice Caramel Pecan Bun</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 8 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="Bánh nướng/Salted Duck Egg Curd Croissant 1.webp" class="slide active">
+                            <img src="Bánh nướng/Salted Duck Egg Curd Croissant 2.webp" class="slide">
+                            <img src="Bánh nướng/Salted Duck Egg Curd Croissant 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Salted Duck Egg Curd Croissant</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 9 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="Bánh nướng/Truffle Cream Cheese Bun 1.webp" class="slide active">
+                            <img src="Bánh nướng/Truffle Cream Cheese Bun 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Truffle Cream Cheese Bun</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    <script src="danhmucsp-banhnuong.js"></script>
+
 </body>
+
 </html>
