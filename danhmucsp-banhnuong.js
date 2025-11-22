@@ -10,9 +10,8 @@ document.querySelectorAll('.image-slider').forEach(slider => {
             images[index].classList.remove('active');
             index = (index + 1) % images.length;
             images[index].classList.add('active');
-        }, 700);
+        }, 1000);
     }
-
     function stopSlide() {
         clearInterval(intervalId);
 

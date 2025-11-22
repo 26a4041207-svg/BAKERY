@@ -149,22 +149,22 @@ body::before {
     overflow: hidden;
     display: block;
 }
-
 .add-to-cart {
     position: absolute;
-    bottom: -60px; 
+    bottom: -20px;
     left: 0;
     width: 100%;
-    padding: 15px 0;
+    padding: 5px 0;
     background: white;
-    color: #c67b7b;  /* đỏ nhạt như ảnh */
+    color: #c67b7b;
     text-align: center;
     font-weight: bold;
-    font-size: 16px;
-    letter-spacing: 2px;
+    font-size: 11px;
+    letter-spacing: 1px;
     transition: bottom 0.35s ease;
     box-sizing: border-box;
 }
+
 
 .product-card:hover .add-to-cart {
     bottom: 0; /* trượt lên */
