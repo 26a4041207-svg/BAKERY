@@ -41,12 +41,12 @@
         <div class="col-lg-5 mb-4">
             <div class="shadow-lg rounded-lg overflow-hidden bg-white p-4">
                 <div class="main-image-wrapper mb-4"> 
-                    <img id="main-image" src="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonnho.webp" alt="Bánh Cuộn Mini" class="w-full h-auto rounded-lg mb-4 object-cover" onerror="this.onerror=null; this.src='C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonnho.webp';">
+                    <img id="main-image" src="C:\Users\LENOVO\OneDrive\Tài liệu\Di động\DIDONG\picture\bánh ngọt\banhcuonnho.webp" alt="Bánh Cuộn Mini" class="w-full h-auto rounded-lg mb-4 object-cover" onerror="this.onerror=null; this.src='C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonnho.webp';">
                 </div>
                 <!-- Ảnh nhỏ (Thumbnails) -->
                 <div class="flex space-x-3 mt-2 justify-center">
                     <div class="col-3 px-1">
-                        <img src="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonnho.webp" alt="Thumbnail 1" class="thumbnail-img active rounded-md" data-full-image="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonnho.webp" onclick="changeImage(this)">
+                        <img src="C:\Users\LENOVO\OneDrive\Tài liệu\Di động\DIDONG\picture\bánh ngọt\banhcuonnho.webp" alt="Thumbnail 1" class="thumbnail-img active rounded-md" data-full-image="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonnho.webp" onclick="changeImage(this)">
                     </div>
                 </div> 
             </div> 
@@ -55,20 +55,20 @@
         <!-- Cột phải: Thông tin sản phẩm và Tương tác -->
         <div class="col-lg-7">
             <h1 class="text-4xl font-bold text-gray-900 mb-2">Bánh Cuộn Mini</h1>
-            <p class="text-base text-gray-500 mb-4">Loại: <span class="font-semibold text-gray-700">Bánh Kem</span> | Tình trạng: <span class="font-semibold text-green-600">Còn hàng</span></p>
+            <p class="text-base text-gray-500 mb-4">Loại: <span class="font-semibold text-gold">Bánh Kem</span> | Tình trạng: <span class="font-semibold text-gold">Còn hàng</span></p>
 
             <!-- Giá -->
             <div class="mb-4">
-                <span class="text-4xl font-extrabold text-primary-custom">390.000₫</span>
+                <span class="text-4xl font-semibold text-gold">390.000₫</span>
             </div>
 
             <!-- Số lượng -->
             <div class="flex items-center mb-6">
                 <label for="quantity" class="text-lg font-semibold text-gray-700 me-3">Số lượng:</label>
                 <div class="quantity-input-group flex border border-gray-300 rounded-lg overflow-hidden">
-                    <button id="decrement-btn" class="text-xl font-medium text-gray-700 hover:bg-gray-200">-</button>
+                    <button id="decrement-btn" class="text-xl font-medium text-white hover:bg-white-200">-</button>
                     <input type="number" id="quantity" value="1" min="1" class="h-10 w-12 text-center text-lg font-medium border-x border-gray-300 focus:outline-none" readonly>
-                    <button id="increment-btn" class="text-xl font-medium text-gray-700 hover:bg-gray-200">+</button>
+                    <button id="increment-btn" class="text-xl font-medium text-white hover:bg-white-200">+</button>
                 </div>
             </div>
 
@@ -85,10 +85,12 @@
                 </button>
             </div>
 
-            <!-- Khu vực Khuyến mãi đặc biệt -->
-            <div class="border border-red-300 rounded-lg p-4 bg-red-50 mb-6 shadow-sm">
-                <p class="text-lg font-bold text-red-700 mb-3"><i class="fas fa-gift me-2 text-red-600"></i> Khuyến mãi đặc biệt !!!</p>
-                <ul class="list-unstyled space-y-2 text-gray-700">
+            <div class="border-2 border-gold rounded-lg p-0 mb-6 shadow-md">
+                <p class="text-lg font-bold bg-gold text-gray-800 py-2 px-4 mb-3 rounded-t-lg">
+                    <i class="fas fa-gift me-2 text-gray-800"></i> Khuyến mãi đặc biệt !!!
+                </p>
+                
+                <ul class="list-unstyled space-y-2 text-gray-700 p-4 pt-0">
                     <li><i class="fas fa-check-circle me-2 text-green-500"></i> Áp dụng Phiếu quà tặng/ Mã giảm giá theo ngành hàng.</li>
                     <li><i class="fas fa-check-circle me-2 text-green-500"></i> Giảm <span class="font-bold">10%</span> khi mua từ <span class="font-bold">5 sản phẩm</span> trở lên.</li>
                     <li><i class="fas fa-check-circle me-2 text-green-500"></i> Tặng <span class="font-bold">100.000₫</span> mua hàng tại website thành viên Dola Fashion Accessories.</li>
@@ -234,7 +236,7 @@
                         <span class="absolute top-2 right-3 cursor-pointer" onclick="addToWishlistFromCard(event, 'Bánh Cuộn Quế')">
                             <i class="far fa-heart text-red-500 heart-icon"></i>
                         </span>
-                        <img src="C:\Users\LENOVO\OneDrive\Tài liệu\Code_Fundamental\CNTT&KTS\TK_WEB\BTL cuoi ky\picture\bánh ngọt\banhcuonque.webp" alt="Bánh Cuộn Quế" class="w-full h-40 object-cover rounded-md mb-2">
+                        <img src="C:\Users\LENOVO\OneDrive\Tài liệu\Di động\DIDONG\picture\bánh ngọt\banhcuonque.webp" alt="Bánh Cuộn Quế" class="w-full h-40 object-cover rounded-md mb-2">
                         <p class="text-sm text-gray-600 truncate mb-1">Bánh Cuộn Quế</p>
                         <p class="text-base font-bold text-red-600">380.000₫</p>
                     </div>

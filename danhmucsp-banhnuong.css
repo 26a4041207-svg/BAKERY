@@ -36,7 +36,7 @@ body::before {
 .category-item {
     text-align: center;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
     height: 120px;
     display: flex;
     flex-direction: column;
