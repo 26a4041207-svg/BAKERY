@@ -25,3 +25,8 @@ document.querySelectorAll('.image-slider').forEach(slider => {
     slider.addEventListener("mouseenter", startSlide);
     slider.addEventListener("mouseleave", stopSlide);
 });
+
+window.addEventListener("scroll", function(){
+    const h = document.getElementById("header");
+    window.scrollY > 80 ? h.classList.add("scrolled") : h.classList.remove("scrolled");
+});
