@@ -1,0 +1,158 @@
+/* Banner */
+.about-banner {
+    position: relative;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.about-banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("background-bakery.png"); /* banner */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5);
+}
+
+.about-logo-text {
+    display: flex;
+    align-items: flex-start; /* căn top logo với text */
+    gap: 15px;               /* khoảng cách giữa logo và text */
+}
+
+.logo-small {
+    width: 100px;   /* kích thước logo */
+    height: auto;
+    flex-shrink: 0; /* tránh logo bị co nhỏ */
+}
+
+.about-logo-text p {
+    margin: 0;      /* bỏ margin mặc định của <p> */
+}
+
+
+.about-banner-content {
+    position: relative;
+    z-index: 3;
+}
+
+.about-banner h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.about-banner p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Nội dung */
+.about-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.about-container h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #3b2a20;
+}
+
+.about-container p {
+    font-size: 17px;
+    color: #4a3c32;
+    line-height: 1.8;
+    margin-bottom: 15px;
+
+    /* fade-in effect */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.8s;
+}
+
+.about-container p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reviews */
+.reviews-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f8e9e0;
+}
+
+.reviews-section h3 {
+    color: #d67b53;
+    font-size: 20px;
+}
+
+.reviews-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    font-family: 'Arial', sans-serif;
+    color: green
+}
+
+.reviews-slider {
+    display: flex;
+    overflow: hidden;
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+}
+
+
+.review-item {
+    min-width: 33.333%;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.8s;
+}
+
+.review-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.quote {
+    font-style: italic;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+/* Dots */
+.dots {
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #bbb;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #d67b53;
+}

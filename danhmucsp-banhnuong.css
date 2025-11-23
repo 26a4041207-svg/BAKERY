@@ -1,3 +1,200 @@
+/* Reset và cơ bản */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Thay đổi nếu cần */
+}
+
+/* Header cơ bản */
+#header {
+    position: fixed; /* Làm header dính trên cùng */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent; /* Ban đầu trong suốt */
+    color: white; /* Chữ trắng ban đầu */
+    transition: background 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    padding: 20px 0; /* Tăng padding để header lớn hơn */
+    height: auto; /* Để tự động điều chỉnh chiều cao */
+}
+
+/* Khi cuộn xuống, thêm class "scrolled" để đổi background */
+#header.scrolled {
+    background: #ff0000; /* Màu đỏ khi cuộn (thay đổi nếu cần, ví dụ #d32f2f cho đỏ đậm hơn) */
+    color: white; /* Giữ chữ trắng, hoặc thay đổi nếu cần */
+}
+
+/* Container bên trong header */
+.container {
+    display: flex;
+    justify-content: space-between; /* Logo trái, menu giữa, actions phải */
+    align-items: center;
+    max-width: 1200px; /* Giới hạn chiều rộng, điều chỉnh nếu cần */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Logo bên trái */
+.logo img {
+    height: 60px; /* Tăng kích thước logo để responsive hơn */
+}
+
+/* Menu ở trung tâm */
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px; /* Tăng khoảng cách giữa các mục */
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    color: inherit; /* Kế thừa màu từ header */
+    text-decoration: none;
+    padding: 15px 10px; /* Tăng padding để chữ lớn hơn */
+    font-size: 16px; /* Tăng font size để dễ đọc */
+    position: relative;
+    transition: all 0.3s ease; /* Hiệu ứng mượt mà */
+    transform-origin: center; /* Phóng to từ giữa chữ */
+}
+
+/* Hiệu ứng hover chỉ cho TRANG CHỦ: Dấu gạch chân màu trắng toả từ giữa ra, và chữ phóng to từ giữa */
+.home a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Ở dưới chữ */
+    left: 50%;
+    width: 100%;
+    height: 2px; /* Độ dày của underline */
+    background: white; /* Màu trắng */
+    transform: scaleX(0); /* Bắt đầu từ giữa (scaleX 0) */
+    transform-origin: center; /* Toả từ giữa ra */
+    transition: transform 0.3s ease;
+}
+
+.home a:hover {
+    transform: scale(1.1); /* Phóng to chữ từ giữa lên 1.1 lần */
+}
+
+.home a:hover::after {
+    transform: scaleX(1); /* Mở rộng underline ra khi hover */
+}
+
+/* Submenu cho dropdown */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown:hover .submenu {
+    display: block;
+}
+
+.submenu li a {
+    color: black;
+    padding: 10px 15px;
+    display: block;
+}
+
+/* Right actions bên phải */
+.right-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Tăng khoảng cách */
+}
+
+.login-btn, .cart-btn {
+    color: inherit;
+    text-decoration: none;
+    padding: 15px 10px; /* Tăng padding để lớn hơn */
+    font-size: 16px; /* Tăng font size */
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.login-btn:hover, .cart-btn:hover {
+    background: rgba(255, 255, 255, 0.2); /* Hiệu ứng hover */
+}
+
+.cart-count {
+    background: #ffd700; /* Màu vàng cho số lượng giỏ hàng */
+    color: black;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* Đảm bảo nội dung trang không bị che bởi header fixed */
+body {
+    padding-top: 100px; /* Tăng để phù hợp với header lớn hơn */
+}
+
+/* Media Queries cho Responsive */
+@media (max-width: 1024px) { /* Tablet */
+    .logo img {
+        height: 50px; /* Giảm logo một chút */
+    }
+    .menu {
+        gap: 20px; /* Giảm khoảng cách menu */
+    }
+    .menu a {
+        font-size: 14px; /* Giảm font */
+        padding: 10px 5px;
+    }
+    .right-actions {
+        gap: 15px;
+    }
+    .login-btn, .cart-btn {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+    body {
+        padding-top: 90px; /* Điều chỉnh padding body */
+    }
+}
+
+@media (max-width: 768px) { /* Mobile */
+    .container {
+        flex-direction: column; /* Chuyển menu xuống dưới trên mobile */
+        padding: 0 10px;
+    }
+    .logo img {
+        height: 40px; /* Logo nhỏ hơn */
+    }
+    .menu {
+        flex-wrap: wrap; /* Cho phép menu xuống dòng */
+        gap: 10px;
+        justify-content: center; /* Căn giữa menu */
+        margin: 10px 0;
+    }
+    .menu a {
+        font-size: 12px; /* Font nhỏ hơn */
+        padding: 8px 5px;
+    }
+    .right-actions {
+        gap: 10px;
+        justify-content: center; /* Căn giữa actions */
+    }
+    .login-btn, .cart-btn {
+        font-size: 12px;
+        padding: 8px 5px;
+    }
+    body {
+        padding-top: 120px; /* Tăng padding vì header cao hơn trên mobile */
+    }
+}
 
 body {
     margin: 0;
@@ -36,7 +233,7 @@ body::before {
 .category-item {
     text-align: center;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
     height: 120px;
     display: flex;
     flex-direction: column;
