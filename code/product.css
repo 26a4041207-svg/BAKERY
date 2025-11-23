@@ -14,6 +14,8 @@
 
         /* Áp dụng màu sắc tùy chỉnh cho Tailwind */
         .text-gold { color: var(--text-gold); }
+        .bg-gold { background-color: var(--text-gold); }     /* <-- THÊM DÒNG NÀY */
+        .border-gold { border-color: var(--text-gold); }   /* <-- THÊM DÒNG NÀY */
         .bg-primary-custom { background-color: var(--primary-color); }
         .text-primary-custom { color: var(--primary-color); }
 
@@ -50,20 +52,30 @@
             width: 40px;
             height: 40px;
             border: 1px solid #ced4da;
-            background-color: #f8f9fa;
+            background-color: #CD9B32;
             transition: background-color 0.2s;
         }
 
         .quantity-input-group button:hover {
-            background-color: #e9ecef;
+            background-color: #CD9B32;
         }
 
+        /* Fix input number không căn giữa */
         .quantity-input-group input {
-            width: 50px;
-            text-align: center;
-            border: 1px solid #ced4da;
-            border-left: none;
-            border-right: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            height: 40px;        /* đồng bộ với button */
+            line-height: 40px;   /* giúp text nằm giữa */
+            appearance: textfield; /* bỏ kiểu mặc định */
+        }
+
+        /* Ẩn mũi tên tăng/giảm mặc định của input number */
+        .quantity-input-group input::-webkit-inner-spin-button,
+        .quantity-input-group input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
 
         /* Tab content styling */
