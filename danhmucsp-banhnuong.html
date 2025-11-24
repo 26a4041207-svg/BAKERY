@@ -5,98 +5,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Mục Bánh Nướng</title>
-    <link rel="stylesheet" href="danhmucsp-banhnuong.css">
+    <link rel="stylesheet" href="danhmucsp.css">
 </head>
 
 <body>
-<header id="header">
-    <div class="container">
+    <header id="header">
+        <div class="container">
 
-        <div class="logo">
-            <img src="logo.png" alt="Givral">
+            <div class="logo">
+                <img src="logo.png" alt="Givral">
+            </div>
+
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html" class="active">TRANG CHỦ</a></li>
+                    <li><a href="#">GIỚI THIỆU</a></li>
+
+                    <!-- MENU SẢN PHẨM -->
+                    <li class="dropdown">
+                        <a href="#">SẢN PHẨM ▾</a>
+
+                        <ul class="submenu">
+                            <li><a href="danhmucsp-banhkem.html">Bánh kem</a></li>
+                            <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                            <li><a href="#">Bánh Ngọt</a></li>
+                            <li><a href="#">Bánh Quy</a></li>
+                            <li><a href="#">Bánh Mousse</a></li>
+                            <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">TIN TỨC</a></li>
+                    <li><a href="#">LIÊN HỆ</a></li>
+                </ul>
+            </nav>
+
+            <!-- LOGIN & CART -->
+            <div class="right-actions">
+                <a href="#" class="login-btn">
+                    <span class="icon"></span> Đăng nhập / Đăng ký
+                </a>
+
+                <a href="#" class="cart-btn">
+                    <span class="icon">🛒</span>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
         </div>
+    </header>
 
-        <nav>
-            <ul class="menu">
-                <li><a href="index.html" class="active">TRANG CHỦ</a></li>
-                <li><a href="#">GIỚI THIỆU</a></li>
-
-                <!-- MENU SẢN PHẨM -->
-                <li class="dropdown">
-                    <a href="#">SẢN PHẨM ▾</a>
-
-                    <ul class="submenu">
-                        <li><a href="#">Bánh kem</a></li>
-                        <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
-                        <li><a href="#">Bánh Ngọt</a></li>
-                        <li><a href="#">Bánh Quy</a></li>
-                        <li><a href="#">Bánh Mousse</a></li>
-                        <li><a href="#">Đồ Uống</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#">TIN TỨC</a></li>
-                <li><a href="#">LIÊN HỆ</a></li>
-            </ul>
-        </nav>
-
-        <!-- LOGIN & CART -->
-        <div class="right-actions">
-            <a href="#" class="login-btn">
-                <span class="icon"></span> Đăng nhập / Đăng ký
-            </a>
-
-            <a href="#" class="cart-btn">
-                <span class="icon">🛒</span>
-                <span class="cart-count">3</span>
-            </a>
-        </div>
-    </div>
-</header>
-
-<!-- HERO BANNER -->
-<section class="hero-banner">
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
     <img src="assets/img/Banner/Banner bánh kem.webp" alt="Banner" class="banner-img">
 
     <div class="banner-text">
-        <p class="breadcrumb">Home > Sản phẩm > Bánh nướng</p>
+        <p class="breadcrumb">
+            <a href="index.html">Trang chủ</a> >
+            <a href="#">Sản phẩm</a> >
+            <a href="danhmucsp-banhnuong.html" class="active">Bánh nướng</a>
+        </p>
         <h1 class="banner-title">Bánh Nướng</h1>
     </div>
 </section>
 
+
     <!-- CATEGORY BAR -->
     <div class="category-bar">
-
-        <div class="category-item">
+        <a href="danhmucsp-banhkem.html" class="category-item">
             <img src="Icon-danhmucsp/icon-banhkem.jpg" alt="">
             <p>BÁNH KEM</p>
-        </div>
-
-        <div class="category-item">
+        </a>
+        <a href="danhmucsp-banhnuong.html" class="category-item">
             <img src="Icon-danhmucsp/icon-banhnuong.jpg" alt="">
             <p>BÁNH NƯỚNG</p>
-        </div>
-
-        <div class="category-item">
+        </a>
+        <a href="danhmucsp-banhngot.html" class="category-item">
             <img src="Icon-danhmucsp/icon-banhngot.jpg" alt="">
             <p>BÁNH NGỌT</p>
-        </div>
-
-        <div class="category-item">
+        </a>
+        <a href="danhmucsp-banhquy.html" class="category-item">
             <img src="Icon-danhmucsp/icon-banhquy.jpg" alt="">
             <p>BÁNH QUY</p>
-        </div>
-
-        <div class="category-item">
+        </a>
+        <a href="danhmucsp-banhmousse.html" class="category-item">
             <img src="Icon-danhmucsp/icon-banhmousse.jpg" alt="">
             <p>BÁNH MOUSSE</p>
-        </div>
-
-        <div class="category-item">
+        </a>
+        <a href="danhmucsp-douong.html" class="category-item">
             <img src="Icon-danhmucsp/icon-douong.jpg" alt="">
             <p>ĐỒ UỐNG</p>
-        </div>
+        </a>
     </div>
+
 
 
     <!-- MAIN CONTENT -->
@@ -140,8 +140,9 @@
                     <div class="product-image-wrapper">
                         <div class="product-label status-new">New</div>
                         <div class="image-slider">
-                        <img src="assets/img/Products/Bánh Nướng/Banana Chocolate Almond Croissant 1.webp" class="slide active">>
-                        <div class="add-to-cart">ADD TO CART</div>
+                            <img src="assets/img/Products/Bánh Nướng/Banana Chocolate Almond Croissant 1.webp"
+                                class="slide active">>
+                            <div class="add-to-cart">ADD TO CART</div>
                         </div>
                     </div>
                     <h4 class="product-name">Banana Chocolate Almond Croissant</h4>
@@ -153,9 +154,12 @@
                     <div class="product-image-wrapper">
                         <div class="product-label status-new">Flash Sale</div>
                         <div class="image-slider">
-                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 1.webp" class="slide active">
-                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 2.webp" class="slide">
-                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 3.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 3.webp"
+                                class="slide">
                             <div class="add-to-cart">ADD TO CART</div>
                         </div>
                     </div>
@@ -197,7 +201,8 @@
                     <div class="product-image-wrapper">
                         <div class="product-label status-new">Sold Out</div>
                         <div class="image-slider">
-                            <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 1.webp"
+                                class="slide active">
                             <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 2.webp" class="slide">
                             <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 3.webp" class="slide">
                             <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 4.webp" class="slide">
@@ -225,9 +230,12 @@
                     <div class="product-image-wrapper">
                         <div class="product-label status-new">Sale</div>
                         <div class="image-slider">
-                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 1.webp" class="slide active">
-                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 2.webp" class="slide">
-                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 3.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 3.webp"
+                                class="slide">
                             <div class="add-to-cart">ADD TO CART</div>
                         </div>
                     </div>
@@ -239,9 +247,12 @@
                 <div class="product-card">
                     <div class="product-image-wrapper">
                         <div class="image-slider">
-                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 1.webp" class="slide active">
-                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 2.webp" class="slide">
-                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 3.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 3.webp"
+                                class="slide">
                             <div class="add-to-cart">ADD TO CART</div>
                         </div>
                     </div>
@@ -253,7 +264,8 @@
                 <div class="product-card">
                     <div class="product-image-wrapper">
                         <div class="image-slider">
-                            <img src="assets/img/Products/Bánh Nướng/Truffle Cream Cheese Bun 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Truffle Cream Cheese Bun 1.webp"
+                                class="slide active">
                             <img src="assets/img/Products/Bánh Nướng/Truffle Cream Cheese Bun 2.webp" class="slide">
                             <div class="add-to-cart">ADD TO CART</div>
                         </div>
@@ -266,6 +278,7 @@
         </div>
     </div>
 
-    <script src="danhmucsp-banhnuong.js"></script>
+    <script src="danhmucsp.js"></script>
 </body>
+
 </html>

@@ -23,8 +23,8 @@ body {
 /* Khi cuộn xuống chuyển sang đỏ */
 #header.scrolled {
     position: fixed;
-    background: #fffaf0;
-    color: black;
+    background: #cfa258;
+    color: white;
     top: 0;
 }
 
@@ -82,7 +82,18 @@ body {
 .breadcrumb {
     font-size: 16px;
     opacity: 0.8;
+    font-weight: bold
 }
+.breadcrumb a {
+    text-decoration: none;
+    color: #fff; /* hoặc màu bạn đang dùng trên banner */
+    transition: 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: black;
+}
+
 
 /* Mobile responsive */
 @media (max-width:768px) {
@@ -282,6 +293,14 @@ body::before {
     align-items: flex-start;
     padding: 15px 0;
     flex-wrap: wrap;
+}
+.category-bar a {
+    text-decoration: none;      /* bỏ gạch chân */
+    color: inherit;             /* giữ nguyên màu chữ */
+}
+
+.category-bar a:hover {
+    text-decoration: none;      /* tránh hover hiện lại gạch chân */
 }
 
 .category-item {
