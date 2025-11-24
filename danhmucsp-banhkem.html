@@ -4,65 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Mục Bánh Nướng</title>
-    <link rel="stylesheet" href="danhmucsp-banhnuong.css">
+    <title>Danh Mục Bánh Kem</title>
+    <link rel="stylesheet" href="danhmucsp-banhkem.css">
 </head>
 
 <body>
-<header id="header">
-    <div class="container">
+    <header id="header">
+        <div class="container">
 
-        <div class="logo">
-            <img src="logo.png" alt="Givral">
+            <div class="logo">
+                <img src="logo.png" alt="Givral">
+            </div>
+
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html" class="active">TRANG CHỦ</a></li>
+                    <li><a href="#">GIỚI THIỆU</a></li>
+
+                    <!-- MENU SẢN PHẨM -->
+                    <li class="dropdown">
+                        <a href="#">SẢN PHẨM ▾</a>
+
+                        <ul class="submenu">
+                            <li><a href="#">Bánh kem</a></li>
+                            <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                            <li><a href="#">Bánh Ngọt</a></li>
+                            <li><a href="#">Bánh Quy</a></li>
+                            <li><a href="#">Bánh Mousse</a></li>
+                            <li><a href="#">Đồ Uống</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">TIN TỨC</a></li>
+                    <li><a href="#">LIÊN HỆ</a></li>
+                </ul>
+            </nav>
+
+            <!-- LOGIN & CART -->
+            <div class="right-actions">
+                <a href="#" class="login-btn">
+                    <span class="icon"></span> Đăng nhập / Đăng ký
+                </a>
+
+                <a href="#" class="cart-btn">
+                    <span class="icon">🛒</span>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
         </div>
+    </header>
 
-        <nav>
-            <ul class="menu">
-                <li><a href="index.html" class="active">TRANG CHỦ</a></li>
-                <li><a href="#">GIỚI THIỆU</a></li>
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+        <img src="assets/img/Banner/Banner bánh kem.webp" alt="Banner" class="banner-img">
 
-                <!-- MENU SẢN PHẨM -->
-                <li class="dropdown">
-                    <a href="#">SẢN PHẨM ▾</a>
-
-                    <ul class="submenu">
-                        <li><a href="#">Bánh kem</a></li>
-                        <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
-                        <li><a href="#">Bánh Ngọt</a></li>
-                        <li><a href="#">Bánh Quy</a></li>
-                        <li><a href="#">Bánh Mousse</a></li>
-                        <li><a href="#">Đồ Uống</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#">TIN TỨC</a></li>
-                <li><a href="#">LIÊN HỆ</a></li>
-            </ul>
-        </nav>
-
-        <!-- LOGIN & CART -->
-        <div class="right-actions">
-            <a href="#" class="login-btn">
-                <span class="icon"></span> Đăng nhập / Đăng ký
-            </a>
-
-            <a href="#" class="cart-btn">
-                <span class="icon">🛒</span>
-                <span class="cart-count">3</span>
-            </a>
+        <div class="banner-text">
+            <p class="breadcrumb">Trang Chủ > Sản phẩm > Bánh kem</p>
+            <h1 class="banner-title">Bánh Kem</h1>
         </div>
-    </div>
-</header>
-
-<!-- HERO BANNER -->
-<section class="hero-banner">
-    <img src="assets/img/Banner/Banner bánh kem.webp" alt="Banner" class="banner-img">
-
-    <div class="banner-text">
-        <p class="breadcrumb">Home > Sản phẩm > Bánh kem</p>
-        <h1 class="banner-title">Bánh Kem</h1>
-    </div>
-</section>
+    </section>
 
     <!-- CATEGORY BAR -->
     <div class="category-bar">
@@ -139,9 +139,11 @@
                 <div class="product-card">
                     <div class="product-image-wrapper">
                         <div class="product-label status-new">New</div>
-                        <img src="assets/img/Products/Bánh Kem/Carrot Cake 1.webp" alt="">
-                        <img src="assets/img/Products/Bánh Kem/Carrot Cake 2.webp" alt="">
-                        <div class="add-to-cart">ADD TO CART</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Carrot Cake 1.webp" alt="" class="slide active">>
+                            <img src="assets/img/Products/Bánh Kem/Carrot Cake 2.webp" alt="" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
                     </div>
                     <h4 class="product-name">Carrot Cake</h4>
                     <p class="price">150.000₫ <span class="old-price">170.000₫</span></p>
@@ -295,6 +297,7 @@
         </div>
     </div>
 
-    <script src="danhmucsp-banhnuong.js"></script>
+    <script src="danhmucsp-banhkem.js"></script>
 </body>
+
 </html>
