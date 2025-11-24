@@ -1,29 +1,33 @@
 /* Reset và cơ bản */
 body {
     margin: 0;
-    padding: 0;
+    padding-top: 0;
     font-family: Arial, sans-serif; /* Thay đổi nếu cần */
 }
 
 /* Header cơ bản */
 #header {
-    position: fixed; /* Làm header dính trên cùng */
+    font-weight: bold;
+    position: absolute; /* QUAN TRỌNG → đè lên banner, không đẩy banner xuống */
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: transparent; /* Ban đầu trong suốt */
-    color: white; /* Chữ trắng ban đầu */
-    transition: background 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
-    padding: 20px 0; /* Tăng padding để header lớn hơn */
-    height: auto; /* Để tự động điều chỉnh chiều cao */
+
+    background: transparent; /* Trong suốt lúc đầu */
+    color: white; /* CHỮ TRẮNG LÚC ĐẦU */
+    transition: background 0.3s ease;
+    padding: 20px 0;
 }
 
-/* Khi cuộn xuống, thêm class "scrolled" để đổi background */
+/* Khi cuộn xuống chuyển sang đỏ */
 #header.scrolled {
-    background: #ff0000; /* Màu đỏ khi cuộn (thay đổi nếu cần, ví dụ #d32f2f cho đỏ đậm hơn) */
-    color: white; /* Giữ chữ trắng, hoặc thay đổi nếu cần */
+    position: fixed;
+    background: #cfa258;
+    color: white;
+    top: 0;
 }
+
 
 /* Container bên trong header */
 .container {
@@ -38,6 +42,67 @@ body {
 /* Logo bên trái */
 .logo img {
     height: 60px; /* Tăng kích thước logo để responsive hơn */
+}
+
+/* =========================
+   HERO BANNER
+========================= */
+.hero-banner {
+    width: 100%;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0; /* FIX: banner nằm sát cạnh trên để header đè lên */
+}
+
+
+.hero-banner .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(75%);     /* Làm tối để chữ nổi bật */
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.banner-title {
+    font-size: 58px;
+    font-weight: 700;
+    margin: 10px 0 0;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+
+.breadcrumb {
+    font-size: 16px;
+    opacity: 0.8;
+    font-weight: bold
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: #fff; /* hoặc màu bạn đang dùng trên banner */
+    transition: 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: black;
+}
+
+
+/* Mobile responsive */
+@media (max-width:768px) {
+    .hero-banner {
+        height: 250px;
+    }
+    .banner-title {
+        font-size: 36px;
+    }
 }
 
 /* Menu ở trung tâm */
@@ -213,7 +278,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.3);
     pointer-events: none;
     z-index: -1;
 }
@@ -226,8 +291,16 @@ body::before {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    padding: 30px 0;
+    padding: 15px 0;
     flex-wrap: wrap;
+}
+.category-bar a {
+    text-decoration: none;      /* bỏ gạch chân */
+    color: inherit;             /* giữ nguyên màu chữ */
+}
+
+.category-bar a:hover {
+    text-decoration: none;      /* tránh hover hiện lại gạch chân */
 }
 
 .category-item {
@@ -238,12 +311,12 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .category-item img {
     height: 55px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     object-fit: contain;
 }
 
@@ -346,22 +419,22 @@ body::before {
     overflow: hidden;
     display: block;
 }
-
 .add-to-cart {
     position: absolute;
-    bottom: -60px; 
+    bottom: -20px;
     left: 0;
     width: 100%;
-    padding: 15px 0;
+    padding: 5px 0;
     background: white;
-    color: #c67b7b;  /* đỏ nhạt như ảnh */
+    color: #c67b7b;
     text-align: center;
     font-weight: bold;
-    font-size: 16px;
-    letter-spacing: 2px;
+    font-size: 11px;
+    letter-spacing: 1px;
     transition: bottom 0.35s ease;
     box-sizing: border-box;
 }
+
 
 .product-card:hover .add-to-cart {
     bottom: 0; /* trượt lên */
