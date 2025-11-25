@@ -36,9 +36,12 @@ window.addEventListener("scroll", function () {
 
 // Hàm lấy giá mới (giá đầu tiên)
 function extractPrice(text) {
-    let first = text.trim().split(" ")[0];
-    return Number(first.replace(/\D/g, ""));
+    if (!text) return 0;
+    const m = text.match(/[\d\.]+/); 
+    if (!m) return 0;
+    return Number(m[0].replace(/\./g, ""));
 }
+
 
 // Hàm áp dụng bộ lọc
 function applyFilters() {
@@ -51,17 +54,28 @@ function applyFilters() {
         const label = cb.parentElement.textContent.trim();
 
         // Nếu là lọc theo giá (vì có ký tự ₫)
-        if (label.includes("₫")) {
-            let numbers = label.match(/\d[\d\.]*/g).map(x => Number(x.replace(/\D/g, "")));
+        if (label.includes("₫") || label.match(/\d/)) {
 
-            if (numbers.length === 1) {
-                // VD: "Trên 1 triệu"
-                priceFilters.push({ min: numbers[0], max: Infinity });
-            } else {
-                // Khoảng giá bình thường
-                priceFilters.push({ min: numbers[0], max: numbers[1] });
-            }
-        }
+    // lấy tất cả số trong label
+    let nums = label.match(/[\d\.]+/g) || [];
+
+    // chuyển số + dấu chấm thành số nguyên
+    nums = nums.map(n => Number(n.replace(/\./g, "")));
+
+    if (label.includes("trên")) {
+        // Trên X
+        priceFilters.push({ min: nums[0], max: Infinity });
+    }
+    else if (label.includes("dưới")) {
+        // Dưới X
+        priceFilters.push({ min: 0, max: nums[0] });
+    }
+    else if (nums.length >= 2) {
+        // X - Y
+        priceFilters.push({ min: nums[0], max: nums[1] });
+    }
+}
+
         // Nếu là lọc theo trạng thái (New, Sale, Flash Sale,...)
         else {
             statusFilters.push(label.toLowerCase());
