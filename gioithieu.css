@@ -1,158 +1,231 @@
-/* Banner */
-.about-banner {
-    position: relative;
-    height: 320px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
 }
 
-.about-banner-img {
-    position: absolute;
-    top: 0;
-    left: 0;
+body {
+    background: #fff;
+    color: #333;
+}
+
+.hero-banner {
+    width: 100%;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0; /* FIX: banner nằm sát cạnh trên để header đè lên */
+}
+
+.hero-banner .banner-img {
     width: 100%;
     height: 100%;
-    background-image: url("background-bakery.png"); /* banner */
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.5);
+    object-fit: cover;
+    filter: brightness(50%);     /* Làm tối để chữ nổi bật */
 }
 
-.about-logo-text {
-    display: flex;
-    align-items: flex-start; /* căn top logo với text */
-    gap: 15px;               /* khoảng cách giữa logo và text */
-}
-
-.logo-small {
-    width: 100px;   /* kích thước logo */
-    height: auto;
-    flex-shrink: 0; /* tránh logo bị co nhỏ */
-}
-
-.about-logo-text p {
-    margin: 0;      /* bỏ margin mặc định của <p> */
-}
-
-
-.about-banner-content {
-    position: relative;
-    z-index: 3;
-}
-
-.about-banner h1 {
-    font-size: 48px;
-    font-weight: bold;
-}
-
-.about-banner p {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-/* Nội dung */
-.about-container {
-    max-width: 1100px;
-    margin: 50px auto;
-    padding: 0 20px;
-}
-
-.about-container h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #3b2a20;
-}
-
-.about-container p {
-    font-size: 17px;
-    color: #4a3c32;
-    line-height: 1.8;
-    margin-bottom: 15px;
-
-    /* fade-in effect */
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.8s;
-}
-
-.about-container p.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Reviews */
-.reviews-section {
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    padding: 60px 20px;
-    background: #f8e9e0;
+    color: rgb(255, 255, 255);
 }
 
-.reviews-section h3 {
-    color: #d67b53;
+.banner-title {
+    font-size: 58px;
+    font-weight: 700;
+    margin: 10px 0 0;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+
+.breadcrumb {
+    font-size: 25px;
+    opacity: 0.8;
+    font-weight: bold
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: #ffffff; /* hoặc màu bạn đang dùng trên banner */
+    transition: 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: black;
+}
+
+
+/* ABOUT SECTION */
+.about-section {
+    padding: 15px 8%;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-title {
+    text-align: left;
+    font-size: 32px;
+    color: #bc9669;
+    margin-bottom: 15px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-line {
+    border: none;
+    border-top: 1px solid #bc9669;
+    margin-bottom: 10px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-line2 {
+    border: none;
+    border-top: 0.1px solid #bc9669;
+    margin-bottom: 10px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* EN TEXT */
+.about-main-en {
+    font-size: 32px;
+    color: #bc9669;
+    margin-bottom: 50px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* VI TEXT */
+.about-main-vi {
+    font-size: 32px;
+    color: #bc9669;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+
+.hero-text p {
     font-size: 20px;
+    margin-top: 10px;
 }
 
-.reviews-section h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    font-family: 'Arial', sans-serif;
-    color: green
+
+/* Tùy chỉnh chung cho Sứ Mệnh và Câu Chuyện Thương Hiệu */
+.mission.section,
+.story.section,
+.process.section {
+    padding-top: 30px;       /* Khoảng cách phía trên toàn section */
+    padding-bottom: 30px;    /* Khoảng cách phía dưới toàn section */
 }
 
-.reviews-slider {
+.mission .text h2,
+.process .text h2,
+.story .text h2 {
+    font-size: 32px;         /* Tăng kích thước tiêu đề */
+    font-weight: 700;        /* Chữ đậm hơn */
+    margin-top: 10px;        /* Cách phần phía trên tiêu đề */
+    margin-bottom: 25px;     /* Cách đoạn văn đầu tiên */
+}
+
+.mission .text p,
+.mission .text ul,
+.story .text p,
+.story .text ul,
+.process .text p,
+.process .text ul {
+    line-height: 1.8;        /* Giãn dòng cho tất cả đoạn văn + danh sách */
+    margin-bottom: 8px;     /* Tăng khoảng cách giữa các đoạn */
+}
+
+
+
+
+/* SECTION BASE */
+.section {
+    padding: 50px 10%;
+    text-align: justify;
+}
+.container {
     display: flex;
-    overflow: hidden;
-    max-width: 900px;
-    margin: auto;
-    position: relative;
+    gap: 100px;
+    align-items: center;
+}
+.container.reverse {
+    flex-direction: row-reverse;
+}
+.container .text {
+    flex: 1;
+}
+.container .image {
+    flex: 1;
+}
+.container .image img {
+    width: 100%;
+    border-radius: 12px;
 }
 
 
-.review-item {
-    min-width: 33.333%;
-    padding: 20px;
-    box-sizing: border-box;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.8s;
+/* VALUES */
+.center {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.value-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.value-item {
+    width: 32%;
+    text-align: center;
+}
+.value-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+.value-item h3 {
+    margin-top: 17px;
+    font-weight: 600;
 }
 
-.review-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 
-.avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+/* GALLERY */
+.gallery-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.gallery-grid img {
+    width: 100%;
+    border-radius: 10px;
+    height: 220px;
     object-fit: cover;
 }
-
-.quote {
-    font-style: italic;
-    margin: 20px auto;
-    max-width: 500px;
+/* RESPONSIVE */
+@media(max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+    .value-list {
+        flex-direction: column;
+    }
+    .value-item {
+        width: 100%;
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
-
-/* Dots */
-.dots {
-    margin-top: 20px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #bbb;
-    display: inline-block;
-    margin: 5px;
-    cursor: pointer;
-}
-
-.dot.active {
-    background: #d67b53;
+@media(max-width: 600px) {
+    .hero-img {
+        height: 350px;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
 }
