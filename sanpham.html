@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Mục Sản Phẩm</title>
+    <link rel="stylesheet" href="danhmucsp.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="container">
+
+            <div class="logo">
+                <img src="logo.png" alt="Givral">
+            </div>
+
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html" class="active">TRANG CHỦ</a></li>
+                    <li><a href="#">GIỚI THIỆU</a></li>
+
+                    <!-- MENU SẢN PHẨM -->
+                    <li class="dropdown">
+                        <a href="sanpham.html">SẢN PHẨM ▾</a>
+
+                        <ul class="submenu">
+                            <li><a href="danhmucsp-banhkem.html">Bánh Kem</a></li>
+                            <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                            <li><a href="danhmucsp-banhngot.html">Bánh Ngọt</a></li>
+                            <li><a href="danhmucsp-banhquy.html">Bánh Quy</a></li>
+                            <li><a href="danhmucsp-banhmousse.html">Bánh Mousse</a></li>
+                            <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">TIN TỨC</a></li>
+                    <li><a href="#">LIÊN HỆ</a></li>
+                </ul>
+            </nav>
+
+            <!-- LOGIN & CART -->
+            <div class="right-actions">
+                <a href="#" class="login-btn">
+                    <span class="icon"></span> Đăng nhập / Đăng ký
+                </a>
+
+                <a href="#" class="cart-btn">
+                    <span class="icon">🛒</span>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+      <!-- HERO BANNER -->
+    <section class="hero-banner">
+    <img src="assets/img/Banner/banner.png" alt="Banner" class="banner-img">
+
+    <div class="banner-text">
+        <p class="breadcrumb">
+            <a href="index.html">Trang chủ</a> >
+            <a href="sanpham.html">Sản phẩm</a>
+        </p>
+        <h1 class="banner-title">Sản phẩm</h1>
+    </div>
+</section>
+
+    <!-- CATEGORY BAR -->
+    <div class="category-bar">
+        <a href="danhmucsp-banhkem.html" class="category-item">
+            <img src="Icon-danhmucsp/icon-banhkem.jpg" alt="">
+            <p>BÁNH KEM</p>
+        </a>
+        <a href="danhmucsp-banhnuong.html" class="category-item">
+            <img src="Icon-danhmucsp/Logo bánh nướng.svg" alt="">
+            <p>BÁNH NƯỚNG</p>
+        </a>
+        <a href="danhmucsp-banhngot.html" class="category-item">
+            <img src="Icon-danhmucsp/logo bánh ngọt.svg" alt="">
+            <p>BÁNH NGỌT</p>
+        </a>
+        <a href="danhmucsp-banhquy.html" class="category-item">
+            <img src="Icon-danhmucsp/icon-banhquy.jpg" alt="">
+            <p>BÁNH QUY</p>
+        </a>
+        <a href="danhmucsp-banhmousse.html" class="category-item">
+            <img src="Icon-danhmucsp/icon-banhmousse.jpg" alt="">
+            <p>BÁNH MOUSSE</p>
+        </a>
+        <a href="danhmucsp-douong.html" class="category-item">
+            <img src="Icon-danhmucsp/logo đồ uống.png" alt="">
+            <p>ĐỒ UỐNG</p>
+        </a>
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <fieldset class="filter-box">
+                <legend>Chọn mức giá</legend>
+                <label><input type="checkbox"> Từ 50.000đ - 100.000đ</label>
+                <label><input type="checkbox"> Từ 100.000đ - 200.000đ</label>
+                <label><input type="checkbox"> Từ 200.000đ - 300.000đ</label>
+                <label><input type="checkbox"> Từ 300.000đ - 500.000đ</label>
+                <label><input type="checkbox"> Từ 500.000đ - 1 triệu</label>
+                <label><input type="checkbox"> Trên 1 triệu</label>
+            </fieldset>
+
+            <fieldset class="filter-box">
+                <legend>Tình trạng sản phẩm</legend>
+                <label><input type="checkbox"> New</label>
+                <label><input type="checkbox"> Flash Sale</label>
+                <label><input type="checkbox"> Sale</label>
+                <label><input type="checkbox"> Sold Out</label>
+                <label><input type="checkbox"> Best Seller</label>
+            </fieldset>
+        </aside>
+        <div class="content-area">
+            <div class="sort-bar">
+                <span>Xếp theo:</span>
+                <button class="sort-btn">Tên A-Z</button>
+                <button class="sort-btn">Tên Z-A</button>
+                <button class="sort-btn">Giá thấp đến cao</button>
+                <button class="sort-btn">Giá cao xuống thấp</button>
+            </div>
+
+            <!-- PRODUCTS -->
+            <section class="product-grid">
+
+                <!-- SP 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Carrot Cake 1.webp" alt="" class="slide active">>
+                            <img src="assets/img/Products/Bánh Kem/Carrot Cake 2.webp" alt="" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Carrot Cake</h4>
+                    <p class="price">150.000₫ <span class="old-price">170.000₫</span></p>
+                </div>
+
+                <!-- SP 2 (SLIDER) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Chocolate Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Chocolate Cake 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Chocolate Cake 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Chocolate Cake</h4>
+                    <p class="price">380.000₫</p>
+                </div>
+
+                <!-- SP 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Chocolate Macaron Cake 1.jpg" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Chocolate Macaron Cake 2.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Chocolate Macaron Cake 3.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Chocolate Macaron Cake</h4>
+                    <p class="price">480.000₫</p>
+                </div>
+
+                <!-- SP 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Confetti Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Confetti Cake 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Confetti Cake</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sold Out</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/German Chocolate Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/German Chocolate Cake 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/German Chocolate Cake 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">German Chocolate Cake</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+                <!-- SP 6 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Harvest Apple Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Harvest Apple Cake 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Harvest Apple Cake</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 7 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Hummingbird Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Hummingbird Cake 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Hummingbird Cake 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Hummingbird Cake</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 8 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Red Velvet Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Red Velvet Cake 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Red Velvet Cake 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Red Velvet Cake</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 9 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Reindeer Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Reindeer Cake 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Reindeer Cake</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 10 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Snowman Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Snowman Cake 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Snowman Cake 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Snowman Cake</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 11 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Vanilla Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Vanilla Cake 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Vanilla Cake 3.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Vanilla Cake 4.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Vanilla Cake 5.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Vanilla Cake 6.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Vanilla Cake</h4>
+                    <p class="price">400.000₫</p>
+                </div>
+                <!-- SP 12 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Double Chocolate Brownie and Toffee.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Double Chocolate Brownie and Toffee</h4>
+                    <p class="price">280.000₫</p>
+                </div>
+                <!-- SP 13 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Macaron Fraisier Cake 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Kem/Macaron Fraisier Cake 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Kem/Macaron Fraisier Cake 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Macaron Fraisier Cake</h4>
+                    <p class="price">200.000₫</p>
+                </div>
+                <!-- SP 14 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Kem/Pistachio Cake.png" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Pistachio Cake</h4>
+                    <p class="price">180.000₫</p>
+                </div>
+
+                <!-- SP 15 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 1.jpg" class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 2.jpg" class="slide ">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Berry Fruit Vanilla</h4>
+                    <p class="price">60.000₫ <span class="old-price">90.000₫</span></p>
+                </div>
+
+                <!-- SP 16 (SLIDER) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Burnt Caramel 1.jpg"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Burnt Caramel 2.jpg"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Burnt Caramel</h4>
+                    <p class="price">80.000₫</p>
+                </div>
+
+                <!-- SP 17 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Burnt Caramel Signature 1.png" class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Burnt Caramel Signature 1.png" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Burnt Caramel Signature</h4>
+                    <p class="price">80.000₫</p>
+                </div>
+
+                <!-- SP 18 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Passion Fruit 1.jpg" class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Passion Fruit 2.png" class="slide">
+                            <img src="assets/img/Products/Bánh Mousse/Passion Fruit 3.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Mousse/Passion Fruit 4.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Passion Fruit</h4>
+                    <p class="price">110.000₫</p>
+                </div>
+
+                <!-- SP 19 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sold Out</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Passion Mango chese  1.png"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Passion Mango chese  2.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Passion Mango Chese</h4>
+                    <p class="price">70.000₫</p>
+                </div>
+                <!-- SP 20 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Pink Guava 1.png" class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Pink Guava 2.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Mousse/Pink Guava 3.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Pink Guava</h4>
+                    <p class="price">50.000₫</p>
+                </div>
+
+                <!-- SP 21 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 1.png"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 2.jpg"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 3.png"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Strawberry Cherry Blossom</h4>
+                    <p class="price">120.000₫</p>
+                </div>
+
+                <!-- SP 22 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Tiramisu De Caramel Socola 1.png"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Tiramisu De Caramel Socola 2.jpg"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Tiramisu De Caramel Socola</h4>
+                    <p class="price">150.000₫</p>
+                </div>
+
+                <!-- SP 23 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Tiramisu De Caramel Vani 1.png"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Tiramisu De Caramel Vani 2.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Tiramisu De Caramel Vani</h4>
+                    <p class="price">150.000₫</p>
+                </div>
+                <!-- SP 24 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Mousse/Tropical Coconut 1.png" class="slide active">
+                            <img src="assets/img/Products/Bánh Mousse/Tropical Coconut 2.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Tropical Coconut</h4>
+                    <p class="price">130.000₫</p>
+                </div>
+                <!-- SP 25 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Almond Pastry.jpg" class="slide active">>
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Almond Pastry</h4>
+                    <p class="price">120.000₫ <span class="old-price">180.000₫</span></p>
+                </div>
+
+                <!-- SP 26 (SLIDER) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Blueberry Cream Cheese Pastry.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Blueberry Cream Cheese Pastry</h4>
+                    <p class="price">280.000₫</p>
+                </div>
+
+                <!-- SP 27 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Butter Cream Bread.jpg" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Butter Cream Bread</h4>
+                    <p class="price">180.000₫</p>
+                </div>
+
+                <!-- SP 28 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Cheese Tart.jpg" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Cheese Tart</h4>
+                    <p class="price">150.000₫</p>
+                </div>
+
+                <!-- SP 29 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sold Out</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Cherry Greek Yogurt Danish.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Cherry Greek Yogurt Danish</h4>
+                    <p class="price">380.000₫</p>
+                </div>
+                <!-- SP 30 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Chocolate Cream Bread.jpg" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Chocolate Cream Bread</h4>
+                    <p class="price">230.000₫</p>
+                </div>
+
+                <!-- SP 31 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 3.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 4.webp"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Chocolate Hazelnut Kiss</h4>
+                    <p class="price">250.000₫</p>
+                </div>
+
+                <!-- SP 32 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Coffee Bun.jpg"
+                                class="slide active">
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Coffee Bun</h4>
+                    <p class="price">80.000₫</p>
+                </div>
+
+                <!-- SP 33 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Fruit Bite Raspberry.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Fruit Bite Raspberry</h4>
+                    <p class="price">350.000₫</p>
+                </div>
+                <!-- SP 34 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Fruit pastry.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Fruit pastry</h4>
+                    <p class="price">100.000₫</p>
+                </div>
+                <!-- SP 35 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 3.webp"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Opla No Baked Cheesecake</h4>
+                    <p class="price">300.000₫</p>
+                </div>
+                <!-- SP 36 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Pastel De Nata.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Pastel De Nata</h4>
+                    <p class="price">100.000₫</p>
+                </div>
+                <!-- SP 37 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Strawberry Croissant.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Strawberry Croissant</h4>
+                    <p class="price">220.000₫</p>
+                </div>
+                <!-- SP 38 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Teddy Bear Chou 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Ngọt/Teddy Bear Chou 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Ngọt/Teddy Bear Chou 3.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Ngọt/Teddy Bear Chou 4.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Ngọt/Teddy Bear Chou 5.webp"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Teddy Bear Chou</h4>
+                    <p class="price">400.000₫</p>
+                </div>
+                <!-- SP 39 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Tiramisu Lava 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Ngọt/Tiramisu Lava 2.webp"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Tiramisu Lava</h4>
+                    <p class="price">270.000₫</p>
+                </div>
+                <!-- SP 40 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Tiramisu Tart.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Tiramisu Tart</h4>
+                    <p class="price">170.000₫</p>
+                </div>
+                 <!-- SP 41 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Very Berry Pastry.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Very Berry Pastry</h4>
+                    <p class="price">90.000₫</p>
+                </div>
+                <!-- SP 42 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Ngọt/Walnut Cream Bread.jpg"
+                                class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Walnut Cream Bread</h4>
+                    <p class="price">190.000₫</p>
+                </div>
+                <!-- SP 43 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/Banana Chocolate Almond Croissant 1.webp"
+                                class="slide active">>
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Banana Chocolate Almond Croissant</h4>
+                    <p class="price">150.000₫ <span class="old-price">170.000₫</span></p>
+                </div>
+
+                <!-- SP 44 (SLIDER) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 3.webp"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Black Truffle Cheese Croissant</h4>
+                    <p class="price">380.000₫</p>
+                </div>
+
+                <!-- SP 45 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/Croissant 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Croissant 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Croissant</h4>
+                    <p class="price">480.000₫</p>
+                </div>
+
+                <!-- SP 46 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/French Milk Bun 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/French Milk Bun 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/French Milk Bun 3.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">French Milk Bun</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 47 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sold Out</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 2.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 3.webp" class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 4.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Hazelnut Choco Banana Bread</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+                <!-- SP 48 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/Nori Miso Pesto Roll 1.webp" class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Nori Miso Pesto Roll 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Nori Miso Pesto Roll</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 49 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 3.webp"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Pumpkin Spice Caramel Pecan Bun</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 50 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 2.webp"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 3.webp"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Salted Duck Egg Curd Croissant</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+
+                <!-- SP 51 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Nướng/Truffle Cream Cheese Bun 1.webp"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Nướng/Truffle Cream Cheese Bun 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Truffle Cream Cheese Bun</h4>
+                    <p class="price">580.000₫</p>
+                </div>
+                <!-- SP 52 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/browny 1.jpg" class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/browny 2.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Quy/browny 2.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Browny</h4>
+                    <p class="price">30.000₫ <span class="old-price">50.000₫</span></p>
+                </div>
+
+                <!-- SP 53 (SLIDER) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/choco crinkle 1.jpg"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/choco crinkle 2.jpg"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Choco Crinkle</h4>
+                    <p class="price">80.000₫</p>
+                </div>
+
+                <!-- SP 54 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/CHOCOCHIP COOKIE 1.jpg" class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/CHOCOCHIP COOKIE 2.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Quy/CHOCOCHIP COOKIE 3.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Chocochip Cookie</h4>
+                    <p class="price">70.000₫</p>
+                </div>
+
+                <!-- SP 55 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/lemon 1.jpg" class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/lemon 2.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Quy/lemon 3.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Quy/lemon 4.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Lemon Cookie</h4>
+                    <p class="price">50.000₫</p>
+                </div>
+
+                <!-- SP 56 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sold Out</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/machamisu 1.jpg"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/machamisu 2.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Machamisu Cookie</h4>
+                    <p class="price">40.000₫</p>
+                </div>
+                <!-- SP 57 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/matcha chocochip 1.jpg" class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/matcha chocochip 2.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Matcha Chocochip</h4>
+                    <p class="price">60.000₫</p>
+                </div>
+
+                <!-- SP 58 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/matcha crinkle 1.jpg"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/matcha crinkle 2.jpg"
+                                class="slide">
+                            <img src="assets/img/Products/Bánh Quy/matcha crinkle 3.jpg"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Matcha Crinkle</h4>
+                    <p class="price">90.000₫</p>
+                </div>
+
+                <!-- SP 59 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/red velvet 1.jpg"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/red velvet 2.jpg"
+                                class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Red Velvet</h4>
+                    <p class="price">50.000₫</p>
+                </div>
+
+                <!-- SP 60 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/Red Velvet Cream Cheese 1.jpg"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/Red Velvet Cream Cheese 2.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Quy/Red Velvet Cream Cheese 3.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Red Velvet Cream Cheese</h4>
+                    <p class="price">120.000₫</p>
+                </div>
+                <!-- SP 61 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/red velvet crinkle 1.jpg"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/red velvet crinkle 2.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Quy/red velvet crinkle 3.jpg" class="slide">
+                            <img src="assets/img/Products/Bánh Quy/red velvet crinkle 4.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Red Velvet Crinkle</h4>
+                    <p class="price">150.000₫</p>
+                </div>
+                <!-- SP 62 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/ribbon kiss 1.jpg" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">ribbon Kiss</h4>
+                    <p class="price">110.000₫</p>
+                </div>
+                <!-- SP 63 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Bánh Quy/spooky teddy 1.jpg"
+                                class="slide active">
+                            <img src="assets/img/Products/Bánh Quy/spooky teddy 2.jpg" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Spooky Teddy</h4>
+                    <p class="price">130.000₫</p>
+                </div>
+                <!-- SP 64 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <img src="assets/img/Products/Đồ Uống/Aiyu Jelly Lemon Iced Tea.webp" alt="" class="slide active">>
+                        <div class="add-to-cart">ADD TO CART</div>
+                    </div>
+                    <h4 class="product-name">Aiyu Jelly Lemon Iced Tea</h4>
+                    <p class="price">50.000₫ <span class="old-price">70.000₫</span></p>
+                </div>
+
+                <!-- SP 65 (SLIDER) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Americano 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Americano 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Americano</h4>
+                    <p class="price">120.000₫</p>
+                </div>
+
+                <!-- SP 66 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Bubble Oolong Jasmine Milk Tea Macchiato 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Bubble Oolong Jasmine Milk Tea Macchiato 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Bubble Oolong Jasmine Milk Tea Macchiato</h4>
+                    <p class="price">150.000₫</p>
+                </div>
+
+                <!-- SP 67 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Cannelé Bubble Milk Tea Macchiato 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Cannelé Bubble Milk Tea Macchiato 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Cannelé Bubble Milk Tea Macchiato</h4>
+                    <p class="price">80.000₫</p>
+                </div>
+
+                <!-- SP 68 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sold Out</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Cappuccino.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Cappuccino</h4>
+                    <p class="price">60.000₫</p>
+                </div>
+                <!-- SP 69 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Espresso 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Espresso 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Espresso</h4>
+                    <p class="price">50.000₫</p>
+                </div>
+
+                <!-- SP 70 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Fresh Orange Americano 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Fresh Orange Americano 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Fresh Orange Americano</h4>
+                    <p class="price">40.000₫</p>
+                </div>
+
+                <!-- SP 71 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Iced Croissant Latte.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Iced Croissant Latte</h4>
+                    <p class="price">65.000₫</p>
+                </div>
+
+                <!-- SP 72 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Iced Oatside Latte (Plant-Based Milk).webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Iced Oatside Latte</h4>
+                    <p class="price">45.000₫</p>
+                </div>
+
+                <!-- SP 73 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Kodemari Matcha Latte 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Kodemari Matcha Latte 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Kodemari Matcha Latte</h4>
+                    <p class="price">35.000₫</p>
+                </div>
+
+                <!-- SP 74 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Kodemari Matcha Pandan Coconut Water.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Kodemari Matcha Pandan Coconut Water</h4>
+                    <p class="price">80.000₫</p>
+                </div>
+
+                <!-- SP 75 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Latte 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Latte 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Latte</h4>
+                    <p class="price">30.000₫</p>
+                </div>
+                <!-- SP 76 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Original coldbrew.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Original Coldbrew</h4>
+                    <p class="price">50.000₫</p>
+                </div>
+                <!-- SP 77 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Popball Melon Pandan Coconut Juice 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Popball Melon Pandan Coconut Juice 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Popball Melon Pandan Coconut Juice</h4>
+                    <p class="price">60.000₫</p>
+                </div>
+                <!-- SP 78 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Thai Mango Juice.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Thai Mango Juice</h4>
+                    <p class="price">65.000₫</p>
+                </div>
+                <!-- SP 79 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Vietnamese Black Coffee.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Vietnamese Black Coffee</h4>
+                    <p class="price">100.000₫</p>
+                </div>
+                <!-- SP 80 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Vietnamese White Coffee.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Vietnamese White Coffee</h4>
+                    <p class="price">100.000₫</p>
+                </div>
+                <!-- SP 81 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Vietnamese Milk Coffee 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Vietnamese Milk Coffee 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Vietnamese Milk Coffee</h4>
+                    <p class="price">120.000₫</p>
+                </div>
+            </section>
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <script src="danhmucsp.js"></script>
+</body>
+
+</html>
