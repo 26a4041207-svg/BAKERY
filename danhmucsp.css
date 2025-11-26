@@ -3,6 +3,12 @@ body {
     margin: 0;
     padding-top: 0;
     font-family: Arial, sans-serif; /* Thay đổi nếu cần */
+    background-image: url("background-bakery.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,0.9); /* chỉ 10% trắng */
+    background-blend-mode: lighten; /* kết hợp nhẹ với ảnh nền */
 }
 
 /* Header cơ bản */
@@ -265,20 +271,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Arial", sans-serif;
-    background-image: url("background-bakery.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 body::before {
-    content: "";
+    content:none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.3);
     pointer-events: none;
     z-index: -1;
 }
@@ -560,6 +561,36 @@ body::before {
 .product-label:nth-child(3) {
     top: 70px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 30px auto 0;
+    width: 100%;
+    grid-column: 1 / -1;   /* 🔥 nếu nó nằm sau một grid → sẽ kéo ra full width */
+}
+
+.page-btn {
+    border: 1px solid #d1cfcf;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+}
+
+.page-btn.active {
+    background: #c9a24b;
+    color: white;
+    border-color: #c9a24b;
+}
+
+.page-btn:hover {
+    background: #f0e2c4;
+}
+
 /* ========================
    RESPONSIVE
 ======================== */

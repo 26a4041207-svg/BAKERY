@@ -17,7 +17,6 @@ body {
     overflow: hidden;
     margin-top: 0; /* FIX: banner nằm sát cạnh trên để header đè lên */
 }
-
 .hero-banner .banner-img {
     width: 100%;
     height: 100%;
@@ -162,6 +161,7 @@ body {
 }
 .container .image {
     flex: 1;
+    overflow: visible;
 }
 .container .image img {
     width: 100%;
@@ -173,6 +173,7 @@ body {
 .center {
     text-align: center;
     margin-bottom: 30px;
+    font-size: 32px;
 }
 .value-list {
     display: flex;
@@ -193,19 +194,43 @@ body {
 }
 
 
-/* GALLERY */
-.gallery-grid {
-    margin-top: 40px;
+/* ==== PRODUCT GRID ==== */
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+    text-align: center;
 }
-.gallery-grid img {
+.product-item img {
     width: 100%;
-    border-radius: 10px;
-    height: 220px;
+    height: 230px;
     object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s ease;
 }
+.product-item img:hover {
+    transform: scale(1.05);
+}
+.product-item p {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #bc9669;
+}
+/* Tablet & màn hình nhỏ hơn — chia 3 ô */
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Điện thoại — chia 2 ô */
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* RESPONSIVE */
 @media(max-width: 992px) {
     .container {
@@ -228,4 +253,17 @@ body {
     .gallery-grid {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* HIỆU ỨNG HÌNH ẢNH ZOOM + NHÔ LÊN */
+.img-pop {
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    cursor: pointer;
+}
+
+.img-pop:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.20);
+    z-index: 10;
 }
