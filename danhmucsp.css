@@ -23,7 +23,7 @@ body {
 /* Khi cuộn xuống chuyển sang đỏ */
 #header.scrolled {
     position: fixed;
-    background: #cfa258;
+    background: #5d4037;
     color: white;
     top: 0;
 }
