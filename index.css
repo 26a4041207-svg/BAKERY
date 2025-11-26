@@ -14,9 +14,9 @@ body { font-family: Arial, sans-serif; }
 }
 
 
-/* HEADER KHI SCROLL -> ĐỎ GIVRAL */
+/* HEADER KHI SCROLL -> */
 #header.scrolled {
-    background: #CC0000;       /* Màu đỏ Givral như logo */
+    background: #5d4037;       /* Màu đỏ Givral như logo */
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     padding: 10px 0;
 }
