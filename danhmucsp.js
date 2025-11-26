@@ -30,88 +30,99 @@ window.addEventListener("scroll", function () {
     window.scrollY > 80 ? h.classList.add("scrolled") : h.classList.remove("scrolled");
 });
 
+
 /*******************************************************
  * 2. MULTI FILTER: LỌC NHIỀU MỨC GIÁ + NHIỀU TRẠNG THÁI
  *******************************************************/
-
-// Hàm lấy giá mới (giá đầu tiên)
-function extractPrice(text) {
+// HÀM ĐỔI CHUỖI GIÁ → SỐ
+function parsePrice(text) {
     if (!text) return 0;
-    const m = text.match(/[\d\.]+/); 
-    if (!m) return 0;
-    return Number(m[0].replace(/\./g, ""));
+
+    text = text.toLowerCase()
+               .replace(/đ|₫|,/g, "")
+               .replace(/\s+/g, "")
+               .trim();
+
+    // hỗ trợ "1 triệu"
+    if (text.includes("triệu")) {
+        const n = Number(text.replace("triệu", "").trim());
+        return n * 1_000_000;
+    }
+
+    // hỗ trợ "1tr"
+    if (text.endsWith("tr")) {
+        const n = Number(text.replace("tr", ""));
+        return n * 1_000_000;
+    }
+
+    // hỗ trợ "500k"
+    if (text.endsWith("k")) {
+        const n = Number(text.replace("k", ""));
+        return n * 1000;
+    }
+
+    // chuẩn 50.000 -> 50000
+    return Number(text.replace(/\./g, ""));
 }
 
 
-// Hàm áp dụng bộ lọc
+// HÀM LẤY GIÁ TỪ SẢN PHẨM
+function extractPrice(text) {
+    const match = text.match(/[\d\.]+/);
+    if (!match) return 0;
+    return Number(match[0].replace(/\./g, ""));
+}
+
+
+// ==========================================
+//       HÀM LỌC CHUẨN — SẠCH & GỌN
+// ==========================================
 function applyFilters() {
     const checked = document.querySelectorAll(".sidebar input[type='checkbox']:checked");
 
     let priceFilters = [];
-    let statusFilters = [];
 
     checked.forEach(cb => {
-        const label = cb.parentElement.textContent.trim();
+        const label = cb.parentElement.textContent.trim().toLowerCase();
 
-        // Nếu là lọc theo giá (vì có ký tự ₫)
-        if (label.includes("₫") || label.match(/\d/)) {
+        // chỉ cần có số = lọc theo giá
+        if (!label.match(/\d/)) return;
 
-    // lấy tất cả số trong label
-    let nums = label.match(/[\d\.]+/g) || [];
+        let nums = [];
 
-    // chuyển số + dấu chấm thành số nguyên
-    nums = nums.map(n => Number(n.replace(/\./g, "")));
+        // bắt số: "50.000", "1 triệu", "1tr"
+        const raw = label.match(/[\d\.]+(?:\s*triệu|tr|k)?/g);
 
-    if (label.includes("trên")) {
-        // Trên X
-        priceFilters.push({ min: nums[0], max: Infinity });
-    }
-    else if (label.includes("dưới")) {
-        // Dưới X
-        priceFilters.push({ min: 0, max: nums[0] });
-    }
-    else if (nums.length >= 2) {
-        // X - Y
-        priceFilters.push({ min: nums[0], max: nums[1] });
-    }
-}
+        if (raw) {
+            nums = raw.map(v => parsePrice(v));
+        }
 
-        // Nếu là lọc theo trạng thái (New, Sale, Flash Sale,...)
-        else {
-            statusFilters.push(label.toLowerCase());
+        if (label.includes("trên")) {
+            priceFilters.push({ min: nums[0], max: Infinity });
+        }
+        else if (nums.length >= 2) {
+            priceFilters.push({ min: nums[0], max: nums[1] });
         }
     });
 
+    // Lọc sản phẩm
     const products = document.querySelectorAll(".product-card");
 
     products.forEach(p => {
-        const priceText = p.querySelector(".price").textContent;
-        const price = extractPrice(priceText);
+        const price = extractPrice(p.querySelector(".price").textContent);
 
-        const statusLabels = [...p.querySelectorAll(".product-label")];
-        const statusList = statusLabels.map(l => l.textContent.trim().toLowerCase());
-
-
-        // true nếu không chọn gì OR nằm trong ít nhất 1 khoảng giá
-        let matchPrice = (priceFilters.length === 0) ||
+        const matchPrice =
+            priceFilters.length === 0 ||
             priceFilters.some(f => price >= f.min && price <= f.max);
 
-        // true nếu không chọn trạng thái OR sản phẩm có 1 trạng thái được chọn
-        let matchStatus =
-            statusFilters.length === 0 ||
-            statusFilters.some(s => statusList.includes(s));
-
-
-        // Kết hợp tất cả điều kiện
-        p.style.display = (matchPrice && matchStatus) ? "block" : "none";
+        p.style.display = matchPrice ? "block" : "none";
     });
 }
 
-// Lắng nghe sự kiện tick checkbox
+
+// GÁN SỰ KIỆN CHECKBOX
 document.querySelectorAll(".sidebar input[type='checkbox']")
     .forEach(cb => cb.addEventListener("change", applyFilters));
-
-
 
 
 /*******************************************************
@@ -146,4 +157,117 @@ document.querySelector(".sort-btn:nth-child(2)").onclick = () => sortProducts("a
 document.querySelector(".sort-btn:nth-child(3)").onclick = () => sortProducts("za");
 document.querySelector(".sort-btn:nth-child(4)").onclick = () => sortProducts("price-low");
 document.querySelector(".sort-btn:nth-child(5)").onclick = () => sortProducts("price-high");
+
+/***************************************************
+ * PAGINATION – chia sản phẩm thành nhiều trang
+ ***************************************************/
+
+// Số sản phẩm tối đa mỗi trang
+const ITEMS_PER_PAGE = 20;
+
+// Lấy danh sách sản phẩm
+let allProducts = Array.from(document.querySelectorAll(".product-card"));
+let filteredProducts = [...allProducts]; // mảng sản phẩm sau khi lọc
+let currentPage = 1;
+
+
+// Hàm hiển thị sản phẩm theo trang
+// --- renderPage: ẩn tất cả rồi hiển thị các phần tử của filteredProducts theo trang ---
+function renderPage(page) {
+    currentPage = page;
+
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+
+    // 1) Ẩn tất cả product trước
+    allProducts.forEach(p => {
+        p.style.display = "none";
+    });
+
+    // 2) Hiển thị các product thuộc filteredProducts trong khoảng page
+    filteredProducts.forEach((p, index) => {
+        if (index >= start && index < end) {
+            p.style.display = "block";
+        }
+    });
+
+    renderPagination();
+}
+
+
+// --- renderPagination: không đổi nhiều, nhưng đảm bảo totalPages >= 1 khi cần ---
+function renderPagination() {
+    const totalPages = Math.max(1, Math.ceil(filteredProducts.length / ITEMS_PER_PAGE));
+    const container = document.getElementById("pagination");
+
+    container.innerHTML = "";
+
+    if (currentPage > 1) {
+        container.innerHTML += `<button class="page-btn" onclick="renderPage(${currentPage - 1})">«</button>`;
+    }
+
+    for (let i = 1; i <= totalPages; i++) {
+        container.innerHTML += `
+            <button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="renderPage(${i})">
+                ${i}
+            </button>
+        `;
+    }
+
+    if (currentPage < totalPages) {
+        container.innerHTML += `<button class="page-btn" onclick="renderPage(${currentPage + 1})">»</button>`;
+    }
+}
+
+
+// --- applyFilters: chỉ cập nhật filteredProducts, không set style trực tiếp ---
+function applyFilters() {
+    const checked = document.querySelectorAll(".sidebar input[type='checkbox']:checked");
+
+    let priceFilters = [];
+    let statusFilters = [];
+
+    checked.forEach(cb => {
+        const label = cb.parentElement.textContent.trim().toLowerCase();
+
+        if (!label.match(/\d/)) {
+            statusFilters.push(label);
+        }
+
+        let nums = [];
+        const raw = label.match(/[\d\.]+(?:\s*triệu|tr|k)?/g);
+        if (raw) nums = raw.map(v => parsePrice(v));
+
+        if (label.includes("trên")) {
+            priceFilters.push({ min: nums[0], max: Infinity });
+        }
+        else if (nums.length >= 2) {
+            priceFilters.push({ min: nums[0], max: nums[1] });
+        }
+    });
+
+    // Cập nhật filteredProducts dựa trên điều kiện
+    filteredProducts = allProducts.filter(p => {
+        const price = extractPrice(p.querySelector(".price").textContent);
+        const statusEl = p.querySelector(".product-label");
+        const statusText = statusEl ? statusEl.textContent.trim().toLowerCase() : "";
+
+        const matchPrice =
+            priceFilters.length === 0 || priceFilters.some(f => price >= f.min && price <= f.max);
+
+        const matchStatus =
+            statusFilters.length === 0 || statusFilters.some(s => statusText.includes(s));
+
+        return matchPrice && matchStatus;
+    });
+
+    // Điều chỉnh currentPage nếu vượt quá totalPages (nếu không có item thì đặt 1)
+    const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    // Render trang hiện tại
+    renderPage(currentPage);
+}
+
+
 
