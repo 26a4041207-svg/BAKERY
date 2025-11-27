@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Mục Đồ Uống</title> 
+    <link rel="stylesheet" href="danhmucsp.css">
+</head>
+
+<body>
+<header id="header">
+    <div class="container">
+
+        <div class="logo">
+            <img src="logo.png" alt="Givral">
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html" class="active">TRANG CHỦ</a></li>
+                <li><a href="#">GIỚI THIỆU</a></li>
+
+                <!-- MENU SẢN PHẨM -->
+                <li class="dropdown">
+                    <a href="sanpham.html">SẢN PHẨM ▾</a>
+
+                    <ul class="submenu">
+                        <li><a href="danhmucsp-banhkem.html">Bánh Kem</a></li>
+                        <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                        <li><a href="danhmucsp-banhngot.html">Bánh Ngọt</a></li>
+                        <li><a href="danhmucsp-banhquy.html">Bánh Quy</a></li>
+                        <li><a href="danhmucsp-banhmousse.html">Bánh Mousse</a></li>
+                        <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">TIN TỨC</a></li>
+                <li><a href="#">LIÊN HỆ</a></li>
+            </ul>
+        </nav>
+
+        <!-- LOGIN & CART -->
+        <div class="right-actions">
+            <a href="#" class="login-btn">
+                <span class="icon"></span> Đăng nhập / Đăng ký
+            </a>
+
+            <a href="#" class="cart-btn">
+                <span class="icon">🛒</span>
+                <span class="cart-count">3</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- HERO BANNER -->
+   <!-- HERO BANNER -->
+    <section class="hero-banner">
+    <img src="assets/img/Banner/Logo đồ uống.jpg" alt="Banner" class="banner-img">
+    <div class="banner-text">
+        <p class="breadcrumb">
+            <a href="index.html">Trang chủ</a> >
+            <a href="sanpham.html">Sản phẩm</a> >
+            <a href="danhmucsp-douong.html" class="active">Đồ uống</a>
+        </p>
+        <h1 class="banner-title">Đồ Uống</h1>
+    </div>
+</section>
+
+    <!-- CATEGORY BAR -->
+    <div class="category-bar">
+        <a href="danhmucsp-banhkem.html" class="category-item">
+            <img src="Icon-danhmucsp/icon-banhkem.jpg" alt="">
+            <p>BÁNH KEM</p>
+        </a>
+        <a href="danhmucsp-banhnuong.html" class="category-item">
+            <img src="Icon-danhmucsp/Logo bánh nướng.svg" alt="">
+            <p>BÁNH NƯỚNG</p>
+        </a>
+        <a href="danhmucsp-banhngot.html" class="category-item">
+            <img src="Icon-danhmucsp/logo bánh ngọt.svg" alt="">
+            <p>BÁNH NGỌT</p>
+        </a>
+        <a href="danhmucsp-banhquy.html" class="category-item">
+            <img src="Icon-danhmucsp/icon-banhquy.jpg" alt="">
+            <p>BÁNH QUY</p>
+        </a>
+        <a href="danhmucsp-banhmousse.html" class="category-item">
+            <img src="Icon-danhmucsp/icon-banhmousse.jpg" alt="">
+            <p>BÁNH MOUSSE</p>
+        </a>
+        <a href="danhmucsp-douong.html" class="category-item">
+            <img src="Icon-danhmucsp/logo đồ uống.png" alt="">
+            <p>ĐỒ UỐNG</p>
+        </a>
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <fieldset class="filter-box">
+                <legend>Chọn mức giá</legend>
+                <label><input type="checkbox"> Từ 50.000đ - 100.000đ</label>
+                <label><input type="checkbox"> Từ 100.000đ - 200.000đ</label>
+                <label><input type="checkbox"> Từ 200.000đ - 300.000đ</label>
+                <label><input type="checkbox"> Từ 300.000đ - 500.000đ</label>
+                <label><input type="checkbox"> Từ 500.000đ - 1 triệu</label>
+                <label><input type="checkbox"> Trên 1 triệu</label>
+            </fieldset>
+
+            <fieldset class="filter-box">
+                <legend>Tình trạng sản phẩm</legend>
+                <label><input type="checkbox"> New</label>
+                <label><input type="checkbox"> Flash Sale</label>
+                <label><input type="checkbox"> Sale</label>
+                <label><input type="checkbox"> Sold Out</label>
+                <label><input type="checkbox"> Best Seller</label>
+            </fieldset>
+        </aside>
+        <div class="content-area">
+            <div class="sort-bar">
+                <span>Xếp theo:</span>
+                <button class="sort-btn">Tên A-Z</button>
+                <button class="sort-btn">Tên Z-A</button>
+                <button class="sort-btn">Giá thấp đến cao</button>
+                <button class="sort-btn">Giá cao xuống thấp</button>
+            </div>
+
+            <!-- PRODUCTS -->
+            <section class="product-grid">
+
+                <!-- SP 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">New</div>
+                        <img src="assets/img/Products/Đồ Uống/Aiyu Jelly Lemon Iced Tea.webp" alt="" class="slide active">>
+                        <div class="add-to-cart">ADD TO CART</div>
+                    </div>
+                    <h4 class="product-name">Aiyu Jelly Lemon Iced Tea</h4>
+                    <p class="price">50.000₫ <span class="old-price">70.000₫</span></p>
+                </div>
+
+                <!-- SP 2 (SLIDER) -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Americano 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Americano 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Americano</h4>
+                    <p class="price">120.000₫</p>
+                </div>
+
+                <!-- SP 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Bubble Oolong Jasmine Milk Tea Macchiato 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Bubble Oolong Jasmine Milk Tea Macchiato 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Bubble Oolong Jasmine Milk Tea Macchiato</h4>
+                    <p class="price">150.000₫</p>
+                </div>
+
+                <!-- SP 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Flash Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Cannelé Bubble Milk Tea Macchiato 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Cannelé Bubble Milk Tea Macchiato 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Cannelé Bubble Milk Tea Macchiato</h4>
+                    <p class="price">80.000₫</p>
+                </div>
+
+                <!-- SP 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sold Out</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Cappuccino.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Cappuccino</h4>
+                    <p class="price">60.000₫</p>
+                </div>
+                <!-- SP 6 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Espresso 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Espresso 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Espresso</h4>
+                    <p class="price">50.000₫</p>
+                </div>
+
+                <!-- SP 7 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Sale</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Fresh Orange Americano 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Fresh Orange Americano 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Fresh Orange Americano</h4>
+                    <p class="price">40.000₫</p>
+                </div>
+
+                <!-- SP 8 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Iced Croissant Latte.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Iced Croissant Latte</h4>
+                    <p class="price">65.000₫</p>
+                </div>
+
+                <!-- SP 9 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Iced Oatside Latte (Plant-Based Milk).webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Iced Oatside Latte</h4>
+                    <p class="price">45.000₫</p>
+                </div>
+
+                <!-- SP 10 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-label status-new">Best Seller</div>
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Kodemari Matcha Latte 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Kodemari Matcha Latte 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Kodemari Matcha Latte</h4>
+                    <p class="price">35.000₫</p>
+                </div>
+
+                <!-- SP 11 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Kodemari Matcha Pandan Coconut Water.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Kodemari Matcha Pandan Coconut Water</h4>
+                    <p class="price">80.000₫</p>
+                </div>
+
+                <!-- SP 12 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Latte 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Latte 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Latte</h4>
+                    <p class="price">30.000₫</p>
+                </div>
+                <!-- SP 13 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Original coldbrew.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Original Coldbrew</h4>
+                    <p class="price">50.000₫</p>
+                </div>
+                <!-- SP 14 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Popball Melon Pandan Coconut Juice 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Popball Melon Pandan Coconut Juice 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Popball Melon Pandan Coconut Juice</h4>
+                    <p class="price">60.000₫</p>
+                </div>
+                <!-- SP 15 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Thai Mango Juice.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Thai Mango Juice</h4>
+                    <p class="price">65.000₫</p>
+                </div>
+                <!-- SP 16 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Vietnamese Black Coffee.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Vietnamese Black Coffee</h4>
+                    <p class="price">100.000₫</p>
+                </div>
+                <!-- SP 17 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Vietnamese White Coffee.webp" class="slide active">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Vietnamese White Coffee</h4>
+                    <p class="price">100.000₫</p>
+                </div>
+                <!-- SP 18 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="image-slider">
+                            <img src="assets/img/Products/Đồ Uống/Vietnamese Milk Coffee 1.webp" class="slide active">
+                            <img src="assets/img/Products/Đồ Uống/Vietnamese Milk Coffee 2.webp" class="slide">
+                            <div class="add-to-cart">ADD TO CART</div>
+                        </div>
+                    </div>
+                    <h4 class="product-name">Vietnamese Milk Coffee</h4>
+                    <p class="price">120.000₫</p>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    <script src="danhmucsp.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,132 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; }
+
+/* HEADER MẶC ĐỊNH (TRONG SUỐT) */
+#header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+    transition: 0.3s;
+    z-index: 999;
+    background: transparent;
+}
+
+
+/* HEADER KHI SCROLL -> */
+#header.scrolled {
+    background: #5d4037;       /* Màu đỏ Givral như logo */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    padding: 10px 0;
+}
+
+/* Khi scroll chữ phải thành trắng để dễ đọc */
+#header.scrolled .menu li a,
+#header.scrolled .right-actions a {
+    color: #ffffff !important;
+}
+
+/* Gạch chân của menu active cũng đổi trắng */
+#header.scrolled .menu li a.active {
+    border-bottom: 2px solid white;
+}
+
+#header .container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO */
+.logo img {
+    height: 40px;
+}
+
+/* MENU */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+#header.scrolled .menu li a {
+    color: #333;
+}
+
+.menu li a.active {
+    border-bottom: 2px solid white;
+    padding-bottom: 4px;
+}
+
+#header.scrolled .menu li a.active {
+    border-bottom: 2px solid #333;
+}
+
+/* DROPDOWN */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+.submenu {
+    list-style: none;
+    position: absolute;
+    background: white;
+    padding: 10px 0;
+    display: none;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.submenu li {
+    padding: 8px 20px;
+}
+
+.submenu li a {
+    color: #333 !important;
+}
+
+/* RIGHT ACTIONS */
+.right-actions {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.right-actions a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+#header.scrolled .right-actions a {
+    color: #333;
+}
+
+/* CART */
+.cart {
+    position: relative;
+    font-size: 20px;
+}
+
+.cart-count {
+    background: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+}
