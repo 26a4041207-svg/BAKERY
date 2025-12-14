@@ -28,15 +28,26 @@ body { font-family: 'Arial', sans-serif; line-height: 1.5; }
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
+    /* Chia lưới: Logo rộng hơn, các cột link đều nhau, cột email rộng vừa */
     grid-template-columns: 2.5fr 1fr 1fr 1fr 2fr;
     gap: 30px;
 }
 
 /* --- LOGO & TEXT --- */
+.footer-logo a {
+    display: inline-block; /* Đảm bảo thẻ a bao trọn ảnh */
+}
+
 .footer-logo img {
     width: 120px;
     margin-bottom: 20px;
     filter: brightness(0) invert(1); /* Logo trắng */
+    transition: opacity 0.3s; /* Hiệu ứng mờ nhẹ khi hover */
+}
+
+/* Hiệu ứng khi di chuột vào logo để biết click được */
+.footer-logo a:hover img {
+    opacity: 0.8; 
 }
 
 .footer-desc {
