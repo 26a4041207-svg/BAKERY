@@ -3,41 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ABC Bakery Header</title>
     <link rel="stylesheet" href="index.css">
+    
+    <style>
+        /* --- CSS Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Tạo chiều cao ảo để test hiệu ứng cuộn */
+            height: 200vh;
+        }
+
+        /* --- Banner giả lập để thấy hiệu ứng trong suốt --- */
+        .banner {
+            background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop'); /* Ảnh nền bánh mì */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* Lớp phủ tối để chữ dễ đọc */
+        }
+
+        /* --- HEADER CHÍNH --- */
+        header {
+            position: fixed; /* Cố định header khi cuộn */
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.4s ease, padding 0.4s ease; /* Hiệu ứng chuyển màu mượt mà */
+            color: #fff;
+            background-color: transparent; /* Ban đầu trong suốt */
+        }
+
+        /* Class này sẽ được JS thêm vào khi cuộn xuống */
+        header.scrolled {
+            background-color: #5D4037; /* Màu nâu (Brown) */
+            padding: 15px 50px; /* Thu gọn header một chút khi cuộn */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* --- LOGO --- */
+        .logo img {
+            height: 50px; /* Điều chỉnh kích thước logo */
+            object-fit: contain;
+        }
+        /* Giả lập logo nếu chưa có ảnh */
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .logo-text span { color: #d32f2f; } /* Chữ đỏ giống mẫu */
+
+        /* --- MENU --- */
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        /* Gạch chân mục Trang chủ (Active) */
+        .navbar ul li a.active {
+            border-bottom: 2px solid #fff;
+        }
+
+        /* Icon mũi tên nhỏ bên cạnh Menu Bánh */
+        .fa-chevron-down {
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffcc80; /* Màu vàng nhạt khi hover menu */
+        }
+
+        /* --- ICON BÊN PHẢI --- */
+        .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Chỉnh kích thước ảnh icon */
+.icon-btn img {
+    width: 24px;   /* Độ rộng icon */
+    height: 24px;  /* Độ cao icon */
+    object-fit: contain; /* Đảm bảo ảnh không bị méo */
+}
+
+.icon-btn:hover {
+    transform: scale(1.1); /* Phóng to cả nút khi hover */
+}
+
+    </style>
 </head>
 <body>
 
-<header id="header">
-    <div class="container">
+    <header id="mainHeader">
         <div class="logo">
-            <img src="logo.png" alt="ABC Bakery">
+            <div class="logo-text">A<span>B</span>C Bakery</div>
         </div>
 
-        <nav>
-            <ul class="menu">
-                <li><a href="#" class="active">TRANG CHỦ</a></li>
-                <li><a href="#">GIỚI THIỆU</a></li>
-                <li class="dropdown">
-                    <a href="#">MENU BÁNH ▾</a>
-                    <ul class="submenu">
-                        <li><a href="#">Bánh kem</a></li>
-                        <li><a href="#">Bánh mì</a></li>
-                        <li><a href="#">Pastry</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">LIÊN HỆ</a></li>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#" class="active">Trang chủ</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="sanpham.html">Menu bánh <i class="fa-solid fa-chevron-down"></i></a></li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
             </ul>
         </nav>
 
-        <div class="right-actions">
-            <a href="#" class="login">Đăng nhập / Đăng ký</a>
-            <a href="#" class="cart">
-                🛒 <span class="cart-count">0</span>
-            </a>
-        </div>
+        <div class="header-icons">
+            <button class="icon-btn" id="btnSearch">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/search--v1.png" alt="Search">
+            </button>
+    
+    <button class="icon-btn" id="btnUser">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" alt="User">
+    </button>
+    
+    <button class="icon-btn" id="btnCart">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Cart">
+    </button>
+</div>
+    </header>
+
+    <section class="banner"></section>
+    
+    <div style="padding: 50px; text-align: center; color: #333;">
+        <h2>Kéo xuống để xem hiệu ứng đổi màu Header</h2>
+        <p>Nội dung trang web...</p>
     </div>
-</header>
+
+    <script>
+        // Lấy thẻ header
+        const header = document.getElementById('mainHeader');
+
+        // Lắng nghe sự kiện cuộn chuột
+        window.addEventListener('scroll', function() {
+            // Nếu vị trí cuộn > 50px thì thêm class 'scrolled'
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                // Nếu quay về đầu trang thì bỏ class 'scrolled'
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
 </html>
