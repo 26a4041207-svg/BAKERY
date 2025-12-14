@@ -1,25 +1,35 @@
+/* product.css */
 
         /* Tùy chỉnh font chữ */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa; /* Màu nền nhẹ */
+            background-image: url("background-bakery.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(255,255,255,0.9); /* chỉ 10% trắng */
+            background-blend-mode: lighten; /* kết hợp nhẹ với ảnh nền */
         }
+
+
 
         /* Định nghĩa màu sắc tùy chỉnh cho Tailwind */
         :root {
             --primary-color: #e57373; /* Màu hồng/đỏ ấm */
             --secondary-color: #8d6e63; /* Màu nâu đất */
-            --text-gold: #c6a26d; /* Màu vàng đồng cho icon */
+            /* CHỈNH SỬA: Thay đổi mã màu vàng đồng để khớp với ảnh mẫu */
+            --text-gold: #CD9B32; /* Màu vàng cam sáng */
         }
 
         /* Áp dụng màu sắc tùy chỉnh cho Tailwind */
         .text-gold { color: var(--text-gold); }
-        .bg-gold { background-color: var(--text-gold); }     /* <-- THÊM DÒNG NÀY */
-        .border-gold { border-color: var(--text-gold); }   /* <-- THÊM DÒNG NÀY */
+        .bg-gold { background-color: var(--text-gold); }
+        .border-gold { border-color: var(--text-gold); }
         .bg-primary-custom { background-color: var(--primary-color); }
         .text-primary-custom { color: var(--primary-color); }
 
         /* Tiêu đề đặc biệt */
+/* Tiêu đề đặc biệt */
         .special-heading {
             font-family: 'Playfair Display', serif; /* Font chữ nghệ thuật */
             font-size: 2rem;
@@ -27,6 +37,12 @@
             margin-bottom: 0.5rem;
         }
 
+        /* --- SỬA LỖI MÀU CHỮ TAB ACTIVE: Cần thêm đoạn này --- */
+        .tab-button.active .special-heading {
+            color: var(--text-gold) !important; /* QUAN TRỌNG: Buộc màu chữ vàng đồng cho tiêu đề trong tab active */
+        }
+
+        
         /* Hình ảnh nhỏ (thumbnail) */
         .thumbnail-img {
             border: 2px solid transparent;
@@ -52,12 +68,12 @@
             width: 40px;
             height: 40px;
             border: 1px solid #ced4da;
-            background-color: #CD9B32;
+            background-color: var(--text-gold); 
             transition: background-color 0.2s;
         }
 
         .quantity-input-group button:hover {
-            background-color: #CD9B32;
+            background-color: var(--text-gold); 
         }
 
         /* Fix input number không căn giữa */
@@ -78,11 +94,8 @@
             margin: 0;
         }
 
-        /* Tab content styling */
-        .tab-button.active {
-            border-bottom: 3px solid var(--text-gold);
-            color: var(--text-gold);
-        }
+
+
 
         /* Thẻ sản phẩm */
         .product-card {
@@ -135,9 +148,7 @@
             height: 100%; /* Quan trọng: Giúp thẻ <a> chiếm trọn chiều cao của cột */
         }
 
-        /* product.css (Thêm đoạn này vào cuối file) */
-
-/* Định dạng bảng Thông tin Dinh dưỡng */
+        /* Định dạng bảng Thông tin Dinh dưỡng */
 .nutritional-table {
     border-collapse: collapse; /* Đảm bảo các đường viền liền mạch */
 }
@@ -154,7 +165,7 @@
 
 /* Định dạng tiêu đề bảng */
 .nutritional-table thead th {
-    border-bottom-color: var(--text-gold) !important; /* Dùng màu vàng đồng cho đường viền tiêu đề */
+    border-bottom-color: var(--text-gold) !important; 
 }
 
 /* Định dạng chữ trong bảng */
@@ -165,14 +176,7 @@
 /* Thêm border bên phải cho tất cả các ô ở cột đầu tiên */
 .nutritional-table th:first-child,
 .nutritional-table td:first-child {
-    border-right: 2px solid var(--text-gold); /* Màu xám nhẹ, dùng màu border chuẩn */
+    border-right: 2px solid var(--text-gold); 
 }
 
 
-
-
-
-
-
-  
-   

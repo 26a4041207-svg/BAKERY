@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm Bánh Mousse Chocolate</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="product2.css">
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/cdwW7wQYjK/GzIqjT1/Q/Xq8pE4U/k+T9w5K6c1J/38s5k0yQ==
+" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="container mx-auto px-4 py-8 mt-10">
+    <nav class="text-sm text-gray-600 mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" class="text-secondary-color hover:text-gray-800 no-underline">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#" class="text-secondary-color hover:text-gray-800 no-underline">Bánh Ngọt</a></li>
+            <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-product-name">Bánh Cuộn Mini</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-5 mb-4">
+            <div class="shadow-lg rounded-lg overflow-hidden bg-white p-4">
+                <div class="main-image-wrapper mb-4"> 
+                    <img id="main-image" src="banhcuonnho.webp" alt="Bánh Cuộn Mini" class="w-full h-auto rounded-lg mb-4 object-cover" onerror="this.onerror=null; this.src='banhcuonnho.webp';">
+                </div>
+                <div class="flex space-x-3 mt-2 justify-center" id="thumbnail-container">
+                    <div class="col-3 px-1">
+                        <img src="banhcuonnho.webp" alt="Thumbnail 1" class="thumbnail-img active rounded-md" data-full-image="banhcuonnho.webp" onclick="changeImage(this)">
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div class="col-lg-7">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2" id="product-title">Bánh Cuộn Mini</h1>
+            <p class="text-base text-gray-500 mb-4">Loại: <span class="font-semibold text-gold" id="product-category">Bánh Kem</span> | Tình trạng: <span class="font-semibold text-gold">Còn hàng</span></p>
+
+            <div class="mb-4">
+                <span class="text-4xl font-semibold text-gold" id="product-price">390.000₫</span>
+            </div>
+
+            <div class="flex items-center mb-6">
+                <label for="quantity" class="text-lg font-semibold text-gray-700 me-3">Số lượng:</label>
+                <div class="quantity-input-group flex border border-gray-300 rounded-lg overflow-hidden">
+                    <button id="decrement-btn" class="text-xl font-medium text-white hover:bg-white-200">-</button>
+                    <input type="number" id="quantity" value="1" min="1" class="h-10 w-12 text-center text-lg font-medium border-x border-gray-300 focus:outline-none" readonly>
+                    <button id="increment-btn" class="text-xl font-medium text-white hover:bg-white-200">+</button>
+                </div>
+            </div>
+
+            <div class="d-flex gap-3 mb-6">
+                <button class="flex-grow-1 flex items-center justify-center p-3 rounded-lg bg-gold hover:bg-opacity-90 text-white font-semibold shadow-md transition-colors" onclick="addToCart()">
+                    <i class="fas fa-shopping-bag me-2"></i>
+                    THÊM VÀO GIỎ
+                    <span class="ms-2 text-sm">(Giao hàng tận nơi miễn phí)</span>
+                </button>
+                <button class="p-3 rounded-lg border !border-gold text-gold hover:bg-yellow-50 transition-colors" onclick="addToWishlistMain(this)">
+                    <i id="main-product-heart" class="far fa-heart text-2xl"></i>
+                </button>
+            </div>
+
+            <div class="border-2 border-gold rounded-lg overflow-hidden mb-6 shadow-md">
+
+                <div class="flex items-center w-full border-2 border-gold rounded overflow-hidden shadow-md">
+
+                    <div class="bg-white flex items-center justify-center px-4 py-2 ">
+                        <i class="fas fa-gift text-gold text-2xl"></i>
+                    </div>
+
+                    <p class="text-lg font-bold bg-gold text-white py-2 px-4 flex items-center w-full">
+                        Khuyến mãi đặc biệt !!!
+                    </p>
+
+                </div>
+
+                <ul class="list-unstyled space-y-2 text-gray-700 p-4">
+                    <li><i class="fas fa-check-circle me-2 text-green-500"></i> Áp dụng Phiếu quà tặng/ Mã giảm giá theo ngành hàng.</li>
+                    <li><i class="fas fa-check-circle me-2 text-green-500"></i> Giảm <span class="font-bold text-gold">10%</span> khi mua từ <span class="font-bold text-gold">5 sản phẩm</span> trở lên.</li>
+                    <li><i class="fas fa-check-circle me-2 text-green-500"></i> Tặng <span class="font-bold text-gold">100.000₫</span> mua hàng tại website thành viên Dola Fashion Accessories.</li>
+                </ul>
+
+            </div>
+
+
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">
+                    <i class="fas fa-truck text-gold"></i>
+                    <div>
+                        <p class="font-semibold text-gold mb-1">Miễn phí vận chuyển</p>
+                        <p class="text-sm text-gray-500">Áp dụng free ship cho tất cả đơn hàng từ 300 nghìn</p>
+                    </div>
+                </div>
+                <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">
+                    <i class="fas fa-undo text-gold"></i>
+                    <div>
+                        <p class="font-semibold text-gold mb-1">Đổi trả dễ dàng</p>
+                        <p class="text-sm text-gray-500">Đổi ngay trong ngày nếu như bánh không đúng yêu cầu</p>
+                    </div>
+                </div>
+                <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">
+                    <i class="fas fa-headset text-gold"></i>
+                    <div>
+                        <p class="font-semibold text-gold mb-1">Hỗ trợ nhanh chóng</p>
+                        <p class="text-sm text-gray-500">Gọi Hotline: <span class="font-bold text-primary-custom">19006750</span> để được hỗ trợ ngay</p>
+                    </div>
+                </div>
+                <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">
+                    <i class="fas fa-credit-card text-gold"></i>
+                    <div>
+                        <p class="font-semibold text-gold mb-1">Thanh toán đa dạng</p>
+                        <p class="text-sm text-gray-500">Thanh toán khi nhận hàng, Napas, Visa, Chuyển khoản</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="py-8">
+        <div class="flex justify-center mb-8 border-b-2 border-gray-200">
+            <button class="py-2 px-6 tab-button active" data-tab="description">
+                <span class="special-heading text-xl font-bold text-gray-700 hover:text-gold transition-colors">Mô tả sản phẩm</span>
+            </button>
+            <button class="py-2 px-6 tab-button" data-tab="guide">
+                <span class="special-heading text-xl font-bold text-gray-700 hover:text-gold transition-colors">Hướng dẫn mua hàng</span>
+            </button>
+        </div>
+
+        <div class="tab-content-wrapper p-4 bg-white rounded-lg shadow-lg">
+            
+            <div id="description-content" class="tab-pane">
+                <p class="text-lg text-gray-700 mb-4" id="description-text">
+                    Bánh kem tươi cốt bánh 3 lớp chiffon caramen, nhân kem tươi bánh caramen, phủ ganat caramen và trang trí sô cô la
+                </p>
+                <h3 class="text-2xl font-semibold text-gold mb-3 border-b pb-2">Thành phần chính:</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600 mb-6" id="ingredients-list">
+                    <li>Bột mì, trứng gà tươi, đường tinh luyện.</li>
+                    <li>Kem tươi (whipping cream) cao cấp.</li>
+                    <li>Sốt Caramen tự làm, Sô cô la trang trí.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold text-gold mb-3 border-b pb-2">Thông tin Dinh dưỡng (Ước tính cho 100g):</h3>
+                <table class="nutritional-table w-full text-left border-2 border-gold rounded-lg shadow-sm">
+                    <thead>
+                        <tr class="bg-yellow-50">
+                            <th class="py-3 font-bold text-gray-700 border-b-2 border-gold">Thành phần</th>
+                            <th class="py-3 font-bold text-gray-700 border-b-2 border-gold">Hàm lượng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2 text-gray-800 font-medium">Năng lượng</td>
+                            <td class="py-2 text-gray-600" id="nutri-calories">350 Kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 text-gray-800 font-medium">Chất béo</td>
+                            <td class="py-2 text-gray-600" id="nutri-fat">20 g</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 text-gray-800 font-medium">Carbohydrate</td>
+                            <td class="py-2 text-gray-600" id="nutri-carb">38 g</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 text-gray-800 font-medium">Protein</td>
+                            <td class="py-2 text-gray-600" id="nutri-protein">5 g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="guide-content" class="tab-pane hidden">
+                <h3 class="text-2xl font-bold text-gold mb-4">Các bước đặt hàng trực tuyến:</h3>
+                <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                    <li>
+                        <span class="font-bold text-gray-800">Bước 1:</span> Truy cập website và lựa chọn sản phẩm cần mua.
+                    </li>
+                    <li>
+                        <span class="font-bold text-gray-800">Bước 2:</span> Click vào sản phẩm muốn mua, màn hình hiển thị ra pop up với các lựa chọn sau
+                        <ul class="list-disc list-inside ml-5 mt-1 space-y-1">
+                            <li>Nếu bạn muốn tiếp tục mua hàng: Bấm vào phần tiếp tục mua hàng để lựa chọn thêm sản phẩm vào giỏ hàng</li>
+                            <li>Nếu bạn muốn xem giỏ hàng để cập nhật sản phẩm: Bấm vào xem giỏ hàng</li>
+                            <li>Nếu bạn muốn đặt hàng và thanh toán cho sản phẩm này vui lòng bấm vào: Đặt hàng và thanh toán</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="font-bold text-gray-800">Bước 3:</span> Lựa chọn thông tin tài khoản thanh toán
+                        <ul class="list-disc list-inside ml-5 mt-1 space-y-1">
+                            <li>Nếu bạn đã có tài khoản vui lòng nhập thông tin tên đăng nhập là email và mật khẩu vào mục đã có tài khoản trên hệ thống</li>
+                            <li>Nếu bạn chưa có tài khoản và muốn đăng ký tài khoản vui lòng điền các thông tin cá nhân để tiếp tục đăng ký tài khoản. Khi có tài khoản bạn sẽ dễ dàng theo dõi đơn hàng của mình</li>
+                            <li>Nếu bạn muốn mua hàng mà không cần tài khoản vui lòng nhấp chuột vào mục đặt hàng không cần tài khoản</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="font-bold text-gray-800">Bước 4:</span> Điền các thông tin của bạn để nhận đơn hàng, lựa chọn hình thức thanh toán và vận chuyển cho đơn hàng của mình
+                    </li>
+                    <li>
+                        <span class="font-bold text-gray-800">Bước 5:</span> Xem lại thông tin đặt hàng, điền chú thích và gửi đơn hàng
+                    </li>
+                </ol>
+                <p class="mt-4 text-gray-600">
+                    Sau khi nhận được đơn hàng, chúng tôi sẽ liên hệ bằng cách gọi điện để xác nhận lại đơn hàng và địa chỉ của bạn.
+                </p>
+                <p class="mt-2 text-gray-600">Trân trọng cảm ơn.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-8">
+        <h2 class="text-center mb-6">
+            <span class="special-heading text-3xl font-bold">Sản phẩm liên quan</span>
+        </h2>
+        <div class="text-center mb-8">
+            <img src="https://placehold.co/150x20/F0D9B5/F0D9B5?text=" alt="Divider" class="mx-auto" style="height: 10px; width: 150px; background-color: var(--text-gold); border-radius: 5px;">
+        </div>
+
+        <div id="related-products" class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
+            <!-- Related products will be injected here by product2.js -->
+        </div>
+    </div>
+
+    <div class="py-8">
+        <h2 class="text-center mb-6">
+            <span class="special-heading text-3xl font-bold">Sản phẩm đã xem</span>
+        </h2>
+        <div class="text-center mb-8">
+            <img src="https://placehold.co/150x20/F0D9B5/F0D9B5?text=" alt="Divider" class="mx-auto" style="height: 10px; width: 150px; background-color: var(--text-gold); border-radius: 5px;">
+        </div>
+        <div id="recently-viewed" class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
+            <!-- Recently viewed products will be injected here by product2.js -->
+        </div>
+    </div>
+</div>
+
+<div id="custom-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
+        <h3 class="text-xl font-bold mb-4 text-gray-800" id="modal-title">Thông báo</h3>
+        <p class="text-gray-700 mb-4" id="modal-message">Nội dung thông báo.</p>
+        <div class="flex justify-end">
+            <button class="bg-primary-custom text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" onclick="closeModal()">Đóng</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="product2.js"></script>
+
+<!-- Inline product.json fallback: used when fetch('./product.json') fails (e.g. when opening file:// locally) 
+<script id="product-data" type="application/json">
+[ 
+    { "id": "001", "name": "Carrot Cake", "price": 390000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Carrot Cake 1.webp"], "description": "Bánh cà rốt mềm mượt, kết hợp kem phô mai mát ngọt, thích hợp cho tiệc sinh nhật và dịp lễ.", "ingredients": ["Bột mì", "Cà rốt tươi", "Trứng", "Đường", "Kem phô mai"], "nutrition": { "calories": 350, "fat": 20, "carb": 38, "protein": 5 } },
+    { "id": "002", "name": "Chocolate Cake", "price": 300000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Chocolate Cake 1.webp"], "description": "Bánh sô cô la đậm vị với lớp ganache mượt mà, hoàn hảo cho tín đồ chocolate.", "ingredients": ["Bột mì", "Sô cô la đen", "Trứng", "Đường", "Bơ"], "nutrition": { "calories": 420, "fat": 25, "carb": 40, "protein": 6 } },
+    { "id": "003", "name": "Chocolate Macaron Cake", "price": 350000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Chocolate Macaron Cake 1.jpg"], "description": "Bánh chocolate sang trọng, trang trí macaron giòn rụm trên đỉnh bánh.", "ingredients": ["Bột mì", "Sô cô la", "Trứng", "Hạnh nhân", "Đường"], "nutrition": { "calories": 380, "fat": 22, "carb": 35, "protein": 5 } },
+    { "id": "004", "name": "Confetti Cake", "price": 360000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Confetti Cake 1.webp"], "description": "Bánh confetti vui mắt, thích hợp cho lễ kỷ niệm và trẻ em.", "ingredients": ["Bột mì", "Trứng", "Đường", "Màu thực phẩm", "Kem tươi"], "nutrition": { "calories": 360, "fat": 18, "carb": 42, "protein": 5 } },
+    { "id": "005", "name": "Double Chocolate Brownie and Toffee", "price": 370000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Double Chocolate Brownie and Toffee.webp"], "description": "Một sự kết hợp giữa brownie và toffee, mềm và dẻo cùng lớp chocolate phủ trên cùng.", "ingredients": ["Sô cô la", "Bơ", "Đường", "Trứng", "Toffee"], "nutrition": { "calories": 450, "fat": 28, "carb": 50, "protein": 7 } },
+    { "id": "006", "name": "German Chocolate Cake", "price": 390000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/German Chocolate Cake 1.webp"], "description": "Bánh German Chocolate truyền thống với lớp nhân dừa béo ngậy.", "ingredients": ["Bột mì", "Dừa nạo", "Sữa đặc", "Đường", "Trứng"], "nutrition": { "calories": 410, "fat": 24, "carb": 44, "protein": 6 } },
+    { "id": "007", "name": "Harvest Apple Cake", "price": 400000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Harvest Apple Cake 1.webp"], "description": "Bánh táo thơm mùi quế, sử dụng táo tươi và gia vị tự nhiên.", "ingredients": ["Táo", "Bột mì", "Quế", "Đường", "Bơ"], "nutrition": { "calories": 300, "fat": 12, "carb": 46, "protein": 4 } },
+    { "id": "008", "name": "Hummingbird Cake", "price": 120000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Hummingbird Cake 1.webp"], "description": "Hummingbird Cake truyền thống với trái cây nhiệt đới, cực kỳ thơm ngon.", "ingredients": ["Chuối", "Dứa", "Bột mì", "Đường", "Kem tươi"], "nutrition": { "calories": 370, "fat": 20, "carb": 44, "protein": 5 } },
+    { "id": "009", "name": "Macaron Fraisier Cake", "price": 200000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Macaron Fraisier Cake 1.webp"], "description": "Bánh Macaron Fraisier thanh nhã, lớp kem nhẹ và macaron giòn trên cùng.", "ingredients": ["Bột mì", "Macaron", "Trứng", "Đường", "Kem tươi"], "nutrition": { "calories": 340, "fat": 16, "carb": 38, "protein": 4 } },
+    { "id": "010", "name": "Pistachio Cake", "price": 250000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Pistachio Cake.png"], "description": "Bánh hạt dẻ cười (pistachio) beo béo, màu xanh nhẹ nhàng, thơm vị hạt.", "ingredients": ["Pistachio", "Bột mì", "Đường", "Trứng", "Kem tươi"], "nutrition": { "calories": 400, "fat": 26, "carb": 32, "protein": 6 } },
+    { "id": "011", "name": "Red Velvet Cake", "price": 500000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Red Velvet Cake 1.webp"], "description": "Bánh Red Velvet mềm mịn, phủ kem phô mai truyền thống.", "ingredients": ["Bột mì", "Sữa", "Đường", "Bơ", "Kem phô mai"], "nutrition": { "calories": 380, "fat": 21, "carb": 39, "protein": 5 } },
+    { "id": "012", "name": "Reindeer Cake", "price": 150000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Reindeer Cake 1.webp"], "description": "Reindeer Cake trang trí Giáng sinh, phù hợp cho mùa lễ hội.", "ingredients": ["Bột mì", "Mứt trái cây", "Đường", "Kem tươi"], "nutrition": { "calories": 360, "fat": 18, "carb": 40, "protein": 5 } }
+]
+</script>  -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
