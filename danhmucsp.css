@@ -490,12 +490,6 @@ body::before {
     justify-content: center;
 }
 
-.old-price {
-    margin-left: 5px;
-    text-decoration: line-through;
-    color: #888;
-    font-weight: normal;
-}
 
 .content-area {
     flex-grow: 1;
@@ -539,6 +533,11 @@ body::before {
     color: white;
     border-color: #cfa84e;
 }
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 .product-label {
     position: absolute;
@@ -571,6 +570,30 @@ body::before {
     width: 100%;
     grid-column: 1 / -1;   /* 🔥 nếu nó nằm sau một grid → sẽ kéo ra full width */
 }
+.pagination button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;           /* màu chữ mặc định */
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: all 0.2s ease;  /* hiệu ứng mượt */
+}
+
+/* Hover: chữ trắng, nền be */
+.pagination button:hover {
+    background-color: #e8e809; /* be */
+    color: #fff;                /* chữ trắng */
+}
+
+/* Nút active */
+.pagination button.active {
+    background-color:#e8e809;
+    color: #fff;
+    font-weight: bold;
+}
+
 
 .page-btn {
     border: 1px solid #d1cfcf;
