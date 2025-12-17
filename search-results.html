@@ -6,7 +6,7 @@
     <title>Kết quả tìm kiếm - ABC Bakery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="danhmucsp.css"> 
     <style>
          /* Nếu chưa tách file CSS riêng, hãy paste toàn bộ CSS vào đây */
          /* CÀI ĐẶT CHUNG... (Copy từ câu trả lời trước) */
@@ -540,15 +540,61 @@ header.scrolled {
         </div>
     </header>
 
-    <section class="banner" style="height: 60vh;"> <div class="banner-text">
-            <h1 id="resultBannerTitle">Đang tìm kiếm...</h1>
-            <p>Kết quả tìm kiếm của bạn tại ABC Bakery</p>
-            
-            <a href="index.html">
-                <button class="banner-btn"><i class="fa-solid fa-arrow-left"></i> Quay về trang chủ</button>
-            </a>
+    <!-- HERO BANNER -->
+   <!-- HERO BANNER -->
+    <section class="hero-banner">
+    <img src="assets/img/Banner/Logo đồ uống.jpg" alt="Banner" class="banner-img">
+    <div class="banner-text">
+        <p class="breadcrumb">
+            <a href="index.html">Trang chủ</a> >
+            <a href="sanpham.html">Sản phẩm</a> >
+        </p>
+        <h1 class="banner-title">Đồ Uống</h1>
+    </div>
+</section>
+ <!-- MAIN CONTENT -->
+    <div class="main-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <fieldset class="filter-box">
+                <legend>Chọn mức giá</legend>
+                <label><input type="checkbox"> Từ 50.000đ - 100.000đ</label>
+                <label><input type="checkbox"> Từ 100.000đ - 200.000đ</label>
+                <label><input type="checkbox"> Từ 200.000đ - 300.000đ</label>
+                <label><input type="checkbox"> Từ 300.000đ - 500.000đ</label>
+                <label><input type="checkbox"> Từ 500.000đ - 1.000.000đ</label>
+                <label><input type="checkbox"> Trên 1.000.000đ</label>
+            </fieldset>
+
+            <fieldset class="filter-box">
+                <legend>Tình trạng sản phẩm</legend>
+                <label><input type="checkbox"> New</label>
+                <label><input type="checkbox"> Flash Sale</label>
+                <label><input type="checkbox"> Sale</label>
+                <label><input type="checkbox"> Sold Out</label>
+                <label><input type="checkbox"> Best Seller</label>
+            </fieldset>
+        </aside>
+        <div class="content-area">
+            <div class="sort-bar">
+                <span>Xếp theo:</span>
+                <button class="sort-btn">Tên A-Z</button>
+                <button class="sort-btn">Tên Z-A</button>
+                <button class="sort-btn">Giá thấp đến cao</button>
+                <button class="sort-btn">Giá cao xuống thấp</button>
+            </div>
+
+            <!-- PRODUCTS -->
+            <section class="product-grid" id="product-grid" data-category="Đồ Uống">
+            </section>
+            <div class="pagination" id="pagination"></div>
         </div>
-    </section>
+    </div>
+
+    <script src="danhmucsp.js"></script>
+
+  
 
     <section style="padding: 60px 20px; background: #fff;">
         <div class="container">
