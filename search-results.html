@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABC Bakery - Full Screen</title>
+    <title>Kết quả tìm kiếm - ABC Bakery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="footer.css">
+    
+    <link rel="stylesheet" href="style.css"> 
     <style>
-/* =========================================
+         /* Nếu chưa tách file CSS riêng, hãy paste toàn bộ CSS vào đây */
+         /* CÀI ĐẶT CHUNG... (Copy từ câu trả lời trước) */
+         /* =========================================
    1. CÀI ĐẶT CHUNG (RESET & BASE)
    ========================================= */
 * {
@@ -111,7 +113,7 @@ header.scrolled {
 .fa-chevron-down {
     font-size: 10px;
     margin-left: 5px;
-    transition: transform 0.5s;
+    transition: transform 0.3s;
 }
 
 /* Xoay mũi tên khi hover */
@@ -129,7 +131,7 @@ header.scrolled {
         position: absolute;
         top: 100%;
         left: 0;
-        width: 160px; /* Độ rộng menu con */
+        width: 220px; /* Độ rộng menu con */
         background-color: #5D4037; /* Nền nâu giống header */
         
         display: none; /* Mặc định ẩn */
@@ -146,7 +148,7 @@ header.scrolled {
     /* Hover vào cha thì hiện menu con */
     .navbar ul li.dropdown:hover .dropdown-menu {
         display: flex;
-        animation: fadeInUp 0.5s ease;
+        animation: fadeInUp 0.3s ease;
     }
 
     /* Style cho Tên Bánh trong Menu Con */
@@ -496,9 +498,8 @@ header.scrolled {
 </head>
 <body>
 
-    <header id="mainHeader">
-        <div class="logo">
-            <a href="#" class="logo-text">A<span>B</span>C Bakery</a>
+    <header id="mainHeader" class="scrolled"> <div class="logo">
+            <a href="index.html" class="logo-text">A<span>B</span>C Bakery</a>
         </div>
 
         <div class="menu-toggle" id="mobile-menu-btn">
@@ -507,19 +508,18 @@ header.scrolled {
 
         <nav class="navbar" id="navbar">
             <ul>
-                <li><a href="#" class="active">Trang chủ</a></li>
+                <li><a href="index.html">Trang chủ</a></li>
                 <li><a href="#">Giới thiệu</a></li>
                 <li class="dropdown">
                     <a href="#">Sản phẩm <i class="fa-solid fa-chevron-down"></i></a>
-
                     <ul class="dropdown-menu">
-                        <li><a href="danhmucsp-banhkem.html">Bánh kem</a></li>
-                        <li><a href="danhmucsp-banhngot.html">Bánh ngọt</a></li>
-                        <li><a href="danhmucsp-banhnuong.html">Bánh nướng</a></li>
-                        <li><a href="danhmucsp-banhquy.html">Bánh quy</a></li>
-                        <li><a href="danhmucsp-banhmousse.html">Bánh mousse</a></li>
-                        <li><a href="danhmucsp-douong.html">Đồ uống</a></li>
-                     </ul>
+                        <li><a href="#">Bánh kem</a></li>
+                        <li><a href="#">Bánh ngọt</a></li>
+                        <li><a href="#">Bánh nướng</a></li>
+                        <li><a href="#">Bánh quy</a></li>
+                        <li><a href="#">Bánh mousse</a></li>
+                        <li><a href="#">Đồ uống</a></li>
+                      </ul>
                 </li>
                 <li><a href="#">Tin tức</a></li>
                 <li><a href="#">Liên hệ</a></li>
@@ -529,178 +529,138 @@ header.scrolled {
         <div class="header-right">
             <div class="search-bar">
                 <button id="btnSearchAction"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" id="searchInput" placeholder="Tìm kiếm bánh...">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm khác...">
             </div>
 
             <div class="user-cart-actions">
-                <a href="login.html" class="icon-btn" title="Tài khoản"><i class="fa-regular fa-user"></i></a>
-                <a href="wishlist.html" class="icon-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
-                <a href="cart.html" class="icon-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
+                <a href="#" class="icon-btn"><i class="fa-regular fa-user"></i></a>
+                <a href="#" class="icon-btn"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="icon-btn"><i class="fa-solid fa-basket-shopping"></i></a>
             </div>
         </div>
     </header>
 
-    <section class="banner">
-        <div class="banner-text">
-            <h1>Hương vị ABC Bakery</h1>
-            <p>Ngọt ngào trong từng khoảnh khắc</p>
-            <button class="banner-btn">Khám phá ngay</button>
+    <section class="banner" style="height: 60vh;"> <div class="banner-text">
+            <h1 id="resultBannerTitle">Đang tìm kiếm...</h1>
+            <p>Kết quả tìm kiếm của bạn tại ABC Bakery</p>
+            
+            <a href="index.html">
+                <button class="banner-btn"><i class="fa-solid fa-arrow-left"></i> Quay về trang chủ</button>
+            </a>
         </div>
     </section>
 
-    <section id="searchResultsSection">
+    <section style="padding: 60px 20px; background: #fff;">
         <div class="container">
-            <h2 id="searchTitle">Kết quả tìm kiếm</h2>
+            <h2 id="searchCount" style="text-align: center; margin-bottom: 40px; color: #333;"></h2>
+            
             <div id="searchResultsGrid" class="product-grid">
                 </div>
         </div>
     </section>
 
-    <div class="content-dummy"></div>
-     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col logo-col">
-                <div class="footer-logo">
-                    <a href="index.html" title="Về trang chủ">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Paris_Baguette_logo.png/600px-Paris_Baguette_logo.png" alt="Paris Baguette Logo">
-                    </a>
-                </div>
-                <p class="footer-desc">
-                    Honeyque mang trong mình sứ mệnh tạo ra những chiếc bánh chất lượng, thơm ngon và đầy cảm xúc. 
-        Chúng tôi tin rằng mỗi chiếc bánh không chỉ là món ăn, mà là một khoảnh khắc sẻ chia – nơi sự 
-        ngọt ngào có thể kết nối con người, mang lại niềm vui và làm cho những dịp đặc biệt trở nên trọn vẹn hơn.
-                </p>
-            </div>
-
-            <div class="footer-col">
-                <h3>VỀ HONEYQUE</h3>
-                <ul>
-                    <li><a href="gioithieu.html">Giới Thiệu</a></li>
-                    <li><a href="#">Tin Tức </a></li>
-                    <li><a href="#">Chính Sách An Toàn Thực Phẩm</a></li>
-                    <li><a href="#">Chính Sách Dịch Vụ</a></li>
-                    <li><a href="#">Chính Sách Bảo Mật</a></li>
-                    <li><a href="#">Khách Hàng Thân Thiết</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3>THƯỞNG THỨC</h3>
-                <ul>
-                    <li><a href="danhmucsp-banhkem.html">Bánh Kem</a></li>
-                    <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
-                    <li><a href="danhmucsp-banhngot.html">Bánh Ngọt</a></li>
-                    <li><a href="danhmucsp-banhquy.html">Bánh Quy</a></li>
-                    <li><a href="danhmucsp-banhmousse.html">Bánh Mousse</a></li>
-                    <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3>LIÊN HỆ</h3>
-                <ul>
-                    <li><a href="#">Liên Hệ Với Chúng Tôi</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col newsletter-col">
-                <h3>ĐĂNG KÍ NHẬN TIN</h3>
-                
-                <form id="emailForm" class="email-form">
-                    <input type="email" id="emailInput" placeholder="Nhập địa chỉ email vào đây ..." required>
-                    <button type="submit" class="submit-btn">
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                </form>
-
-                <div id="successMessage" class="success-message" style="display: none;">
-                    <p>Cảm ơn bạn, yêu cầu đăng ký của bạn đã thành công! Vui lòng kiểm tra hộp thư đến email để xác nhận.</p>
-                    
-                    <button id="resetEmailBtn" class="reset-btn">
-                        <i class="fa-solid fa-rotate-left"></i> Đăng ký tài khoản khác
-                    </button>
-                </div>
-                <div class="social-links">
-                    <a href="#" class="social-icon" title="Facebook">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-icon" title="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
+    <footer class="footer">
         <div class="footer-bottom">
             <p>Copyright © 2025 Honeyque Pte Ltd. All rights reserved.</p>
         </div>
-
-        <button id="scrollToTopBtn" class="scroll-top-btn">
-            <i class="fa-solid fa-chevron-up"></i>
-        </button>
     </footer>
 
-    <script src="footer.js"></script>
     <script>
-       // DỮ LIỆU BÁNH (MOCK DATA)
-const cakes = [
-    { name: "Bánh Kem Dâu Tây", price: "450.000đ", img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500" },
-    { name: "Tiramisu Thượng Hạng", price: "380.000đ", img: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500" },
-    { name: "Croissant Bơ Pháp", price: "45.000đ", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500" },
-    { name: "Macaron Ngọt Ngào", price: "120.000đ", img: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500" },
-    { name: "Donut Socola", price: "25.000đ", img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500" },
-    { name: "Bánh Mì Baguette", price: "30.000đ", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500" }
-];
+        // --- 1. DỮ LIỆU BÁNH (Cần có ở cả 2 trang) ---
+        // Trong thực tế dữ liệu này nên để trong 1 file js riêng hoặc database
+        const cakes = [
+            { name: "Bánh Kem Dâu Tây", price: "450.000đ", img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500" },
+            { name: "Tiramisu Thượng Hạng", price: "380.000đ", img: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500" },
+            { name: "Croissant Bơ Pháp", price: "45.000đ", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500" },
+            { name: "Macaron Ngọt Ngào", price: "120.000đ", img: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500" },
+            { name: "Donut Socola", price: "25.000đ", img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500" },
+            { name: "Bánh Mì Baguette", price: "30.000đ", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500" }
+        ];
 
-// --- 1. XỬ LÝ SCROLL ĐỔI MÀU HEADER ---
-const header = document.getElementById('mainHeader');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+        // --- 2. LOGIC LẤY TỪ KHÓA TỪ URL VÀ HIỂN THỊ ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lấy tham số 'q' từ URL (ví dụ: ?q=banh)
+            const params = new URLSearchParams(window.location.search);
+            const keyword = params.get('q');
 
-// --- 2. XỬ LÝ TÌM KIẾM (CHUYỂN HƯỚNG SANG TRANG KẾT QUẢ) ---
-const searchInput = document.getElementById('searchInput');
-const btnSearch = document.getElementById('btnSearchAction');
+            const bannerTitle = document.getElementById('resultBannerTitle');
+            const resultGrid = document.getElementById('searchResultsGrid');
+            const searchCount = document.getElementById('searchCount');
 
-function handleSearchRedirect() {
-    const keyword = searchInput.value.trim(); // Lấy từ khóa và xóa khoảng trắng thừa
-    
-    if (keyword) {
-        // Chuyển hướng sang trang search-results.html và gắn từ khóa vào URL
-        // Ví dụ: search-results.html?q=banh+kem
-        window.location.href = `search-results.html?q=${encodeURIComponent(keyword)}`;
-    } else {
-        alert("Vui lòng nhập tên bánh cần tìm!");
-    }
-}
+            if (!keyword) {
+                bannerTitle.innerText = "Chưa nhập từ khóa";
+                searchCount.innerText = "Vui lòng nhập tên bánh để tìm kiếm.";
+                return;
+            }
 
-// Gán sự kiện click và enter
-btnSearch.addEventListener('click', handleSearchRedirect);
-searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleSearchRedirect();
-});
+            // Hiển thị từ khóa lên Banner
+            // decodeURIComponent để hiển thị đúng Tiếng Việt (ví dụ %20 thành dấu cách)
+            const decodedKeyword = decodeURIComponent(keyword);
+            bannerTitle.innerText = `Tìm kiếm: "${decodedKeyword}"`;
 
-// --- 3. XỬ LÝ MENU MOBILE (HAMBURGER) ---
-const menuToggle = document.getElementById('mobile-menu-btn');
-const navbar = document.getElementById('navbar');
+            // Lọc sản phẩm
+            const results = cakes.filter(cake => 
+                cake.name.toLowerCase().includes(decodedKeyword.toLowerCase())
+            );
 
-menuToggle.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-    
-    // Đổi icon 3 gạch <-> dấu X
-    const icon = menuToggle.querySelector('i');
-    if (navbar.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-xmark');
-    } else {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
-    }
-}); 
+            // Render kết quả
+            if (results.length > 0) {
+                searchCount.innerText = `Tìm thấy ${results.length} sản phẩm phù hợp`;
+                
+                results.forEach(cake => {
+                    const card = `
+                        <div class="product-card">
+                            <img src="${cake.img}" alt="${cake.name}">
+                            <div class="info">
+                                <a href="#" class="name">${cake.name}</a>
+                                <span class="price">${cake.price}</span>
+                            </div>
+                        </div>
+                    `;
+                    resultGrid.innerHTML += card;
+                });
+            } else {
+                searchCount.innerText = "Rất tiếc, không tìm thấy sản phẩm nào phù hợp.";
+                resultGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; margin-top: 20px;">
+                        <i class="fa-regular fa-face-frown" style="font-size: 50px; color: #ccc; margin-bottom: 20px;"></i>
+                        <p>Hãy thử tìm kiếm với từ khóa khác nhé!</p>
+                    </div>
+                `;
+            }
+        });
+
+        // --- 3. XỬ LÝ TÌM KIẾM TIẾP TRÊN TRANG NÀY ---
+        const searchInput = document.getElementById('searchInput');
+        const btnSearch = document.getElementById('btnSearchAction');
+
+        function handleSearchRedirect() {
+            const newKeyword = searchInput.value.trim();
+            if (newKeyword) {
+                // Load lại trang chính nó với từ khóa mới
+                window.location.href = `search-results.html?q=${encodeURIComponent(newKeyword)}`;
+            }
+        }
+
+        btnSearch.addEventListener('click', handleSearchRedirect);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSearchRedirect();
+        });
+
+        // Toggle Mobile Menu (Giữ logic cũ)
+        const menuToggle = document.getElementById('mobile-menu-btn');
+        const navbar = document.getElementById('navbar');
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navbar.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
     </script>
 </body>
 </html>
