@@ -482,3 +482,84 @@ header.scrolled {
         margin-left: auto;
     }
 }
+
+/* --- CSS CHO MENU TÀI KHOẢN (USER DROPDOWN) --- */
+.user-cart-actions {
+    position: relative; /* Để menu con bám theo khung này */
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 55px; /* Cách icon một chút */
+    right: 0;  /* Căn phải */
+    width: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    padding: 20px;
+    z-index: 9999;
+    
+    /* Mặc định ẩn */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    
+    text-align: left;
+    border: 1px solid #eee;
+}
+
+/* Class này được thêm bằng JS để hiện menu */
+.user-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Mũi tên nhỏ chỉ lên trên cho đẹp */
+.user-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    transform: rotate(45deg);
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+}
+
+/* Style nội dung bên trong */
+.user-info h3 {
+    color: #5d4037;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.user-info p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffebee; /* Màu đỏ rất nhạt */
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+    color: #fff;
+}
