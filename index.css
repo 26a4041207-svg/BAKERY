@@ -484,82 +484,64 @@ header.scrolled {
 }
 
 /* --- CSS CHO MENU TÀI KHOẢN (USER DROPDOWN) --- */
-.user-cart-actions {
-    position: relative; /* Để menu con bám theo khung này */
-}
+        .user-dropdown {
+            position: absolute;
+            top: 140%; /* Đẩy xuống dưới */
+            right: 0;
+            width: 280px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            padding: 20px;
+            z-index: 9999;
+            border: 1px solid #f0f0f0;
+            
+            /* Ẩn mặc định */
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: all 0.2s ease-in-out;
+        }
+        .user-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        /* Mũi tên tam giác */
+        .user-dropdown::before {
+            content: ''; position: absolute; top: -8px; right: 14px;
+            width: 16px; height: 16px; background: #fff;
+            transform: rotate(45deg); border-left: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;
+        }
 
-.user-dropdown {
-    position: absolute;
-    top: 55px; /* Cách icon một chút */
-    right: 0;  /* Căn phải */
-    width: 250px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    padding: 20px;
-    z-index: 9999;
-    
-    /* Mặc định ẩn */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    
-    text-align: left;
-    border: 1px solid #eee;
-}
+        /* Nội dung dropdown */
+        .user-info-header { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .user-info-header h3 { color: #5d4037; font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+        
+        .pass-display { background: #f8f9fa; padding: 10px; border-radius: 6px; font-size: 13px; color: #555; }
+        .pass-display div { margin-bottom: 5px; }
+        .pass-display div:last-child { margin-bottom: 0; }
+        
+        /* List menu */
+        .user-menu-list { list-style: none; margin-bottom: 15px; padding: 0; }
+        .user-menu-list li a {
+            display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+            color: #444; text-decoration: none; font-size: 14px; border-radius: 6px;
+            transition: 0.2s; font-weight: 500;
+        }
+        .user-menu-list li a:hover { background-color: #f5f0eb; color: #5d4037; }
+        .user-menu-list li a i { width: 20px; text-align: center; color: #8d6e63; }
 
-/* Class này được thêm bằng JS để hiện menu */
-.user-dropdown.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+        /* Nút Logout */
+        .logout-btn {
+            width: 100%; padding: 10px; background-color: #ffebee; color: #d32f2f;
+            border: none; border-radius: 6px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px;
+            transition: 0.2s;
+        }
+        .logout-btn:hover { background-color: #d32f2f; color: #fff; }
 
-/* Mũi tên nhỏ chỉ lên trên cho đẹp */
-.user-dropdown::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    right: 15px;
-    width: 15px;
-    height: 15px;
-    background: #fff;
-    transform: rotate(45deg);
-    border-left: 1px solid #eee;
-    border-top: 1px solid #eee;
-}
+        /* Responsive Mobile */
+        @media (max-width: 576px) {
+            .user-dropdown { width: 260px; right: -10px; }
+            .user-dropdown::before { right: 24px; }
+        }
 
-/* Style nội dung bên trong */
-.user-info h3 {
-    color: #5d4037;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.user-info p {
-    color: #888;
-    font-size: 13px;
-    margin-bottom: 15px;
-}
-
-.logout-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #ffebee; /* Màu đỏ rất nhạt */
-    color: #d32f2f;
-    border: 1px solid #d32f2f;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.logout-btn:hover {
-    background-color: #d32f2f;
-    color: #fff;
-}
+        /* Phần body demo */
+        .hero { height: 400px; background: #eaddcf; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero h2 { font-size: 40px; color: #5d4037; }

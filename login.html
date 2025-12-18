@@ -3,45 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HONEYQUE - Đăng nhập / Đăng ký</title>
+    <title>ARTNET - Đăng nhập / Đăng ký</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- GIỮ NGUYÊN CSS CŨ --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: #dfc6b9; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        
+        /* Container Form */
         .container { background-color: #fff; width: 450px; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
-        .logo-box { width: 60px; height: 60px; background-color: #fca311; margin: 0 auto 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; }
+        
+        /* Logo */
+        .logo-box { width: 60px; height: 60px; background-color: #fca311; margin: 0 auto 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; border-radius: 10px; }
         .brand-name { font-size: 24px; font-weight: 700; color: #5d4037; margin-bottom: 5px; }
         .welcome-text { color: #666; font-size: 14px; margin-bottom: 25px; }
+        
+        /* Tabs */
         .tab-box { display: flex; gap: 10px; margin-bottom: 30px; }
         .tab-btn { flex: 1; padding: 12px; border: 1px solid #dcc0b0; background: #fff; color: #5d4037; cursor: pointer; border-radius: 5px; transition: 0.3s; font-weight: 600; }
         .tab-btn.active { background-color: #5d4037; color: #fff; border-color: #5d4037; }
+        
+        /* Inputs */
         .input-group { margin-bottom: 15px; text-align: left; }
         .input-group label { display: block; font-size: 13px; color: #333; margin-bottom: 5px; font-weight: 500; }
         .input-group input { width: 100%; padding: 12px 15px; border: 1px solid #dcc0b0; border-radius: 5px; outline: none; transition: 0.3s; }
         .input-group input:focus { background-color: #eef5ff; border-color: #aaccff; }
+        
+        /* Buttons & Links */
         .submit-btn { width: 100%; padding: 12px; background-color: #5d4037; color: #fff; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.3s; }
         .submit-btn:hover { background-color: #4a332c; }
-        .hidden { display: none; }
         .switch-link { margin-top: 15px; font-size: 13px; color: #666; }
         .switch-link a { color: #5d4037; font-weight: 700; cursor: pointer; }
         .forgot-pass { display: block; text-align: right; font-size: 13px; color: #5d4037; text-decoration: none; margin-bottom: 20px; }
-        
-        /* Style validate pass */
-        .pass-requirements { background-color: #fff9f5; padding: 15px; border-radius: 5px; text-align: left; margin-top: 15px; margin-bottom: 15px; }
+        .hidden { display: none; }
+
+        /* Yêu cầu mật khẩu (Tích xanh) */
+        .pass-requirements { background-color: #fff9f5; padding: 15px; border-radius: 5px; text-align: left; margin-top: 15px; margin-bottom: 15px; border: 1px solid #eee; }
         .req-title { font-size: 13px; font-weight: 700; color: #5d4037; margin-bottom: 5px; }
         .req-list { list-style: none; }
         .req-list li { font-size: 12px; color: #666; margin-bottom: 5px; display: flex; align-items: center; transition: all 0.3s; }
         .req-list li i { margin-right: 8px; font-size: 12px; color: #ccc; }
+        
+        /* Khi điều kiện đúng */
         .req-list li.valid { color: #2e7d32; font-weight: 600; }
         .req-list li.valid i { color: #2e7d32; content: "\f058"; }
 
-        /* --- CSS THÔNG BÁO --- */
+        /* HỘP THÔNG BÁO (Animation) */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Hộp thành công (Xanh) */
+        /* Thông báo thành công (Xanh) */
         .success-box {
             background-color: #e8f5e9; color: #2e7d32;
             padding: 12px; border-radius: 5px; border: 1px solid #c8e6c9;
@@ -49,7 +60,7 @@
             animation: fadeIn 0.5s ease;
         }
 
-        /* Hộp báo lỗi (Đỏ) - MỚI THÊM */
+        /* Thông báo lỗi (Đỏ) */
         .error-box {
             background-color: #ffebee; color: #c62828;
             padding: 12px; border-radius: 5px; border: 1px solid #ef9a9a;
@@ -61,9 +72,9 @@
 <body>
     <div class="container">
         <div class="logo-area">
-            <div class="logo-box"><i class="fa-solid fa-lightbulb"></i><span>HONEYQUE</span></div>
-            <h1 class="brand-name">HONEYQUE</h1>
-            <p class="welcome-text">Chào mừng đến với HONEYQUE</p>
+            <div class="logo-box"><i class="fa-solid fa-lightbulb"></i></div>
+            <h1 class="brand-name">ARTNET</h1>
+            <p class="welcome-text">Chào mừng đến với ARTNET</p>
         </div>
 
         <div class="tab-box">
@@ -85,7 +96,9 @@
                 <a href="#" class="forgot-pass">Quên mật khẩu?</a>
 
                 <div id="login-success-msg" class="success-box hidden"></div>
-                <div id="login-error-msg" class="error-box hidden"></div> <button type="submit" class="submit-btn" id="btn-login-submit">Đăng nhập</button>
+                <div id="login-error-msg" class="error-box hidden"></div>
+
+                <button type="submit" class="submit-btn" id="btn-login-submit">Đăng nhập</button>
                 <p class="switch-link">Chưa có tài khoản? <a onclick="switchTab('register')">Đăng ký ngay</a></p>
             </form>
         </div>
@@ -121,19 +134,21 @@
                 </div>
 
                 <div id="reg-success-msg" class="success-box hidden"></div>
-                <div id="reg-error-msg" class="error-box hidden"></div> <button type="submit" class="submit-btn" id="btn-reg-submit">Đăng ký</button>
+                <div id="reg-error-msg" class="error-box hidden"></div>
+
+                <button type="submit" class="submit-btn" id="btn-reg-submit">Đăng ký</button>
             </form>
         </div>
     </div>
 
     <script>
-        // 1. Chuyển Tab (Reset form và thông báo khi chuyển)
+        // 1. Chuyển Tab
         function switchTab(tabName) {
             const loginForm = document.getElementById('login-form');
             const registerForm = document.getElementById('register-form');
             const btns = document.querySelectorAll('.tab-btn');
 
-            // Ẩn tất cả thông báo
+            // Reset thông báo lỗi/thành công khi chuyển tab
             document.querySelectorAll('.success-box, .error-box').forEach(el => el.classList.add('hidden'));
 
             if (tabName === 'login') {
@@ -149,7 +164,7 @@
             }
         }
 
-        // 2. Validate Password
+        // 2. Validate Password Real-time
         function checkPasswordStrength() {
             const password = document.getElementById('reg-password').value;
             const rules = [
@@ -171,9 +186,7 @@
             return allValid;
         }
 
-        // --- 3. XỬ LÝ ĐĂNG KÝ (Lưu vào danh sách accounts) ---
-        /* --- THAY THẾ HÀM handleRegister TRONG LOGIN.HTML --- */
-
+        // 3. XỬ LÝ ĐĂNG KÝ
         function handleRegister(e) {
             e.preventDefault();
             
@@ -182,62 +195,48 @@
             msgSuccess.classList.add('hidden');
             msgError.classList.add('hidden');
 
-            // Kiểm tra độ mạnh mật khẩu
             if (!checkPasswordStrength()) {
                 msgError.innerText = "Mật khẩu chưa đủ mạnh!";
                 msgError.classList.remove('hidden');
                 return;
             }
 
-            const email = document.getElementById('reg-email').value.trim(); // Lấy email
+            const email = document.getElementById('reg-email').value.trim();
             const fullname = document.getElementById('reg-fullname').value;
             const username = document.getElementById('reg-username').value;
             const password = document.getElementById('reg-password').value;
             const btnSubmit = document.getElementById('btn-reg-submit');
 
-            // Lấy danh sách tài khoản từ localStorage
+            // Lấy danh sách tài khoản cũ
             let listAccounts = JSON.parse(localStorage.getItem('listAccounts')) || [];
 
-            // 1. KIỂM TRA TRÙNG USERNAME
-            const isUserExist = listAccounts.some(acc => acc.username === username);
-            if (isUserExist) {
+            // Kiểm tra trùng
+            if (listAccounts.some(acc => acc.username === username)) {
                 msgError.innerText = "Tên đăng nhập đã tồn tại! Vui lòng chọn tên khác.";
                 msgError.classList.remove('hidden');
                 return;
             }
-
-            // 2. KIỂM TRA TRÙNG EMAIL (Mới thêm)
-            const isEmailExist = listAccounts.some(acc => acc.email === email);
-            if (isEmailExist) {
-                msgError.innerText = "Email này đã được đăng ký! Vui lòng dùng email khác.";
+            if (listAccounts.some(acc => acc.email === email)) {
+                msgError.innerText = "Email này đã được sử dụng! Vui lòng dùng email khác.";
                 msgError.classList.remove('hidden');
                 return;
             }
 
-            // Nếu hợp lệ -> Lưu đầy đủ thông tin (gồm cả email)
-            const newUser = {
-                email: email,       // Lưu email
-                fullname: fullname,
-                username: username,
-                password: password
-            };
-            
+            // Lưu tài khoản mới
+            const newUser = { email, fullname, username, password };
             listAccounts.push(newUser);
             localStorage.setItem('listAccounts', JSON.stringify(listAccounts));
 
-            // Hiện thông báo thành công
+            // Hiệu ứng thành công
             btnSubmit.disabled = true;
             btnSubmit.style.backgroundColor = '#ccc';
             btnSubmit.innerText = "Đang xử lý...";
-
             msgSuccess.innerText = "Đăng ký thành công! Hãy đăng nhập ngay.";
             msgSuccess.classList.remove('hidden');
 
             setTimeout(() => {
                 switchTab('login');
-                document.getElementById('login-username').value = username;
-                
-                // Reset nút
+                document.getElementById('login-username').value = username; // Điền sẵn user
                 btnSubmit.disabled = false;
                 btnSubmit.style.backgroundColor = '#5d4037';
                 btnSubmit.innerText = "Đăng ký";
@@ -245,7 +244,7 @@
             }, 1500);
         }
 
-        // --- 4. XỬ LÝ ĐĂNG NHẬP (Kiểm tra trong danh sách accounts) ---
+        // 4. XỬ LÝ ĐĂNG NHẬP
         function handleLogin(e) {
             e.preventDefault();
             
@@ -258,33 +257,24 @@
             const password = document.getElementById('login-password').value;
             const btnSubmit = document.getElementById('btn-login-submit');
 
-            // -- LOGIC QUAN TRỌNG: TÌM KIẾM TÀI KHOẢN --
-            // Lấy danh sách từ localStorage
+            // Kiểm tra trong database
             let listAccounts = JSON.parse(localStorage.getItem('listAccounts')) || [];
-
-            // Tìm user có username VÀ password khớp
             const validUser = listAccounts.find(acc => acc.username === username && acc.password === password);
 
             if (!validUser) {
-                // Nếu không tìm thấy
                 msgError.innerText = "Tên đăng nhập hoặc mật khẩu không đúng!";
                 msgError.classList.remove('hidden');
                 return;
             }
 
-            // Nếu ĐÚNG -> Lưu phiên đăng nhập
-            const sessionUser = {
-                fullname: validUser.fullname,
-                username: validUser.username,
-                isLoggedIn: true
-            };
+            // Lưu session
+            const sessionUser = { fullname: validUser.fullname, username: validUser.username, isLoggedIn: true };
             localStorage.setItem('currentUser', JSON.stringify(sessionUser));
 
-            // -- HIỆN THÔNG BÁO THÀNH CÔNG --
+            // Hiệu ứng thành công
             btnSubmit.disabled = true;
             btnSubmit.style.backgroundColor = '#ccc';
             btnSubmit.innerText = "Đang xử lý...";
-
             msgSuccess.innerText = "Đăng nhập thành công! Đang chuyển hướng...";
             msgSuccess.classList.remove('hidden');
 
