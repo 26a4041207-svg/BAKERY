@@ -434,6 +434,7 @@ body::before {
     letter-spacing: 1px;
     transition: bottom 0.35s ease;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 

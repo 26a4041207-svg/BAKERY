@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART</title>
+    <link rel="stylesheet" href="giohang.css">
+
+</head>
+<body>
+   <!-- Overlay -->
+<div id="cart-overlay"></div>
+
+<!-- Cart Drawer -->
+<div id="cart-drawer">
+  <div class="cart-header">
+    <h3>GIỎ HÀNG CỦA BẠN</h3>
+    <button id="cart-close">&times;</button>
+  </div>
+
+  <div class="cart-body" id="cart-items">
+    <!-- JS render sản phẩm -->
+  </div>
+  <div class="cart-extra">
+
+    <fieldset class="cart-fieldset">
+      <legend>Thông tin liên hệ</legend>
+
+      <div class="field-row">
+    <label>Họ và tên</label>
+    <input type="text">
+  </div>
+
+  <div class="field-row">
+    <label>Số điện thoại</label>
+    <input type="text">
+  </div>
+
+  <div class="field-row">
+    <label>Email</label>
+    <input type="text">
+  </div>
+
+  <div class="field-row">
+    <label>Địa chỉ</label>
+    <textarea></textarea>
+  </div>
+    </fieldset>
+
+    <fieldset class="cart-fieldset">
+      <legend>Phương thức nhận hàng</legend>
+
+      <label class="radio-row">
+        <input type="radio" name="delivery" value="shop" checked>
+        Nhận hàng tại shop
+      </label>
+
+      <label class="radio-row">
+        <input type="radio" name="delivery" value="ship">
+        Nhận hàng qua vận chuyển
+      </label>
+    </fieldset>
+
+  </div>
+
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Tổng cộng:</span>
+      <strong id="cart-total-price">0₫</strong>
+    </div>
+    <button class="cart-checkout">Thanh toán</button>
+  </div>
+</div>
+
+ <script src="giohang.js" defer></script>
+</body>
+</html>

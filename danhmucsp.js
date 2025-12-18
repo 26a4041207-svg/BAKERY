@@ -22,8 +22,6 @@ fetch("product.json")
         showPage(1);
     })
     .catch(err => console.error(err));
-
-
 /*********************************
  * 2. RENDER SẢN PHẨM
  *********************************/
@@ -31,8 +29,8 @@ function renderProducts() {
     productGrid.innerHTML = "";
 
     filteredProducts.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "product-card";
+        const card = document.createElement('div');
+        card.className = 'product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full';
 
         // LABEL
         let labelHTML = "";
@@ -49,23 +47,48 @@ function renderProducts() {
             .map((img, i) => `<img src="${img}" class="slide ${i === 0 ? "active" : ""}">`)
             .join("");
 
+        // Tạo HTML
         card.innerHTML = `
+    <div class="product-image-wrapper relative">
+        ${labelHTML}
         <a href="product2.html?id=${p.id}" class="product-link">
-            <div class="product-image-wrapper">
-                ${labelHTML}
-                <div class="image-slider">
-                    ${imagesHTML}
-                    <div class="add-to-cart">ADD TO CART</div>
-                </div>
+            <div class="image-slider">
+                ${imagesHTML}
             </div>
+        </a>
+        <div class="add-to-cart cursor-pointer absolute bottom-2 left-1/2 -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded opacity-0 transition-all duration-300"
+     data-id="${p.id}">
+    THÊM VÀO GIỎ
+</div>
 
-            <h4 class="product-name">${p.name}</h4>
-            <p class="price">
-                ${p.price.toLocaleString()}₫
-            </p>
-        `;
+    </div>
+    <a href="product2.html?id=${p.id}" class="product-link">
+        <h4 class="product-name mt-2">${p.name}</h4>
+    </a>
+    <p class="price">${p.price.toLocaleString()}₫</p>
+`;
+// Lấy nút thêm vào giỏ
+const addBtn = card.querySelector('.add-to-cart');
 
-        productGrid.appendChild(card);
+// Hover trượt thanh thêm vào giỏ
+card.addEventListener('mouseenter', () => addBtn.classList.add('opacity-100'));
+card.addEventListener('mouseleave', () => addBtn.classList.remove('opacity-100'));
+
+// 👉 CLICK: thêm vào giỏ + mở drawer
+addBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const id = addBtn.dataset.id;
+
+    if (window.GioHangAdd) {
+        window.GioHangAdd(id);
+    } else {
+        console.error("❌ Chưa load giohang.js");
+    }
+});
+
+productGrid.appendChild(card);
     });
 }
 
@@ -126,7 +149,7 @@ function applyFilters() {
         }
 
         // ===== LỌC GIÁ =====
-        const nums = text.match(/[\d\.]+/g)?.map(n => Number(n.replace(".", ""))) || [];
+        const nums = text.match(/[\d\.]+/g)?.map(n => Number(n.replace(/\./g, ""))) || [];
 
         if (text.includes("trên") && nums[0]) {
             priceFilters.push({ min: nums[0], max: Infinity });
