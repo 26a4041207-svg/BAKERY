@@ -256,25 +256,6 @@
 
 
 <script src="product2.js"></script>
-
-<!-- Inline product.json fallback: used when fetch('./product.json') fails (e.g. when opening file:// locally) 
-<script id="product-data" type="application/json">
-[ 
-    { "id": "001", "name": "Carrot Cake", "price": 390000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Carrot Cake 1.webp"], "description": "Bánh cà rốt mềm mượt, kết hợp kem phô mai mát ngọt, thích hợp cho tiệc sinh nhật và dịp lễ.", "ingredients": ["Bột mì", "Cà rốt tươi", "Trứng", "Đường", "Kem phô mai"], "nutrition": { "calories": 350, "fat": 20, "carb": 38, "protein": 5 } },
-    { "id": "002", "name": "Chocolate Cake", "price": 300000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Chocolate Cake 1.webp"], "description": "Bánh sô cô la đậm vị với lớp ganache mượt mà, hoàn hảo cho tín đồ chocolate.", "ingredients": ["Bột mì", "Sô cô la đen", "Trứng", "Đường", "Bơ"], "nutrition": { "calories": 420, "fat": 25, "carb": 40, "protein": 6 } },
-    { "id": "003", "name": "Chocolate Macaron Cake", "price": 350000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Chocolate Macaron Cake 1.jpg"], "description": "Bánh chocolate sang trọng, trang trí macaron giòn rụm trên đỉnh bánh.", "ingredients": ["Bột mì", "Sô cô la", "Trứng", "Hạnh nhân", "Đường"], "nutrition": { "calories": 380, "fat": 22, "carb": 35, "protein": 5 } },
-    { "id": "004", "name": "Confetti Cake", "price": 360000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Confetti Cake 1.webp"], "description": "Bánh confetti vui mắt, thích hợp cho lễ kỷ niệm và trẻ em.", "ingredients": ["Bột mì", "Trứng", "Đường", "Màu thực phẩm", "Kem tươi"], "nutrition": { "calories": 360, "fat": 18, "carb": 42, "protein": 5 } },
-    { "id": "005", "name": "Double Chocolate Brownie and Toffee", "price": 370000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Double Chocolate Brownie and Toffee.webp"], "description": "Một sự kết hợp giữa brownie và toffee, mềm và dẻo cùng lớp chocolate phủ trên cùng.", "ingredients": ["Sô cô la", "Bơ", "Đường", "Trứng", "Toffee"], "nutrition": { "calories": 450, "fat": 28, "carb": 50, "protein": 7 } },
-    { "id": "006", "name": "German Chocolate Cake", "price": 390000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/German Chocolate Cake 1.webp"], "description": "Bánh German Chocolate truyền thống với lớp nhân dừa béo ngậy.", "ingredients": ["Bột mì", "Dừa nạo", "Sữa đặc", "Đường", "Trứng"], "nutrition": { "calories": 410, "fat": 24, "carb": 44, "protein": 6 } },
-    { "id": "007", "name": "Harvest Apple Cake", "price": 400000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Harvest Apple Cake 1.webp"], "description": "Bánh táo thơm mùi quế, sử dụng táo tươi và gia vị tự nhiên.", "ingredients": ["Táo", "Bột mì", "Quế", "Đường", "Bơ"], "nutrition": { "calories": 300, "fat": 12, "carb": 46, "protein": 4 } },
-    { "id": "008", "name": "Hummingbird Cake", "price": 120000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Hummingbird Cake 1.webp"], "description": "Hummingbird Cake truyền thống với trái cây nhiệt đới, cực kỳ thơm ngon.", "ingredients": ["Chuối", "Dứa", "Bột mì", "Đường", "Kem tươi"], "nutrition": { "calories": 370, "fat": 20, "carb": 44, "protein": 5 } },
-    { "id": "009", "name": "Macaron Fraisier Cake", "price": 200000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Macaron Fraisier Cake 1.webp"], "description": "Bánh Macaron Fraisier thanh nhã, lớp kem nhẹ và macaron giòn trên cùng.", "ingredients": ["Bột mì", "Macaron", "Trứng", "Đường", "Kem tươi"], "nutrition": { "calories": 340, "fat": 16, "carb": 38, "protein": 4 } },
-    { "id": "010", "name": "Pistachio Cake", "price": 250000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Pistachio Cake.png"], "description": "Bánh hạt dẻ cười (pistachio) beo béo, màu xanh nhẹ nhàng, thơm vị hạt.", "ingredients": ["Pistachio", "Bột mì", "Đường", "Trứng", "Kem tươi"], "nutrition": { "calories": 400, "fat": 26, "carb": 32, "protein": 6 } },
-    { "id": "011", "name": "Red Velvet Cake", "price": 500000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Red Velvet Cake 1.webp"], "description": "Bánh Red Velvet mềm mịn, phủ kem phô mai truyền thống.", "ingredients": ["Bột mì", "Sữa", "Đường", "Bơ", "Kem phô mai"], "nutrition": { "calories": 380, "fat": 21, "carb": 39, "protein": 5 } },
-    { "id": "012", "name": "Reindeer Cake", "price": 150000, "category": "Bánh Kem", "images": ["assets/img/Products/Bánh Kem/Reindeer Cake 1.webp"], "description": "Reindeer Cake trang trí Giáng sinh, phù hợp cho mùa lễ hội.", "ingredients": ["Bột mì", "Mứt trái cây", "Đường", "Kem tươi"], "nutrition": { "calories": 360, "fat": 18, "carb": 40, "protein": 5 } }
-]
-</script>  -->
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
