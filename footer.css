@@ -145,7 +145,7 @@ body { font-family: 'Arial', sans-serif; line-height: 1.5; }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- SOCIAL ICONS (MỚI THÊM) --- */
+/* --- SOCIAL ICONS --- */
 .social-links {
     margin-top: 25px; /* Cách form một chút */
     display: flex;
