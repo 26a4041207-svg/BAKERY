@@ -1,226 +1,116 @@
-document.querySelectorAll('.image-slider').forEach(slider => {
-    let index = 0;
-    const images = slider.querySelectorAll('.slide');
-    images[0].classList.add('active');
+/*********************************
+ * 1. LOAD SẢN PHẨM TỪ JSON
+ *********************************/
+const productGrid = document.getElementById("product-grid");
+const category = productGrid.dataset.category;
 
-    let intervalId = null;
-
-    function startSlide() {
-        intervalId = setInterval(() => {
-            images[index].classList.remove('active');
-            index = (index + 1) % images.length;
-            images[index].classList.add('active');
-        }, 1000);
-    }
-    function stopSlide() {
-        clearInterval(intervalId);
-
-        // quay về ảnh đầu tiên
-        images.forEach(img => img.classList.remove("active"));
-        index = 0;
-        images[0].classList.add("active");
-    }
-
-    slider.addEventListener("mouseenter", startSlide);
-    slider.addEventListener("mouseleave", stopSlide);
-});
-
-window.addEventListener("scroll", function () {
-    const h = document.getElementById("header");
-    window.scrollY > 80 ? h.classList.add("scrolled") : h.classList.remove("scrolled");
-});
-
-
-/*******************************************************
- * 2. MULTI FILTER: LỌC NHIỀU MỨC GIÁ + NHIỀU TRẠNG THÁI
- *******************************************************/
-// HÀM ĐỔI CHUỖI GIÁ → SỐ
-function parsePrice(text) {
-    if (!text) return 0;
-
-    text = text.toLowerCase()
-               .replace(/đ|₫|,/g, "")
-               .replace(/\s+/g, "")
-               .trim();
-
-    // hỗ trợ "1 triệu"
-    if (text.includes("triệu")) {
-        const n = Number(text.replace("triệu", "").trim());
-        return n * 1_000_000;
-    }
-
-    // hỗ trợ "1tr"
-    if (text.endsWith("tr")) {
-        const n = Number(text.replace("tr", ""));
-        return n * 1_000_000;
-    }
-
-    // hỗ trợ "500k"
-    if (text.endsWith("k")) {
-        const n = Number(text.replace("k", ""));
-        return n * 1000;
-    }
-
-    // chuẩn 50.000 -> 50000
-    return Number(text.replace(/\./g, ""));
-}
-
-
-// HÀM LẤY GIÁ TỪ SẢN PHẨM
-function extractPrice(text) {
-    const match = text.match(/[\d\.]+/);
-    if (!match) return 0;
-    return Number(match[0].replace(/\./g, ""));
-}
-
-
-// ==========================================
-//       HÀM LỌC CHUẨN — SẠCH & GỌN
-// ==========================================
-function applyFilters() {
-    const checked = document.querySelectorAll(".sidebar input[type='checkbox']:checked");
-
-    let priceFilters = [];
-
-    checked.forEach(cb => {
-        const label = cb.parentElement.textContent.trim().toLowerCase();
-
-        // chỉ cần có số = lọc theo giá
-        if (!label.match(/\d/)) return;
-
-        let nums = [];
-
-        // bắt số: "50.000", "1 triệu", "1tr"
-        const raw = label.match(/[\d\.]+(?:\s*triệu|tr|k)?/g);
-
-        if (raw) {
-            nums = raw.map(v => parsePrice(v));
-        }
-
-        if (label.includes("trên")) {
-            priceFilters.push({ min: nums[0], max: Infinity });
-        }
-        else if (nums.length >= 2) {
-            priceFilters.push({ min: nums[0], max: nums[1] });
-        }
-    });
-
-    // Lọc sản phẩm
-    const products = document.querySelectorAll(".product-card");
-
-    products.forEach(p => {
-        const price = extractPrice(p.querySelector(".price").textContent);
-
-        const matchPrice =
-            priceFilters.length === 0 ||
-            priceFilters.some(f => price >= f.min && price <= f.max);
-
-        p.style.display = matchPrice ? "block" : "none";
-    });
-}
-
-
-// GÁN SỰ KIỆN CHECKBOX
-document.querySelectorAll(".sidebar input[type='checkbox']")
-    .forEach(cb => cb.addEventListener("change", applyFilters));
-
-
-/*******************************************************
- * 3. SORT BUTTON (Tên A-Z, Giá thấp → cao,…)
- *******************************************************/
-
-function sortProducts(type) {
-    let grid = document.querySelector(".product-grid");
-    let items = Array.from(grid.querySelectorAll(".product-card"));
-
-    items.sort((a, b) => {
-        let nameA = a.querySelector(".product-name").textContent.trim();
-        let nameB = b.querySelector(".product-name").textContent.trim();
-
-        let priceA = extractPrice(a.querySelector(".price").textContent);
-        let priceB = extractPrice(b.querySelector(".price").textContent);
-
-        switch (type) {
-            case "az": return nameA.localeCompare(nameB);
-            case "za": return nameB.localeCompare(nameA);
-            case "price-low": return priceA - priceB;
-            case "price-high": return priceB - priceA;
-        }
-    });
-
-    // render lại
-    items.forEach(i => grid.appendChild(i));
-}
-
-// Gán sự kiện cho nút sort
-document.querySelector(".sort-btn:nth-child(2)").onclick = () => sortProducts("az");
-document.querySelector(".sort-btn:nth-child(3)").onclick = () => sortProducts("za");
-document.querySelector(".sort-btn:nth-child(4)").onclick = () => sortProducts("price-low");
-document.querySelector(".sort-btn:nth-child(5)").onclick = () => sortProducts("price-high");
-
-/***************************************************
- * PAGINATION – chia sản phẩm thành nhiều trang
- ***************************************************/
-
-// Số sản phẩm tối đa mỗi trang
-const ITEMS_PER_PAGE = 20;
-
-// Lấy danh sách sản phẩm
-let allProducts = Array.from(document.querySelectorAll(".product-card"));
-let filteredProducts = [...allProducts]; // mảng sản phẩm sau khi lọc
+let products = [];
+let filteredProducts = [];
 let currentPage = 1;
+const itemsPerPage = 20;
+
+fetch("product.json")
+    .then(res => res.json())
+    .then(data => {
+        products = category === "all"
+    ? data
+    : data.filter(p => p.category === category);
+
+        filteredProducts = [...products];
+        renderProducts();
+        initImageSlider();
+        showPage(1);
+    })
+    .catch(err => console.error(err));
 
 
-// Hàm hiển thị sản phẩm theo trang
-// --- renderPage: ẩn tất cả rồi hiển thị các phần tử của filteredProducts theo trang ---
-function renderPage(page) {
-    currentPage = page;
+/*********************************
+ * 2. RENDER SẢN PHẨM
+ *********************************/
+function renderProducts() {
+    productGrid.innerHTML = "";
 
-    const start = (page - 1) * ITEMS_PER_PAGE;
-    const end = start + ITEMS_PER_PAGE;
+    filteredProducts.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "product-card";
 
-    // 1) Ẩn tất cả product trước
-    allProducts.forEach(p => {
-        p.style.display = "none";
-    });
-
-    // 2) Hiển thị các product thuộc filteredProducts trong khoảng page
-    filteredProducts.forEach((p, index) => {
-        if (index >= start && index < end) {
-            p.style.display = "block";
+        // LABEL
+        let labelHTML = "";
+        if (Array.isArray(p.status)) {
+            p.status.forEach((s, i) => {
+                labelHTML += `<div class="product-label" style="top:${10 + i * 28}px">${s}</div>`;
+            });
+        } else if (p.status) {
+            labelHTML = `<div class="product-label">${p.status}</div>`;
         }
-    });
 
-    renderPagination();
-}
+        // IMAGES
+        const imagesHTML = p.images
+            .map((img, i) => `<img src="${img}" class="slide ${i === 0 ? "active" : ""}">`)
+            .join("");
 
+        card.innerHTML = `
+        <a href="product2.html?id=${p.id}" class="product-link">
+            <div class="product-image-wrapper">
+                ${labelHTML}
+                <div class="image-slider">
+                    ${imagesHTML}
+                    <div class="add-to-cart">ADD TO CART</div>
+                </div>
+            </div>
 
-// --- renderPagination: không đổi nhiều, nhưng đảm bảo totalPages >= 1 khi cần ---
-function renderPagination() {
-    const totalPages = Math.max(1, Math.ceil(filteredProducts.length / ITEMS_PER_PAGE));
-    const container = document.getElementById("pagination");
-
-    container.innerHTML = "";
-
-    if (currentPage > 1) {
-        container.innerHTML += `<button class="page-btn" onclick="renderPage(${currentPage - 1})">«</button>`;
-    }
-
-    for (let i = 1; i <= totalPages; i++) {
-        container.innerHTML += `
-            <button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="renderPage(${i})">
-                ${i}
-            </button>
+            <h4 class="product-name">${p.name}</h4>
+            <p class="price">
+                ${p.price.toLocaleString()}₫
+            </p>
         `;
-    }
 
-    if (currentPage < totalPages) {
-        container.innerHTML += `<button class="page-btn" onclick="renderPage(${currentPage + 1})">»</button>`;
-    }
+        productGrid.appendChild(card);
+    });
 }
 
 
-// --- applyFilters: chỉ cập nhật filteredProducts, không set style trực tiếp ---
+/*********************************
+ * 3. IMAGE SLIDER
+ *********************************/
+function initImageSlider() {
+    document.querySelectorAll(".image-slider").forEach(slider => {
+        let index = 0;
+        const slides = slider.querySelectorAll(".slide");
+        if (slides.length <= 1) return;
+
+        let timer;
+
+        slider.onmouseenter = () => {
+            timer = setInterval(() => {
+                slides[index].classList.remove("active");
+                index = (index + 1) % slides.length;
+                slides[index].classList.add("active");
+            }, 1000);
+        };
+
+        slider.onmouseleave = () => {
+            clearInterval(timer);
+            slides.forEach(s => s.classList.remove("active"));
+            slides[0].classList.add("active");
+            index = 0;
+        };
+    });
+}
+
+
+/*********************************
+ * 4. FILTER + SORT
+ *********************************/
+function parsePrice(str) {
+    if (!str) return 0;
+    str = str.toLowerCase().replace(/\s|đ|₫|,/g, "");
+    let n = parseFloat(str);
+    if (str.includes("triệu") || str.includes("tr")) n *= 1_000_000;
+    if (str.includes("k")) n *= 1_000;
+    return n;
+}
+
 function applyFilters() {
     const checked = document.querySelectorAll(".sidebar input[type='checkbox']:checked");
 
@@ -228,46 +118,103 @@ function applyFilters() {
     let statusFilters = [];
 
     checked.forEach(cb => {
-        const label = cb.parentElement.textContent.trim().toLowerCase();
+        const text = cb.parentElement.textContent.trim().toLowerCase();
 
-        if (!label.match(/\d/)) {
-            statusFilters.push(label);
+        // ===== LỌC TRẠNG THÁI (NEW / SALE / SOLD OUT...) =====
+        if (!text.match(/\d/)) {
+            statusFilters.push(text);
         }
 
-        let nums = [];
-        const raw = label.match(/[\d\.]+(?:\s*triệu|tr|k)?/g);
-        if (raw) nums = raw.map(v => parsePrice(v));
+        // ===== LỌC GIÁ =====
+        const nums = text.match(/[\d\.]+/g)?.map(n => Number(n.replace(".", ""))) || [];
 
-        if (label.includes("trên")) {
+        if (text.includes("trên") && nums[0]) {
             priceFilters.push({ min: nums[0], max: Infinity });
-        }
-        else if (nums.length >= 2) {
+        } 
+        else if (nums.length === 2) {
             priceFilters.push({ min: nums[0], max: nums[1] });
         }
     });
 
-    // Cập nhật filteredProducts dựa trên điều kiện
-    filteredProducts = allProducts.filter(p => {
-        const price = extractPrice(p.querySelector(".price").textContent);
-        const statusEl = p.querySelector(".product-label");
-        const statusText = statusEl ? statusEl.textContent.trim().toLowerCase() : "";
-
+    filteredProducts = products.filter(p => {
+        // ---- GIÁ ----
         const matchPrice =
-            priceFilters.length === 0 || priceFilters.some(f => price >= f.min && price <= f.max);
+            priceFilters.length === 0 ||
+            priceFilters.some(r => p.price >= r.min && p.price <= r.max);
+
+        // ---- TRẠNG THÁI ----
+        const productStatus = Array.isArray(p.status)
+            ? p.status.map(s => s.toLowerCase())
+            : [String(p.status || "").toLowerCase()];
 
         const matchStatus =
-            statusFilters.length === 0 || statusFilters.some(s => statusText.includes(s));
+            statusFilters.length === 0 ||
+            statusFilters.some(s => productStatus.includes(s));
 
         return matchPrice && matchStatus;
     });
 
-    // Điều chỉnh currentPage nếu vượt quá totalPages (nếu không có item thì đặt 1)
-    const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE) || 1;
-    if (currentPage > totalPages) currentPage = totalPages;
-
-    // Render trang hiện tại
-    renderPage(currentPage);
+    currentPage = 1;
+    renderProducts();
+    initImageSlider();
+    showPage(1);
 }
 
 
+// Gán checkbox
+document.querySelectorAll(".sidebar input").forEach(cb =>
+    cb.addEventListener("change", applyFilters)
+);
 
+
+/*********************************
+ * 5. SORT
+ *********************************/
+function sortProducts(type) {
+    filteredProducts.sort((a, b) => {
+        if (type === "az") return a.name.localeCompare(b.name);
+        if (type === "za") return b.name.localeCompare(a.name);
+        if (type === "price-low") return a.price - b.price;
+        if (type === "price-high") return b.price - a.price;
+    });
+
+    renderProducts();
+    initImageSlider();
+    showPage(1);
+}
+
+document.querySelector(".sort-btn:nth-child(2)").onclick = () => sortProducts("az");
+document.querySelector(".sort-btn:nth-child(3)").onclick = () => sortProducts("za");
+document.querySelector(".sort-btn:nth-child(4)").onclick = () => sortProducts("price-low");
+document.querySelector(".sort-btn:nth-child(5)").onclick = () => sortProducts("price-high");
+
+
+/*********************************
+ * 6. PAGINATION
+ *********************************/
+function showPage(page) {
+    currentPage = page;
+
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    document.querySelectorAll(".product-card").forEach((card, i) => {
+        card.style.display = i >= start && i < end ? "block" : "none";
+    });
+
+    renderPagination();
+}
+
+function renderPagination() {
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+    const container = document.getElementById("pagination");
+    container.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add("active");
+        btn.onclick = () => showPage(i);
+        container.appendChild(btn);
+    }
+}

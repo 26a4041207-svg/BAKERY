@@ -1,4 +1,16 @@
-/* =========================================
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả tìm kiếm - ABC Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="danhmucsp.css"> 
+    <style>
+         /* Nếu chưa tách file CSS riêng, hãy paste toàn bộ CSS vào đây */
+         /* CÀI ĐẶT CHUNG... (Copy từ câu trả lời trước) */
+         /* =========================================
    1. CÀI ĐẶT CHUNG (RESET & BASE)
    ========================================= */
 * {
@@ -101,7 +113,7 @@ header.scrolled {
 .fa-chevron-down {
     font-size: 10px;
     margin-left: 5px;
-    transition: transform 0.5s;
+    transition: transform 0.3s;
 }
 
 /* Xoay mũi tên khi hover */
@@ -119,7 +131,7 @@ header.scrolled {
         position: absolute;
         top: 100%;
         left: 0;
-        width: 160px; /* Độ rộng menu con */
+        width: 220px; /* Độ rộng menu con */
         background-color: #5D4037; /* Nền nâu giống header */
         
         display: none; /* Mặc định ẩn */
@@ -136,7 +148,7 @@ header.scrolled {
     /* Hover vào cha thì hiện menu con */
     .navbar ul li.dropdown:hover .dropdown-menu {
         display: flex;
-        animation: fadeInUp 0.5s ease;
+        animation: fadeInUp 0.3s ease;
     }
 
     /* Style cho Tên Bánh trong Menu Con */
@@ -482,84 +494,219 @@ header.scrolled {
         margin-left: auto;
     }
 }
+    </style>
+</head>
+<body>
 
-/* --- CSS CHO MENU TÀI KHOẢN (USER DROPDOWN) --- */
-.user-cart-actions {
-    position: relative; /* Để menu con bám theo khung này */
-}
+    <header id="mainHeader" class="scrolled"> <div class="logo">
+            <a href="index.html" class="logo-text">A<span>B</span>C Bakery</a>
+        </div>
 
-.user-dropdown {
-    position: absolute;
-    top: 55px; /* Cách icon một chút */
-    right: 0;  /* Căn phải */
-    width: 250px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    padding: 20px;
-    z-index: 9999;
-    
-    /* Mặc định ẩn */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    
-    text-align: left;
-    border: 1px solid #eee;
-}
+        <div class="menu-toggle" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
 
-/* Class này được thêm bằng JS để hiện menu */
-.user-dropdown.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li class="dropdown">
+                    <a href="#">Sản phẩm <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Bánh kem</a></li>
+                        <li><a href="#">Bánh ngọt</a></li>
+                        <li><a href="#">Bánh nướng</a></li>
+                        <li><a href="#">Bánh quy</a></li>
+                        <li><a href="#">Bánh mousse</a></li>
+                        <li><a href="#">Đồ uống</a></li>
+                      </ul>
+                </li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </nav>
 
-/* Mũi tên nhỏ chỉ lên trên cho đẹp */
-.user-dropdown::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    right: 15px;
-    width: 15px;
-    height: 15px;
-    background: #fff;
-    transform: rotate(45deg);
-    border-left: 1px solid #eee;
-    border-top: 1px solid #eee;
-}
+        <div class="header-right">
+            <div class="search-bar">
+                <button id="btnSearchAction"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm khác...">
+            </div>
 
-/* Style nội dung bên trong */
-.user-info h3 {
-    color: #5d4037;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
+            <div class="user-cart-actions">
+                <a href="#" class="icon-btn"><i class="fa-regular fa-user"></i></a>
+                <a href="#" class="icon-btn"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="icon-btn"><i class="fa-solid fa-basket-shopping"></i></a>
+            </div>
+        </div>
+    </header>
 
-.user-info p {
-    color: #888;
-    font-size: 13px;
-    margin-bottom: 15px;
-}
+    <!-- HERO BANNER -->
+   <!-- HERO BANNER -->
+    <section class="hero-banner">
+    <img src="assets/img/Banner/Logo đồ uống.jpg" alt="Banner" class="banner-img">
+    <div class="banner-text">
+        <p class="breadcrumb">
+            <a href="index.html">Trang chủ</a> >
+            <a href="sanpham.html">Sản phẩm</a> >
+        </p>
+        <h1 class="banner-title">Đồ Uống</h1>
+    </div>
+</section>
+ <!-- MAIN CONTENT -->
+    <div class="main-container">
 
-.logout-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #ffebee; /* Màu đỏ rất nhạt */
-    color: #d32f2f;
-    border: 1px solid #d32f2f;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <fieldset class="filter-box">
+                <legend>Chọn mức giá</legend>
+                <label><input type="checkbox"> Từ 50.000đ - 100.000đ</label>
+                <label><input type="checkbox"> Từ 100.000đ - 200.000đ</label>
+                <label><input type="checkbox"> Từ 200.000đ - 300.000đ</label>
+                <label><input type="checkbox"> Từ 300.000đ - 500.000đ</label>
+                <label><input type="checkbox"> Từ 500.000đ - 1.000.000đ</label>
+                <label><input type="checkbox"> Trên 1.000.000đ</label>
+            </fieldset>
 
-.logout-btn:hover {
-    background-color: #d32f2f;
-    color: #fff;
-}
+            <fieldset class="filter-box">
+                <legend>Tình trạng sản phẩm</legend>
+                <label><input type="checkbox"> New</label>
+                <label><input type="checkbox"> Flash Sale</label>
+                <label><input type="checkbox"> Sale</label>
+                <label><input type="checkbox"> Sold Out</label>
+                <label><input type="checkbox"> Best Seller</label>
+            </fieldset>
+        </aside>
+        <div class="content-area">
+            <div class="sort-bar">
+                <span>Xếp theo:</span>
+                <button class="sort-btn">Tên A-Z</button>
+                <button class="sort-btn">Tên Z-A</button>
+                <button class="sort-btn">Giá thấp đến cao</button>
+                <button class="sort-btn">Giá cao xuống thấp</button>
+            </div>
+
+            <!-- PRODUCTS -->
+            <section class="product-grid" id="product-grid" data-category="Đồ Uống">
+            </section>
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <script src="danhmucsp.js"></script>
+
+  
+
+    <section style="padding: 60px 20px; background: #fff;">
+        <div class="container">
+            <h2 id="searchCount" style="text-align: center; margin-bottom: 40px; color: #333;"></h2>
+            
+            <div id="searchResultsGrid" class="product-grid">
+                </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Honeyque Pte Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. DỮ LIỆU BÁNH (Cần có ở cả 2 trang) ---
+        // Trong thực tế dữ liệu này nên để trong 1 file js riêng hoặc database
+        const cakes = [
+            { name: "Bánh Kem Dâu Tây", price: "450.000đ", img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500" },
+            { name: "Tiramisu Thượng Hạng", price: "380.000đ", img: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500" },
+            { name: "Croissant Bơ Pháp", price: "45.000đ", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500" },
+            { name: "Macaron Ngọt Ngào", price: "120.000đ", img: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500" },
+            { name: "Donut Socola", price: "25.000đ", img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500" },
+            { name: "Bánh Mì Baguette", price: "30.000đ", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500" }
+        ];
+
+        // --- 2. LOGIC LẤY TỪ KHÓA TỪ URL VÀ HIỂN THỊ ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lấy tham số 'q' từ URL (ví dụ: ?q=banh)
+            const params = new URLSearchParams(window.location.search);
+            const keyword = params.get('q');
+
+            const bannerTitle = document.getElementById('resultBannerTitle');
+            const resultGrid = document.getElementById('searchResultsGrid');
+            const searchCount = document.getElementById('searchCount');
+
+            if (!keyword) {
+                bannerTitle.innerText = "Chưa nhập từ khóa";
+                searchCount.innerText = "Vui lòng nhập tên bánh để tìm kiếm.";
+                return;
+            }
+
+            // Hiển thị từ khóa lên Banner
+            // decodeURIComponent để hiển thị đúng Tiếng Việt (ví dụ %20 thành dấu cách)
+            const decodedKeyword = decodeURIComponent(keyword);
+            bannerTitle.innerText = `Tìm kiếm: "${decodedKeyword}"`;
+
+            // Lọc sản phẩm
+            const results = cakes.filter(cake => 
+                cake.name.toLowerCase().includes(decodedKeyword.toLowerCase())
+            );
+
+            // Render kết quả
+            if (results.length > 0) {
+                searchCount.innerText = `Tìm thấy ${results.length} sản phẩm phù hợp`;
+                
+                results.forEach(cake => {
+                    const card = `
+                        <div class="product-card">
+                            <img src="${cake.img}" alt="${cake.name}">
+                            <div class="info">
+                                <a href="#" class="name">${cake.name}</a>
+                                <span class="price">${cake.price}</span>
+                            </div>
+                        </div>
+                    `;
+                    resultGrid.innerHTML += card;
+                });
+            } else {
+                searchCount.innerText = "Rất tiếc, không tìm thấy sản phẩm nào phù hợp.";
+                resultGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; margin-top: 20px;">
+                        <i class="fa-regular fa-face-frown" style="font-size: 50px; color: #ccc; margin-bottom: 20px;"></i>
+                        <p>Hãy thử tìm kiếm với từ khóa khác nhé!</p>
+                    </div>
+                `;
+            }
+        });
+
+        // --- 3. XỬ LÝ TÌM KIẾM TIẾP TRÊN TRANG NÀY ---
+        const searchInput = document.getElementById('searchInput');
+        const btnSearch = document.getElementById('btnSearchAction');
+
+        function handleSearchRedirect() {
+            const newKeyword = searchInput.value.trim();
+            if (newKeyword) {
+                // Load lại trang chính nó với từ khóa mới
+                window.location.href = `search-results.html?q=${encodeURIComponent(newKeyword)}`;
+            }
+        }
+
+        btnSearch.addEventListener('click', handleSearchRedirect);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSearchRedirect();
+        });
+
+        // Toggle Mobile Menu (Giữ logic cũ)
+        const menuToggle = document.getElementById('mobile-menu-btn');
+        const navbar = document.getElementById('navbar');
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navbar.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
