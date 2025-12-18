@@ -7,9 +7,128 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="footer.css">
+
+    <style>
+        /* --- 1. CSS CHO DROPDOWN MENU USER --- */
+        .user-dropdown {
+            position: absolute; top: 150%; right: 0; width: 260px;
+            background-color: #fff; border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15); padding: 15px; z-index: 9999;
+            border: 1px solid #f0f0f0; opacity: 0; visibility: hidden; 
+            transform: translateY(10px); transition: all 0.2s ease-in-out;
+        }
+        .user-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        .user-dropdown::before {
+            content: ''; position: absolute; top: -8px; right: 14px; width: 16px; height: 16px; 
+            background: #fff; transform: rotate(45deg); border-left: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;
+        }
+
+        .user-header { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
+        .user-header h3 { color: #5d4037; font-size: 16px; font-weight: 700; margin: 0; }
+        .user-header p { font-size: 12px; color: #888; margin-top: 4px; }
+
+        .user-menu-list { list-style: none; margin-bottom: 10px; padding: 0; }
+        .user-menu-list li a {
+            display: flex; align-items: center; gap: 10px; padding: 10px;
+            color: #444; text-decoration: none; font-size: 14px; border-radius: 6px; transition: 0.2s;
+        }
+        .user-menu-list li a:hover { background-color: #f5f0eb; color: #5d4037; }
+        
+        .logout-btn { 
+            width: 100%; padding: 10px; background-color: #ffebee; color: #d32f2f; 
+            border: none; border-radius: 6px; font-weight: 600; cursor: pointer; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
+            font-size: 13px; transition: 0.2s; 
+        }
+        .logout-btn:hover { background-color: #d32f2f; color: #fff; }
+
+        /* --- 2. CSS CHO GỢI Ý TÌM KIẾM (SEARCH SUGGESTION) --- */
+        .search-bar { position: relative; } 
+        
+        /* --- CSS CHO GỢI Ý TÌM KIẾM --- */
+        .search-suggestions {
+            position: absolute; top: 110%; left: 0; width: 100%;
+            background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px; overflow: hidden; z-index: 1000;
+            display: none; 
+            border: 1px solid #eee;
+            
+            /* QUAN TRỌNG: Giới hạn chiều cao và bật thanh cuộn */
+            max-height: 300px; 
+            overflow-y: auto; 
+        }
+
+        /* Tùy chỉnh thanh cuộn (Scrollbar) cho đẹp mắt hơn trên Chrome/Edge/Safari */
+        .search-suggestions::-webkit-scrollbar {
+            width: 6px;
+        }
+        .search-suggestions::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .search-suggestions::-webkit-scrollbar-thumb {
+            background: #ccc; 
+            border-radius: 3px;
+        }
+        .search-suggestions::-webkit-scrollbar-thumb:hover {
+            background: #5d4037; 
+        }
+        .suggestion-item {
+            display: flex; align-items: center; gap: 15px; padding: 10px 15px;
+            cursor: pointer; transition: 0.2s; border-bottom: 1px solid #f9f9f9;
+        }
+        .suggestion-item:last-child { border-bottom: none; }
+        .suggestion-item:hover { background-color: #fdfbf9; }
+        
+        .suggestion-item img {
+            width: 45px; height: 45px; object-fit: cover; border-radius: 6px;
+        }
+        .suggestion-info h4 {
+            font-size: 14px; color: #333; margin: 0; font-weight: 600;
+        }
+        .suggestion-info p {
+            font-size: 13px; color: #d32f2f; margin: 2px 0 0 0; font-weight: 500;
+        }
+        .no-result { padding: 15px; text-align: center; color: #777; font-size: 13px; }
+
+        /* --- 3. CSS CHO MODAL (POPUP) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .modal-overlay.open { opacity: 1; visibility: visible; }
+        .modal-box {
+            background: #fff; width: 400px; padding: 30px; border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;
+            transform: translateY(-20px); transition: 0.3s;
+        }
+        .modal-overlay.open .modal-box { transform: translateY(0); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h2 { color: #5d4037; font-size: 20px; margin: 0; }
+        .close-modal { font-size: 20px; cursor: pointer; color: #888; transition: 0.2s; }
+        .close-modal:hover { color: #d32f2f; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 5px; color: #333; }
+        .form-group input { width: 100%; padding: 10px 12px; border: 1px solid #dcc0b0; border-radius: 5px; outline: none; }
+        .form-group input:focus { border-color: #fca311; background: #fffcf5; }
+        .form-group input:read-only { background-color: #f0f0f0; color: #777; cursor: not-allowed; }
+        .save-btn { width: 100%; padding: 10px; background: #5d4037; color: #fff; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .save-btn:hover { background: #4a332c; }
+        .msg-box { padding: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 13px; text-align: center; display: none; }
+        .msg-error { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+        .msg-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        
+        #user-icon-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+
+        @media (max-width: 576px) {
+            .user-dropdown { width: 260px; right: -10px; }
+            .modal-box { width: 90%; margin: 0 10px; }
+        }
+
+    </style>
 </head>
 <body>
-
     <header id="mainHeader">
         <div class="logo">
             <a href="index.html" class="logo-text">A<span>B</span>C Bakery</a>
@@ -25,7 +144,6 @@
                 <li><a href="gioithieu.html">Giới thiệu</a></li>
                 <li class="dropdown">
                     <a href="sanpham.html">Sản phẩm <i class="fa-solid fa-chevron-down"></i></a>
-
                     <ul class="dropdown-menu">
                         <li><a href="danhmucsp-banhkem.html">Bánh kem</a></li>
                         <li><a href="danhmucsp-banhngot.html">Bánh ngọt</a></li>
@@ -33,7 +151,7 @@
                         <li><a href="danhmucsp-banhquy.html">Bánh quy</a></li>
                         <li><a href="danhmucsp-banhmousse.html">Bánh mousse</a></li>
                         <li><a href="danhmucsp-douong.html">Đồ uống</a></li>
-                     </ul>
+                      </ul>
                 </li>
                 <li><a href="tintuc.html">Tin tức</a></li>
                 <li><a href="lienhe.html">Liên hệ</a></li>
@@ -43,13 +161,17 @@
         <div class="header-right">
             <div class="search-bar">
                 <button id="btnSearchAction"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" id="searchInput" placeholder="Tìm kiếm bánh...">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm bánh..." autocomplete="off">
+                
+                <div id="searchSuggestions" class="search-suggestions">
+                    </div>
             </div>
 
             <div class="user-cart-actions">              
                 <a href="wishlist.html" class="icon-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
                 <a href="cart.html" class="icon-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
-                <a href="user.html" class="icon-btn" id="user-icon-btn">
+                
+                <a href="login.html" class="icon-btn" id="user-icon-btn">
                     <i class="fa-regular fa-user"></i>
                 </a>
             </div>
@@ -67,12 +189,58 @@
     <section id="searchResultsSection">
         <div class="container">
             <h2 id="searchTitle">Kết quả tìm kiếm</h2>
-            <div id="searchResultsGrid" class="product-grid">
-                </div>
+            <div id="searchResultsGrid" class="product-grid"></div>
         </div>
     </section>
 
     <div class="content-dummy"></div>
+
+    <div class="modal-overlay" id="modal-edit-info">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Chỉnh sửa thông tin</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-edit-info')"></i>
+            </div>
+            <div id="edit-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Tên đăng nhập (Không thể sửa)</label>
+                <input type="text" id="edit-username" readonly>
+            </div>
+            <div class="form-group">
+                <label>Họ và tên</label>
+                <input type="text" id="edit-fullname" placeholder="Nhập họ tên mới">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="edit-email" placeholder="Nhập email mới">
+            </div>
+            <button class="save-btn" onclick="saveUserInfo()">Lưu thay đổi</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-change-pass">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Đổi mật khẩu</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-change-pass')"></i>
+            </div>
+            <div id="pass-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Mật khẩu cũ</label>
+                <input type="password" id="old-pass" placeholder="Nhập mật khẩu hiện tại">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" id="new-pass" placeholder="Nhập mật khẩu mới">
+            </div>
+            <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirm-pass" placeholder="Nhập lại mật khẩu mới">
+            </div>
+            <button class="save-btn" onclick="saveNewPassword()">Cập nhật mật khẩu</button>
+        </div>
+    </div>
+
      <footer class="footer">
         <div class="footer-container">
             <div class="footer-col logo-col">
@@ -116,6 +284,7 @@
                 <h3>LIÊN HỆ</h3>
                 <ul>
                     <li><a href="lienhe.html">Liên Hệ Với Chúng Tôi</a></li>
+                    <li><a href="#">Liên Hệ Với Chúng Tôi</a></li>
                 </ul>
             </div>
 
@@ -157,147 +326,255 @@
     </footer>
 
     <script src="footer.js"></script>
+
     <script>
-       // DỮ LIỆU BÁNH (MOCK DATA)
-const cakes = [
-    { name: "Bánh Kem Dâu Tây", price: "450.000đ", img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500" },
-    { name: "Tiramisu Thượng Hạng", price: "380.000đ", img: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500" },
-    { name: "Croissant Bơ Pháp", price: "45.000đ", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500" },
-    { name: "Macaron Ngọt Ngào", price: "120.000đ", img: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500" },
-    { name: "Donut Socola", price: "25.000đ", img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500" },
-    { name: "Bánh Mì Baguette", price: "30.000đ", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500" }
-];
+        // --- 1. KHỞI TẠO BIẾN DỮ LIỆU ---
+        let cakes = []; // Biến chứa dữ liệu bánh sẽ được tải từ JSON
 
-// --- 1. XỬ LÝ SCROLL ĐỔI MÀU HEADER ---
-const header = document.getElementById('mainHeader');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+        // --- 2. HÀM TẢI DỮ LIỆU TỪ FILE PRODUCT.JSON ---
+        fetch('product.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Không thể tải file product.json");
+                }
+                return response.json();
+            })
+            .then(data => {
+                cakes = data; // Gán dữ liệu tải được vào biến cakes
+                console.log("Đã tải dữ liệu sản phẩm thành công:", cakes);
+            })
+            .catch(error => {
+                console.error("Lỗi:", error);
+            });
 
-// --- 2. XỬ LÝ TÌM KIẾM (CHUYỂN HƯỚNG SANG TRANG KẾT QUẢ) ---
-const searchInput = document.getElementById('searchInput');
-const btnSearch = document.getElementById('btnSearchAction');
+        // --- HÀM HELPER: FORMAT TIỀN TỆ ---
+        // Chuyển 390000 -> "390.000đ"
+        function formatCurrency(price) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+        }
 
-function handleSearchRedirect() {
-    const keyword = searchInput.value.trim(); // Lấy từ khóa và xóa khoảng trắng thừa
-    
-    if (keyword) {
-        // Chuyển hướng sang trang search-results.html và gắn từ khóa vào URL
-        // Ví dụ: search-results.html?q=banh+kem
-        window.location.href = `search-results.html?q=${encodeURIComponent(keyword)}`;
-    } else {
-        alert("Vui lòng nhập tên bánh cần tìm!");
-    }
-}
+        // --- 3. XỬ LÝ SCROLL ĐỔI MÀU HEADER ---
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
 
-// Gán sự kiện click và enter
-btnSearch.addEventListener('click', handleSearchRedirect);
-searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleSearchRedirect();
-});
+        // --- 4. XỬ LÝ TÌM KIẾM THÔNG MINH (UPDATED) ---
+        const searchInput = document.getElementById('searchInput');
+        const btnSearch = document.getElementById('btnSearchAction');
+        const suggestionsBox = document.getElementById('searchSuggestions');
 
-// --- 3. XỬ LÝ MENU MOBILE (HAMBURGER) ---
-const menuToggle = document.getElementById('mobile-menu-btn');
-const navbar = document.getElementById('navbar');
+        // Hàm chuyển hướng
+        function goToSearch(keyword) {
+            window.location.href = `search-results.html?q=${encodeURIComponent(keyword)}`;
+        }
 
-menuToggle.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-    
-    // Đổi icon 3 gạch <-> dấu X
-    const icon = menuToggle.querySelector('i');
-    if (navbar.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-xmark');
-    } else {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
-    }
-}); 
-    </script>
-    <script>
-        /* --- DÁN VÀO ĐẦU THẺ <SCRIPT> Ở INDEX.HTML --- */
+        // Sự kiện khi gõ phím
+        searchInput.addEventListener('input', function() {
+            // Kiểm tra xem dữ liệu đã tải xong chưa
+            if (cakes.length === 0) {
+                console.log("Đang đợi dữ liệu tải...");
+                return;
+            }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Kiểm tra đăng nhập
-    const currentUserJson = localStorage.getItem('currentUser');
-    
-    if (currentUserJson) {
-        const user = JSON.parse(currentUserJson);
+            const keyword = this.value.trim().toLowerCase();
+            suggestionsBox.innerHTML = ''; 
+
+            if (!keyword) {
+                suggestionsBox.style.display = 'none';
+                return;
+            }
+
+            // Lọc sản phẩm từ biến cakes
+            const matches = cakes.filter(cake => {
+                return cake.name.toLowerCase().includes(keyword);
+            });
+
+            suggestionsBox.style.display = 'block';
+            
+            if (matches.length > 0) {
+                matches.forEach(cake => {
+                    const div = document.createElement('div');
+                    div.className = 'suggestion-item';
+
+                    // Lấy ảnh đầu tiên làm thumbnail
+                    let imgUrl = (cake.images && cake.images.length > 0) ? cake.images[0] : 'https://via.placeholder.com/50';
+
+                    div.innerHTML = `
+                        <img src="${imgUrl}" alt="${cake.name}" onerror="this.src='https://via.placeholder.com/50'">
+                        <div class="suggestion-info">
+                            <h4>${cake.name}</h4>
+                            <p>${formatCurrency(cake.price)}</p>
+                        </div>
+                    `;
+
+                    // --- SỰ KIỆN CLICK MỚI: Chuyển sang trang chi tiết ---
+                    div.addEventListener('click', () => {
+                        window.location.href = `product2.html?id=${cake.id}`;
+                    });
+                    
+                    suggestionsBox.appendChild(div);
+                });
+            } else {
+                suggestionsBox.innerHTML = '<div class="no-result">Không tìm thấy sản phẩm nào</div>';
+            }
+        });
+
+        // Click nút kính lúp
+        btnSearch.addEventListener('click', () => {
+            if (searchInput.value.trim()) goToSearch(searchInput.value.trim());
+        });
         
-        if (user.isLoggedIn) {
-            // --- QUAN TRỌNG: Lấy đúng icon User bằng ID vừa đặt ---
+        // Nhấn Enter cũng tìm
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim()) goToSearch(searchInput.value.trim());
+        });
+
+        // Click ra ngoài thì ẩn gợi ý
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                suggestionsBox.style.display = 'none';
+            }
+        });
+
+        // --- 5. XỬ LÝ TÀI KHOẢN & ĐĂNG NHẬP/ĐĂNG XUẤT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUserJson = localStorage.getItem('currentUser');
             const userBtn = document.getElementById('user-icon-btn');
             const actionContainer = document.querySelector('.user-cart-actions');
             
-            if (userBtn) {
-                // A. THAY ĐỔI GIAO DIỆN ICON USER
-                userBtn.innerHTML = '<i class="fa-solid fa-user-check"></i>'; 
-                userBtn.style.position = 'relative'; // Để chấm xanh bám theo
-                userBtn.style.color = '#5d4037';     // Đổi màu icon cho nổi (tuỳ chọn)
-                userBtn.title = `Xin chào, ${user.fullname}`;
+            if (currentUserJson && userBtn) {
+                const sessionUser = JSON.parse(currentUserJson);
                 
-                // B. TẠO CHẤM XANH (Chỉ gắn vào userBtn)
-                const onlineDot = document.createElement('div');
-                onlineDot.style.cssText = `
-                    position: absolute; 
-                    top: -2px; 
-                    right: -2px; 
-                    width: 10px; 
-                    height: 10px; 
-                    background: #4CAF50; 
-                    border-radius: 50%; 
-                    border: 2px solid #fff;
-                    z-index: 10;
-                `;
-                userBtn.appendChild(onlineDot);
+                if (sessionUser.isLoggedIn) {
+                    userBtn.innerHTML = '<i class="fa-solid fa-user-check"></i>'; 
+                    userBtn.style.color = '#5d4037';
+                    userBtn.title = `Xin chào, ${sessionUser.fullname}`;
+                    userBtn.href = "#"; 
 
-                // C. TẠO MENU DROPDOWN
-                const dropdownHTML = `
-                    <div class="user-dropdown" id="userDropdown">
-                        <div class="user-info">
-                            <h3>${user.fullname}</h3>
-                            <p>@${user.username}</p>
+                    const onlineDot = document.createElement('div');
+                    onlineDot.style.cssText = `position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:#4CAF50; border-radius:50%; border:2px solid #fff; z-index:10; pointer-events:none;`;
+                    userBtn.appendChild(onlineDot);
+
+                    const dropdownHTML = `
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="user-header">
+                                <h3>${sessionUser.fullname}</h3>
+                                <p>@${sessionUser.username}</p>
+                            </div>
+                            <ul class="user-menu-list">
+                                <li><a href="#" onclick="openEditModal(event)"><i class="fa-solid fa-user-pen"></i> Chỉnh sửa thông tin</a></li>
+                                <li><a href="#" onclick="openChangePassModal(event)"><i class="fa-solid fa-lock"></i> Đổi mật khẩu</a></li>
+                            </ul>
+                            <button class="logout-btn" onclick="handleLogout()">
+                                <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                            </button>
                         </div>
-                        <hr style="border:0; border-top:1px solid #eee; margin-bottom:15px;">
-                        <button class="logout-btn" onclick="handleLogout()">
-                            <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
-                        </button>
-                    </div>
-                `;
-                // Gắn menu vào container cha để căn chỉnh vị trí dễ hơn
-                actionContainer.insertAdjacentHTML('beforeend', dropdownHTML);
+                    `;
+                    actionContainer.insertAdjacentHTML('beforeend', dropdownHTML);
 
-                // D. XỬ LÝ CLICK (Bật tắt menu)
-                userBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // Không chuyển trang
-                    const menu = document.getElementById('userDropdown');
-                    menu.classList.toggle('active');
-                });
+                    userBtn.addEventListener('click', (e) => {
+                        e.preventDefault(); 
+                        document.getElementById('userDropdown').classList.toggle('active');
+                    });
 
-                // E. CLICK RA NGOÀI THÌ TẮT MENU
-                document.addEventListener('click', (e) => {
-                    const menu = document.getElementById('userDropdown');
-                    // Nếu click không trúng icon user và cũng không trúng menu
-                    if (!userBtn.contains(e.target) && !menu.contains(e.target)) {
-                        menu.classList.remove('active');
-                    }
-                });
+                    document.addEventListener('click', (e) => {
+                        const menu = document.getElementById('userDropdown');
+                        if (menu && !userBtn.contains(e.target) && !menu.contains(e.target)) {
+                            menu.classList.remove('active');
+                        }
+                    });
+                }
+            }
+        });
+
+        // --- CÁC HÀM MODAL & UTILS ---
+        function showMsg(elementId, text, type) {
+            const el = document.getElementById(elementId);
+            el.innerText = text; el.style.display = 'block';
+            el.className = 'msg-box ' + (type === 'error' ? 'msg-error' : 'msg-success');
+        }
+
+        function openEditModal(e) {
+            e.preventDefault();
+            document.getElementById('userDropdown').classList.remove('active');
+            const sessionUser = JSON.parse(localStorage.getItem('currentUser'));
+            const listAccounts = JSON.parse(localStorage.getItem('listAccounts')) || [];
+            const userAccount = listAccounts.find(acc => acc.username === sessionUser.username);
+
+            document.getElementById('edit-username').value = userAccount.username;
+            document.getElementById('edit-fullname').value = userAccount.fullname;
+            document.getElementById('edit-email').value = userAccount.email || ""; 
+            document.getElementById('edit-msg').style.display = 'none';
+            document.getElementById('modal-edit-info').classList.add('open');
+        }
+
+        function saveUserInfo() {
+            const newName = document.getElementById('edit-fullname').value.trim();
+            const newEmail = document.getElementById('edit-email').value.trim();
+            const sessionUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if(!newName || !newEmail) { showMsg('edit-msg', 'Vui lòng nhập đầy đủ thông tin', 'error'); return; }
+
+            let listAccounts = JSON.parse(localStorage.getItem('listAccounts')) || [];
+            const index = listAccounts.findIndex(acc => acc.username === sessionUser.username);
+            
+            if(index !== -1) {
+                const isEmailExist = listAccounts.some((acc, idx) => acc.email === newEmail && idx !== index);
+                if (isEmailExist) { showMsg('edit-msg', 'Email đã được sử dụng!', 'error'); return; }
+
+                listAccounts[index].fullname = newName;
+                listAccounts[index].email = newEmail;
+                localStorage.setItem('listAccounts', JSON.stringify(listAccounts));
+                sessionUser.fullname = newName;
+                localStorage.setItem('currentUser', JSON.stringify(sessionUser));
+                showMsg('edit-msg', 'Cập nhật thành công! Đang tải lại...', 'success');
+                setTimeout(() => window.location.reload(), 1000);
             }
         }
-    }
-});
 
-// Hàm đăng xuất
-function handleLogout() {
-    if(confirm("Bạn có chắc chắn muốn đăng xuất?")) {
-        localStorage.removeItem('currentUser');
-        window.location.reload();
-    }
-}
+        function openChangePassModal(e) {
+            e.preventDefault();
+            document.getElementById('userDropdown').classList.remove('active');
+            document.getElementById('old-pass').value = '';
+            document.getElementById('new-pass').value = '';
+            document.getElementById('confirm-pass').value = '';
+            document.getElementById('pass-msg').style.display = 'none';
+            document.getElementById('modal-change-pass').classList.add('open');
+        }
+
+        function saveNewPassword() {
+            const oldPass = document.getElementById('old-pass').value;
+            const newPass = document.getElementById('new-pass').value;
+            const confirmPass = document.getElementById('confirm-pass').value;
+            const sessionUser = JSON.parse(localStorage.getItem('currentUser'));
+            let listAccounts = JSON.parse(localStorage.getItem('listAccounts')) || [];
+            const userAccount = listAccounts.find(acc => acc.username === sessionUser.username);
+
+            if (!oldPass || !newPass || !confirmPass) { showMsg('pass-msg', 'Nhập đầy đủ thông tin', 'error'); return; }
+            if (userAccount.password !== oldPass) { showMsg('pass-msg', 'Mật khẩu cũ sai!', 'error'); return; }
+            if (newPass.length < 6) { showMsg('pass-msg', 'Mật khẩu quá ngắn', 'error'); return; }
+            if (newPass !== confirmPass) { showMsg('pass-msg', 'Mật khẩu không khớp!', 'error'); return; }
+
+            const index = listAccounts.findIndex(acc => acc.username === sessionUser.username);
+            listAccounts[index].password = newPass;
+            localStorage.setItem('listAccounts', JSON.stringify(listAccounts));
+            showMsg('pass-msg', 'Đổi mật khẩu thành công!', 'success');
+            setTimeout(() => closeModal('modal-change-pass'), 1500);
+        }
+
+        function closeModal(modalId) { document.getElementById(modalId).classList.remove('open'); }
+        function handleLogout() { localStorage.removeItem('currentUser'); window.location.reload(); }
+
+        const menuToggle = document.getElementById('mobile-menu-btn');
+        const navbar = document.getElementById('navbar');
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }); 
     </script>
 </body>
 </html>
