@@ -1,71 +1,74 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector(".fade-in").classList.add("show");
+
+    setTimeout(() => {
+        document.querySelector(".fade-in").classList.add("show");
+    }, 100);
 
     const form = document.getElementById("contactForm");
 
     const fields = {
         name: {
-            input: document.getElementById("name"),
+            el: document.getElementById("name"),
             rule: v => v !== "",
             msg: "Vui lòng nhập họ và tên."
         },
         email: {
-            input: document.getElementById("email"),
+            el: document.getElementById("email"),
             rule: v => /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(v),
             msg: "Email phải có định dạng @gmail.com."
         },
         phone: {
-            input: document.getElementById("phone"),
+            el: document.getElementById("phone"),
             rule: v => /^[0-9]{10,}$/.test(v),
             msg: "Số điện thoại phải có ít nhất 10 chữ số."
         },
         message: {
-            input: document.getElementById("message"),
+            el: document.getElementById("message"),
             rule: v => v !== "",
-            msg: "Vui lòng nhập nội dung liên hệ."
+            msg: "Vui lòng nhập nội dung."
         }
     };
 
     Object.values(fields).forEach(f => {
-        f.input.addEventListener("input", () => validate(f));
-        f.input.addEventListener("blur", () => validate(f));
+        f.el.addEventListener("input", () => validate(f));
+        f.el.addEventListener("blur", () => validate(f));
     });
 
     form.addEventListener("submit", e => {
         e.preventDefault();
-        let valid = true;
+        let ok = true;
 
         Object.values(fields).forEach(f => {
-            if (!validate(f)) valid = false;
+            if (!validate(f)) ok = false;
         });
 
-        if (valid) {
+        if (ok) {
             alert("🎉 Gửi thông tin thành công! HONEYQUE sẽ liên hệ sớm.");
             form.reset();
-            resetStyle();
+            reset();
         }
     });
 
     function validate(field) {
-        const value = field.input.value.trim();
-        const error = field.input.nextElementSibling;
+        const value = field.el.value.trim();
+        const error = field.el.nextElementSibling;
 
         if (!field.rule(value)) {
             error.textContent = field.msg;
-            field.input.classList.add("error-border");
-            field.input.classList.remove("success-border");
+            field.el.classList.add("error-border");
+            field.el.classList.remove("success-border");
             return false;
         }
 
         error.textContent = "";
-        field.input.classList.remove("error-border");
-        field.input.classList.add("success-border");
+        field.el.classList.remove("error-border");
+        field.el.classList.add("success-border");
         return true;
     }
 
-    function resetStyle() {
+    function reset() {
         Object.values(fields).forEach(f => {
-            f.input.classList.remove("error-border", "success-border");
+            f.el.classList.remove("error-border", "success-border");
         });
     }
 });

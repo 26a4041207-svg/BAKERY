@@ -1,121 +1,92 @@
-/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 body {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-/* ================= SECTION ================= */
-.contact-section {
-    padding: 80px 15px;
-}
-
-/* ================= WRAPPER (ĐÓNG KHUNG) ================= */
-.contact-wrapper {
-    max-width: 1100px;
-    margin: auto;
-
-    background: #ffffff;
-    padding: 60px;
-    border-radius: 14px;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
-
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 60px;
-    align-items: stretch;
-}
-
-/* ================= LEFT CONTENT ================= */
-.contact-left h1 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.desc {
-    font-size: 16px;
-    line-height: 1.9;
-    color: #555;
-    margin-bottom: 25px;
-}
-
-.store-info p {
-    margin-bottom: 8px;
-    font-size: 15px;
-    color: #444;
-}
-
-/* ================= FORM ================= */
-.form-group {
-    margin-top: 20px;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 15px;
-    transition: 0.25s ease;
     background: #fff;
+    color: #333;
 }
 
-textarea {
-    resize: none;
-    height: 120px;
+/* Layout */
+.contact-wrapper {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
 
-input:focus,
-textarea:focus {
-    border-color: #bc9669;
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
-/* ================= BUTTON ================= */
-button {
-    margin-top: 25px;
-    padding: 14px;
+/* Info */
+.info-box,
+.form-box {
+    background: #f7ecd2;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.info-box h3,
+.form-box h3 {
+    font-size: 22px;
+    color: #c58a1c;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+/* Form */
+.form-box input,
+.form-box textarea {
     width: 100%;
+    padding: 12px;
+    border-radius: 8px;
     border: none;
-    background: #bc9669;
+    margin-bottom: 5px;
+}
+
+.form-box button {
+    background: #d29b2e;
     color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 6px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s ease;
+    font-weight: 600;
 }
 
-button:hover {
-    background: #a88050;
+.form-box button:hover {
+    background: #b88422;
 }
 
-/* ================= ERROR / SUCCESS ================= */
+/* Error */
 .error {
-    display: block;
-    margin-top: 5px;
     font-size: 13px;
-    color: #d32f2f;
+    color: #e53935;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .error-border {
-    border-color: #d32f2f !important;
+    border: 1px solid #e53935;
 }
 
 .success-border {
-    border-color: #4caf50 !important;
+    border: 1px solid #43a047;
 }
 
-/* ================= RIGHT MAP ================= */
+/* Map */
 .contact-right iframe {
     width: 100%;
     height: 100%;
@@ -124,11 +95,11 @@ button:hover {
     border-radius: 12px;
 }
 
-/* ================= ANIMATION ================= */
+/* Animation */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
-    transition: 0.9s ease;
+    transition: 0.8s ease;
 }
 
 .fade-in.show {
@@ -136,8 +107,8 @@ button:hover {
     transform: translateY(0);
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 992px) {
+/* Responsive */
+@media (max-width: 900px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
         padding: 45px 30px;

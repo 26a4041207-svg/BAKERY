@@ -31,6 +31,7 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     color: rgb(255, 255, 255);
+    font-family: Arial, sans-serif;
 }
 
 .banner-title {
@@ -38,17 +39,20 @@ body {
     font-weight: 700;
     margin: 10px 0 0;
     text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    font-family: Arial, sans-serif;
 }
 
 .breadcrumb {
     font-size: 25px;
     opacity: 0.8;
-    font-weight: bold
+    font-weight: bold;
+    font-family: Arial, sans-serif;
 }
 .breadcrumb a {
     text-decoration: none;
     color: #ffffff; /* hoặc màu bạn đang dùng trên banner */
     transition: 0.2s;
+    font-family: Arial, sans-serif;
 }
 
 .breadcrumb a:hover {
@@ -266,4 +270,65 @@ body {
     transform: scale(1.05) translateY(-3px);
     box-shadow: 0 12px 28px rgba(0,0,0,0.20);
     z-index: 10;
+}
+
+/* RESPONSIVE - Cấu hình cho máy tính bảng và điện thoại */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column !important; /* Ép buộc xuống hàng */
+        gap: 30px; /* Thu hẹp khoảng cách giữa chữ và ảnh */
+        text-align: left; /* Căn lề trái cho dễ đọc trên mobile */
+    }
+
+    /* Hiệu ứng đảo ngược: Chữ trên, ảnh dưới cho các phần có class .reverse */
+    .container.reverse {
+        flex-direction: column !important; 
+    }
+
+    /* Đảm bảo ảnh không bị méo và chiếm hết chiều ngang */
+    .container .image, .container .text {
+        width: 100%;
+        flex: none;
+    }
+
+    .container .image img {
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Chỉnh lại các mục giá trị cốt lõi xuống hàng */
+    .value-list {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .value-item {
+        width: 100%;
+    }
+
+    /* Chỉnh lại tiêu đề banner nhỏ lại trên mobile */
+    .banner-title {
+        font-size: 35px;
+    }
+    
+    .breadcrumb {
+        font-size: 18px;
+    }
+}
+
+/* Cấu hình riêng cho điện thoại nhỏ */
+@media (max-width: 600px) {
+    .about-section {
+        padding: 20px 5%;
+    }
+    
+    .about-main-en, .about-main-vi, .about-title {
+        font-size: 24px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
 }
