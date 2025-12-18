@@ -10,25 +10,120 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
 
     <link rel="stylesheet" href="product2.css">
 </head>
 
 <body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="header-logo-img">
+            </a>
+        </div>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/cdwW7wQYjK/GzIqjT1/Q/Xq8pE4U/k+T9w5K6c1J/38s5k0yQ==
-" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
+        <div class="menu-toggle" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Trang chủ</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li class="dropdown">
+                    <a href="sanpham.html">Sản phẩm <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="danhmucsp-banhkem.html">Bánh kem</a></li>
+                        <li><a href="danhmucsp-banhngot.html">Bánh ngọt</a></li>
+                        <li><a href="danhmucsp-banhnuong.html">Bánh nướng</a></li>
+                        <li><a href="danhmucsp-banhquy.html">Bánh quy</a></li>
+                        <li><a href="danhmucsp-banhmousse.html">Bánh mousse</a></li>
+                        <li><a href="danhmucsp-douong.html">Đồ uống</a></li>
+                      </ul>
+                </li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <button id="btnSearchAction"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm bánh..." autocomplete="off">
+                
+                <div id="searchSuggestions" class="search-suggestions">
+                    </div>
+            </div>
+
+            <div class="user-cart-actions">              
+                <a href="wishlist.html" class="icon-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+                <a href="cart.html" class="icon-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
+                
+                <a href="login.html" class="icon-btn" id="user-icon-btn">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <section id="searchResultsSection">
+        <div class="container">
+            <h2 id="searchTitle">Kết quả tìm kiếm</h2>
+            <div id="searchResultsGrid" class="product-grid"></div>
+        </div>
+    </section>
+
+    <div class="content-dummy"></div>
+
+    <div class="modal-overlay" id="modal-edit-info">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Chỉnh sửa thông tin</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-edit-info')"></i>
+            </div>
+            <div id="edit-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Tên đăng nhập (Không thể sửa)</label>
+                <input type="text" id="edit-username" readonly>
+            </div>
+            <div class="form-group">
+                <label>Họ và tên</label>
+                <input type="text" id="edit-fullname" placeholder="Nhập họ tên mới">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="edit-email" placeholder="Nhập email mới">
+            </div>
+            <button class="save-btn" onclick="saveUserInfo()">Lưu thay đổi</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-change-pass">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Đổi mật khẩu</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-change-pass')"></i>
+            </div>
+            <div id="pass-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Mật khẩu cũ</label>
+                <input type="password" id="old-pass" placeholder="Nhập mật khẩu hiện tại">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" id="new-pass" placeholder="Nhập mật khẩu mới">
+            </div>
+            <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirm-pass" placeholder="Nhập lại mật khẩu mới">
+            </div>
+            <button class="save-btn" onclick="saveNewPassword()">Cập nhật mật khẩu</button>
+        </div>
+    </div> 
 
 <div class="container mx-auto px-4 py-8 mt-10">
-    <nav class="text-sm text-gray-600 mb-4" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#" class="text-secondary-color hover:text-gray-800 no-underline">Trang chủ</a></li>
-            <li class="breadcrumb-item"><a href="#" class="text-secondary-color hover:text-gray-800 no-underline">Bánh Ngọt</a></li>
-            <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-product-name">Bánh Cuộn Mini</li>
-        </ol>
-    </nav>
 
     <div class="row">
         <div class="col-lg-5 mb-4">
@@ -72,15 +167,15 @@
                 </button>
             </div>
 
-            <div class="border-2 border-gold rounded-lg overflow-hidden mb-6 shadow-md">
+            <div class="promo-box mb-6">
 
-                <div class="flex items-center w-full border-2 border-gold rounded overflow-hidden shadow-md">
+                <div class="promo-header flex items-center w-full">
 
-                    <div class="bg-white flex items-center justify-center px-4 py-2 ">
+                    <div class="promo-icon bg-white flex items-center justify-center px-4 py-2">
                         <i class="fas fa-gift text-gold text-2xl"></i>
                     </div>
 
-                    <p class="text-lg font-bold bg-gold text-white py-2 px-4 flex items-center w-full">
+                    <p class="promo-title text-lg font-bold bg-gold text-white py-2 px-4 flex items-center w-full">
                         Khuyến mãi đặc biệt !!!
                     </p>
 
@@ -243,6 +338,89 @@
     </div>
 </div>
 
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col logo-col">
+            <div class="footer-logo">
+                <a href="index.html" title="Về trang chủ">
+                    <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="footer-logo-img">
+                </a>
+            </div>
+            <p class="footer-desc">
+                Honeyque mang trong mình sứ mệnh tạo ra những chiếc bánh chất lượng, thơm ngon và đầy cảm xúc. 
+    Chúng tôi tin rằng mỗi chiếc bánh không chỉ là món ăn, mà là một khoảnh khắc sẻ chia – nơi sự 
+    ngọt ngào có thể kết nối con người, mang lại niềm vui và làm cho những dịp đặc biệt trở nên trọn vẹn hơn.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h3>VỀ HONEYQUE</h3>
+            <ul>
+                <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                <li><a href="tintuc.html">Tin Tức </a></li>
+                <li><a href="chinhsachantoanthucpham.html">Chính Sách An Toàn Thực Phẩm</a></li>
+                <li><a href="chinhsachdichvu.html">Chính Sách Dịch Vụ</a></li>
+                <li><a href="chinhsachbaomat.html">Chính Sách Bảo Mật</a></li>
+                <li><a href="khachhangthanthiet.html">Khách Hàng Thân Thiết</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>THƯỞNG THỨC</h3>
+            <ul>
+                <li><a href="danhmucsp-banhkem.html">Bánh Kem</a></li>
+                <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                <li><a href="danhmucsp-banhngot.html">Bánh Ngọt</a></li>
+                <li><a href="danhmucsp-banhquy.html">Bánh Quy</a></li>
+                <li><a href="danhmucsp-banhmousse.html">Bánh Mousse</a></li>
+                <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>LIÊN HỆ</h3>
+            <ul>
+                <li><a href="#">Liên Hệ Với Chúng Tôi</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col newsletter-col">
+            <h3>ĐĂNG KÍ NHẬN TIN</h3>
+            
+            <form id="emailForm" class="email-form">
+                <input type="email" id="emailInput" placeholder="Nhập địa chỉ email vào đây ..." required>
+                <button type="submit" class="submit-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+
+            <div id="successMessage" class="success-message" style="display: none;">
+                <p>Cảm ơn bạn, yêu cầu đăng ký của bạn đã thành công! Vui lòng kiểm tra hộp thư đến email để xác nhận.</p>
+                
+                <button id="resetEmailBtn" class="reset-btn">
+                    <i class="fa-solid fa-rotate-left"></i> Đăng ký tài khoản khác
+                </button>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © 2025 Honeyque Pte Ltd. All rights reserved.</p>
+    </div>
+
+    <button id="scrollToTopBtn" class="scroll-top-btn">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+</footer>
+
 <div id="custom-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
     <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
         <h3 class="text-xl font-bold mb-4 text-gray-800" id="modal-title">Thông báo</h3>
@@ -255,6 +433,8 @@
 
 
 
+<script src="header.js"></script>
+<script src="footer.js"></script>
 <script src="product2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
