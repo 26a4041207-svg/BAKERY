@@ -270,13 +270,13 @@ header.scrolled .header-logo-img {
     background: rgba(0, 0, 0, 0.35);
 }
 
-.banner-text {
+/* .banner-text {
     position: relative;
     z-index: 1;
     text-align: center;
     color: white;
     padding: 0 20px;
-}
+} */
 
 .banner-text h1 {
     font-size: 60px;
