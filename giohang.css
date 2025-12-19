@@ -8,7 +8,8 @@
   opacity: 0;
   visibility: hidden;
   transition: 0.3s;
-  z-index: 998;
+  /* đặt cao hơn header (header z-index:1000) để overlay che phủ header khi mở giỏ */
+  z-index: 1200;
 }
 
 #cart-overlay.active {
@@ -25,7 +26,8 @@
   height: 100%;
   background: #fff;
   transition: 0.3s ease;
-  z-index: 999;
+  /* đặt cao hơn header (header z-index:1000) để drawer hiển thị phía trên header */
+  z-index: 1201;
   overflow-y: auto;
 }
 
