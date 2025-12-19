@@ -82,13 +82,13 @@
             }
         });
 
-        btnSearch.addEventListener('click', () => {
-            if (searchInput.value.trim()) goToSearch(searchInput.value.trim());
-        });
+        // btnSearch.addEventListener('click', () => {
+        //     if (searchInput.value.trim()) goToSearch(searchInput.value.trim());
+        // });
         
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && searchInput.value.trim()) goToSearch(searchInput.value.trim());
-        });
+        // searchInput.addEventListener('keypress', (e) => {
+        //     if (e.key === 'Enter' && searchInput.value.trim()) goToSearch(searchInput.value.trim());
+        // });
 
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
@@ -242,3 +242,63 @@
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-xmark');
         });
+
+// ---6. JS CHO HERO SLIDER ---
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        // --- HÀM HIỂN THỊ SLIDE ---
+        function showSlide(index) {
+            // Xử lý vòng lặp slide
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;
+
+            // Reset class active
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Set active cho slide và dot hiện tại
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // --- HÀM TỰ ĐỘNG CHẠY ---
+        function startAutoSlide() {
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000); // 5000ms = 5 giây
+        }
+
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        // --- SỰ KIỆN CLICK ---
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+            resetAutoSlide();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+            resetAutoSlide();
+        });
+
+        // Click vào dấu chấm (Hàm global để gọi từ HTML)
+        window.goToSlide = function(index) {
+            showSlide(index);
+            resetAutoSlide();
+        }
+
+        // Khởi chạy
+        startAutoSlide();
+        showSlide(currentSlide);
+  
