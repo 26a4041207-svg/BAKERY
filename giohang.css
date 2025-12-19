@@ -1,3 +1,4 @@
+
 /* ================= OVERLAY ================= */
 #cart-overlay {
   position: fixed;
@@ -7,7 +8,8 @@
   opacity: 0;
   visibility: hidden;
   transition: 0.3s;
-  z-index: 998;
+  /* đặt cao hơn header (header z-index:1000) để overlay che phủ header khi mở giỏ */
+  z-index: 1200;
 }
 
 #cart-overlay.active {
@@ -24,9 +26,9 @@
   height: 100%;
   background: #fff;
   transition: 0.3s ease;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
+  /* đặt cao hơn header (header z-index:1000) để drawer hiển thị phía trên header */
+  z-index: 1201;
+  overflow-y: auto;
 }
 
 #cart-drawer.active {
@@ -57,7 +59,6 @@
 /* ================= BODY ================= */
 .cart-body {
   flex: 1;
-  overflow-y: auto;
   padding: 16px;
   padding-bottom: 0;
 }
@@ -150,6 +151,10 @@
 .cart-fieldset .field-row textarea {
   flex: 1;
   padding: 6px 8px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  outline: none;
+  background: #fff;
 }
 
 /* PHƯƠNG THỨC NHẬN HÀNG – 1 DÒNG */
@@ -192,4 +197,70 @@
   border: none;
   cursor: pointer;
   font-size: 15px;
+}
+.cart-checkout:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= PAYMENT POPUP ================= */
+#payment-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 2000;
+}
+
+#payment-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: #fff;
+  padding: 28px 32px;
+  border-radius: 10px;
+  text-align: center;
+  width: 380px;
+  max-width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 2001;
+}
+
+#payment-popup h3 {
+  margin-bottom: 12px;
+  color: #c8a97e;
+  font-size: 20px;
+}
+
+#payment-popup p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#payment-popup button {
+  padding: 10px 22px;
+  border: none;
+  background: #c8a97e;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* ACTIVE */
+#payment-overlay.active,
+#payment-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#payment-popup.active {
+  transform: translate(-50%, -50%) scale(1);
 }
