@@ -19,8 +19,15 @@ let orderSuccess = false;
     .then(html => {
       document.body.insertAdjacentHTML("beforeend", html);
       bindBaseEvents();
+      bindOpenCartButtons();
       renderCart();
     });
+
+  function bindOpenCartButtons() {
+    document.querySelectorAll('#open-cart-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => { e.preventDefault(); openCart(); });
+    });
+  }
 
   /* =============================
      BASE EVENTS
@@ -133,20 +140,21 @@ function closePaymentPopup() {
      CART LOGIC
   ============================== */
 
-  function addToCart(id) {
+  function addToCart(id, qty = 1) {
     id = String(id); // ÉP ID LUÔN LÀ STRING
+    qty = Number(qty) || 1;
 
     const item = cart.find(i => i.id === id);
 
     if (item) {
-      item.qty++;
+      item.qty += qty;
     } else {
       const product = products.find(p => p.id === id);
       if (!product) return;
 
       cart.push({
         ...product,
-        qty: 1
+        qty: qty
       });
     }
 
@@ -243,4 +251,7 @@ function closePaymentPopup() {
   ============================== */
 
   window.GioHangAdd = addToCart;
+  // Expose open/close API so other pages can open the cart drawer without navigating
+  window.GioHangOpen = openCart;
+  window.GioHangClose = closeCart;
 })();

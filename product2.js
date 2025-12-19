@@ -152,6 +152,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // GỌI HÀM LẤY ID TỪ URL
     const productId = getProductIdFromUrl();
     loadProductDetails(productId);
+
+    // Bind cart open button (if giohang.js is loaded it will expose GioHangOpen)
+    const cartBtn = document.getElementById('open-cart-btn');
+    if (cartBtn) {
+        cartBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.GioHangOpen) window.GioHangOpen();
+            else window.location.href = 'giohang.html';
+        });
+    }
 });
 
 // -- Shared current product state --
