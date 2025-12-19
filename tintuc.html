@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="tintuc.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 <body>
 
@@ -115,5 +117,90 @@
 
 
 <script src="tintuc.js"></script>
+
+<footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col logo-col">
+                <div class="footer-logo">
+                    <a href="index.html" title="Về trang chủ">
+                        <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="footer-logo-img">
+                    </a>
+                </div>
+                <p class="footer-desc">
+                    Honeyque mang trong mình sứ mệnh tạo ra những chiếc bánh chất lượng, thơm ngon và đầy cảm xúc. 
+        Chúng tôi tin rằng mỗi chiếc bánh không chỉ là món ăn, mà là một khoảnh khắc sẻ chia – nơi sự 
+        ngọt ngào có thể kết nối con người, mang lại niềm vui và làm cho những dịp đặc biệt trở nên trọn vẹn hơn.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h3>VỀ HONEYQUE</h3>
+                <ul>
+                    <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                    <li><a href="tintuc.html">Tin Tức </a></li>
+                    <li><a href="chinhsachantoanthucpham.html">Chính Sách An Toàn Thực Phẩm</a></li>
+                    <li><a href="chinhsachdichvu.html">Chính Sách Dịch Vụ</a></li>
+                    <li><a href="chinhsachbaomat.html">Chính Sách Bảo Mật</a></li>
+                    <li><a href="khachhangthanthiet.html">Khách Hàng Thân Thiết</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>THƯỞNG THỨC</h3>
+                <ul>
+                    <li><a href="danhmucsp-banhkem.html">Bánh Kem</a></li>
+                    <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                    <li><a href="danhmucsp-banhngot.html">Bánh Ngọt</a></li>
+                    <li><a href="danhmucsp-banhquy.html">Bánh Quy</a></li>
+                    <li><a href="danhmucsp-banhmousse.html">Bánh Mousse</a></li>
+                    <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li><a href="lienhe.html">Liên Hệ Với Chúng Tôi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h3>ĐĂNG KÍ NHẬN TIN</h3>
+                
+                <form id="emailForm" class="email-form">
+                    <input type="email" id="emailInput" placeholder="Nhập địa chỉ email vào đây ..." required>
+                    <button type="submit" class="submit-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <p>Cảm ơn bạn, yêu cầu đăng ký của bạn đã thành công! Vui lòng kiểm tra hộp thư đến email để xác nhận.</p>
+                    
+                    <button id="resetEmailBtn" class="reset-btn">
+                        <i class="fa-solid fa-rotate-left"></i> Đăng ký tài khoản khác
+                    </button>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Honeyque Pte Ltd. All rights reserved.</p>
+        </div>
+
+        <button id="scrollToTopBtn" class="scroll-top-btn">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+    </footer>
+
+    <script src="footer.js"></script>
 </body>
 </html>
