@@ -24,28 +24,29 @@
   <div class="cart-extra">
 
     <fieldset class="cart-fieldset">
-      <legend>Thông tin liên hệ</legend>
+  <legend>Thông tin liên hệ</legend>
 
-      <div class="field-row">
+  <div class="field-row">
     <label>Họ và tên</label>
-    <input type="text">
+    <input type="text" id="customer-name">
   </div>
 
   <div class="field-row">
     <label>Số điện thoại</label>
-    <input type="text">
+    <input type="text" id="customer-phone">
   </div>
 
   <div class="field-row">
     <label>Email</label>
-    <input type="text">
+    <input type="text" id="customer-email">
   </div>
 
   <div class="field-row">
     <label>Địa chỉ</label>
-    <textarea></textarea>
+    <textarea id="customer-address"></textarea>
   </div>
-    </fieldset>
+</fieldset>
+
 
     <fieldset class="cart-fieldset">
       <legend>Phương thức nhận hàng</legend>
@@ -71,6 +72,18 @@
     <button class="cart-checkout">Thanh toán</button>
   </div>
 </div>
+<!-- PAYMENT SUCCESS POPUP -->
+<div id="payment-overlay"></div>
+
+<div id="payment-popup">
+  <h3>🎉 Đặt hàng thành công</h3>
+  <p>
+    Cảm ơn quý khách đã tin tưởng.<br>
+    HONEYQUE xin phép gửi email đến quý khách sau khi đã xác nhận đơn hàng.
+  </p>
+  <button id="payment-close-btn">Đóng</button>
+</div>
+
 
  <script src="giohang.js" defer></script>
 </body>

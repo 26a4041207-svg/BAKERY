@@ -32,33 +32,16 @@ if (quantityInput && decrementBtn && incrementBtn) {
 }
 
 
-    // 3. Chức năng Modal tùy chỉnh
-const customModal = document.getElementById("custom-modal");
-const modalTitle = document.getElementById("modal-title");
-const modalMessage = document.getElementById("modal-message");
-
-function showModal(title, message) {
-    if (!customModal || !modalTitle || !modalMessage) return;
-
-    modalTitle.textContent = title;
-    modalMessage.textContent = message;
-    customModal.classList.remove("hidden");
-    customModal.classList.add("flex");
-}
-
-function closeModal() {
-    if (!customModal) return;
-    customModal.classList.add("hidden");
-    customModal.classList.remove("flex");
-}
-
-
     // 4. Chức năng Thêm vào giỏ hàng
     function addToCart() {
-        if (!currentProduct) { showModal('Lỗi', 'Chưa có sản phẩm nào được tải.'); return; }
-        const quantity = quantityInput.value;
-        showModal('Thêm vào Giỏ hàng', `Đã thêm ${quantity} sản phẩm '${currentProduct.name}' vào giỏ hàng.`);
-    }
+    if (!currentProduct) return;
+
+    const quantity = Number(quantityInput.value) || 1;
+
+    // chỉ thêm vào giỏ – KHÔNG hiện popup
+    GioHangAdd(currentProduct.id, quantity);
+}
+
 
     // 5. Chức năng Thêm/Xóa Yêu thích cho sản phẩm chính
     function addToWishlistMain(buttonElement) {
@@ -478,4 +461,7 @@ function renderRecentlyViewed(limit = 10) {
         col.appendChild(anchor);
         container.appendChild(col);
     });
+}
+function getProductId() {
+  return new URLSearchParams(window.location.search).get("id");
 }

@@ -1,3 +1,4 @@
+let orderSuccess = false;
 (() => {
   const CART_KEY = "gio_hang";
   let products = [];
@@ -25,10 +26,64 @@
      BASE EVENTS
   ============================== */
 
-  function bindBaseEvents() {
-    document.getElementById("cart-close").addEventListener("click", closeCart);
-    document.getElementById("cart-overlay").addEventListener("click", closeCart);
+function bindBaseEvents() {
+  document.getElementById("cart-close").addEventListener("click", closeCart);
+  document.getElementById("cart-overlay").addEventListener("click", closeCart);
+
+  document
+    .querySelector(".cart-checkout")
+    .addEventListener("click", showPaymentPopup);
+
+  document
+    .getElementById("payment-close-btn")
+    .addEventListener("click", closePaymentPopup);
+
+  document
+    .getElementById("payment-overlay")
+    .addEventListener("click", closePaymentPopup);
+}
+function showPaymentPopup() {
+  if (cart.length === 0) {
+    alert("Giỏ hàng của bạn đang trống.");
+    return;
   }
+
+  // đảm bảo form đã tồn tại
+  const nameInput = document.getElementById("customer-name");
+  if (!nameInput) {
+    alert("Vui lòng mở giỏ hàng trước khi thanh toán.");
+    return;
+  }
+
+  if (!validateCheckoutInfo()) return;
+
+  orderSuccess = true;
+
+  document.getElementById("payment-popup").classList.add("active");
+  document.getElementById("payment-overlay").classList.add("active");
+}
+
+
+
+function closePaymentPopup() {
+  document.getElementById("payment-popup").classList.remove("active");
+  document.getElementById("payment-overlay").classList.remove("active");
+  if (orderSuccess) {
+    // 1. XÓA GIỎ HÀNG
+    cart = [];
+    localStorage.removeItem(CART_KEY);
+    renderCart();
+
+    // 2. ĐÓNG DRAWER
+    closeCart();
+
+    // 3. RESET TRẠNG THÁI
+    orderSuccess = false;
+
+    // 4. CHUYỂN VỀ TRANG SẢN PHẨM
+    window.location.href = "sanpham.html";
+  }
+}
 
   function openCart() {
     document.getElementById("cart-drawer")?.classList.add("active");
@@ -43,6 +98,36 @@
   function saveCart() {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }
+
+  function validateCheckoutInfo() {
+  const nameEl = document.getElementById("customer-name");
+  const phoneEl = document.getElementById("customer-phone");
+  const emailEl = document.getElementById("customer-email");
+  const addressEl = document.getElementById("customer-address");
+
+  if (!nameEl || !phoneEl || !emailEl || !addressEl) {
+    alert("Form thông tin chưa sẵn sàng. Vui lòng mở giỏ hàng trước.");
+    return false;
+  }
+
+  const name = nameEl.value.trim();
+  const phone = phoneEl.value.trim();
+  const email = emailEl.value.trim();
+  const address = addressEl.value.trim();
+
+  if (!name || !phone || !email || !address) {
+    alert("Vui lòng nhập đầy đủ thông tin liên hệ trước khi thanh toán.");
+    return false;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Email không hợp lệ.");
+    return false;
+  }
+
+  return true;
+}
 
   /* =============================
      CART LOGIC
