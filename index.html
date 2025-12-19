@@ -10,22 +10,42 @@
 
     <style>
         /* --- 1. CSS CHO DROPDOWN MENU USER --- */
+        .user-cart-actions {
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+
         .user-dropdown {
-            position: absolute; top: 150%; right: 0; width: 260px;
+            position: absolute; 
+            /* Chỉnh vị trí ngay dưới icon */
+            top: 100%; 
+            right: 0; 
+            margin-top: 15px; /* Khoảng cách nhỏ giữa icon và menu */
+            
+            width: 260px;
             background-color: #fff; border-radius: 12px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.15); padding: 15px; z-index: 9999;
             border: 1px solid #f0f0f0; opacity: 0; visibility: hidden; 
             transform: translateY(10px); transition: all 0.2s ease-in-out;
         }
         .user-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        /* Mũi tên tam giác trỏ lên */
         .user-dropdown::before {
-            content: ''; position: absolute; top: -8px; right: 14px; width: 16px; height: 16px; 
+            content: ''; position: absolute; top: -8px; right: 10px; width: 16px; height: 16px; 
             background: #fff; transform: rotate(45deg); border-left: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;
         }
 
         .user-header { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
         .user-header h3 { color: #5d4037; font-size: 16px; font-weight: 700; margin: 0; }
-        .user-header p { font-size: 12px; color: #888; margin-top: 4px; }
+        .user-header p { font-size: 12px; color: #888; margin-top: 2px; margin-bottom: 0; }
+        
+        /* Style cho Email */
+        .user-header .user-email { 
+            font-size: 12px; color: #555; font-weight: 500; word-break: break-all; 
+        }
 
         .user-menu-list { list-style: none; margin-bottom: 10px; padding: 0; }
         .user-menu-list li a {
@@ -131,7 +151,9 @@
 <body>
     <header id="mainHeader">
         <div class="logo">
-            <a href="index.html" class="logo-text">A<span>B</span>C Bakery</a>
+            <a href="index.html">
+                <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="header-logo-img">
+            </a>
         </div>
 
         <div class="menu-toggle" id="mobile-menu-btn">
@@ -246,7 +268,7 @@
             <div class="footer-col logo-col">
                 <div class="footer-logo">
                     <a href="index.html" title="Về trang chủ">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Paris_Baguette_logo.png/600px-Paris_Baguette_logo.png" alt="Paris Baguette Logo">
+                        <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="footer-logo-img">
                     </a>
                 </div>
                 <p class="footer-desc">
@@ -284,7 +306,6 @@
                 <h3>LIÊN HỆ</h3>
                 <ul>
                     <li><a href="lienhe.html">Liên Hệ Với Chúng Tôi</a></li>
-                    <li><a href="#">Liên Hệ Với Chúng Tôi</a></li>
                 </ul>
             </div>
 
@@ -348,7 +369,6 @@
             });
 
         // --- HÀM HELPER: FORMAT TIỀN TỆ ---
-        // Chuyển 390000 -> "390.000đ"
         function formatCurrency(price) {
             return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
         }
@@ -360,7 +380,7 @@
             else header.classList.remove('scrolled');
         });
 
-        // --- 4. XỬ LÝ TÌM KIẾM THÔNG MINH (UPDATED) ---
+        // --- 4. XỬ LÝ TÌM KIẾM THÔNG MINH ---
         const searchInput = document.getElementById('searchInput');
         const btnSearch = document.getElementById('btnSearchAction');
         const suggestionsBox = document.getElementById('searchSuggestions');
@@ -372,11 +392,7 @@
 
         // Sự kiện khi gõ phím
         searchInput.addEventListener('input', function() {
-            // Kiểm tra xem dữ liệu đã tải xong chưa
-            if (cakes.length === 0) {
-                console.log("Đang đợi dữ liệu tải...");
-                return;
-            }
+            if (cakes.length === 0) return;
 
             const keyword = this.value.trim().toLowerCase();
             suggestionsBox.innerHTML = ''; 
@@ -386,7 +402,6 @@
                 return;
             }
 
-            // Lọc sản phẩm từ biến cakes
             const matches = cakes.filter(cake => {
                 return cake.name.toLowerCase().includes(keyword);
             });
@@ -397,8 +412,6 @@
                 matches.forEach(cake => {
                     const div = document.createElement('div');
                     div.className = 'suggestion-item';
-
-                    // Lấy ảnh đầu tiên làm thumbnail
                     let imgUrl = (cake.images && cake.images.length > 0) ? cake.images[0] : 'https://via.placeholder.com/50';
 
                     div.innerHTML = `
@@ -409,7 +422,6 @@
                         </div>
                     `;
 
-                    // --- SỰ KIỆN CLICK MỚI: Chuyển sang trang chi tiết ---
                     div.addEventListener('click', () => {
                         window.location.href = `product2.html?id=${cake.id}`;
                     });
@@ -421,17 +433,14 @@
             }
         });
 
-        // Click nút kính lúp
         btnSearch.addEventListener('click', () => {
             if (searchInput.value.trim()) goToSearch(searchInput.value.trim());
         });
         
-        // Nhấn Enter cũng tìm
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && searchInput.value.trim()) goToSearch(searchInput.value.trim());
         });
 
-        // Click ra ngoài thì ẩn gợi ý
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
                 suggestionsBox.style.display = 'none';
@@ -457,12 +466,17 @@
                     onlineDot.style.cssText = `position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:#4CAF50; border-radius:50%; border:2px solid #fff; z-index:10; pointer-events:none;`;
                     userBtn.appendChild(onlineDot);
 
+                    // --- LẤY THÔNG TIN EMAIL TỪ LISTACCOUNTS ---
+                    const listAccounts = JSON.parse(localStorage.getItem('listAccounts')) || [];
+                    const userAccount = listAccounts.find(acc => acc.username === sessionUser.username) || sessionUser;
+                    const displayEmail = userAccount.email ? userAccount.email : 'Chưa cập nhật email';
+
                     const dropdownHTML = `
                         <div class="user-dropdown" id="userDropdown">
                             <div class="user-header">
                                 <h3>${sessionUser.fullname}</h3>
                                 <p>@${sessionUser.username}</p>
-                            </div>
+                                <p class="user-email">${displayEmail}</p> </div>
                             <ul class="user-menu-list">
                                 <li><a href="#" onclick="openEditModal(event)"><i class="fa-solid fa-user-pen"></i> Chỉnh sửa thông tin</a></li>
                                 <li><a href="#" onclick="openChangePassModal(event)"><i class="fa-solid fa-lock"></i> Đổi mật khẩu</a></li>
@@ -527,8 +541,12 @@
                 listAccounts[index].fullname = newName;
                 listAccounts[index].email = newEmail;
                 localStorage.setItem('listAccounts', JSON.stringify(listAccounts));
+                
+                // Cập nhật cả sessionUser
                 sessionUser.fullname = newName;
+                sessionUser.email = newEmail; 
                 localStorage.setItem('currentUser', JSON.stringify(sessionUser));
+                
                 showMsg('edit-msg', 'Cập nhật thành công! Đang tải lại...', 'success');
                 setTimeout(() => window.location.reload(), 1000);
             }

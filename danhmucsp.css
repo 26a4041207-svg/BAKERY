@@ -584,13 +584,13 @@ body::before {
 
 /* Hover: chữ trắng, nền be */
 .pagination button:hover {
-    background-color: #e8e809; /* be */
+    background-color: #5D4037; /* be */
     color: #fff;                /* chữ trắng */
 }
 
 /* Nút active */
 .pagination button.active {
-    background-color:#e8e809;
+    background-color:#5D4037;
     color: #fff;
     font-weight: bold;
 }

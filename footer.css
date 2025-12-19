@@ -38,11 +38,12 @@ body { font-family: 'Arial', sans-serif; line-height: 1.5; }
     display: inline-block; /* Đảm bảo thẻ a bao trọn ảnh */
 }
 
-.footer-logo img {
-    width: 120px;
+/* Logo dưới Footer */
+.footer-logo-img {
+    width: 180px;  /* Footer thì chỉnh theo chiều rộng */
+    height: auto;
+    display: block;
     margin-bottom: 20px;
-    filter: brightness(0) invert(1); /* Logo trắng */
-    transition: opacity 0.3s; /* Hiệu ứng mờ nhẹ khi hover */
 }
 
 /* Hiệu ứng khi di chuột vào logo để biết click được */
@@ -224,4 +225,6 @@ body { font-family: 'Arial', sans-serif; line-height: 1.5; }
     .email-form input { text-align: center; padding-right: 0; }
     .submit-btn { position: relative; right: auto; display: block; margin: 10px auto 0; }
     .reset-btn { margin: 0 auto; }
+    .header-logo-img { height: 50px; } /* Nhỏ lại chút trên điện thoại */
+    .footer-logo-img { margin: 0 auto 20px auto; } /* Căn giữa ở footer mobile */
 }

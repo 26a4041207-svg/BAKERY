@@ -19,6 +19,7 @@
             --secondary-color: #8d6e63; /* Màu nâu đất */
             /* CHỈNH SỬA: Thay đổi mã màu vàng đồng để khớp với ảnh mẫu */
             --text-gold: #CD9B32; /* Màu vàng cam sáng */
+            --text-gold-dark: #B07C26; /* bóng hơn để làm viền */
         }
 
         /* Áp dụng màu sắc tùy chỉnh cho Tailwind */
@@ -61,6 +62,77 @@
         /* Icon trong ô ưu đãi/dịch vụ */
         .icon-box i {
             font-size: 2.2rem;
+        }
+
+        /* Promo box: refined visuals for better fit between white content and gold frame */
+        .promo-box {
+            border: 2px solid var(--text-gold-dark);
+            border-radius: 0.75rem;
+            overflow: hidden; /* ensure child backgrounds are clipped to rounded corners */
+            box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+            background: linear-gradient(180deg, #fffdf7 0%, #fffaf5 100%); /* warmer white */
+        }
+
+        .promo-header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background: var(--text-gold); /* continuous gold bar */
+            padding: 0; /* remove extra spacing that can reveal background */
+            min-height: 68px; /* fixed height to align icon and title */
+        }
+
+        /* tidy icon: make surrounding area full gold and icon white for contrast */
+        .promo-icon {
+            padding-left: 12px;
+            padding-right: 12px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: linear-gradient(180deg, var(--text-gold) 0%, var(--text-gold-dark) 100%);
+            border-top-left-radius: 0.75rem; /* match outer corner */
+            border-bottom-left-radius: 0; 
+            margin-left: 0;
+        }
+
+        .promo-icon i {
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            width:48px;
+            height:48px;
+            background: transparent; /* no inner white square */
+            color: #fff; /* white icon for contrast */
+            border-radius: 10px;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .promo-title {
+            padding: 0 18px;
+            margin: 0;
+            font-size: 1.15rem;
+            line-height: 1;
+            color: #fff; /* white title over gold bar */
+            background: transparent;
+            flex: 1; /* fill remaining space */
+            display:flex;
+            align-items:center;
+            font-weight:700;
+        }
+
+        .promo-box ul {
+            padding: 22px 24px;
+            margin: 0;
+            border-top: 2px solid rgba(176,124,38,0.08); /* subtle warm divider consistent with gold */
+            background: transparent;
+        }
+
+        .promo-box li {
+            font-size: 1.05rem;
+            color: #374151;
+            margin-bottom: 12px;
         }
 
         /* Tăng giảm số lượng */
