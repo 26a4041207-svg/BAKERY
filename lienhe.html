@@ -7,9 +7,120 @@
     <link rel="stylesheet" href="lienhe.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="wishlist.css">
 </head>
 <body>
+    <header id="mainHeader">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="header-logo-img">
+            </a>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li class="dropdown">
+                    <a href="sanpham.html">Sản phẩm <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="danhmucsp-banhkem.html">Bánh kem</a></li>
+                        <li><a href="danhmucsp-banhngot.html">Bánh ngọt</a></li>
+                        <li><a href="danhmucsp-banhnuong.html">Bánh nướng</a></li>
+                        <li><a href="danhmucsp-banhquy.html">Bánh quy</a></li>
+                        <li><a href="danhmucsp-banhmousse.html">Bánh mousse</a></li>
+                        <li><a href="danhmucsp-douong.html">Đồ uống</a></li>
+                      </ul>
+                </li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <button id="btnSearchAction"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm bánh..." autocomplete="off">
+                
+                <div id="searchSuggestions" class="search-suggestions">
+                    </div>
+            </div>
+
+            <div class="user-cart-actions">              
+                <a href="#" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
+                
+                <a href="login.html" class="icon-btn" id="user-icon-btn">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <section id="searchResultsSection">
+        <div class="container">
+            <h2 id="searchTitle">Kết quả tìm kiếm</h2>
+            <div id="searchResultsGrid" class="product-grid"></div>
+        </div>
+    </section>
+
+    <div class="content-dummy"></div>
+
+    <div class="modal-overlay" id="modal-edit-info">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Chỉnh sửa thông tin</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-edit-info')"></i>
+            </div>
+            <div id="edit-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Tên đăng nhập (Không thể sửa)</label>
+                <input type="text" id="edit-username" readonly>
+            </div>
+            <div class="form-group">
+                <label>Họ và tên</label>
+                <input type="text" id="edit-fullname" placeholder="Nhập họ tên mới">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="edit-email" placeholder="Nhập email mới">
+            </div>
+            <button class="save-btn" onclick="saveUserInfo()">Lưu thay đổi</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-change-pass">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Đổi mật khẩu</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-change-pass')"></i>
+            </div>
+            <div id="pass-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Mật khẩu cũ</label>
+                <input type="password" id="old-pass" placeholder="Nhập mật khẩu hiện tại">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" id="new-pass" placeholder="Nhập mật khẩu mới">
+            </div>
+            <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirm-pass" placeholder="Nhập lại mật khẩu mới">
+            </div>
+            <button class="save-btn" onclick="saveNewPassword()">Cập nhật mật khẩu</button>
+        </div>
+    </div>
+
+    <script src="wishlist.js" defer></script>
+    <script src="giohang.js" defer></script>
+    <script src="header.js"> </script>
 
 <section class="contact-wrapper fade-in">
 
