@@ -11,44 +11,7 @@ body {
     background-blend-mode: lighten; /* kết hợp nhẹ với ảnh nền */
 }
 
-/* Header cơ bản */
-#header {
-    font-weight: bold;
-    position: absolute; /* QUAN TRỌNG → đè lên banner, không đẩy banner xuống */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
 
-    background: transparent; /* Trong suốt lúc đầu */
-    color: white; /* CHỮ TRẮNG LÚC ĐẦU */
-    transition: background 0.3s ease;
-    padding: 20px 0;
-}
-
-/* Khi cuộn xuống chuyển sang đỏ */
-#header.scrolled {
-    position: fixed;
-    background: #5d4037;
-    color: white;
-    top: 0;
-}
-
-
-/* Container bên trong header */
-.container {
-    display: flex;
-    justify-content: space-between; /* Logo trái, menu giữa, actions phải */
-    align-items: center;
-    max-width: 1200px; /* Giới hạn chiều rộng, điều chỉnh nếu cần */
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Logo bên trái */
-.logo img {
-    height: 60px; /* Tăng kích thước logo để responsive hơn */
-}
 
 /* =========================
    HERO BANNER
