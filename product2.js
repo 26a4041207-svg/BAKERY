@@ -47,13 +47,18 @@ if (quantityInput && decrementBtn && incrementBtn) {
     function addToWishlistMain(buttonElement) {
         if (!currentProduct) { showModal('Lỗi', 'Chưa có sản phẩm nào được tải.'); return; }
         const heartIcon = buttonElement.querySelector('#main-product-heart');
+        const id = currentProduct.id;
+
+        // Toggle in storage via Wishlist API if available
         if (heartIcon.classList.contains('far')) {
             heartIcon.classList.remove('far');
             heartIcon.classList.add('fas', 'text-red-600');
+            if (window.WishlistAdd) window.WishlistAdd(id);
             showModal('Yêu thích', `Sản phẩm '${currentProduct.name}' đã được thêm vào danh sách yêu thích của bạn!`);
         } else {
             heartIcon.classList.remove('fas', 'text-red-600');
             heartIcon.classList.add('far');
+            if (window.WishlistRemove) window.WishlistRemove(id);
             showModal('Yêu thích', `Đã xóa sản phẩm '${currentProduct.name}' khỏi danh sách yêu thích.`);
         }
     }
@@ -104,15 +109,45 @@ function setupTabSwitching() {
         event.preventDefault(); 
         
         const heartIcon = event.currentTarget.querySelector('.heart-icon');
-        
+        const card = event.currentTarget.closest('.product-card');
+        const link = card?.querySelector('a.product-link')?.getAttribute('href');
+        let id = null;
+        if (link) {
+            const params = new URLSearchParams(link.split('?')[1] || '');
+            id = params.get('id');
+        }
+
+        if (!id) {
+            showModal('Lỗi', 'Không xác định được sản phẩm để thêm yêu thích.');
+            return;
+        }
+
         if (heartIcon.classList.contains('far')) { 
             heartIcon.classList.remove('far');
             heartIcon.classList.add('fas'); 
+            if (window.WishlistAdd) window.WishlistAdd(id);
             showModal('Yêu thích', `Đã thêm sản phẩm '${productName}' vào danh sách yêu thích.`);
+
+            // If the user is on the product page for this id, sync the main heart
+            try {
+                if (currentProduct && currentProduct.id === id) {
+                    const mainHeart = document.getElementById('main-product-heart');
+                    if (mainHeart) { mainHeart.classList.remove('far'); mainHeart.classList.add('fas', 'text-red-600'); }
+                }
+            } catch (e) {}
         } else { 
             heartIcon.classList.remove('fas');
             heartIcon.classList.add('far'); 
+            if (window.WishlistRemove) window.WishlistRemove(id);
             showModal('Yêu thích', `Đã xóa sản phẩm '${productName}' khỏi danh sách yêu thích.`);
+
+            // If the user is on the product page for this id, sync the main heart
+            try {
+                if (currentProduct && currentProduct.id === id) {
+                    const mainHeart = document.getElementById('main-product-heart');
+                    if (mainHeart) { mainHeart.classList.remove('fas', 'text-red-600'); mainHeart.classList.add('far'); }
+                }
+            } catch (e) {}
         }
     }
 
@@ -160,6 +195,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             if (window.GioHangOpen) window.GioHangOpen();
             else window.location.href = 'giohang.html';
+        });
+    }
+
+    // Bind wishlist open button
+    const wishBtn = document.getElementById('open-wishlist-btn');
+    if (wishBtn) {
+        wishBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.WishlistOpen) window.WishlistOpen();
+            else window.location.href = 'wishlist.html';
         });
     }
 });
@@ -304,6 +349,21 @@ async function loadProductDetails(productId) {
         // Save current product id into sessionStorage so next navigation will consider it the "previous"
         sessionStorage.setItem('currentProductId', product.id);
 
+        // Reflect wishlist state on main heart if present
+        try {
+            const list = JSON.parse(localStorage.getItem('wishlist_ids') || '[]');
+            const heart = document.getElementById('main-product-heart');
+            if (heart) {
+                if (list.includes(product.id)) {
+                    heart.classList.remove('far');
+                    heart.classList.add('fas', 'text-red-600');
+                } else {
+                    heart.classList.remove('fas', 'text-red-600');
+                    heart.classList.add('far');
+                }
+            }
+        } catch (e) { /* ignore */ }
+
     } catch (err) {
         console.error('loadProductDetails error', err);
         const isFile = window.location.protocol === 'file:';
@@ -344,7 +404,13 @@ function renderRelatedProducts(items, limit = 10) {
         wishlistSpan.className = 'absolute top-2 right-3 cursor-pointer';
         wishlistSpan.onclick = (ev) => addToWishlistFromCard(ev, item.name);
         const heartIcon = document.createElement('i');
-        heartIcon.className = 'far fa-heart text-red-500 heart-icon';
+        // Reflect current wishlist state on the card's heart
+        try {
+            const list = JSON.parse(localStorage.getItem('wishlist_ids') || '[]');
+            heartIcon.className = list.includes(item.id) ? 'fas fa-heart text-red-500 heart-icon' : 'far fa-heart text-red-500 heart-icon';
+        } catch (e) {
+            heartIcon.className = 'far fa-heart text-red-500 heart-icon';
+        }
         wishlistSpan.appendChild(heartIcon);
 
         const imgEl = document.createElement('img');
@@ -446,7 +512,13 @@ function renderRecentlyViewed(limit = 10) {
         wishlistSpan.className = 'absolute top-2 right-3 cursor-pointer';
         wishlistSpan.onclick = (ev) => addToWishlistFromCard(ev, item.name);
         const heartIcon = document.createElement('i');
-        heartIcon.className = 'far fa-heart text-red-500 heart-icon';
+        // Reflect current wishlist state on the card's heart
+        try {
+            const list = JSON.parse(localStorage.getItem('wishlist_ids') || '[]');
+            heartIcon.className = list.includes(item.id) ? 'fas fa-heart text-red-500 heart-icon' : 'far fa-heart text-red-500 heart-icon';
+        } catch (e) {
+            heartIcon.className = 'far fa-heart text-red-500 heart-icon';
+        }
         wishlistSpan.appendChild(heartIcon);
 
         const imgEl = document.createElement('img');
