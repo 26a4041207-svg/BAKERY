@@ -81,7 +81,7 @@ header.scrolled .header-logo-img {
     text-decoration: none;
     color: white;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 17px;
     text-transform: uppercase;
     position: relative;
     padding-bottom: 5px;
@@ -356,7 +356,7 @@ header.scrolled .header-logo-img {
 }
 
 .content-dummy {
-    height: 300px;
+    height: 100px;
 }
 
 /* =========================================
