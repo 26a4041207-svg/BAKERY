@@ -11,44 +11,7 @@ body {
     background-blend-mode: lighten; /* kết hợp nhẹ với ảnh nền */
 }
 
-/* Header cơ bản */
-#header {
-    font-weight: bold;
-    position: absolute; /* QUAN TRỌNG → đè lên banner, không đẩy banner xuống */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
 
-    background: transparent; /* Trong suốt lúc đầu */
-    color: white; /* CHỮ TRẮNG LÚC ĐẦU */
-    transition: background 0.3s ease;
-    padding: 20px 0;
-}
-
-/* Khi cuộn xuống chuyển sang đỏ */
-#header.scrolled {
-    position: fixed;
-    background: #5d4037;
-    color: white;
-    top: 0;
-}
-
-
-/* Container bên trong header */
-.container {
-    display: flex;
-    justify-content: space-between; /* Logo trái, menu giữa, actions phải */
-    align-items: center;
-    max-width: 1200px; /* Giới hạn chiều rộng, điều chỉnh nếu cần */
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Logo bên trái */
-.logo img {
-    height: 60px; /* Tăng kích thước logo để responsive hơn */
-}
 
 /* =========================
    HERO BANNER
@@ -100,16 +63,6 @@ body {
     color: black;
 }
 
-
-/* Mobile responsive */
-@media (max-width:768px) {
-    .hero-banner {
-        height: 250px;
-    }
-    .banner-title {
-        font-size: 36px;
-    }
-}
 
 /* Menu ở trung tâm */
 .menu {
@@ -210,61 +163,6 @@ body {
 /* Đảm bảo nội dung trang không bị che bởi header fixed */
 body {
     padding-top: 100px; /* Tăng để phù hợp với header lớn hơn */
-}
-
-/* Media Queries cho Responsive */
-@media (max-width: 1024px) { /* Tablet */
-    .logo img {
-        height: 50px; /* Giảm logo một chút */
-    }
-    .menu {
-        gap: 20px; /* Giảm khoảng cách menu */
-    }
-    .menu a {
-        font-size: 14px; /* Giảm font */
-        padding: 10px 5px;
-    }
-    .right-actions {
-        gap: 15px;
-    }
-    .login-btn, .cart-btn {
-        font-size: 14px;
-        padding: 10px 5px;
-    }
-    body {
-        padding-top: 90px; /* Điều chỉnh padding body */
-    }
-}
-
-@media (max-width: 768px) { /* Mobile */
-    .container {
-        flex-direction: column; /* Chuyển menu xuống dưới trên mobile */
-        padding: 0 10px;
-    }
-    .logo img {
-        height: 40px; /* Logo nhỏ hơn */
-    }
-    .menu {
-        flex-wrap: wrap; /* Cho phép menu xuống dòng */
-        gap: 10px;
-        justify-content: center; /* Căn giữa menu */
-        margin: 10px 0;
-    }
-    .menu a {
-        font-size: 12px; /* Font nhỏ hơn */
-        padding: 8px 5px;
-    }
-    .right-actions {
-        gap: 10px;
-        justify-content: center; /* Căn giữa actions */
-    }
-    .login-btn, .cart-btn {
-        font-size: 12px;
-        padding: 8px 5px;
-    }
-    body {
-        padding-top: 120px; /* Tăng padding vì header cao hơn trên mobile */
-    }
 }
 
 body {
@@ -618,28 +516,103 @@ body::before {
 /* ========================
    RESPONSIVE
 ======================== */
-@media (max-width: 1200px) {
-    .product-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 900px) {
+/* ========================
+   MOBILE RESPONSIVE <768px
+======================== */
+@media (max-width: 768px) {
     .main-container {
-        flex-direction: column;
+        display: flex;
+        flex-direction: column; /* xếp sidebar + content-area theo chiều dọc */
+        gap: 20px;
     }
 
-    .sidebar {
+    .content-area {
         width: 100%;
     }
-
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .category-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 icon 1 hàng */
+        gap: 15px;
+        justify-items: center;
+        text-align: center;
+        padding: 0 10px;
     }
+
+    .category-bar .category-item img {
+        width: 60px;  /* điều chỉnh kích thước icon */
+        height: 60px;
+        object-fit: contain;
+    }
+
+    .category-bar .category-item p {
+        font-size: 12px; /* chữ nhỏ hơn */
+        margin-top: 5px;
+    }
+     
+    /* Hiển thị sidebar và căn giữa */
+.sidebar {
+    display: block;               /* hiện ra */
+    width: 100%;                  /* full width */
+    margin: 0 auto 20px auto;     /* căn giữa và cách dưới content */
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
+/* Hiển thị sort-bar và căn giữa */
+.sort-bar {
+    display: flex;                /* hiển thị flex */
+    flex-wrap: wrap;              /* nếu nút nhiều sẽ xuống dòng */
+    justify-content: center;      /* căn giữa */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Nút trong sort-bar */
+.sort-bar .sort-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+
+.sidebar .filter-box label {
+    display: block;
+    margin: 5px 0;
+}
+
+    /* Sản phẩm 2 sp 1 hàng */
     .product-grid {
-        grid-template-columns: 1fr;
+        display: grid; /* chắc chắn vẫn grid */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
+
+    /* Hero banner nhỏ hơn */
+    .hero-banner {
+        height: 250px;
+    }
+
+    .banner-title {
+        font-size: 36px;
+    }
+
+    /* Menu chính xuống dòng nếu cần */
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-size: 12px;
+        padding: 0 5px;
+    }
+
+    /* Logo nhỏ hơn */
+    .logo img {
+        height: 40px;
+    }
+
+    /* Body padding để header không chèn lên content */
+    body {
+        padding-top: 120px;
+    }
+
+
 }

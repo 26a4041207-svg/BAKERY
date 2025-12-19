@@ -6,8 +6,7 @@
     <title>HONEYQUE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="footer.css">
-
+    <link rel="stylesheet" href="footer.css">    <link rel="stylesheet" href="wishlist.css">
     <style>
         /* --- 1. CSS CHO DROPDOWN MENU USER --- */
         .user-cart-actions {
@@ -190,13 +189,15 @@
             </div>
 
             <div class="user-cart-actions">              
-                <a href="wishlist.html" class="icon-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
                 <a href="#" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
                 
                 <a href="login.html" class="icon-btn" id="user-icon-btn">
                     <i class="fa-regular fa-user"></i>
                 </a>
             </div>
+        </div>
+    </header>
         </div>
     </header>
 
@@ -594,6 +595,7 @@
             icon.classList.toggle('fa-xmark');
         }); 
     </script>
+    <script src="wishlist.js" defer></script>
     <script src="giohang.js" defer></script>
 </body>
 </html> 
