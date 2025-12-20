@@ -12,12 +12,18 @@
   // Inject wishlist html into page
   fetch('wishlist.html')
     .then(r => r.text())
-    .then(html => {
-      document.body.insertAdjacentHTML('beforeend', html);
-      bindBaseEvents();
-      bindOpenWishlistButtons();
-      renderWishlist();
-    })
+    Promise.all([
+  fetch('product.json').then(r => r.json()),
+  fetch('wishlist.html').then(r => r.text())
+]).then(([data, html]) => {
+  products = data;
+
+  document.body.insertAdjacentHTML('beforeend', html);
+  bindBaseEvents();
+  bindOpenWishlistButtons();
+  renderWishlist(); // ✅ lúc này products ĐÃ CÓ
+})
+
     .catch(err => console.warn('Không thể nạp wishlist.html', err));
 
   function save() { localStorage.setItem(W_KEY, JSON.stringify(wishlist)); }
@@ -133,7 +139,7 @@ function addAllToCart() {
   }
 
   function add(id) {
-    id = String(id);
+    id = Number(id);
     if (!wishlist.includes(id)) {
       wishlist.push(id);
       save();
