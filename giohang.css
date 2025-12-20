@@ -264,3 +264,128 @@
 #payment-popup.active {
   transform: translate(-50%, -50%) scale(1);
 }
+/* =================================
+   CART RESPONSIVE – MOBILE
+================================= */
+@media (max-width: 768px) {
+
+  /* Overlay vẫn full màn */
+  #cart-overlay {
+    z-index: 3000;
+  }
+
+  /* Drawer full width mobile */
+  #cart-drawer {
+    width: 100%;
+    right: -100%;
+    z-index: 3001;
+  }
+
+  #cart-drawer.active {
+    right: 0;
+  }
+
+  /* Header */
+  .cart-header {
+    padding: 14px;
+  }
+
+  .cart-header h3 {
+    font-size: 16px;
+  }
+
+  #cart-close {
+    font-size: 22px;
+  }
+
+  /* Cart body */
+  .cart-body {
+    padding: 12px;
+  }
+
+  /* Cart item */
+  .cart-item {
+    gap: 10px;
+  }
+
+  .cart-item img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .cart-item-info {
+    font-size: 13px;
+  }
+
+  .cart-item-price {
+    font-size: 13px;
+  }
+
+  /* Qty */
+  .cart-qty button {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ===== FIELDSET ===== */
+  .cart-fieldset {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .cart-fieldset legend {
+    font-size: 14px;
+  }
+
+  /* Thông tin liên hệ: xếp dọc cho mobile */
+  .cart-fieldset .field-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .cart-fieldset .field-row label {
+    width: auto;
+    font-size: 12px;
+  }
+
+  .cart-fieldset .field-row input,
+  .cart-fieldset .field-row textarea {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  /* Radio: cho phép xuống dòng nếu hẹp */
+  .cart-fieldset .radio-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Footer */
+  .cart-footer {
+    padding: 12px;
+  }
+
+  .cart-total {
+    font-size: 14px;
+  }
+
+  .cart-checkout {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* ===== PAYMENT POPUP ===== */
+  #payment-popup {
+    width: 90%;
+    padding: 22px 18px;
+  }
+
+  #payment-popup h3 {
+    font-size: 18px;
+  }
+
+  #payment-popup p {
+    font-size: 14px;
+  }
+}
