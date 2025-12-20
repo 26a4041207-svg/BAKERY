@@ -334,6 +334,17 @@ body::before {
     box-sizing: border-box;
     cursor: pointer;
 }
+/* FIX: thêm lại hiệu ứng trượt THÊM VÀO GIỎ */
+.product-card .add-to-cart {
+    bottom: -40px;
+    opacity: 0;
+    transition: all 0.35s ease;
+}
+
+.product-card:hover .add-to-cart {
+    bottom: 0;
+    opacity: 1;
+}
 
 /* NÚT TRÁI TIM – KHÔNG NỀN, KHÔNG VIỀN */
 .wishlist-btn {
