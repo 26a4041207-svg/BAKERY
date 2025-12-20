@@ -38,3 +38,17 @@
 .wishlist-btn.primary { background:#c8a97e; color:#fff; border:none; }
 
 .empty-msg { text-align:center; color:#666; padding:40px 0; }
+
+.wishlist-drawer-btn {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #d4af37;
+  background: #fff;
+  cursor: pointer;
+}
+
+.wishlist-drawer-btn.primary {
+  background: #c8a97e;
+  color: #fff;
+  border: none;
+}

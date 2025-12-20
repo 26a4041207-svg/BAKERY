@@ -38,36 +38,59 @@
   }
 
   function open() {
-    document.getElementById('wishlist-drawer')?.classList.add('active');
-    document.getElementById('wishlist-overlay')?.classList.add('active');
+  document.body.classList.add('no-scroll');
+  document.getElementById('wishlist-drawer')?.classList.add('active');
+  document.getElementById('wishlist-overlay')?.classList.add('active');
+}
+
+function close() {
+  document.body.classList.remove('no-scroll');
+  document.getElementById('wishlist-drawer')?.classList.remove('active');
+  document.getElementById('wishlist-overlay')?.classList.remove('active');
+}
+
+function addAllToCart() {
+  if (!window.GioHangAdd) {
+    alert('Chưa nạp module giỏ hàng.');
+    return;
   }
 
-  function close() {
-    document.getElementById('wishlist-drawer')?.classList.remove('active');
-    document.getElementById('wishlist-overlay')?.classList.remove('active');
-  }
+  wishlist.forEach(id => {
+    window.GioHangAdd(id, 1);
 
-  function addAllToCart() {
-    if (!window.GioHangAdd) {
-      alert('Chưa nạp module giỏ hàng.');
-      return;
-    }
-    wishlist.slice().forEach(id => {
-      window.GioHangAdd(id, 1);
-    });
-    // Optionally clear wishlist after adding
-    wishlist = [];
-    save();
-    renderWishlist();
-    close();
-  }
+    // reset icon trái tim ở danh sách sản phẩm
+    document
+      .querySelectorAll(`.wishlist-btn[data-id="${id}"] i`)
+      .forEach(icon => {
+        icon.classList.remove("fa-solid", "text-red-500");
+        icon.classList.add("fa-regular");
+      });
+  });
+
+  wishlist = [];
+  save();
+  renderWishlist();
+  close();
+}
+
 
   function clearAll() {
-    if (!confirm('Xóa toàn bộ sản phẩm yêu thích?')) return;
-    wishlist = [];
-    save();
-    renderWishlist();
-  }
+  if (!confirm('Xóa toàn bộ sản phẩm yêu thích?')) return;
+
+  wishlist.forEach(id => {
+    document
+      .querySelectorAll(`.wishlist-btn[data-id="${id}"] i`)
+      .forEach(icon => {
+        icon.classList.remove("fa-solid", "text-red-500");
+        icon.classList.add("fa-regular");
+      });
+  });
+
+  wishlist = [];
+  save();
+  renderWishlist();
+}
+
 
   function renderWishlist() {
     const container = document.getElementById('wishlist-items');
@@ -120,11 +143,20 @@
   }
 
   function remove(id) {
-    id = String(id);
-    wishlist = wishlist.filter(x => x !== id);
-    save();
-    renderWishlist();
-  }
+  id = String(id);
+  wishlist = wishlist.filter(x => x !== id);
+  save();
+  renderWishlist();
+
+  // reset icon trái tim ở danh sách sản phẩm
+  document
+    .querySelectorAll(`.wishlist-btn[data-id="${id}"] i`)
+    .forEach(icon => {
+      icon.classList.remove("fa-solid", "text-red-500");
+      icon.classList.add("fa-regular");
+    });
+}
+
 
   // Expose API
   window.WishlistAdd = add;

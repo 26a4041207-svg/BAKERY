@@ -335,10 +335,49 @@ body::before {
     cursor: pointer;
 }
 
+/* NÚT TRÁI TIM – KHÔNG NỀN, KHÔNG VIỀN */
+.wishlist-btn {
+    background: none !important;
+    border: none !important;
+    outline: none;
+    box-shadow: none;
 
-.product-card:hover .add-to-cart {
-    bottom: 0; /* trượt lên */
+    padding: 0;
+    cursor: pointer;
+
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
 }
+
+/* ICON TRÁI TIM */
+.wishlist-btn i {
+    font-size: 16px;
+    color: #666;
+    background: none;
+}
+
+/* hover */
+.wishlist-btn:hover i {
+    color: #e63946;
+}
+
+/* đã yêu thích */
+.wishlist-btn i.fa-solid {
+    color: #e63946;
+}
+
+/* FIX: nút trong wishlist drawer bị CSS trang danh mục đè */
+#wishlist-drawer .wishlist-actions button {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 
 /* Slider ảnh */
 .image-slider {
