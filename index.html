@@ -8,145 +8,6 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="footer.css">    <link rel="stylesheet" href="wishlist.css">
     <link rel="stylesheet" href="header.css">
-    <style>
-        /* --- 1. CSS CHO DROPDOWN MENU USER --- */
-        .user-cart-actions {
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-        }
-
-        .user-dropdown {
-            position: absolute; 
-            /* Chỉnh vị trí ngay dưới icon */
-            top: 100%; 
-            right: 0; 
-            margin-top: 15px; /* Khoảng cách nhỏ giữa icon và menu */
-            
-            width: 260px;
-            background-color: #fff; border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15); padding: 15px; z-index: 9999;
-            border: 1px solid #f0f0f0; opacity: 0; visibility: hidden; 
-            transform: translateY(10px); transition: all 0.2s ease-in-out;
-        }
-        .user-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
-        
-        /* Mũi tên tam giác trỏ lên */
-        .user-dropdown::before {
-            content: ''; position: absolute; top: -8px; right: 10px; width: 16px; height: 16px; 
-            background: #fff; transform: rotate(45deg); border-left: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;
-        }
-
-        .user-header { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
-        .user-header h3 { color: #5d4037; font-size: 16px; font-weight: 700; margin: 0; }
-        .user-header p { font-size: 12px; color: #888; margin-top: 2px; margin-bottom: 0; }
-        
-        /* Style cho Email */
-        .user-header .user-email { 
-            font-size: 12px; color: #555; font-weight: 500; word-break: break-all; 
-        }
-
-        .user-menu-list { list-style: none; margin-bottom: 10px; padding: 0; }
-        .user-menu-list li a {
-            display: flex; align-items: center; gap: 10px; padding: 10px;
-            color: #444; text-decoration: none; font-size: 14px; border-radius: 6px; transition: 0.2s;
-        }
-        .user-menu-list li a:hover { background-color: #f5f0eb; color: #5d4037; }
-        
-        .logout-btn { 
-            width: 100%; padding: 10px; background-color: #ffebee; color: #d32f2f; 
-            border: none; border-radius: 6px; font-weight: 600; cursor: pointer; 
-            display: flex; align-items: center; justify-content: center; gap: 8px; 
-            font-size: 13px; transition: 0.2s; 
-        }
-        .logout-btn:hover { background-color: #d32f2f; color: #fff; }
-
-        /* --- 2. CSS CHO GỢI Ý TÌM KIẾM (SEARCH SUGGESTION) --- */
-        .search-bar { position: relative; } 
-        
-        /* --- CSS CHO GỢI Ý TÌM KIẾM --- */
-        .search-suggestions {
-            position: absolute; top: 110%; left: 0; width: 100%;
-            background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 8px; overflow: hidden; z-index: 1000;
-            display: none; 
-            border: 1px solid #eee;
-            
-            /* QUAN TRỌNG: Giới hạn chiều cao và bật thanh cuộn */
-            max-height: 300px; 
-            overflow-y: auto; 
-        }
-
-        /* Tùy chỉnh thanh cuộn (Scrollbar) cho đẹp mắt hơn trên Chrome/Edge/Safari */
-        .search-suggestions::-webkit-scrollbar {
-            width: 6px;
-        }
-        .search-suggestions::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        .search-suggestions::-webkit-scrollbar-thumb {
-            background: #ccc; 
-            border-radius: 3px;
-        }
-        .search-suggestions::-webkit-scrollbar-thumb:hover {
-            background: #5d4037; 
-        }
-        .suggestion-item {
-            display: flex; align-items: center; gap: 15px; padding: 10px 15px;
-            cursor: pointer; transition: 0.2s; border-bottom: 1px solid #f9f9f9;
-        }
-        .suggestion-item:last-child { border-bottom: none; }
-        .suggestion-item:hover { background-color: #fdfbf9; }
-        
-        .suggestion-item img {
-            width: 45px; height: 45px; object-fit: cover; border-radius: 6px;
-        }
-        .suggestion-info h4 {
-            font-size: 14px; color: #333; margin: 0; font-weight: 600;
-        }
-        .suggestion-info p {
-            font-size: 13px; color: #d32f2f; margin: 2px 0 0 0; font-weight: 500;
-        }
-        .no-result { padding: 15px; text-align: center; color: #777; font-size: 13px; }
-
-        /* --- 3. CSS CHO MODAL (POPUP) --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 10000;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; visibility: hidden; transition: 0.3s;
-        }
-        .modal-overlay.open { opacity: 1; visibility: visible; }
-        .modal-box {
-            background: #fff; width: 400px; padding: 30px; border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;
-            transform: translateY(-20px); transition: 0.3s;
-        }
-        .modal-overlay.open .modal-box { transform: translateY(0); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .modal-header h2 { color: #5d4037; font-size: 20px; margin: 0; }
-        .close-modal { font-size: 20px; cursor: pointer; color: #888; transition: 0.2s; }
-        .close-modal:hover { color: #d32f2f; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 5px; color: #333; }
-        .form-group input { width: 100%; padding: 10px 12px; border: 1px solid #dcc0b0; border-radius: 5px; outline: none; }
-        .form-group input:focus { border-color: #fca311; background: #fffcf5; }
-        .form-group input:read-only { background-color: #f0f0f0; color: #777; cursor: not-allowed; }
-        .save-btn { width: 100%; padding: 10px; background: #5d4037; color: #fff; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; margin-top: 10px; }
-        .save-btn:hover { background: #4a332c; }
-        .msg-box { padding: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 13px; text-align: center; display: none; }
-        .msg-error { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
-        .msg-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
-        
-        #user-icon-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; }
-
-        @media (max-width: 576px) {
-            .user-dropdown { width: 260px; right: -10px; }
-            .modal-box { width: 90%; margin: 0 10px; }
-        }
-
-    </style>
 </head>
 <body>
     <header id="mainHeader">
@@ -190,8 +51,8 @@
             </div>
 
             <div class="user-cart-actions">              
-                <a href="#" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
-                <a href="#" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
+                <a href="wishlist.html" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+                <a href="cart.html" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
                 
                 <a href="login.html" class="icon-btn" id="user-icon-btn">
                     <i class="fa-regular fa-user"></i>
@@ -525,10 +386,10 @@
                     </button>
                 </div>
                 <div class="social-links">
-                    <a href="#" class="social-icon" title="Facebook">
+                    <a href="https://www.facebook.com/people/Honeyque/61585324114002/   " class="social-icon" title="Facebook">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="social-icon" title="Instagram">
+                    <a href="https://www.instagram.com/honeyquebakery/" class="social-icon" title="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
