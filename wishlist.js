@@ -139,7 +139,7 @@ function addAllToCart() {
   }
 
   function add(id) {
-    id = Number(id);
+    id = String(id);
     if (!wishlist.includes(id)) {
       wishlist.push(id);
       save();
