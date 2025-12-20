@@ -1,13 +1,551 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HONEYQUE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="footer.css">    <link rel="stylesheet" href="wishlist.css">
+    <link rel="stylesheet" href="header.css">
+    <style>
+        /* --- 1. CSS CHO DROPDOWN MENU USER --- */
+        .user-cart-actions {
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+
+        .user-dropdown {
+            position: absolute; 
+            /* Chỉnh vị trí ngay dưới icon */
+            top: 100%; 
+            right: 0; 
+            margin-top: 15px; /* Khoảng cách nhỏ giữa icon và menu */
+            
+            width: 260px;
+            background-color: #fff; border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15); padding: 15px; z-index: 9999;
+            border: 1px solid #f0f0f0; opacity: 0; visibility: hidden; 
+            transform: translateY(10px); transition: all 0.2s ease-in-out;
+        }
+        .user-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        /* Mũi tên tam giác trỏ lên */
+        .user-dropdown::before {
+            content: ''; position: absolute; top: -8px; right: 10px; width: 16px; height: 16px; 
+            background: #fff; transform: rotate(45deg); border-left: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;
+        }
+
+        .user-header { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
+        .user-header h3 { color: #5d4037; font-size: 16px; font-weight: 700; margin: 0; }
+        .user-header p { font-size: 12px; color: #888; margin-top: 2px; margin-bottom: 0; }
+        
+        /* Style cho Email */
+        .user-header .user-email { 
+            font-size: 12px; color: #555; font-weight: 500; word-break: break-all; 
+        }
+
+        .user-menu-list { list-style: none; margin-bottom: 10px; padding: 0; }
+        .user-menu-list li a {
+            display: flex; align-items: center; gap: 10px; padding: 10px;
+            color: #444; text-decoration: none; font-size: 14px; border-radius: 6px; transition: 0.2s;
+        }
+        .user-menu-list li a:hover { background-color: #f5f0eb; color: #5d4037; }
+        
+        .logout-btn { 
+            width: 100%; padding: 10px; background-color: #ffebee; color: #d32f2f; 
+            border: none; border-radius: 6px; font-weight: 600; cursor: pointer; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
+            font-size: 13px; transition: 0.2s; 
+        }
+        .logout-btn:hover { background-color: #d32f2f; color: #fff; }
+
+        /* --- 2. CSS CHO GỢI Ý TÌM KIẾM (SEARCH SUGGESTION) --- */
+        .search-bar { position: relative; } 
+        
+        /* --- CSS CHO GỢI Ý TÌM KIẾM --- */
+        .search-suggestions {
+            position: absolute; top: 110%; left: 0; width: 100%;
+            background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px; overflow: hidden; z-index: 1000;
+            display: none; 
+            border: 1px solid #eee;
+            
+            /* QUAN TRỌNG: Giới hạn chiều cao và bật thanh cuộn */
+            max-height: 300px; 
+            overflow-y: auto; 
+        }
+
+        /* Tùy chỉnh thanh cuộn (Scrollbar) cho đẹp mắt hơn trên Chrome/Edge/Safari */
+        .search-suggestions::-webkit-scrollbar {
+            width: 6px;
+        }
+        .search-suggestions::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .search-suggestions::-webkit-scrollbar-thumb {
+            background: #ccc; 
+            border-radius: 3px;
+        }
+        .search-suggestions::-webkit-scrollbar-thumb:hover {
+            background: #5d4037; 
+        }
+        .suggestion-item {
+            display: flex; align-items: center; gap: 15px; padding: 10px 15px;
+            cursor: pointer; transition: 0.2s; border-bottom: 1px solid #f9f9f9;
+        }
+        .suggestion-item:last-child { border-bottom: none; }
+        .suggestion-item:hover { background-color: #fdfbf9; }
+        
+        .suggestion-item img {
+            width: 45px; height: 45px; object-fit: cover; border-radius: 6px;
+        }
+        .suggestion-info h4 {
+            font-size: 14px; color: #333; margin: 0; font-weight: 600;
+        }
+        .suggestion-info p {
+            font-size: 13px; color: #d32f2f; margin: 2px 0 0 0; font-weight: 500;
+        }
+        .no-result { padding: 15px; text-align: center; color: #777; font-size: 13px; }
+
+        /* --- 3. CSS CHO MODAL (POPUP) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .modal-overlay.open { opacity: 1; visibility: visible; }
+        .modal-box {
+            background: #fff; width: 400px; padding: 30px; border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;
+            transform: translateY(-20px); transition: 0.3s;
+        }
+        .modal-overlay.open .modal-box { transform: translateY(0); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h2 { color: #5d4037; font-size: 20px; margin: 0; }
+        .close-modal { font-size: 20px; cursor: pointer; color: #888; transition: 0.2s; }
+        .close-modal:hover { color: #d32f2f; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 5px; color: #333; }
+        .form-group input { width: 100%; padding: 10px 12px; border: 1px solid #dcc0b0; border-radius: 5px; outline: none; }
+        .form-group input:focus { border-color: #fca311; background: #fffcf5; }
+        .form-group input:read-only { background-color: #f0f0f0; color: #777; cursor: not-allowed; }
+        .save-btn { width: 100%; padding: 10px; background: #5d4037; color: #fff; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .save-btn:hover { background: #4a332c; }
+        .msg-box { padding: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 13px; text-align: center; display: none; }
+        .msg-error { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+        .msg-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        
+        #user-icon-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+
+        @media (max-width: 576px) {
+            .user-dropdown { width: 260px; right: -10px; }
+            .modal-box { width: 90%; margin: 0 10px; }
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Mai di hat kh</h1>
-    <h2>Hieu  </h2>
-    <h2>hieuchamhieu  </h2>
+    <header id="mainHeader">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="header-logo-img">
+            </a>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li class="dropdown">
+                    <a href="sanpham.html">Sản phẩm <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="danhmucsp-banhkem.html">Bánh kem</a></li>
+                        <li><a href="danhmucsp-banhngot.html">Bánh ngọt</a></li>
+                        <li><a href="danhmucsp-banhnuong.html">Bánh nướng</a></li>
+                        <li><a href="danhmucsp-banhquy.html">Bánh quy</a></li>
+                        <li><a href="danhmucsp-banhmousse.html">Bánh mousse</a></li>
+                        <li><a href="danhmucsp-douong.html">Đồ uống</a></li>
+                      </ul>
+                </li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <button id="btnSearchAction"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm bánh..." autocomplete="off">
+                
+                <div id="searchSuggestions" class="search-suggestions">
+                    </div>
+            </div>
+
+            <div class="user-cart-actions">              
+                <a href="#" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
+                
+                <a href="login.html" class="icon-btn" id="user-icon-btn">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+        </div>
+    </header>
+
+    <section class="hero-slider">
+    <button class="slider-btn prev-btn" style=" top: 50%;position: absolute;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 10;
+            padding: 20px;
+            left: 20px;"><i class="fa-solid fa-chevron-left"></i></button>
+    
+    <button class="slider-btn next-btn" style="top: 50%;position: absolute;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 10;
+            padding: 20px;
+            right: 20px;"><i class="fa-solid fa-chevron-right"></i></button>
+    
+    <div class="slide active">
+        <video class="slide-video" autoplay muted loop playsinline>
+            <source src="assets/img/Banner/slide1.mp4" type="video/mp4">
+        </video>
+            
+        <div class="banner-overlay"></div>
+        <div class="banner-text">
+            <p class="subtitle">HONEYQUE</p>
+            <h1>CẦU TIẾN & SÁNG TẠO</h1>
+            <p class="desc">HONEYQUE không ngừng nghiên cứu và phát triển sản phẩm trong quá trình kinh doanh, mang đến những giá trị mới từ nông sản Việt.</p>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=2026');">
+        <div class="banner-text">
+            <h1>HƯƠNG VỊ PHÁP</h1>
+            <p style="font-size: 20px; font-family: 'Segoe UI', sans-serif;">Thưởng thức những chiếc bánh Croissant ngàn lớp giòn tan, thơm lừng bơ.</p> 
+        </div>
+    </div>
+
+    <div class="slide" style="background-image: url('assets/img/Banner/Banner\ bánh\ kem.webp');">
+        
+        <div class="banner-text">
+            <h1>NGỌT NGÀO YÊU THƯƠNG</h1>
+            <p style="font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Những chiếc bánh kem tinh tế dành tặng cho người thân yêu nhất.</p> 
+        </div>
+    </div>
+
+    <div class="slider-dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+</section>
+
+    <div class="modal-overlay" id="modal-edit-info">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Chỉnh sửa thông tin</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-edit-info')"></i>
+            </div>
+            <div id="edit-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Tên đăng nhập (Không thể sửa)</label>
+                <input type="text" id="edit-username" readonly>
+            </div>
+            <div class="form-group">
+                <label>Họ và tên</label>
+                <input type="text" id="edit-fullname" placeholder="Nhập họ tên mới">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="edit-email" placeholder="Nhập email mới">
+            </div>
+            <button class="save-btn" onclick="saveUserInfo()">Lưu thay đổi</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-change-pass">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Đổi mật khẩu</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-change-pass')"></i>
+            </div>
+            <div id="pass-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Mật khẩu cũ</label>
+                <input type="password" id="old-pass" placeholder="Nhập mật khẩu hiện tại">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" id="new-pass" placeholder="Nhập mật khẩu mới">
+            </div>
+            <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirm-pass" placeholder="Nhập lại mật khẩu mới">
+            </div>
+            <button class="save-btn" onclick="saveNewPassword()">Cập nhật mật khẩu</button>
+        </div>
+    </div>
+
+    <section class="brand-story">
+    <div class="container">
+        <div class="story-wrapper">
+            
+            <div class="story-images">
+                <div class="img-large">
+                    <img src="assets/img/Banner/brand-story.webp" alt="Thợ làm bánh" onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+                </div>
+                <div class="img-small-col">
+                    <img src="assets/img/Banner/brand-story 1.webp" alt="Bánh nướng" class="img-top" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                    <img src="assets/img/Banner/brand-story 2.webp" alt="Lò nướng" class="img-bottom" onerror="this.src='https://images.unsplash.com/photo-1586985289688-ca3cfd7d3ce0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                </div>
+            </div>
+
+            <div class="story-content">
+                <h2 class="brand-name">HONEYQUE:<br>Tiệm bánh kiểu<br>Pháp Châu Á</h2>
+                
+                <span class="sub-heading">CÂU CHUYỆN CỦA CHÚNG TÔI</span>
+                
+                <h3 class="main-heading">Bánh nướng tươi mỗi ngày</h3>
+                
+                <p class="desc">
+                    Với cam kết chỉ sử dụng những nguyên liệu tốt nhất, sản phẩm của chúng tôi nổi tiếng với hương vị độc đáo và chất lượng tốt cho sức khỏe. Những người thợ làm bánh lành nghề của chúng tôi tạo ra nhiều loại bánh ngon được nướng tươi mỗi ngày, sẵn sàng phục vụ những khách hàng tìm kiếm hương vị và chất lượng tuyệt hảo.
+                </p>
+
+                <a href="gioithieu.html" class="read-more-btn">ĐỌC CÂU CHUYỆN CỦA CHÚNG TÔI</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+  <section class="signature-products">
+    <div class="container" style="position: relative;">
+        
+        <h2 class="section-title text-center">HOneyque mời bạn thưởng thức</h2>
+
+            <button class="slider-btn" id="prevBtn">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+        <div class="slider-wrapper">
+            <div class="category-grid" id="productSlider">
+                
+                <a href="danhmucsp-banhkem.html" class="cat-item">
+                    <div class="cat-img">
+                        <img src="assets/img/Products/Bánh Kem/Chocolate Macaron Cake 1.jpg" alt="Bánh Kem" onerror="this.src='https://via.placeholder.com/400?text=Banh+Kem'">
+                    </div>
+                    <h3>Bánh Kem</h3>
+                </a>
+
+                <a href="danhmucsp-banhngot.html" class="cat-item">
+                    <div class="cat-img">
+                        <img src="assets/img/Products/Bánh Ngọt/Strawberry Croissant.jpg" alt="Bánh Ngọt" onerror="this.src='https://via.placeholder.com/400?text=Banh+Ngot'">
+                    </div>
+                    <h3>Bánh Ngọt</h3>
+                </a>
+
+                <a href="danhmucsp-banhnuong.html" class="cat-item">
+                    <div class="cat-img">
+                        <img src="assets/img/Products/Bánh Nướng/Banana Chocolate Almond Croissant 1.webp" alt="Bánh Nướng" onerror="this.src='https://via.placeholder.com/400?text=Banh+Nuong'">
+                    </div>
+                    <h3>Bánh Nướng</h3>
+                </a>
+
+                <a href="danhmucsp-banhquy.html" class="cat-item">
+                    <div class="cat-img">
+                        <img src="assets/img/Banner/cookie.avif" alt="Bánh Quy" onerror="this.src='https://via.placeholder.com/400?text=Banh+Quy'">
+                    </div>
+                    <h3>Bánh Quy</h3>
+                </a>
+
+                <a href="danhmucsp-banhmousse.html" class="cat-item">
+                    <div class="cat-img">
+                        <img src="assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 1.jpg" alt="Bánh Mousse" onerror="this.src='https://via.placeholder.com/400?text=Banh+Mousse'">
+                    </div>
+                    <h3>Bánh Mousse</h3>
+                </a>
+
+                <a href="danhmucsp-douong.html" class="cat-item">
+                    <div class="cat-img">
+                        <img src="assets/img/Banner/douong.avif" alt="Đồ Uống" onerror="this.src='https://via.placeholder.com/400?text=Do+Uong'">
+                    </div>
+                    <h3>Đồ Uống</h3>
+                </a>
+
+            </div>
+        </div>
+
+        <button class="slider-btn next-btn" id="nextBtn">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+    </div>
+</section>  
+
+    <section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Lý do nên chọn Honeyque</h2>
+        <div class="features-grid">
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
+                    </svg>
+                </div>
+                <h3>Chất Lượng Hàng Đầu</h3>
+                <p>Cam kết mang đến những tiêu chuẩn cao nhất trong từng nguyên liệu và quy trình làm bánh.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 8a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/>
+                        <path d="M10 12h4"/>
+                        <path d="M10 16h4"/>
+                        <path d="M12 4v2"/>
+                        <path d="M2 20l3-3"/>
+                        <path d="M22 20l-3-3"/>
+                    </svg>
+                </div>
+                <h3>Đam Mê Bánh Ngọt</h3>
+                <p>Bánh được nướng mới mỗi ngày bằng tất cả sự tận tâm và nhiệt huyết của người thợ.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4.5 9.5c0-1.5 1.5-3 3.5-3s3 1 3 1s1.5-2 4-2s4 2 4 4c0 2-2 4-5 4s-4.5-1.5-4.5-1.5s-1 1.5-3 1.5s-3-2-2-4"/>
+                        <path d="M6 14s1 2 4 2s4-1 4-1"/>
+                        <path d="M19 9c1 0 2 1 2 2s-2 3-3 3"/>
+                        <path d="M5 9c-1 0-2 1-2 2s2 3 3 3"/>
+                    </svg>
+                </div>
+                <h3>Hương Vị Truyền Thống</h3>
+                <p>Giữ trọn vẹn hương vị tinh tế, kết hợp giữa công thức cổ điển và sự sáng tạo hiện đại.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 21v-8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8"/>
+                        <path d="M5 6l1-3h12l1 3"/>
+                        <path d="M2 6h20"/>
+                        <path d="M12 11v10"/>
+                        <path d="M16 16h-8"/>
+                    </svg>
+                </div>
+                <h3>Thương Hiệu Uy Tín</h3>
+                <p>Được thành lập từ niềm tin và sự yêu mến của khách hàng, luôn đồng hành cùng bạn.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+     <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col logo-col">
+                <div class="footer-logo">
+                    <a href="index.html" title="Về trang chủ">
+                        <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="footer-logo-img">
+                    </a>
+                </div>
+                <p class="footer-desc">
+                    Honeyque mang trong mình sứ mệnh tạo ra những chiếc bánh chất lượng, thơm ngon và đầy cảm xúc. 
+        Chúng tôi tin rằng mỗi chiếc bánh không chỉ là món ăn, mà là một khoảnh khắc sẻ chia – nơi sự 
+        ngọt ngào có thể kết nối con người, mang lại niềm vui và làm cho những dịp đặc biệt trở nên trọn vẹn hơn.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h3>VỀ HONEYQUE</h3>
+                <ul>
+                    <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                    <li><a href="tintuc.html">Tin Tức </a></li>
+                    <li><a href="chinhsachantoanthucpham.html">Chính Sách An Toàn Thực Phẩm</a></li>
+                    <li><a href="chinhsachdichvu.html">Chính Sách Dịch Vụ</a></li>
+                    <li><a href="chinhsachbaomat.html">Chính Sách Bảo Mật</a></li>
+                    <li><a href="khachhangthanthiet.html">Khách Hàng Thân Thiết</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>THƯỞNG THỨC</h3>
+                <ul>
+                    <li><a href="danhmucsp-banhkem.html">Bánh Kem</a></li>
+                    <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                    <li><a href="danhmucsp-banhngot.html">Bánh Ngọt</a></li>
+                    <li><a href="danhmucsp-banhquy.html">Bánh Quy</a></li>
+                    <li><a href="danhmucsp-banhmousse.html">Bánh Mousse</a></li>
+                    <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li><a href="lienhe.html">Liên Hệ Với Chúng Tôi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h3>ĐĂNG KÍ NHẬN TIN</h3>
+                
+                <form id="emailForm" class="email-form">
+                    <input type="email" id="emailInput" placeholder="Nhập địa chỉ email vào đây ..." required>
+                    <button type="submit" class="submit-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <p>Cảm ơn bạn, yêu cầu đăng ký của bạn đã thành công! Vui lòng kiểm tra hộp thư đến email để xác nhận.</p>
+                    
+                    <button id="resetEmailBtn" class="reset-btn">
+                        <i class="fa-solid fa-rotate-left"></i> Đăng ký tài khoản khác
+                    </button>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Honeyque Pte Ltd. All rights reserved.</p>
+        </div>
+
+        <button id="scrollToTopBtn" class="scroll-top-btn">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+    </footer>
+    <script src="index.js" defer></script>
+    <script src="footer.js"></script>
+    <script src="wishlist.js" defer></script>
+    <!-- <script src="giohang.js" defer></script> -->
 </body>
-</html>
+</html> 

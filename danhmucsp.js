@@ -1,0 +1,267 @@
+/*********************************
+ * 1. LOAD SẢN PHẨM TỪ JSON
+ *********************************/
+const productGrid = document.getElementById("product-grid");
+const category = productGrid.dataset.category;
+
+let products = [];
+let filteredProducts = [];
+let currentPage = 1;
+const itemsPerPage = 20;
+
+fetch("product.json")
+    .then(res => res.json())
+    .then(data => {
+        products = category === "all"
+    ? data
+    : data.filter(p => p.category === category);
+
+        filteredProducts = [...products];
+        renderProducts();
+        initImageSlider();
+        showPage(1);
+    })
+    .catch(err => console.error(err));
+/*********************************
+ * 2. RENDER SẢN PHẨM
+ *********************************/
+function renderProducts() {
+    productGrid.innerHTML = "";
+
+    filteredProducts.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card bg-white rounded-lg shadow-md overflow-hidden p-3 relative h-full';
+
+        // LABEL
+        let labelHTML = "";
+        if (Array.isArray(p.status)) {
+            p.status.forEach((s, i) => {
+                labelHTML += `<div class="product-label" style="top:${10 + i * 28}px">${s}</div>`;
+            });
+        } else if (p.status) {
+            labelHTML = `<div class="product-label">${p.status}</div>`;
+        }
+
+        // IMAGES
+        const imagesHTML = p.images
+            .map((img, i) => `<img src="${img}" class="slide ${i === 0 ? "active" : ""}">`)
+            .join("");
+
+        // Tạo HTML
+        card.innerHTML = `
+    <div class="product-image-wrapper relative">
+        ${labelHTML}
+        <!-- ❤️ NÚT YÊU THÍCH --!>
+         <button class="wishlist-btn absolute top-2 right-2 z-10" data-id="${p.id}" onclick="addToWishlistFromCategory(event, this)">
+    <i class="fa-regular fa-heart"></i>
+</button>
+        <a href="product2.html?id=${p.id}" class="product-link">
+            <div class="image-slider">
+                ${imagesHTML}
+            </div>
+        </a>
+        <div class="add-to-cart cursor-pointer absolute bottom-2 left-1/2 -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded opacity-0 transition-all duration-300"
+     data-id="${p.id}">
+    THÊM VÀO GIỎ
+</div>
+
+    </div>
+    <a href="product2.html?id=${p.id}" class="product-link">
+        <h4 class="product-name mt-2">${p.name}</h4>
+    </a>
+    <p class="price">${p.price.toLocaleString()}₫</p>
+`;
+// Lấy nút thêm vào giỏ
+const addBtn = card.querySelector('.add-to-cart');
+
+// Hover trượt thanh thêm vào giỏ
+card.addEventListener('mouseenter', () => addBtn.classList.add('opacity-100'));
+card.addEventListener('mouseleave', () => addBtn.classList.remove('opacity-100'));
+
+// 👉 CLICK: thêm vào giỏ + mở drawer
+addBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const id = addBtn.dataset.id;
+
+    if (window.GioHangAdd) {
+        window.GioHangAdd(id);
+    } else {
+        console.error("❌ Chưa load giohang.js");
+    }
+});
+
+productGrid.appendChild(card);
+    });
+}
+
+//ICON TRÁI TIM CHỖ SẢN PHẨM
+function addToWishlistFromCategory(e, button) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const id = button.dataset.id;
+    const icon = button.querySelector("i");
+
+    if (!id) return;
+
+    if (icon.classList.contains("fa-regular")) {
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid", "text-red-500");
+        if (window.WishlistAdd) window.WishlistAdd(id);
+    } else {
+        icon.classList.remove("fa-solid", "text-red-500");
+        icon.classList.add("fa-regular");
+        if (window.WishlistRemove) window.WishlistRemove(id);
+    }
+}
+
+/*********************************
+ * 3. IMAGE SLIDER
+ *********************************/
+function initImageSlider() {
+    document.querySelectorAll(".image-slider").forEach(slider => {
+        let index = 0;
+        const slides = slider.querySelectorAll(".slide");
+        if (slides.length <= 1) return;
+
+        let timer;
+
+        slider.onmouseenter = () => {
+            timer = setInterval(() => {
+                slides[index].classList.remove("active");
+                index = (index + 1) % slides.length;
+                slides[index].classList.add("active");
+            }, 1000);
+        };
+
+        slider.onmouseleave = () => {
+            clearInterval(timer);
+            slides.forEach(s => s.classList.remove("active"));
+            slides[0].classList.add("active");
+            index = 0;
+        };
+    });
+}
+
+
+/*********************************
+ * 4. FILTER + SORT
+ *********************************/
+function parsePrice(str) {
+    if (!str) return 0;
+    str = str.toLowerCase().replace(/\s|đ|₫|,/g, "");
+    let n = parseFloat(str);
+    if (str.includes("triệu") || str.includes("tr")) n *= 1_000_000;
+    if (str.includes("k")) n *= 1_000;
+    return n;
+}
+
+function applyFilters() {
+    const checked = document.querySelectorAll(".sidebar input[type='checkbox']:checked");
+
+    let priceFilters = [];
+    let statusFilters = [];
+
+    checked.forEach(cb => {
+        const text = cb.parentElement.textContent.trim().toLowerCase();
+
+        // ===== LỌC TRẠNG THÁI (NEW / SALE / SOLD OUT...) =====
+        if (!text.match(/\d/)) {
+            statusFilters.push(text);
+        }
+
+        // ===== LỌC GIÁ =====
+        const nums = text.match(/[\d\.]+/g)?.map(n => Number(n.replace(/\./g, ""))) || [];
+
+        if (text.includes("trên") && nums[0]) {
+            priceFilters.push({ min: nums[0], max: Infinity });
+        } 
+        else if (nums.length === 2) {
+            priceFilters.push({ min: nums[0], max: nums[1] });
+        }
+    });
+
+    filteredProducts = products.filter(p => {
+        // ---- GIÁ ----
+        const matchPrice =
+            priceFilters.length === 0 ||
+            priceFilters.some(r => p.price >= r.min && p.price <= r.max);
+
+        // ---- TRẠNG THÁI ----
+        const productStatus = Array.isArray(p.status)
+            ? p.status.map(s => s.toLowerCase())
+            : [String(p.status || "").toLowerCase()];
+
+        const matchStatus =
+            statusFilters.length === 0 ||
+            statusFilters.some(s => productStatus.includes(s));
+
+        return matchPrice && matchStatus;
+    });
+
+    currentPage = 1;
+    renderProducts();
+    initImageSlider();
+    showPage(1);
+}
+
+
+// Gán checkbox
+document.querySelectorAll(".sidebar input").forEach(cb =>
+    cb.addEventListener("change", applyFilters)
+);
+
+
+/*********************************
+ * 5. SORT
+ *********************************/
+function sortProducts(type) {
+    filteredProducts.sort((a, b) => {
+        if (type === "az") return a.name.localeCompare(b.name);
+        if (type === "za") return b.name.localeCompare(a.name);
+        if (type === "price-low") return a.price - b.price;
+        if (type === "price-high") return b.price - a.price;
+    });
+
+    renderProducts();
+    initImageSlider();
+    showPage(1);
+}
+
+document.querySelector(".sort-btn:nth-child(2)").onclick = () => sortProducts("az");
+document.querySelector(".sort-btn:nth-child(3)").onclick = () => sortProducts("za");
+document.querySelector(".sort-btn:nth-child(4)").onclick = () => sortProducts("price-low");
+document.querySelector(".sort-btn:nth-child(5)").onclick = () => sortProducts("price-high");
+
+
+/*********************************
+ * 6. PAGINATION
+ *********************************/
+function showPage(page) {
+    currentPage = page;
+
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    document.querySelectorAll(".product-card").forEach((card, i) => {
+        card.style.display = i >= start && i < end ? "block" : "none";
+    });
+
+    renderPagination();
+}
+
+function renderPagination() {
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+    const container = document.getElementById("pagination");
+    container.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add("active");
+        btn.onclick = () => showPage(i);
+        container.appendChild(btn);
+    }
+}

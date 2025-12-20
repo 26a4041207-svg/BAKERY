@@ -1,0 +1,653 @@
+[
+  {
+    "id": "001",
+    "name": "Carrot Cake",
+    "price": 390000,
+    "category": "Bánh Kem",
+    "status": ["New", "Sale"],
+    "images": ["/assets/img/Products/Bánh Kem/Carrot Cake 1.webp", "/assets/img/Products/Bánh Kem/Carrot Cake 2.webp"],
+    "description": "Bánh cà rốt mềm mượt, kết hợp kem phô mai mát ngọt, thích hợp cho tiệc sinh nhật và dịp lễ.",
+    "ingredients": ["Bột mì", "Cà rốt tươi", "Trứng", "Đường", "Kem phô mai"],
+    "nutrition": { "calories": 350, "fat": 20, "carb": 38, "protein": 5 }
+  }, 
+  {
+    "id": "002",
+    "name": "Chocolate Cake",
+    "price": 300000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/Chocolate Cake 1.webp", "/assets/img/Products/Bánh Kem/Chocolate Cake 2.webp", "assets/img/Products/Bánh Kem/Chocolate Cake 3.webp"],
+    "description": "Bánh sô cô la đậm vị với lớp ganache mượt mà, hoàn hảo cho tín đồ chocolate.",
+    "ingredients": ["Bột mì", "Sô cô la đen", "Trứng", "Đường", "Bơ"],
+    "nutrition": { "calories": 420, "fat": 25, "carb": 40, "protein": 6 }
+
+  }, 
+  {
+    "id": "003",
+    "name": "Chocolate Macaron Cake",
+    "price": 350000,
+    "category": "Bánh Kem",
+    "status": ["Sold Out"],
+    "images": ["/assets/img/Products/Bánh Kem/Chocolate Macaron Cake 1.jpg", "/assets/img/Products/Bánh Kem/Chocolate Macaron Cake 2.jpg", "assets/img/Products/Bánh Kem/Chocolate Macaron Cake 3.webp"],
+    "description": "Bánh chocolate sang trọng, trang trí macaron giòn rụm trên đỉnh bánh.",
+    "ingredients": ["Bột mì", "Sô cô la", "Trứng", "Hạnh nhân", "Đường"],
+    "nutrition": { "calories": 380, "fat": 22, "carb": 35, "protein": 5 }
+  }, 
+  {
+    "id": "004",
+    "name": "Confetti Cake",
+    "price": 360000,
+    "category": "Bánh Kem",
+    "status": ["Flash Sale"],
+    "images": ["/assets/img/Products/Bánh Kem/Confetti Cake 1.webp", "/assets/img/Products/Bánh Kem/Confetti Cake 2.webp"],
+    "description": "Bánh confetti vui mắt, thích hợp cho lễ kỷ niệm và trẻ em.",
+    "ingredients": ["Bột mì", "Trứng", "Đường", "Màu thực phẩm", "Kem tươi"],
+    "nutrition": { "calories": 360, "fat": 18, "carb": 42, "protein": 5 }
+  }, 
+  {
+    "id": "005",
+    "name": "Double Chocolate Brownie and Toffee",
+    "price": 370000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/Double Chocolate Brownie and Toffee.webp"],
+    "description": "Một sự kết hợp giữa brownie và toffee, mềm và dẻo cùng lớp chocolate phủ trên cùng.",
+    "ingredients": ["Sô cô la", "Bơ", "Đường", "Trứng", "Toffee"],
+    "nutrition": { "calories": 450, "fat": 28, "carb": 50, "protein": 7 }
+  },  
+  {
+    "id": "006",
+    "name": "German Chocolate Cake",
+    "price": 290000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/German Chocolate Cake 1.webp", "/assets/img/Products/Bánh Kem/German Chocolate Cake 2.webp", "/assets/img/Products/Bánh Kem/German Chocolate Cake 3.webp"],
+    "description": "Bánh German Chocolate truyền thống với lớp nhân dừa béo ngậy.",
+    "ingredients": ["Bột mì", "Dừa nạo", "Sữa đặc", "Đường", "Trứng"],
+    "nutrition": { "calories": 410, "fat": 24, "carb": 44, "protein": 6 }
+  }, 
+  {
+    "id": "007",
+    "name": "Harvest Apple Cake",
+    "price": 400000,
+    "category": "Bánh Kem",
+    "status": ["Sold Out"],
+    "images": ["/assets/img/Products/Bánh Kem/Harvest Apple Cake 1.webp", "/assets/img/Products/Bánh Kem/Harvest Apple Cake 2.webp"],
+    "description": "Bánh táo thơm mùi quế, sử dụng táo tươi và gia vị tự nhiên.",
+    "ingredients": ["Táo", "Bột mì", "Quế", "Đường", "Bơ"],
+    "nutrition": { "calories": 300, "fat": 12, "carb": 46, "protein": 4 }
+  }, 
+  {
+    "id": "008",
+    "name": "Hummingbird Cake",
+    "price": 320000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/Hummingbird Cake 1.webp", "/assets/img/Products/Bánh Kem/Hummingbird Cake 2.webp", "/assets/img/Products/Bánh Kem/Hummingbird Cake 3.webp"],
+    "description": "Hummingbird Cake truyền thống với trái cây nhiệt đới, cực kỳ thơm ngon.",
+    "ingredients": ["Chuối", "Dứa", "Bột mì", "Đường", "Kem tươi"],
+    "nutrition": { "calories": 370, "fat": 20, "carb": 44, "protein": 5 }
+  },  
+  {
+    "id": "009",
+    "name": "Macaron Fraisier Cake",
+    "price": 250000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/Macaron Fraisier Cake 1.webp", "/assets/img/Products/Bánh Kem/Macaron Fraisier Cake 2.png", "/assets/img/Products/Bánh Kem/Macaron Fraisier Cake 3.png"],
+    "description": "Bánh Macaron Fraisier thanh nhã, lớp kem nhẹ và macaron giòn trên cùng.",
+    "ingredients": ["Bột mì", "Macaron", "Trứng", "Đường", "Kem tươi"],
+    "nutrition": { "calories": 340, "fat": 16, "carb": 38, "protein": 4 }
+  }, 
+  {
+    "id": "010",
+    "name": "Pistachio Cake",
+    "price": 270000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/Pistachio Cake.png"],
+    "description": "Bánh hạt dẻ cười (pistachio) beo béo, màu xanh nhẹ nhàng, thơm vị hạt.",
+    "ingredients": ["Pistachio", "Bột mì", "Đường", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 400, "fat": 26, "carb": 32, "protein": 6 }
+  },  
+  {
+    "id": "011",
+    "name": "Red Velvet Cake",
+    "price": 550000,
+    "category": "Bánh Kem",
+    "status": ["Best Seller"],
+    "images": ["/assets/img/Products/Bánh Kem/Red Velvet Cake 1.webp", "/assets/img/Products/Bánh Kem/Red Velvet Cake 2.webp", "/assets/img/Products/Bánh Kem/Red Velvet Cake 3.webp"],
+    "description": "Bánh Red Velvet mềm mịn, phủ kem phô mai truyền thống.",
+    "ingredients": ["Bột mì", "Sữa", "Đường", "Bơ", "Kem phô mai"],
+    "nutrition": { "calories": 380, "fat": 21, "carb": 39, "protein": 5 }
+  },  
+  {
+    "id": "012",
+    "name": "Reindeer Cake",
+    "price": 450000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/Reindeer Cake 1.webp", "/assets/img/Products/Bánh Kem/Reindeer Cake 2.webp", "/assets/img/Products/Bánh Kem/Snowman Cake 3.webp"],
+    "description": "Reindeer Cake trang trí Giáng sinh, phù hợp cho mùa lễ hội.",
+    "ingredients": ["Bột mì", "Mứt trái cây", "Đường", "Kem tươi"],
+    "nutrition": { "calories": 360, "fat": 18, "carb": 40, "protein": 5 }
+  },  
+  {
+    "id": "013",
+    "name": "Snowman Cake",
+    "price": 260000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/Snowman Cake 1.webp", "/assets/img/Products/Bánh Kem/Snowman Cake 2.webp", "/assets/img/Products/Bánh Kem/Snowman Cake 3.webp"]
+  },  
+  {
+    "id": "014",
+    "name": "Vanilla Cake",
+    "price": 420000,
+    "category": "Bánh Kem",
+    "images": ["/assets/img/Products/Bánh Kem/Vanilla Cake 1.webp", "/assets/img/Products/Bánh Kem/Vanilla Cake 2.webp", "/assets/img/Products/Bánh Kem/Vanilla Cake 3.webp"]
+  }, 
+    {
+    "id": "015",
+    "name": "Berry Fruit Vanilla",
+    "price": 140000,
+    "category": "Bánh Mousse",
+    "status": ["Sale"],
+    "images": ["/assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 1.jpg", "/assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 2.jpg"]
+  },
+  {
+    "id": "016",
+    "name": "Burnt Caramel",
+    "price": 120000,
+    "category": "Bánh Mousse",
+    "images": ["/assets/img/Products/Bánh Mousse/Burnt Caramel 1.jpg", "/assets/img/Products/Bánh Mousse/Burnt Caramel 2.jpg"]
+  },
+  {
+    "id": "017",
+    "name": "Burnt Caramel Signature",
+    "price": 100000,
+    "category": "Bánh Mousse",
+    "status": ["New"],
+    "images": ["/assets/img/Products/Bánh Mousse/Burnt Caramel Signature 1.png", "/assets/img/Products/Bánh Mousse/Burnt Caramel Signature 2.jpg"]
+  },
+  {
+    "id": "018",
+    "name": "Passion Fruit",
+    "price": 80000,
+    "category": "Bánh Mousse",
+    "status": ["Flash Sale"],
+    "images": ["/assets/img/Products/Bánh Mousse/Passion Fruit 1.jpg", "/assets/img/Products/Bánh Mousse/Passion Fruit 2.png", "/assets/img/Products/Bánh Mousse/Passion Fruit 3.jpg"]
+  },
+  {
+    "id": "019",
+    "name": "Passion Mango chese",
+    "price": 70000,
+    "category": "Bánh Mousse",
+    "images": ["/assets/img/Products/Bánh Mousse/Passion Mango chese  1.png", "/assets/img/Products/Bánh Mousse/Passion Mango chese  2.jpg"]
+  },
+  {
+    "id": "020",
+    "name": "Pink Guava",
+    "price": 50000,
+    "category": "Bánh Mousse",
+    "images": ["/assets/img/Products/Bánh Mousse/Pink Guava 1.png", "/assets/img/Products/Bánh Mousse/Pink Guava 2.jpg", "/assets/img/Products/Bánh Mousse/Pink Guava 3.jpg"]
+  },
+  {
+    "id": "021",
+    "name": "Strawberry Cherry Blossom",
+    "price": 70000,
+    "category": "Bánh Mousse",
+    "status": ["Best Seller"],
+    "images": ["/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 1.png", "/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 2.jpg", "/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 3.png"]
+  },
+  {
+    "id": "022",
+    "name": "Tiramisu De Caramel Socola",
+    "price": 90000,
+    "category": "Bánh Mousse",
+    "images": ["/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Socola 1.png", "/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Socola 2.jpg"]
+  }, 
+  {
+    "id": "023",
+    "name": "Tiramisu De Caramel Vani",
+    "price": 75000,
+    "category": "Bánh Mousse",
+    "status": ["Sold Out"],
+    "images": ["/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Vani 1.png", "/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Vani 2.jpg"]
+  }, 
+    {
+    "id": "024",
+    "name": "Tropical Coconut",
+    "price": 65000,
+    "category": "Bánh Mousse",
+    "images": ["assets/img/Products/Bánh Mousse/Tropical Coconut 1.png", "assets/img/Products/Bánh Mousse/Tropical Coconut 2.jpg"]
+  }, 
+    {
+    "id": "025",
+    "name": "Almond Pastry",
+    "price": 60000,
+    "category": "Bánh Ngọt",
+    "status": ["Best Seller"],
+    "images": ["assets/img/Products/Bánh Ngọt/Almond Pastry.jpg"]
+  }, 
+    {
+    "id": "026",
+    "name": "Blueberry Cream Cheese Pastry",
+    "price": 150000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Blueberry Cream Cheese Pastry.jpg"]
+  }, 
+    {
+    "id": "027",
+    "name": "Butter Cream Bread",
+    "price": 95000,
+    "category": "Bánh Ngọt",
+    "status": ["Flash Sale"],
+    "images": ["assets/img/Products/Bánh Ngọt/Butter Cream Bread.jpg"]
+  }, 
+    {
+    "id": "028",
+    "name": "Cheese Tart",
+    "price": 90000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Cheese Tart.jpg"]
+  }, 
+    {
+    "id": "029",
+    "name": "Cherry Greek Yogurt Danish",
+    "price": 100000,
+    "category": "Bánh Ngọt",
+    "status": ["New"],
+    "images": ["assets/img/Products/Bánh Ngọt/Cherry Greek Yogurt Danish.jpg"]
+  }, 
+    {
+    "id": "030",
+    "name": "Cherry Greek Yogurt Danish",
+    "price": 120000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Cherry Greek Yogurt Danish.jpg"]
+  },
+    {
+    "id": "031",
+    "name": "Chocolate Cream Bread",
+    "price": 140000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Chocolate Cream Bread.jpg"]
+  }, 
+    {
+    "id": "032",
+    "name": "Chocolate Hazelnut Kiss",
+    "price": 130000,
+    "category": "Bánh Ngọt",
+    "status": ["New"],
+    "images": ["assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 1.webp", "assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 2.webp", "assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 3.webp"]
+  }, 
+    {
+    "id": "033",
+    "name": "Coffee Bun",
+    "price": 120000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Coffee Bun.jpg"]
+  }, 
+    {
+    "id": "034",
+    "name": "Fruit Bite Raspberry",
+    "price": 110000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Fruit Bite Raspberry.jpg"]
+  }, 
+    {
+    "id": "035",
+    "name": "Fruit Bite Raspberry",
+    "price": 200000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Fruit Bite Raspberry.jpg"]
+  }, 
+    {
+    "id": "036",
+    "name": "Fruit pastry",
+    "price": 80000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Fruit pastry.jpg"]
+  }, 
+    {
+    "id": "037",
+    "name": "Opla No Baked Cheesecake",
+    "price": 60000,
+    "category": "Bánh Ngọt",
+    "status": ["Sale"],
+    "images": ["assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 1.webp", "assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 2.webp", "assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 3.webp"]
+  }, 
+    {
+    "id": "038",
+    "name": "Pastel De Nata",
+    "price": 80000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Pastel De Nata.jpg"]
+  }, 
+    {
+    "id": "039",
+    "name": "Strawberry Croissant",
+    "price": 100000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Strawberry Croissant.jpg"]
+  }, 
+    {
+    "id": "040",
+    "name": "Teddy Bear Chou",
+    "price": 140000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Teddy Bear Chou 1.webp", "assets/img/Products/Bánh Ngọt/Teddy Bear Chou 2.webp", "assets/img/Products/Bánh Ngọt/Teddy Bear Chou 3.webp"]
+  }, 
+    {
+    "id": "041",
+    "name": "Tiramisu Lava",
+    "price": 130000,
+    "category": "Bánh Ngọt",
+    "status": ["New"],
+    "images": ["assets/img/Products/Bánh Ngọt/Tiramisu Lava 1.webp", "assets/img/Products/Bánh Ngọt/Tiramisu Lava 2.webp"]
+  }, 
+    {
+    "id": "042",
+    "name": "Tiramisu Tart",
+    "price": 50000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Tiramisu Tart.jpg"]
+  }, 
+    {
+    "id": "043",
+    "name": "Very Berry Pastry",
+    "price": 40000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Very Berry Pastry.jpg"]
+  }, 
+    {
+    "id": "044",
+    "name": "Walnut Cream Bread",
+    "price": 45000,
+    "category": "Bánh Ngọt",
+    "images": ["assets/img/Products/Bánh Ngọt/Walnut Cream Bread.jpg"]
+  }, 
+    {
+    "id": "045",
+    "name": "Banana Chocolate Almond Croissant",
+    "price": 45000,
+    "category": "Bánh Nướng",
+    "status": [ "Sale"],
+    "images": ["assets/img/Products/Bánh Nướng/Banana Chocolate Almond Croissant 1.webp"]
+  }, 
+    {
+    "id": "046",
+    "name": "Black Truffle Cheese Croissant",
+    "price": 42000,
+    "category": "Bánh Nướng",
+    "images": ["assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 1.webp", "assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 2.webp", "assets/img/Products/Bánh Nướng/Black Truffle Cheese Croissant 3.webp"]
+  }, 
+    {
+    "id": "047",
+    "name": "Croissant",
+    "price": 60000,
+    "category": "Bánh Nướng",
+    "status": ["New"],
+    "images": ["assets/img/Products/Bánh Nướng/Croissant 1.webp", "assets/img/Products/Bánh Nướng/Croissant 2.webp"]
+  }, 
+    {
+    "id": "048",
+    "name": "French Milk Bun",
+    "price": 55000,
+    "category": "Bánh Nướng",
+    "images": ["assets/img/Products/Bánh Nướng/French Milk Bun 1.webp", "assets/img/Products/Bánh Nướng/French Milk Bun 2.webp", "assets/img/Products/Bánh Nướng/French Milk Bun 3.webp"]
+  }, 
+    {
+    "id": "049",
+    "name": "Hazelnut Choco Banana Bread",
+    "price": 60000,
+    "category": "Bánh Nướng",
+    "status": ["Best Seller"],
+    "images": ["assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 1.webp", "assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 2.webp", "assets/img/Products/Bánh Nướng/Hazelnut Choco Banana Bread 3.webp"]
+  }, 
+    {
+    "id": "050",
+    "name": "Nori Miso Pesto Roll",
+    "price": 70000,
+    "category": "Bánh Nướng",
+    "images": ["assets/img/Products/Bánh Nướng/Nori Miso Pesto Roll 1.webp", "assets/img/Products/Bánh Nướng/Nori Miso Pesto Roll 2.webp"]
+  }, 
+    {
+    "id": "051",
+    "name": "Pumpkin Spice Caramel Pecan Bun",
+    "price": 80000,
+    "category": "Bánh Nướng",
+    "status": ["Sold Out"],
+    "images": ["assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 1.webp", "assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 2.webp", "assets/img/Products/Bánh Nướng/Pumpkin Spice Caramel Pecan Bun 3.webp"]
+  }, 
+    {
+    "id": "052",
+    "name": "Salted Duck Egg Curd Croissant",
+    "price": 100000,
+    "category": "Bánh Nướng",
+    "images": ["assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 1.webp", "assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 2.webp", "assets/img/Products/Bánh Nướng/Salted Duck Egg Curd Croissant 3.webp"]
+  }, 
+    {
+    "id": "053",
+    "name": "Truffle Cream Cheese Bun",
+    "price": 50000,
+    "category": "Bánh Nướng",
+    "status": ["Flash Sale"],
+    "images": ["assets/img/Products/Bánh Nướng/Truffle Cream Cheese Bun 1.webp", "assets/img/Products/Bánh Nướng/Truffle Cream Cheese Bun 2.webp"]
+  }, 
+    {
+    "id": "054",
+    "name": "Browny",
+    "price": 20000,
+    "category": "bánh Quy",
+    "status": ["Flash Sale"],
+    "images": ["assets/img/Products/Bánh Quy/browny 1.jpg", "assets/img/Products/Bánh Quy/browny 2.jpg", "assets/img/Products/Bánh Quy/browny 3.jpg"]
+  }, 
+    {
+    "id": "055",
+    "name": "Choco Crinkle",
+    "price": 30000,
+    "category": "Bánh Quy",
+    "images": ["assets/img/Products/Bánh Quy/choco crinkle 1.jpg", "assets/img/Products/Bánh Quy/choco crinkle 2.jpg"]
+  }, 
+    {
+    "id": "056",
+    "name": "Chocochip Cookie",
+    "price": 28000,
+    "category": "Bánh Quy",
+    "status": ["Sold Out"],
+    "images": ["assets/img/Products/Bánh Quy/CHOCOCHIP COOKIE 1.jpg", "assets/img/Products/Bánh Quy/CHOCOCHIP COOKIE 2.jpg", "assets/img/Products/Bánh Quy/CHOCOCHIP COOKIE 3.jpg"]
+  }, 
+    {
+    "id": "057",
+    "name": "Lemon",
+    "price": 30000,
+    "category": "Bánh Quy",
+    "images": ["assets/img/Products/Bánh Quy/lemon 1.jpg", "assets/img/Products/Bánh Quy/lemon 2.jpg", "assets/img/Products/Bánh Quy/lemon 3.jpg"]
+  }, 
+    {
+    "id": "058",
+    "name": "Machamisu Cookie",
+    "price": 35000,
+    "category": "Bánh Quy",
+    "status": ["Flash Sale"],
+    "images": ["assets/img/Products/Bánh Quy/machamisu 1.jpg", "assets/img/Products/Bánh Quy/machamisu 2.jpg"]
+  }, 
+    {
+    "id": "059",
+    "name": "Matcha Chocochip",
+    "price": 32000,
+    "category": "Bánh Quy",
+    "images": ["assets/img/Products/Bánh Quy/matcha chocochip 1.jpg", "assets/img/Products/Bánh Quy/matcha chocochip 2.jpg"]
+  }, 
+    {
+    "id": "060",
+    "name": "Matcha Crinkle",
+    "price": 30000,
+    "category": "Bánh Quy",
+    "status": ["Sale"],
+    "images": ["assets/img/Products/Bánh Quy/matcha crinkle 1.jpg", "assets/img/Products/Bánh Quy/matcha crinkle 2.jpg", "assets/img/Products/Bánh Quy/matcha crinkle 3.jpg"]
+  }, 
+    {
+    "id": "061",
+    "name": "Red Velvet",
+    "price": 35000,
+    "category": "Bánh Quy",
+    "images": ["assets/img/Products/Bánh Quy/red velvet 1.jpg", "assets/img/Products/Bánh Quy/red velvet 2.jpg"]
+  }, 
+    {
+    "id": "062",
+    "name": "Red Velvet Cream Cheese",
+    "price": 32000,
+    "category": "Bánh Quy",
+    "status": ["New"],
+    "images": ["assets/img/Products/Bánh Quy/Red Velvet Cream Cheese 1.jpg", "assets/img/Products/Bánh Quy/Red Velvet Cream Cheese 2.jpg", "assets/img/Products/Bánh Quy/Red Velvet Cream Cheese 3.jpg"]
+  }, 
+    {
+    "id": "063",
+    "name": "Red Velvet Crinkle",
+    "price": 30000,
+    "category": "Bánh Quy",
+    "images": ["assets/img/Products/Bánh Quy/red velvet crinkle 1.jpg", "assets/img/Products/Bánh Quy/red velvet crinkle 2.jpg", "assets/img/Products/Bánh Quy/red velvet crinkle 3.jpg"]
+  }, 
+    {
+    "id": "064",
+    "name": "Ribbon Kiss",
+    "price": 42000,
+    "category": "Bánh Quy",
+    "images": ["assets/img/Products/Bánh Quy/ribbon kiss 1.jpg", "assets/img/Products/Bánh Quy/ribbon kiss 2.jpg"]
+  }, 
+    {
+    "id": "065",
+    "name": "Spooky Teddy",
+    "price": 50000,
+    "category": "Bánh Quy",
+    "images": ["assets/img/Products/Bánh Quy/spooky teddy 1.jpg", "assets/img/Products/Bánh Quy/spooky teddy 2.jpg"]
+  }, 
+    {
+    "id": "066",
+    "name": "Aiyu Jelly Lemon Iced Tea",
+    "price": 30000,
+    "category": "Đồ Uống",
+    "status": ["New"],
+    "images": ["/assets/img/Products/Đồ Uống/Aiyu Jelly Lemon Iced Tea.webp"]
+  }, 
+    {
+    "id": "067",
+    "name": "Americano",
+    "price": 30000,
+    "category": "Đồ Uống",
+    "status": ["New", "Sale"],
+    "images": ["/assets/img/Products/Đồ Uống/Americano 1.webp", "/assets/img/Products/Đồ Uống/Americano 2.webp"]
+  }, 
+    {
+    "id": "068",
+    "name": "Bubble Oolong Jasmine Milk Tea Macchiato",
+    "price": 35000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Bubble Oolong Jasmine Milk Tea Macchiato 1.webp", "assets/img/Products/Đồ Uống/Bubble Oolong Jasmine Milk Tea Macchiato 2.webp"]
+  }, 
+    {
+    "id": "069",
+    "name": "Cannelé Bubble Milk Tea Macchiato",
+    "price": 40000,
+    "category": "Đồ Uống",
+    "status": ["Best Seller"],
+    "images": ["assets/img/Products/Đồ Uống/Cannelé Bubble Milk Tea Macchiato 1.webp", "assets/img/Products/Đồ Uống/Cannelé Bubble Milk Tea Macchiato 2.webp"]
+  }, 
+    {
+    "id": "070",
+    "name": "Cappuccino",
+    "price": 35000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Cappuccino.webp"]
+  }, 
+    {
+    "id": "071",
+    "name": "Espresso",
+    "price": 40000,
+    "category": "Đồ Uống",
+    "status": ["Flash Sale"],
+    "images": ["assets/img/Products/Đồ Uống/Espresso 1.webp", "assets/img/Products/Đồ Uống/Espresso 2.webp"]
+  }, 
+    {
+    "id": "072",
+    "name": "Fresh Orange Americano",
+    "price": 32000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Fresh Orange Americano 1.webp", "assets/img/Products/Đồ Uống/Fresh Orange Americano 2.webp"]
+  }, 
+    {
+    "id": "073",
+    "name": "Iced Croissant Latte",
+    "price": 60000,
+    "category": "Đồ Uống",
+    "status": ["New", "Flash Sale"],
+    "images": ["assets/img/Products/Đồ Uống/Iced Croissant Latte.webp"]
+  }, 
+    {
+    "id": "074",
+    "name": "Iced Oatside Latte (Plant-Based Milk)",
+    "price": 50000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Iced Oatside Latte (Plant-Based Milk).webp"]
+  }, 
+    {
+    "id": "075",
+    "name": "Kodemari Matcha Latte",
+    "price": 30000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Kodemari Matcha Latte 1.webp", "assets/img/Products/Đồ Uống/Kodemari Matcha Latte 2.webp"]
+  }, 
+    {
+    "id": "076",
+    "name": "Kodemari Matcha Pandan Coconut Water",
+    "price": 45000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Kodemari Matcha Pandan Coconut Water.webp"]
+  }, 
+    {
+    "id": "077",
+    "name": "Latte",
+    "price": 80000,
+    "category": "Đồ Uống",
+    "status": ["Sale"],
+    "images": ["assets/img/Products/Đồ Uống/Latte 1.webp", "assets/img/Products/Đồ Uống/Latte 2.jpg"]
+  }, 
+    {
+    "id": "078",
+    "name": "Original coldbrew",
+    "price": 60000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Original coldbrew.webp"]
+  }, 
+    {
+    "id": "079",
+    "name": "Popball Melon Pandan Coconut Juice",
+    "price": 70000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Popball Melon Pandan Coconut Juice 1.webp", "assets/img/Products/Đồ Uống/Popball Melon Pandan Coconut Juice 2.webp"]
+  }, 
+    {
+    "id": "080",
+    "name": "Thai Mango Juice",
+    "price": 55000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Thai Mango Juice.webp"]
+  }, 
+    {
+    "id": "081",
+    "name": "Vietnamese Black Coffee",
+    "price": 65000,
+    "category": "Đồ Uống",
+    "status": ["Best Seller"],
+    "images": ["assets/img/Products/Đồ Uống/Vietnamese Black Coffee.webp"]
+  },
+    {
+    "id": "082",
+    "name": "Vietnamese Milk Coffee",
+    "price": 30000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Vietnamese Milk Coffee 1.webp", "assets/img/Products/Đồ Uống/Vietnamese Milk Coffee 2.webp"]
+  }, 
+    {
+    "id": "083",
+    "name": "Vietnamese White Coffee",
+    "price": 40000,
+    "category": "Đồ Uống",
+    "images": ["assets/img/Products/Đồ Uống/Vietnamese White Coffee.webp"]
+  }
+]

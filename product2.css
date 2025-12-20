@@ -1,0 +1,254 @@
+/* product.css */
+
+        /* Tùy chỉnh font chữ */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url("background-bakery.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(255,255,255,0.9); /* chỉ 10% trắng */
+            background-blend-mode: lighten; /* kết hợp nhẹ với ảnh nền */
+        }
+
+
+
+        /* Định nghĩa màu sắc tùy chỉnh cho Tailwind */
+        :root {
+            --primary-color: #e57373; /* Màu hồng/đỏ ấm */
+            --secondary-color: #8d6e63; /* Màu nâu đất */
+            /* CHỈNH SỬA: Thay đổi mã màu vàng đồng để khớp với ảnh mẫu */
+            --text-gold: #CD9B32; /* Màu vàng cam sáng */
+            --text-gold-dark: #B07C26; /* bóng hơn để làm viền */
+        }
+
+        /* Áp dụng màu sắc tùy chỉnh cho Tailwind */
+        .text-gold { color: var(--text-gold); }
+        .bg-gold { background-color: var(--text-gold); }
+        .border-gold { border-color: var(--text-gold); }
+        .bg-primary-custom { background-color: var(--primary-color); }
+        .text-primary-custom { color: var(--primary-color); }
+
+        /* Tiêu đề đặc biệt */
+/* Tiêu đề đặc biệt */
+        .special-heading {
+            font-family: 'Playfair Display', serif; /* Font chữ nghệ thuật */
+            font-size: 2rem;
+            color: #4b4b4b;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- SỬA LỖI MÀU CHỮ TAB ACTIVE: Cần thêm đoạn này --- */
+        .tab-button.active .special-heading {
+            color: var(--text-gold) !important; /* QUAN TRỌNG: Buộc màu chữ vàng đồng cho tiêu đề trong tab active */
+        }
+
+        
+        /* Hình ảnh nhỏ (thumbnail) */
+        .thumbnail-img {
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            object-fit: cover;
+            width: 100%;
+            height: 100px;
+
+        }
+
+        .thumbnail-img.active {
+            border-color: var(--text-gold);
+        }
+
+        /* Icon trong ô ưu đãi/dịch vụ */
+        .icon-box i {
+            font-size: 2.2rem;
+        }
+
+        /* Promo box: refined visuals for better fit between white content and gold frame */
+        .promo-box {
+            border: 2px solid var(--text-gold-dark);
+            border-radius: 0.75rem;
+            overflow: hidden; /* ensure child backgrounds are clipped to rounded corners */
+            box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+            background: linear-gradient(180deg, #fffdf7 0%, #fffaf5 100%); /* warmer white */
+        }
+
+        .promo-header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background: var(--text-gold); /* continuous gold bar */
+            padding: 0; /* remove extra spacing that can reveal background */
+            min-height: 68px; /* fixed height to align icon and title */
+        }
+
+        /* tidy icon: make surrounding area full gold and icon white for contrast */
+        .promo-icon {
+            padding-left: 12px;
+            padding-right: 12px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: linear-gradient(180deg, var(--text-gold) 0%, var(--text-gold-dark) 100%);
+            border-top-left-radius: 0.75rem; /* match outer corner */
+            border-bottom-left-radius: 0; 
+            margin-left: 0;
+        }
+
+        .promo-icon i {
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            width:48px;
+            height:48px;
+            background: transparent; /* no inner white square */
+            color: #fff; /* white icon for contrast */
+            border-radius: 10px;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .promo-title {
+            padding: 0 18px;
+            margin: 0;
+            font-size: 1.15rem;
+            line-height: 1;
+            color: #fff; /* white title over gold bar */
+            background: transparent;
+            flex: 1; /* fill remaining space */
+            display:flex;
+            align-items:center;
+            font-weight:700;
+        }
+
+        .promo-box ul {
+            padding: 22px 24px;
+            margin: 0;
+            border-top: 2px solid rgba(176,124,38,0.08); /* subtle warm divider consistent with gold */
+            background: transparent;
+        }
+
+        .promo-box li {
+            font-size: 1.05rem;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+
+        /* Tăng giảm số lượng */
+        .quantity-input-group button {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ced4da;
+            background-color: var(--text-gold); 
+            transition: background-color 0.2s;
+        }
+
+        .quantity-input-group button:hover {
+            background-color: var(--text-gold); 
+        }
+
+        /* Fix input number không căn giữa */
+        .quantity-input-group input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            height: 40px;        /* đồng bộ với button */
+            line-height: 40px;   /* giúp text nằm giữa */
+            appearance: textfield; /* bỏ kiểu mặc định */
+        }
+
+        /* Ẩn mũi tên tăng/giảm mặc định của input number */
+        .quantity-input-group input::-webkit-inner-spin-button,
+        .quantity-input-group input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+
+
+
+        /* Thẻ sản phẩm */
+        .product-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Màu cho icon tim đã được chọn */
+        .heart-icon.fas {
+            color: #ef4444 !important; /* Tailwind red-500 */
+        }
+
+/* ... Các styles khác ... */
+
+        /* Hiệu ứng Zoom chi tiết cho ảnh chính */
+        /* 1. Tạo container chứa ảnh và giới hạn kích thước */
+        .main-image-wrapper {
+            /* Đặt chiều rộng và chiều cao cố định (hoặc tương đối) */
+            /* Ví dụ: Đặt một tỉ lệ cố định 1:1 */
+            width: 100%;
+            padding-top: 100%; /* Giữ tỉ lệ 1:1 */
+            position: relative;
+            overflow: hidden; /* QUAN TRỌNG: Giúp ảnh zoom không tràn ra ngoài */
+            border-radius: 0.5rem; /* Giữ bo góc */
+        }
+
+        /* 2. Ảnh chính bên trong */
+        #main-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Thiết lập chuyển động mượt mà cho hiệu ứng zoom */
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            /* Tăng độ phân giải rendering cho ảnh, tránh bị mờ khi zoom */
+            backface-visibility: hidden;
+            will-change: transform;
+        }
+
+        /* Đảm bảo thẻ <a> bọc product-card hoạt động như một khối và không làm hỏng bố cục */
+        .product-link {
+            text-decoration: none; /* Xóa gạch chân mặc định của link */
+            color: inherit; /* Kế thừa màu chữ từ thẻ cha */
+            display: block; /* Quan trọng: Biến <a> thành phần tử khối */
+            height: 100%; /* Quan trọng: Giúp thẻ <a> chiếm trọn chiều cao của cột */
+        }
+
+        /* Định dạng bảng Thông tin Dinh dưỡng */
+.nutritional-table {
+    border-collapse: collapse; /* Đảm bảo các đường viền liền mạch */
+}
+
+.nutritional-table th, .nutritional-table td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Định dạng đường viền ngang cho các hàng */
+.nutritional-table tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #e5e7eb; /* Màu xám nhẹ */
+}
+
+/* Định dạng tiêu đề bảng */
+.nutritional-table thead th {
+    border-bottom-color: var(--text-gold) !important; 
+}
+
+/* Định dạng chữ trong bảng */
+.nutritional-table {
+    font-size: 0.95rem;
+}
+
+/* Thêm border bên phải cho tất cả các ô ở cột đầu tiên */
+.nutritional-table th:first-child,
+.nutritional-table td:first-child {
+    border-right: 2px solid var(--text-gold); 
+}
+
+

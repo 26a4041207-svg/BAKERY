@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* ================= HERO ================= */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(55%);
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.breadcrumb a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.breadcrumb span {
+    margin: 0 4px;
+}
+
+/* Banner title */
+.banner-overlay h1 {
+    font-size: 46px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.45);
+}
+
+/* ================= CONTENT ================= */
+.news-section {
+    padding: 80px 15px;
+}
+
+.news-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.news-content h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+.news-content h3 {
+    margin-top: 40px;
+    font-size: 20px;
+    color: #555;
+}
+
+.news-content p {
+    margin-top: 14px;
+    line-height: 1.9;
+}
+
+.news-content ul {
+    margin-top: 12px;
+    padding-left: 20px;
+}
+
+.news-content ul li {
+    margin-bottom: 10px;
+}
+
+/* Note */
+.note {
+    margin: 40px 0;
+    padding: 18px;
+    background: #fff3e0;
+    border-left: 5px solid #ff9800;
+}
+
+/* Signature */
+.signature {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}
+
+/* ================= ANIMATION ================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.9s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .banner-overlay h1 {
+        font-size: 32px;
+    }
+
+    .news-section {
+        padding: 60px 15px;
+    }
+}

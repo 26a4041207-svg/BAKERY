@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Honeyque</title>
+    <link rel="stylesheet" href="gioithieu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="wishlist.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="header-logo-img">
+            </a>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li class="dropdown">
+                    <a href="sanpham.html">Sản phẩm <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="danhmucsp-banhkem.html">Bánh kem</a></li>
+                        <li><a href="danhmucsp-banhngot.html">Bánh ngọt</a></li>
+                        <li><a href="danhmucsp-banhnuong.html">Bánh nướng</a></li>
+                        <li><a href="danhmucsp-banhquy.html">Bánh quy</a></li>
+                        <li><a href="danhmucsp-banhmousse.html">Bánh mousse</a></li>
+                        <li><a href="danhmucsp-douong.html">Đồ uống</a></li>
+                      </ul>
+                </li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <button id="btnSearchAction"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm bánh..." autocomplete="off">
+                
+                <div id="searchSuggestions" class="search-suggestions">
+                    </div>
+            </div>
+
+            <div class="user-cart-actions">              
+                <a href="#" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
+                
+                <a href="login.html" class="icon-btn" id="user-icon-btn">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <section id="searchResultsSection">
+        <div class="container">
+            <h2 id="searchTitle">Kết quả tìm kiếm</h2>
+            <div id="searchResultsGrid" class="product-grid"></div>
+        </div>
+    </section>
+
+
+
+    <div class="modal-overlay" id="modal-edit-info">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Chỉnh sửa thông tin</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-edit-info')"></i>
+            </div>
+            <div id="edit-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Tên đăng nhập (Không thể sửa)</label>
+                <input type="text" id="edit-username" readonly>
+            </div>
+            <div class="form-group">
+                <label>Họ và tên</label>
+                <input type="text" id="edit-fullname" placeholder="Nhập họ tên mới">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="edit-email" placeholder="Nhập email mới">
+            </div>
+            <button class="save-btn" onclick="saveUserInfo()">Lưu thay đổi</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-change-pass">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Đổi mật khẩu</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-change-pass')"></i>
+            </div>
+            <div id="pass-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Mật khẩu cũ</label>
+                <input type="password" id="old-pass" placeholder="Nhập mật khẩu hiện tại">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" id="new-pass" placeholder="Nhập mật khẩu mới">
+            </div>
+            <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirm-pass" placeholder="Nhập lại mật khẩu mới">
+            </div>
+            <button class="save-btn" onclick="saveNewPassword()">Cập nhật mật khẩu</button>
+        </div>
+    </div>
+
+    <script src="wishlist.js" defer></script>
+    <script src="giohang.js" defer></script>
+    <script src="header.js"> </script>
+
+<!-- HERO BANNER -->
+    <section class="hero-banner">
+    <img src="assets\img\Banner\banner bánh ngọt.png" alt="Banner" class="banner-img">
+
+    <div class="banner-text">
+        <p class="breadcrumb">
+            <a href="index.html">Trang chủ</a> >
+            <a href="#">Giới Thiệu</a> 
+        </p>
+        <h1 class="banner-title">Giới Thiệu</h1>
+    </div>
+</section>
+
+<!-- CONTENT SECTION -->
+<section class="about-section">
+    <h2 class="about-title">VỀ HONEYQUE</h2>
+    <hr class="about-line">
+    <h1 class="about-main-en">A PIECE OF CAKE, A PART OF WHOLE LIFE</h1>
+    <h1 class="about-main-vi">BÁNH SẺ CHIA, TRỌN CUỘC SỐNG</h1>
+    <hr class="about-line2">
+</section>
+
+<!-- SỨ MỆNH -->
+<section class="mission section">
+    <div class="container">
+        <div class="text">
+             <h2>SỨ MỆNH CỦA HONEYQUE</h2>
+    <p>
+        Honeyque mang trong mình sứ mệnh tạo ra những chiếc bánh chất lượng, an toàn và đầy cảm xúc. 
+        Chúng tôi tin rằng mỗi chiếc bánh không chỉ là món ăn, mà là một khoảnh khắc sẻ chia – nơi sự 
+        ngọt ngào có thể kết nối con người, mang lại niềm vui và làm cho những dịp đặc biệt trở nên trọn vẹn hơn.
+    </p>
+
+    <p>
+        Với Honeyque, mỗi sản phẩm đều được làm từ nguyên liệu tinh khiết, quy trình chuẩn mực và sự tỉ mỉ của 
+        những người thợ yêu nghề. Chúng tôi không chỉ chú trọng hương vị, mà còn quan tâm đến sức khỏe, sự an tâm 
+        và trải nghiệm của khách hàng.
+    </p>
+
+    <p>
+        Chúng tôi tin rằng khi một chiếc bánh được làm bằng cả sự yêu thương và trách nhiệm, 
+        nó sẽ trở thành món quà ý nghĩa mà khách hàng luôn muốn quay trở lại.
+    </p>
+        </div>
+        <div class="image">
+            <img src="assets\img\Banner\Logo đồ uống.jpg" alt="Mission Image" class="img-pop">
+        </div>
+    </div>
+</section>
+
+
+<!-- CÂU CHUYỆN THƯƠNG HIỆU -->
+<section class="story section">
+    <div class="container reverse">
+        <div class="text">
+            <h2>CÂU CHUYỆN VỀ HONEYQUE</h2>
+            <p>
+                Honeyque ra đời từ những khoảnh khắc bình dị: mùi bánh nướng trong căn bếp nhỏ, những buổi tối quây quần bên gia đình và niềm vui khi trao chiếc bánh đầu tiên cho người thân yêu. 
+                Từ đó, chúng tôi bắt đầu hành trình biến niềm đam mê làm bánh thành một nơi để mọi người tìm về — nơi có sự tinh tế, yêu thương và chân thật trong từng hương vị.
+            </p>
+            <p>
+                Trong nhịp sống hiện đại gấp gáp, Honeyque mong muốn mang đến một khoảng lắng nhẹ giữa bộn bề. 
+                Chúng tôi không chỉ làm bánh mà còn tạo ra không gian để khách hàng cảm nhận sự an yên: từ tiếng lách cách của dụng cụ cho đến mùi bơ thơm tan trong không khí.
+            </p>
+            <p>
+                Honeyque kiên định theo đuổi sự tinh xảo trong từng lớp bánh, từng nét trang trí và từng nguyên liệu được tuyển chọn kỹ lưỡng. 
+                Mỗi chiếc bánh là một câu chuyện về sự tỉ mỉ, kiên nhẫn và tận tâm. 
+                Chúng tôi tin rằng, một chiếc bánh ngon không chỉ từ bột, đường, bơ mà còn từ cảm xúc của người làm và niềm vui của người nhận.
+            </p>
+        </div>
+        <div class="image">
+            <img src="assets\img\Gioithieu\cauchuyen.png" alt="Honeyque Story" class="img-pop">
+        </div>
+    </div>
+</section>
+
+
+
+<!-- GIÁ TRỊ CỐT LÕI -->
+<section class="values section">
+    <h2 class="center">GIÁ TRỊ CỐT LÕI</h2>
+    <div class="value-list">
+
+
+        <div class="value-item">
+            <img src="assets\img\Gioithieu\Giatricotloi1.png" alt="Chất lượng" class="img-pop">
+            <h3>Chất lượng đặt lên hàng đầu</h3>
+            <p>Nguyên liệu chọn lọc, tiêu chuẩn chế biến nghiêm ngặt và quy trình kiểm soát chất lượng nhiều lớp.</p>
+        </div>
+
+
+        <div class="value-item">
+            <img src="assets\img\Gioithieu\Giatricotloi2.png" alt="Tự nhiên" class="img-pop">
+            <h3>Hương vị thuần khiết</h3>
+            <p>Nói không với phụ gia có hại, giữ trọn sự tinh tế từ nguyên liệu tự nhiên.</p>
+        </div>
+
+
+        <div class="value-item">
+            <img src="assets\img\Gioithieu\Giatricotloi3.png" alt="Tận tâm" class="img-pop">
+            <h3>Sự tận tâm trong từng sản phẩm</h3>
+            <p>Mỗi chiếc bánh là kết tinh của tâm huyết và tỉ mỉ trong từng công đoạn nhỏ nhất.</p>
+        </div>
+
+
+    </div>
+</section>
+
+
+<!-- QUY TRÌNH TẠO RA SẢN PHẨM -->
+<section class="process section">
+    <div class="container">
+        <div class="text">
+            <h2>QUY TRÌNH TẠO RA SẢN PHẨM HONEYQUE</h2>
+
+      <p>
+        Tại Honeyque, hành trình tạo nên mỗi chiếc bánh bắt đầu từ việc chọn lựa những nguyên liệu tươi mới nhất.
+        Chúng tôi tin rằng chất lượng nguyên liệu là nền tảng quyết định hương vị và độ hoàn thiện của sản phẩm.
+      </p>
+
+      <p>
+        Toàn bộ quá trình được thực hiện thủ công theo các bước chuẩn mực, từ chuẩn bị, pha trộn đến tạo hình
+        và hoàn thiện. Mỗi công đoạn đều được thực hiện một cách tỉ mỉ nhằm giữ trọn sự tinh tế và phong cách
+        đặc trưng của Honeyque.
+      </p>
+
+      <p>
+        Trước khi đến tay khách hàng, sản phẩm đều trải qua bước kiểm tra kỹ lưỡng để đảm bảo độ tươi mới,
+        vệ sinh và tính thẩm mỹ cao nhất. Honeyque luôn cam kết mang đến những chiếc bánh thơm ngon, an toàn
+        và tràn đầy tâm huyết.
+      </p>
+
+      <div class="process-list">
+    <p>✔ Chọn lọc nguyên liệu chất lượng cao</p>
+    <p>✔ Quy trình thủ công chuẩn mực</p>
+    <p>✔ Kiểm định chất lượng trước khi hoàn thiện</p>
+    <p>✔ Đảm bảo an toàn – vệ sinh – độ tươi mới tuyệt đối</p>
+</div>
+        </div>
+        <div class="image">
+            <img src="assets\img\Products\Bánh Kem\Chocolate Cake 3.webp" alt="Process Image" class="img-pop">
+        </div>
+    </div>
+</section>
+
+<!-- SẢN PHẨM HONEYQUE -->
+<section class="gallery section">
+    <h2 class="center">SẢN PHẨM HONEYQUE</h2>
+    <div class="product-grid">
+        <div class="product-item">
+            <img src="assets/img/Products/Bánh Kem/Macaron Fraisier Cake 1.webp" alt="Bánh Kem" class="img-pop">
+            <p>Bánh Kem</p>
+        </div>
+
+        <div class="product-item">
+            <img src="assets\img\Products\Bánh Nướng\Croissant 1.webp" alt="Bánh Nướng" class="img-pop">
+            <p>Bánh Nướng</p>
+        </div>
+
+        <div class="product-item">
+            <img src="assets\img\Products\Bánh Mousse\Tiramisu De Caramel Socola 1.png" alt="Bánh Mousse" class="img-pop">
+            <p>Bánh Mousse</p>
+        </div>
+
+        <div class="product-item">
+            <img src="assets\img\Products\Bánh Ngọt\Fruit pastry.jpg" alt="Bánh Ngọt" class="img-pop">
+            <p>Bánh Ngọt</p>
+        </div>
+
+        <div class="product-item">
+            <img src="assets\img\Products\Bánh Quy\matcha crinkle 1.jpg" alt="Bánh Quy" class="img-pop">
+            <p>Bánh Quy</p>
+        </div>
+
+        <div class="product-item">
+            <img src="assets\img\Products\Đồ Uống\Kodemari Matcha Latte 2.webp" alt="Đồ Uống" class="img-pop">
+            <p>Đồ Uống</p>
+        </div>
+    </div>
+</section>
+
+
+<script src="gioithieu.js"></script>
+
+<footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col logo-col">
+                <div class="footer-logo">
+                    <a href="index.html" title="Về trang chủ">
+                        <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="footer-logo-img">
+                    </a>
+                </div>
+                <p class="footer-desc">
+                    Honeyque mang trong mình sứ mệnh tạo ra những chiếc bánh chất lượng, thơm ngon và đầy cảm xúc. 
+        Chúng tôi tin rằng mỗi chiếc bánh không chỉ là món ăn, mà là một khoảnh khắc sẻ chia – nơi sự 
+        ngọt ngào có thể kết nối con người, mang lại niềm vui và làm cho những dịp đặc biệt trở nên trọn vẹn hơn.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h3>VỀ HONEYQUE</h3>
+                <ul>
+                    <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                    <li><a href="tintuc.html">Tin Tức </a></li>
+                    <li><a href="chinhsachantoanthucpham.html">Chính Sách An Toàn Thực Phẩm</a></li>
+                    <li><a href="chinhsachdichvu.html">Chính Sách Dịch Vụ</a></li>
+                    <li><a href="chinhsachbaomat.html">Chính Sách Bảo Mật</a></li>
+                    <li><a href="khachhangthanthiet.html">Khách Hàng Thân Thiết</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>THƯỞNG THỨC</h3>
+                <ul>
+                    <li><a href="danhmucsp-banhkem.html">Bánh Kem</a></li>
+                    <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                    <li><a href="danhmucsp-banhngot.html">Bánh Ngọt</a></li>
+                    <li><a href="danhmucsp-banhquy.html">Bánh Quy</a></li>
+                    <li><a href="danhmucsp-banhmousse.html">Bánh Mousse</a></li>
+                    <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li><a href="lienhe.html">Liên Hệ Với Chúng Tôi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h3>ĐĂNG KÍ NHẬN TIN</h3>
+                
+                <form id="emailForm" class="email-form">
+                    <input type="email" id="emailInput" placeholder="Nhập địa chỉ email vào đây ..." required>
+                    <button type="submit" class="submit-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <p>Cảm ơn bạn, yêu cầu đăng ký của bạn đã thành công! Vui lòng kiểm tra hộp thư đến email để xác nhận.</p>
+                    
+                    <button id="resetEmailBtn" class="reset-btn">
+                        <i class="fa-solid fa-rotate-left"></i> Đăng ký tài khoản khác
+                    </button>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Honeyque/61585324114002/" class="social-icon" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/honeyquebakery/" class="social-icon" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Honeyque Pte Ltd. All rights reserved.</p>
+        </div>
+
+        <button id="scrollToTopBtn" class="scroll-top-btn">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+    </footer>
+
+    <script src="footer.js"></script>
+</body>
+</html>

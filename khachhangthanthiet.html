@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khách Hàng Thân Thiết | HONEYQUE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="wishlist.css">
+    <link rel="stylesheet" href="khachhangthanthiet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="header-logo-img">
+            </a>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li class="dropdown">
+                    <a href="sanpham.html">Sản phẩm <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="danhmucsp-banhkem.html">Bánh kem</a></li>
+                        <li><a href="danhmucsp-banhngot.html">Bánh ngọt</a></li>
+                        <li><a href="danhmucsp-banhnuong.html">Bánh nướng</a></li>
+                        <li><a href="danhmucsp-banhquy.html">Bánh quy</a></li>
+                        <li><a href="danhmucsp-banhmousse.html">Bánh mousse</a></li>
+                        <li><a href="danhmucsp-douong.html">Đồ uống</a></li>
+                      </ul>
+                </li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <button id="btnSearchAction"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm bánh..." autocomplete="off">
+                
+                <div id="searchSuggestions" class="search-suggestions">
+                    </div>
+            </div>
+
+            <div class="user-cart-actions">              
+                <a href="#" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
+                
+                <a href="login.html" class="icon-btn" id="user-icon-btn">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <section id="searchResultsSection">
+        <div class="container">
+            <h2 id="searchTitle">Kết quả tìm kiếm</h2>
+            <div id="searchResultsGrid" class="product-grid"></div>
+        </div>
+    </section>
+
+   
+
+    <div class="modal-overlay" id="modal-edit-info">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Chỉnh sửa thông tin</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-edit-info')"></i>
+            </div>
+            <div id="edit-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Tên đăng nhập (Không thể sửa)</label>
+                <input type="text" id="edit-username" readonly>
+            </div>
+            <div class="form-group">
+                <label>Họ và tên</label>
+                <input type="text" id="edit-fullname" placeholder="Nhập họ tên mới">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="edit-email" placeholder="Nhập email mới">
+            </div>
+            <button class="save-btn" onclick="saveUserInfo()">Lưu thay đổi</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-change-pass">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Đổi mật khẩu</h2>
+                <i class="fa-solid fa-xmark close-modal" onclick="closeModal('modal-change-pass')"></i>
+            </div>
+            <div id="pass-msg" class="msg-box"></div>
+            <div class="form-group">
+                <label>Mật khẩu cũ</label>
+                <input type="password" id="old-pass" placeholder="Nhập mật khẩu hiện tại">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" id="new-pass" placeholder="Nhập mật khẩu mới">
+            </div>
+            <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirm-pass" placeholder="Nhập lại mật khẩu mới">
+            </div>
+            <button class="save-btn" onclick="saveNewPassword()">Cập nhật mật khẩu</button>
+        </div>
+    </div>
+
+    <script src="wishlist.js" defer></script>
+    <script src="giohang.js" defer></script>
+    <script src="header.js"> </script>
+<!-- HERO BANNER -->
+<section class="hero-banner">
+    <img src="assets/img/Banner/banner bánh ngọt.png" alt="Banner bánh ngọt">
+
+    <div class="banner-overlay">
+        <p class="breadcrumb">
+            <a href="index.html">TRANG CHỦ</a>
+            <span>›</span>
+            <span>KHÁCH HÀNG THÂN THIẾT</span>
+        </p>
+        <h1>KHÁCH HÀNG THÂN THIẾT</h1>
+    </div>
+</section>
+
+<!-- CONTENT -->
+<section class="news-section fade-in">
+    <div class="news-content">
+        <h2>Khách hàng Thân thiết</h2>
+
+        <p>
+            Nhằm tri ân sự tin tưởng và đồng hành của khách hàng,
+            <strong>HONEYQUE</strong> xây dựng chương trình
+            <strong>Khách hàng Thân thiết</strong> với nhiều ưu đãi hấp dẫn,
+            mang đến trải nghiệm mua sắm ngọt ngào và tiết kiệm hơn mỗi ngày.
+        </p>
+
+        <h3>1. Đối tượng áp dụng</h3>
+        <p>
+            Chương trình áp dụng cho tất cả khách hàng mua sắm
+            trực tiếp tại cửa hàng hoặc đặt hàng thông qua website, fanpage
+            và các kênh bán hàng chính thức của HONEYQUE.
+        </p>
+        <ul>
+            <li>Khách hàng cá nhân</li>
+            <li>Khách hàng mua thường xuyên</li>
+            <li>Khách hàng đặt bánh cho sự kiện, sinh nhật, lễ cưới</li>
+        </ul>
+
+        <h3>2. Cách thức tích điểm</h3>
+        <p>
+            Mỗi đơn hàng thành công sẽ được quy đổi thành điểm tích lũy
+            theo giá trị thanh toán.
+        </p>
+        <ul>
+            <li>1.000 VNĐ = 1 điểm tích lũy</li>
+            <li>Điểm được cộng ngay sau khi đơn hàng hoàn tất</li>
+            <li>Áp dụng cho cả mua trực tiếp và mua online</li>
+        </ul>
+
+        <h3>3. Quyền lợi khách hàng thân thiết</h3>
+        <p>
+            Tùy theo số điểm tích lũy, khách hàng sẽ nhận được
+            các quyền lợi tương ứng.
+        </p>
+        <ul>
+            <li>Giảm giá trực tiếp trên đơn hàng</li>
+            <li>Ưu đãi độc quyền dành cho thành viên</li>
+            <li>Ưu tiên nhận thông tin sản phẩm mới</li>
+            <li>Ưu đãi đặc biệt trong các dịp lễ, sự kiện</li>
+        </ul>
+
+        <h3>4. Ưu đãi sinh nhật</h3>
+        <p>
+            HONEYQUE gửi tặng ưu đãi sinh nhật dành riêng cho khách hàng thân thiết
+            như một lời cảm ơn chân thành.
+        </p>
+        <ul>
+            <li>Voucher giảm giá sinh nhật</li>
+            <li>Áp dụng trong thời gian quy định</li>
+            <li>Không áp dụng đồng thời với một số chương trình khác</li>
+        </ul>
+
+        <h3>5. Thời hạn & sử dụng điểm</h3>
+        <p>
+            Điểm tích lũy có thời hạn sử dụng nhất định
+            và có thể được quy đổi thành ưu đãi theo chính sách hiện hành.
+        </p>
+        <ul>
+            <li>Điểm có giá trị trong vòng 12 tháng</li>
+            <li>Không quy đổi thành tiền mặt</li>
+            <li>Không chuyển nhượng cho người khác</li>
+        </ul>
+
+        <h3>6. Điều khoản áp dụng</h3>
+        <p>
+            Chương trình Khách hàng Thân thiết được HONEYQUE điều chỉnh
+            linh hoạt nhằm phù hợp với từng giai đoạn kinh doanh.
+            Mọi thay đổi sẽ được thông báo công khai trên website.
+        </p>
+
+        <div class="note">
+            <strong>Lưu ý:</strong> HONEYQUE có quyền từ chối áp dụng ưu đãi
+            trong trường hợp phát hiện hành vi gian lận hoặc vi phạm điều khoản chương trình.
+        </div>
+
+        <p class="signature">
+            © 2025 HONEYQUE – Sweet Rewards for Loyal Customers
+        </p>
+    </div>
+</section>
+
+
+
+<script src="khachhangthanthiet.js"></script>
+
+<footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col logo-col">
+                <div class="footer-logo">
+                    <a href="index.html" title="Về trang chủ">
+                        <img src="assets/img/Logo/logo-honeyque.png" alt="HONEYQUE" class="footer-logo-img">
+                    </a>
+                </div>
+                <p class="footer-desc">
+                    Honeyque mang trong mình sứ mệnh tạo ra những chiếc bánh chất lượng, thơm ngon và đầy cảm xúc. 
+        Chúng tôi tin rằng mỗi chiếc bánh không chỉ là món ăn, mà là một khoảnh khắc sẻ chia – nơi sự 
+        ngọt ngào có thể kết nối con người, mang lại niềm vui và làm cho những dịp đặc biệt trở nên trọn vẹn hơn.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h3>VỀ HONEYQUE</h3>
+                <ul>
+                    <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                    <li><a href="tintuc.html">Tin Tức </a></li>
+                    <li><a href="chinhsachantoanthucpham.html">Chính Sách An Toàn Thực Phẩm</a></li>
+                    <li><a href="chinhsachdichvu.html">Chính Sách Dịch Vụ</a></li>
+                    <li><a href="chinhsachbaomat.html">Chính Sách Bảo Mật</a></li>
+                    <li><a href="khachhangthanthiet.html">Khách Hàng Thân Thiết</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>THƯỞNG THỨC</h3>
+                <ul>
+                    <li><a href="danhmucsp-banhkem.html">Bánh Kem</a></li>
+                    <li><a href="danhmucsp-banhnuong.html">Bánh Nướng</a></li>
+                    <li><a href="danhmucsp-banhngot.html">Bánh Ngọt</a></li>
+                    <li><a href="danhmucsp-banhquy.html">Bánh Quy</a></li>
+                    <li><a href="danhmucsp-banhmousse.html">Bánh Mousse</a></li>
+                    <li><a href="danhmucsp-douong.html">Đồ Uống</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li><a href="lienhe.html">Liên Hệ Với Chúng Tôi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h3>ĐĂNG KÍ NHẬN TIN</h3>
+                
+                <form id="emailForm" class="email-form">
+                    <input type="email" id="emailInput" placeholder="Nhập địa chỉ email vào đây ..." required>
+                    <button type="submit" class="submit-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <p>Cảm ơn bạn, yêu cầu đăng ký của bạn đã thành công! Vui lòng kiểm tra hộp thư đến email để xác nhận.</p>
+                    
+                    <button id="resetEmailBtn" class="reset-btn">
+                        <i class="fa-solid fa-rotate-left"></i> Đăng ký tài khoản khác
+                    </button>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Honeyque/61585324114002/" class="social-icon" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/honeyquebakery/" class="social-icon" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Honeyque Pte Ltd. All rights reserved.</p>
+        </div>
+
+        <button id="scrollToTopBtn" class="scroll-top-btn">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+    </footer>
+
+    <script src="footer.js"></script>
+</body>
+</html>

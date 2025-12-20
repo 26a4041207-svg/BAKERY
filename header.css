@@ -1,0 +1,700 @@
+/* =========================================
+   1. CÀI ĐẶT CHUNG (RESET & BASE)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 200vh;
+    background-color: #fcfaf7;
+}
+
+/* =========================================
+   2. HEADER & LOGO
+   ========================================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+    background-color: transparent;
+    /* backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px); */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    transition: all 0.4s ease;
+} 
+
+/* 1. Logo trên Header */
+.header-logo-img {
+    height: 80px;  /* Chiều cao logo trên menu */
+    width: auto;   /* Chiều rộng tự động theo tỉ lệ */
+    object-fit: contain;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+/* Header khi cuộn xuống */
+header.scrolled {
+    background-color: #5D4037; /* Màu Nâu chủ đạo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px 50px;
+}
+
+/* When header becomes scrolled (dark bg), force links/icons to white for contrast */
+header.scrolled .navbar ul li a,
+header.scrolled .icon-btn,
+header.scrolled .menu-toggle {
+    color: #fff !important;
+}
+
+/* Logo khi cuộn trang xuống (Header thu nhỏ lại) */
+header.scrolled .header-logo-img {
+    height: 50px; /* Khi cuộn thì logo nhỏ lại còn 50px */
+}
+
+/* =========================================
+   3. MENU CHÍNH (NAVBAR LEVEL 1)
+   ========================================= */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    position: relative; /* Quan trọng để định vị dropdown */
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+    display: block; /* Mặc định cho menu cấp 1 */
+} 
+
+/* Hiệu ứng gạch chân (Từ giữa ra 2 bên) */
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.5s ease;
+}
+
+.navbar ul li a:hover {
+    color: #fff;
+}
+
+.navbar ul li a:hover::after {
+    width: 100%;
+}
+
+.fa-chevron-down {
+    font-size: 10px;
+    margin-left: 5px;
+    transition: transform 0.5s;
+}
+
+/* Xoay mũi tên khi hover */
+.navbar ul li.dropdown:hover .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* =========================================
+   4. DROPDOWN MENU (LEVEL 2)
+   ========================================= */
+
+/* --- GIAO DIỆN DESKTOP (> 992px) --- */
+@media (min-width: 993px) {
+    .navbar ul li .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 160px; /* Độ rộng menu con */
+        background-color: #5D4037; /* Nền nâu giống header */
+        
+        display: none; /* Mặc định ẩn */
+        flex-direction: column; /* Xếp dọc */
+        
+        padding: 15px 20px;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1100;
+        gap: 10px; /* Khoảng cách giữa các món */
+        align-items: flex-start; /* Căn trái toàn bộ nội dung */
+    }
+
+    /* Hover vào cha thì hiện menu con */
+    .navbar ul li.dropdown:hover .dropdown-menu {
+        display: flex;
+        animation: fadeInUp 0.5s ease;
+    }
+
+    /* Style cho Tên Bánh trong Menu Con */
+    .navbar ul li .dropdown-menu li a {
+        display: inline-block; /* QUAN TRỌNG: Để gạch chân chỉ bằng chiều dài chữ */
+        width: fit-content;    /* Độ rộng khớp nội dung */
+        
+        font-size: 14px;
+        text-transform: capitalize; /* Chữ thường, viết hoa chữ cái đầu */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Đường kẻ mờ ngăn cách */
+        padding-bottom: 5px;
+        margin-bottom: 2px;
+        text-align: left;
+    }
+    
+    /* Bỏ đường kẻ mờ ở mục cuối cùng cho đẹp */
+    .navbar ul li .dropdown-menu li:last-child a {
+        border-bottom: none;
+    }
+
+    /* Chỉnh vị trí gạch chân hover sát chữ */
+    .navbar ul li .dropdown-menu li a::after {
+        bottom: 2px; 
+    }
+    
+    /* Animation hiện lên */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
+/* =========================================
+   5. HEADER RIGHT & ICONS
+   ========================================= */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+}
+
+.search-bar button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #5D4037;
+    font-size: 16px;
+}
+
+.search-bar button:hover {
+    color: #d32f2f;
+    transform: scale(1.1);
+}
+
+.user-cart-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #222;
+    text-decoration: none;
+} 
+
+.icon-btn:hover {
+    background-color: #fff;
+    color: #5D4037;
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   6. BANNER & CONTENT
+   ========================================= */
+.banner {
+    background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* .banner-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+} */
+
+.banner-text h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.banner-btn {
+    padding: 12px 30px;
+    background: #d32f2f;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.banner-btn:hover {
+    background: #b71c1c;
+}
+
+/* Search Results */
+#searchResultsSection {
+    display: none;
+    padding: 60px 20px;
+    background: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#searchTitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.info {
+    padding: 15px;
+    text-align: center;
+}
+
+.name {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    text-decoration: none;
+}
+
+.price {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.content-dummy {
+    height: 100px;
+}
+
+/* =========================================
+   7. RESPONSIVE (MOBILE & TABLET)
+   ========================================= */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: #222;
+    cursor: pointer;
+} 
+
+@media (max-width: 992px) {
+    header, header.scrolled {
+        padding: 15px 20px;
+    }
+
+    /* Navbar Mobile */
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #5D4037;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden; /* Đóng menu */
+        transition: max-height 0.4s ease;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar.active {
+        max-height: 100vh; /* Mở menu đủ lớn để chứa dropdown */
+        overflow-y: auto; /* Cho phép cuộn nếu menu quá dài */
+        padding: 20px 0;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .navbar ul li a {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar ul li a::after {
+        display: none; /* Tắt gạch chân hiệu ứng trên mobile menu chính */
+    }
+
+    /* --- DROPDOWN MOBILE --- */
+    .navbar ul li .dropdown-menu {
+        position: static; /* Không bay lơ lửng nữa */
+        display: none;    /* Mặc định ẩn */
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.2); /* Màu nền đậm hơn */
+        box-shadow: none;
+        padding: 10px 0 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        
+        flex-direction: column;
+        align-items: center; /* Căn giữa trên mobile cho đẹp */
+    }
+    
+    /* Hiện dropdown khi hover (hoặc dùng JS click class active) */
+    .navbar ul li.dropdown:hover .dropdown-menu {
+        display: flex;
+    }
+
+    .navbar ul li .dropdown-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar ul li .dropdown-menu li a {
+        display: inline-block; /* Vẫn giữ inline-block để gạch chân đẹp */
+        width: fit-content;
+        padding: 10px 0;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .navbar ul li .dropdown-menu li a:hover::after {
+         width: 100%; /* Gạch chân hoạt động trên mobile */
+    }
+
+    /* Layout Header Mobile */
+    .menu-toggle {
+        display: block;
+        order: 3;
+        margin-left: 15px;
+    }
+
+    .logo {
+        order: 1;
+        flex: 1;
+    }
+
+    .header-right {
+        order: 2;
+        gap: 10px;
+    }
+
+    .search-bar {
+        display: none; /* Ẩn search bar ở header trên tablet dọc */
+    }
+}
+
+@media (max-width: 576px) {
+    .header-right {
+        order: 3;
+        width: 100%;
+        margin-top: 15px;
+        justify-content: space-between;
+    }
+
+    .search-bar {
+        display: flex; /* Hiện lại search bar xuống dòng */
+        width: 100%;
+        order: 4;
+        margin-top: 10px;
+    }
+
+    .menu-toggle {
+        order: 2;
+        margin-left: 0;
+    }
+}
+    .user-cart-actions {
+        margin-left: auto;
+    }
+
+    /* Responsive cho điện thoại */
+@media (max-width: 576px) {
+    .header-logo-img { 
+        height: 50px; /* Trên điện thoại chỉ nên để tầm này là vừa */
+    }
+}
+
+/* --- CSS CHO MENU TÀI KHOẢN (USER DROPDOWN) --- */
+        .user-dropdown {
+            position: absolute;
+            top: 140%; /* Đẩy xuống dưới */
+            right: 0;
+            width: 280px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            padding: 20px;
+            z-index: 9999;
+            border: 1px solid #f0f0f0;
+            
+            /* Ẩn mặc định */
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: all 0.2s ease-in-out;
+        }
+        .user-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        /* Mũi tên tam giác */
+        .user-dropdown::before {
+            content: ''; position: absolute; top: -8px; right: 14px;
+            width: 16px; height: 16px; background: #fff;
+            transform: rotate(45deg); border-left: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;
+        }
+
+        /* Nội dung dropdown */
+        .user-info-header { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .user-info-header h3 { color: #5d4037; font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+        
+        .pass-display { background: #f8f9fa; padding: 10px; border-radius: 6px; font-size: 13px; color: #555; }
+        .pass-display div { margin-bottom: 5px; }
+        .pass-display div:last-child { margin-bottom: 0; }
+        
+        /* List menu */
+        .user-menu-list { list-style: none; margin-bottom: 15px; padding: 0; }
+        .user-menu-list li a {
+            display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+            color: #444; text-decoration: none; font-size: 14px; border-radius: 6px;
+            transition: 0.2s; font-weight: 500;
+        }
+        .user-menu-list li a:hover { background-color: #f5f0eb; color: #5d4037; }
+        .user-menu-list li a i { width: 20px; text-align: center; color: #8d6e63; }
+
+        /* Nút Logout */
+        .logout-btn {
+            width: 100%; padding: 10px; background-color: #ffebee; color: #d32f2f;
+            border: none; border-radius: 6px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px;
+            transition: 0.2s;
+        }
+        .logout-btn:hover { background-color: #d32f2f; color: #fff; }
+
+        /* Responsive Mobile */
+        @media (max-width: 576px) {
+            .user-dropdown { width: 260px; right: -10px; }
+            .user-dropdown::before { right: 24px; }
+        }
+
+        /* Phần body demo */
+        .hero { height: 400px; background: #eaddcf; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero h2 { font-size: 40px; color: #5d4037; }
+            /* --- 1. CSS CHO DROPDOWN MENU USER --- */
+        .user-cart-actions {
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+
+        .user-dropdown {
+            position: absolute; 
+            /* Chỉnh vị trí ngay dưới icon */
+            top: 100%; 
+            right: 0; 
+            margin-top: 15px; /* Khoảng cách nhỏ giữa icon và menu */
+            
+            width: 260px;
+            background-color: #fff; border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15); padding: 15px; z-index: 9999;
+            border: 1px solid #f0f0f0; opacity: 0; visibility: hidden; 
+            transform: translateY(10px); transition: all 0.2s ease-in-out;
+        }
+        .user-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        /* Mũi tên tam giác trỏ lên */
+        .user-dropdown::before {
+            content: ''; position: absolute; top: -8px; right: 10px; width: 16px; height: 16px; 
+            background: #fff; transform: rotate(45deg); border-left: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;
+        }
+
+        .user-header { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
+        .user-header h3 { color: #5d4037; font-size: 16px; font-weight: 700; margin: 0; }
+        .user-header p { font-size: 12px; color: #888; margin-top: 2px; margin-bottom: 0; }
+        
+        /* Style cho Email */
+        .user-header .user-email { 
+            font-size: 12px; color: #555; font-weight: 500; word-break: break-all; 
+        }
+
+        .user-menu-list { list-style: none; margin-bottom: 10px; padding: 0; }
+        .user-menu-list li a {
+            display: flex; align-items: center; gap: 10px; padding: 10px;
+            color: #444; text-decoration: none; font-size: 14px; border-radius: 6px; transition: 0.2s;
+        }
+        .user-menu-list li a:hover { background-color: #f5f0eb; color: #5d4037; }
+        
+        .logout-btn { 
+            width: 100%; padding: 10px; background-color: #ffebee; color: #d32f2f; 
+            border: none; border-radius: 6px; font-weight: 600; cursor: pointer; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
+            font-size: 13px; transition: 0.2s; 
+        }
+        .logout-btn:hover { background-color: #d32f2f; color: #fff; }
+
+        /* --- 2. CSS CHO GỢI Ý TÌM KIẾM (SEARCH SUGGESTION) --- */
+        .search-bar { position: relative; } 
+        
+        /* --- CSS CHO GỢI Ý TÌM KIẾM --- */
+        .search-suggestions {
+            position: absolute; top: 110%; left: 0; width: 100%;
+            background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px; overflow: hidden; z-index: 1000;
+            display: none; 
+            border: 1px solid #eee;
+            
+            /* QUAN TRỌNG: Giới hạn chiều cao và bật thanh cuộn */
+            max-height: 300px; 
+            overflow-y: auto; 
+        }
+
+        /* Tùy chỉnh thanh cuộn (Scrollbar) cho đẹp mắt hơn trên Chrome/Edge/Safari */
+        .search-suggestions::-webkit-scrollbar {
+            width: 6px;
+        }
+        .search-suggestions::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .search-suggestions::-webkit-scrollbar-thumb {
+            background: #ccc; 
+            border-radius: 3px;
+        }
+        .search-suggestions::-webkit-scrollbar-thumb:hover {
+            background: #5d4037; 
+        }
+        .suggestion-item {
+            display: flex; align-items: center; gap: 15px; padding: 10px 15px;
+            cursor: pointer; transition: 0.2s; border-bottom: 1px solid #f9f9f9;
+        }
+        .suggestion-item:last-child { border-bottom: none; }
+        .suggestion-item:hover { background-color: #fdfbf9; }
+        
+        .suggestion-item img {
+            width: 45px; height: 45px; object-fit: cover; border-radius: 6px;
+        }
+        .suggestion-info h4 {
+            font-size: 14px; color: #333; margin: 0; font-weight: 600;
+        }
+        .suggestion-info p {
+            font-size: 13px; color: #d32f2f; margin: 2px 0 0 0; font-weight: 500;
+        }
+        .no-result { padding: 15px; text-align: center; color: #777; font-size: 13px; }
+
+        /* --- 3. CSS CHO MODAL (POPUP) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .modal-overlay.open { opacity: 1; visibility: visible; }
+        .modal-box {
+            background: #fff; width: 400px; padding: 30px; border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;
+            transform: translateY(-20px); transition: 0.3s;
+        }
+        .modal-overlay.open .modal-box { transform: translateY(0); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h2 { color: #5d4037; font-size: 20px; margin: 0; }
+        .close-modal { font-size: 20px; cursor: pointer; color: #888; transition: 0.2s; }
+        .close-modal:hover { color: #d32f2f; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 5px; color: #333; }
+        .form-group input { width: 100%; padding: 10px 12px; border: 1px solid #dcc0b0; border-radius: 5px; outline: none; }
+        .form-group input:focus { border-color: #fca311; background: #fffcf5; }
+        .form-group input:read-only { background-color: #f0f0f0; color: #777; cursor: not-allowed; }
+        .save-btn { width: 100%; padding: 10px; background: #5d4037; color: #fff; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .save-btn:hover { background: #4a332c; }
+        .msg-box { padding: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 13px; text-align: center; display: none; }
+        .msg-error { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+        .msg-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        
+        #user-icon-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+
+        @media (max-width: 576px) {
+            .user-dropdown { width: 260px; right: -10px; }
+            .modal-box { width: 90%; margin: 0 10px; }
+        }
