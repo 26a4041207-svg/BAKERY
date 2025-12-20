@@ -159,8 +159,9 @@ function closePaymentPopup() {
     }
 
     saveCart();
-    renderCart();
-    openCart();
+renderCart();
+if (!arguments[2]) openCart();
+
   }
 
   function changeQty(id, delta) {
