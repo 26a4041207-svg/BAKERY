@@ -104,52 +104,39 @@ function setupTabSwitching() {
 }
 
 // 6. Chức năng Thêm/Xóa Yêu thích từ thẻ sản phẩm
-    function addToWishlistFromCard(event, productName) {
-        event.stopPropagation(); 
-        event.preventDefault(); 
-        
-        const heartIcon = event.currentTarget.querySelector('.heart-icon');
-        const card = event.currentTarget.closest('.product-card');
-        const link = card?.querySelector('a.product-link')?.getAttribute('href');
-        let id = null;
-        if (link) {
-            const params = new URLSearchParams(link.split('?')[1] || '');
-            id = params.get('id');
-        }
-
-        if (!id) {
-            showModal('Lỗi', 'Không xác định được sản phẩm để thêm yêu thích.');
-            return;
-        }
-
-        if (heartIcon.classList.contains('far')) { 
-            heartIcon.classList.remove('far');
-            heartIcon.classList.add('fas'); 
-            if (window.WishlistAdd) window.WishlistAdd(id);
-            showModal('Yêu thích', `Đã thêm sản phẩm '${productName}' vào danh sách yêu thích.`);
-
-            // If the user is on the product page for this id, sync the main heart
-            try {
-                if (currentProduct && currentProduct.id === id) {
-                    const mainHeart = document.getElementById('main-product-heart');
-                    if (mainHeart) { mainHeart.classList.remove('far'); mainHeart.classList.add('fas', 'text-red-600'); }
-                }
-            } catch (e) {}
-        } else { 
-            heartIcon.classList.remove('fas');
-            heartIcon.classList.add('far'); 
-            if (window.WishlistRemove) window.WishlistRemove(id);
-            showModal('Yêu thích', `Đã xóa sản phẩm '${productName}' khỏi danh sách yêu thích.`);
-
-            // If the user is on the product page for this id, sync the main heart
-            try {
-                if (currentProduct && currentProduct.id === id) {
-                    const mainHeart = document.getElementById('main-product-heart');
-                    if (mainHeart) { mainHeart.classList.remove('fas', 'text-red-600'); mainHeart.classList.add('far'); }
-                }
-            } catch (e) {}
-        }
+// 6. Chức năng Thêm/Xóa Yêu thích từ thẻ sản phẩm (Sản phẩm liên quan/vừa xem)
+function addToWishlistFromCard(event, productName) {
+    event.stopPropagation(); 
+    event.preventDefault(); 
+    
+    // Lấy ID sản phẩm từ thuộc tính href của thẻ <a> gần nhất
+    const card = event.currentTarget.closest('.product-card');
+    const anchor = card.parentElement; // Vì bạn bọc card trong anchor
+    let id = null;
+    
+    if (anchor && anchor.href) {
+        const url = new URL(anchor.href);
+        id = url.searchParams.get('id');
     }
+
+    if (!id) return;
+
+    // Gọi API từ wishlist.js
+    if (window.toggleWishlist) {
+        window.toggleWishlist(id);
+        
+        // Cập nhật giao diện trái tim ngay lập tức
+        const heartIcon = event.currentTarget.querySelector('.heart-icon');
+        if (heartIcon) {
+            heartIcon.classList.toggle('far');
+            heartIcon.classList.toggle('fas');
+        }
+    } else {
+        // Fallback nếu chưa nạp kịp wishlist.js
+        if (window.WishlistAdd) window.WishlistAdd(id);
+        if (window.WishlistOpen) window.WishlistOpen();
+    }
+}
 
     // 8. Chức năng Zoom ảnh chính (Magnifier Effect)
     const mainImageWrapper = document.querySelector('.main-image-wrapper');

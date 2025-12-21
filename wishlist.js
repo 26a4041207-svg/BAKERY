@@ -169,4 +169,9 @@ function addAllToCart() {
   window.WishlistRemove = remove;
   window.WishlistOpen = open;
   window.WishlistClose = close;
+  
+  window.toggleWishlist = function(id) {
+    add(id);
+    open(); // Mở drawer sau khi thêm (nếu bạn muốn)
+};
 })();
