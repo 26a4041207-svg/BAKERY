@@ -38,3 +38,105 @@
 .wishlist-btn.primary { background:#c8a97e; color:#fff; border:none; }
 
 .empty-msg { text-align:center; color:#666; padding:40px 0; }
+
+.wishlist-drawer-btn {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #d4af37;
+  background: #fff;
+  cursor: pointer;
+}
+
+.wishlist-drawer-btn.primary {
+  background: #c8a97e;
+  color: #fff;
+  border: none;
+}
+/* =================================
+   WISHLIST RESPONSIVE – MOBILE
+================================= */
+@media (max-width: 768px) {
+
+  /* Overlay full màn */
+  #wishlist-overlay {
+    z-index: 3000;
+  }
+
+  /* Drawer full width */
+  #wishlist-drawer {
+    width: 100%;
+    right: -100%;
+    z-index: 3001;
+  }
+
+  #wishlist-drawer.active {
+    right: 0;
+  }
+
+  /* Header */
+  .wishlist-header {
+    padding: 14px;
+  }
+
+  .wishlist-header h3 {
+    font-size: 16px;
+  }
+
+  #wishlist-close {
+    font-size: 22px;
+  }
+
+  /* Body */
+  .wishlist-body {
+    padding: 12px;
+  }
+
+  /* Item */
+  .wishlist-item {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .wishlist-item img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .wishlist-item .meta .name {
+    font-size: 14px;
+  }
+
+  .wishlist-item .meta .price {
+    font-size: 13px;
+  }
+
+  /* Actions: cho xuống dòng khi hẹp */
+  .wishlist-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .wishlist-actions button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* Footer */
+  .wishlist-footer {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .wishlist-footer .wishlist-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Empty msg */
+  .empty-msg {
+    padding: 30px 10px;
+    font-size: 14px;
+  }
+}

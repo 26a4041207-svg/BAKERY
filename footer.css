@@ -215,16 +215,39 @@ body { font-family: 'Arial', sans-serif; line-height: 1.5; }
     filter: brightness(1.1); /* Sáng hơn chút khi hover */
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 992px) {
-    .footer-container { grid-template-columns: 1fr 1fr; }
-    .logo-col, .newsletter-col { grid-column: span 2; }
-}
-@media (max-width: 576px) {
-    .footer-container { display: flex; flex-direction: column; text-align: center; }
-    .email-form input { text-align: center; padding-right: 0; }
-    .submit-btn { position: relative; right: auto; display: block; margin: 10px auto 0; }
-    .reset-btn { margin: 0 auto; }
-    .header-logo-img { height: 50px; } /* Nhỏ lại chút trên điện thoại */
-    .footer-logo-img { margin: 0 auto 20px auto; } /* Căn giữa ở footer mobile */
+/* --- FOOTER RESPONSIVE: NGẮN LẠI --- */
+@media (max-width: 768px) {
+    footer {
+        padding: 30px 0 10px 0; /* Giảm padding trên dưới */
+    }
+
+    /* Giả sử class bao ngoài các cột footer là .footer-row hoặc .row */
+    footer .row, 
+    .footer-content { 
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Chia thành 2 cột đều nhau (thay vì 1 cột dọc) */
+        gap: 20px 10px; /* Khoảng cách giữa các ô */
+        text-align: left;
+    }
+
+    /* Cột đầu tiên (Logo/Thông tin công ty) thường dài, cho nó chiếm hết bề ngang */
+    footer .col-md-3:first-child,
+    .footer-column:first-child {
+        grid-column: 1 / -1; /* Chiếm full hàng ngang */
+        text-align: center;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Chỉnh chữ nhỏ lại cho gọn */
+    footer h3, footer h4 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    footer p, footer a, footer li {
+        font-size: 13px;
+        line-height: 1.4;
+    }
 }

@@ -14,6 +14,7 @@ let orderSuccess = false;
       products = data;
     });
 
+  if (!document.getElementById("cart-drawer")) {
   fetch("giohang.html")
     .then(res => res.text())
     .then(html => {
@@ -22,6 +23,8 @@ let orderSuccess = false;
       bindOpenCartButtons();
       renderCart();
     });
+}
+
 
   function bindOpenCartButtons() {
     document.querySelectorAll('#open-cart-btn').forEach(btn => {
@@ -159,8 +162,9 @@ function closePaymentPopup() {
     }
 
     saveCart();
-    renderCart();
-    openCart();
+renderCart();
+if (!arguments[2]) openCart();
+
   }
 
   function changeQty(id, delta) {

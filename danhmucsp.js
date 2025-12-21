@@ -51,6 +51,10 @@ function renderProducts() {
         card.innerHTML = `
     <div class="product-image-wrapper relative">
         ${labelHTML}
+        <!-- ❤️ NÚT YÊU THÍCH --!>
+         <button class="wishlist-btn absolute top-2 right-2 z-10" data-id="${p.id}" onclick="addToWishlistFromCategory(event, this)">
+    <i class="fa-regular fa-heart"></i>
+</button>
         <a href="product2.html?id=${p.id}" class="product-link">
             <div class="image-slider">
                 ${imagesHTML}
@@ -92,6 +96,26 @@ productGrid.appendChild(card);
     });
 }
 
+//ICON TRÁI TIM CHỖ SẢN PHẨM
+function addToWishlistFromCategory(e, button) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const id = button.dataset.id;
+    const icon = button.querySelector("i");
+
+    if (!id) return;
+
+    if (icon.classList.contains("fa-regular")) {
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid", "text-red-500");
+        if (window.WishlistAdd) window.WishlistAdd(id);
+    } else {
+        icon.classList.remove("fa-solid", "text-red-500");
+        icon.classList.add("fa-regular");
+        if (window.WishlistRemove) window.WishlistRemove(id);
+    }
+}
 
 /*********************************
  * 3. IMAGE SLIDER

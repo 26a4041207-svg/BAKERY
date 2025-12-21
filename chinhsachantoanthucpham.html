@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="wishlist.css">
+    <link rel="stylesheet" href="giohang.css">
 </head>
 <body>
     <header id="mainHeader">
@@ -55,8 +55,8 @@
             </div>
 
             <div class="user-cart-actions">              
-                <a href="#" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
-                <a href="#" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
+                <a href="wishlist.html" class="icon-btn" id="open-wishlist-btn" title="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+                <a href="cart.html" class="icon-btn" id="open-cart-btn" title="Giỏ hàng"><i class="fa-solid fa-basket-shopping"></i></a>
                 
                 <a href="login.html" class="icon-btn" id="user-icon-btn">
                     <i class="fa-regular fa-user"></i>
@@ -118,7 +118,7 @@
     </div>
 
     <script src="wishlist.js" defer></script>
-    <script src="giohang.js" defer></script>
+    <script src="giohang.js"> </script>
     <script src="header.js"> </script>
 <!-- HERO BANNER -->
 <section class="hero-banner">
@@ -126,9 +126,8 @@
 
     <div class="banner-overlay">
         <p class="breadcrumb">
-            <a href="index.html">TRANG CHỦ</a>
-            <span>›</span>
-            <span>CHÍNH SÁCH AN TOÀN THỰC PHẨM</span>
+            <a href="index.html">Trang chủ</a> >
+            <a href="#">CHÍNH SÁCH AN TOÀN THỰC PHẨM</a> 
         </p>
         <h1>CHÍNH SÁCH AN TOÀN THỰC PHẨM</h1>
     </div>
@@ -241,7 +240,7 @@
                 <h3>ĐĂNG KÍ NHẬN TIN</h3>
                 
                 <form id="emailForm" class="email-form">
-                    <input type="email" id="emailInput" placeholder="Nhập địa chỉ email vào đây ..." required>
+                    <input type="email" id="emailInput" placeholder="Nhập email vào đây ..." required>
                     <button type="submit" class="submit-btn">
                         <i class="fa-solid fa-paper-plane"></i>
                     </button>
@@ -273,7 +272,9 @@
             <i class="fa-solid fa-chevron-up"></i>
         </button>
     </footer>
+<script src="wishlist.js"></script>
+    <script src="footer.js"></script>   
+<script src="giohang.js"></script>
 
-    <script src="footer.js"></script>
 </body>
 </html>

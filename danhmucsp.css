@@ -334,11 +334,61 @@ body::before {
     box-sizing: border-box;
     cursor: pointer;
 }
-
+/* FIX: thêm lại hiệu ứng trượt THÊM VÀO GIỎ */
+.product-card .add-to-cart {
+    bottom: -40px;
+    opacity: 0;
+    transition: all 0.35s ease;
+}
 
 .product-card:hover .add-to-cart {
-    bottom: 0; /* trượt lên */
+    bottom: 0;
+    opacity: 1;
 }
+
+/* NÚT TRÁI TIM – KHÔNG NỀN, KHÔNG VIỀN */
+.wishlist-btn {
+    background: none !important;
+    border: none !important;
+    outline: none;
+    box-shadow: none;
+
+    padding: 0;
+    cursor: pointer;
+
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+}
+
+/* ICON TRÁI TIM */
+.wishlist-btn i {
+    font-size: 16px;
+    color: #666;
+    background: none;
+}
+
+/* hover */
+.wishlist-btn:hover i {
+    color: #e63946;
+}
+
+/* đã yêu thích */
+.wishlist-btn i.fa-solid {
+    color: #e63946;
+}
+
+/* FIX: nút trong wishlist drawer bị CSS trang danh mục đè */
+#wishlist-drawer .wishlist-actions button {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 
 /* Slider ảnh */
 .image-slider {
@@ -519,100 +569,130 @@ body::before {
 /* ========================
    MOBILE RESPONSIVE <768px
 ======================== */
-@media (max-width: 768px) {
-    .main-container {
-        display: flex;
-        flex-direction: column; /* xếp sidebar + content-area theo chiều dọc */
-        gap: 20px;
-    }
+/* =================================
+   RESPONSIVE – MOBILE FIRST
+================================= */
 
-    .content-area {
-        width: 100%;
-    }
-    .category-bar {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 icon 1 hàng */
-        gap: 15px;
-        justify-items: center;
-        text-align: center;
-        padding: 0 10px;
-    }
+/* ===== MOBILE (<= 767px): 2 SP / HÀNG ===== */
+@media (max-width: 767px) {
 
-    .category-bar .category-item img {
-        width: 60px;  /* điều chỉnh kích thước icon */
-        height: 60px;
-        object-fit: contain;
-    }
+  /* Layout chính */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
-    .category-bar .category-item p {
-        font-size: 12px; /* chữ nhỏ hơn */
-        margin-top: 5px;
-    }
-     
-    /* Hiển thị sidebar và căn giữa */
-.sidebar {
-    display: block;               /* hiện ra */
-    width: 100%;                  /* full width */
-    margin: 0 auto 20px auto;     /* căn giữa và cách dưới content */
+  .content-area {
+    width: 100%;
+  }
+
+  /* CATEGORY BAR */
+  .category-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .category-item img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .category-item p {
+    font-size: 12px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 100%;
     padding: 10px;
     box-sizing: border-box;
-}
+  }
 
-/* Hiển thị sort-bar và căn giữa */
-.sort-bar {
-    display: flex;                /* hiển thị flex */
-    flex-wrap: wrap;              /* nếu nút nhiều sẽ xuống dòng */
-    justify-content: center;      /* căn giữa */
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-/* Nút trong sort-bar */
-.sort-bar .sort-btn {
-    padding: 8px 12px;
-    font-size: 14px;
-}
-
-
-.sidebar .filter-box label {
+  .sidebar .filter-box label {
     display: block;
-    margin: 5px 0;
+    margin: 6px 0;
+  }
+
+  /* SORT BAR */
+  .sort-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .sort-btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  /* ===== PRODUCT GRID – QUAN TRỌNG ===== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .product-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+
+  .product-image-wrapper {
+    width: 100%;
+    height: 160px;
+  }
+
+  .product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-name {
+    font-size: 14px;
+    line-height: 1.3;
+    margin-top: 6px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  /* HEADER */
+  body {
+    padding-top: 75px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+  }
 }
 
-    /* Sản phẩm 2 sp 1 hàng */
-    .product-grid {
-        display: grid; /* chắc chắn vẫn grid */
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
+/* ===== TABLET (768px – 1023px): 3 SP / HÀNG ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
-    /* Hero banner nhỏ hơn */
-    .hero-banner {
-        height: 250px;
-    }
-
-    .banner-title {
-        font-size: 36px;
-    }
-
-    /* Menu chính xuống dòng nếu cần */
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        font-size: 12px;
-        padding: 0 5px;
-    }
-
-    /* Logo nhỏ hơn */
-    .logo img {
-        height: 40px;
-    }
-
-    /* Body padding để header không chèn lên content */
-    body {
-        padding-top: 120px;
-    }
-
-
+/* ===== DESKTOP (>= 1024px): 4 SP / HÀNG ===== */
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
