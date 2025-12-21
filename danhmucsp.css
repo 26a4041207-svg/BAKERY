@@ -574,25 +574,55 @@ body::before {
 ================================= */
 
 /* ===== MOBILE (<= 767px): 2 SP / HÀNG ===== */
+/* ================= MOBILE (<= 767px) ================= */
 @media (max-width: 767px) {
 
-  /* Layout chính */
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  /* ===== KHÓA TRÀN NGANG (CỰC KỲ QUAN TRỌNG) ===== */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
   }
 
-  .content-area {
+  /* ===== HEADER ĐÈ LÊN BANNER ===== */
+  #mainHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* ===== HERO BANNER ===== */
+  .hero-banner {
+    position: relative;
     width: 100%;
   }
 
-  /* CATEGORY BAR */
+  .hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Đẩy chữ xuống tránh header che */
+  .hero-banner .banner-text {
+    padding-top: 75px; /* đúng chiều cao header */
+  }
+
+  /* ===== KHÔNG ĐẨY BODY KHI CÓ BANNER ===== */
+  body:has(.hero-banner) {
+    padding-top: 0;
+  }
+
+  /* ===== CATEGORY BAR ===== */
   .category-bar {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     padding: 10px;
+    box-sizing: border-box;
     text-align: center;
   }
 
@@ -605,19 +635,25 @@ body::before {
     font-size: 12px;
   }
 
-  /* SIDEBAR */
+  /* ===== MAIN LAYOUT ===== */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .content-area,
   .sidebar {
     width: 100%;
-    padding: 10px;
     box-sizing: border-box;
   }
 
-  .sidebar .filter-box label {
-    display: block;
-    margin: 6px 0;
+  .sidebar {
+    padding: 10px;
   }
 
-  /* SORT BAR */
+  /* ===== SORT BAR ===== */
   .sort-bar {
     display: flex;
     flex-wrap: wrap;
@@ -631,11 +667,13 @@ body::before {
     padding: 6px 12px;
   }
 
-  /* ===== PRODUCT GRID – QUAN TRỌNG ===== */
+  /* ===== PRODUCT GRID (FIX TRÀN) ===== */
   .product-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .product-card {
@@ -667,32 +705,9 @@ body::before {
     font-size: 15px;
   }
 
-  /* HEADER */
-  body {
-    padding-top: 75px;
-  }
-
+  /* ===== HEADER ICONS ===== */
   .logo img {
     height: 40px;
   }
-
-  .menu {
-    flex-wrap: wrap;
-    gap: 8px;
-    font-size: 12px;
-  }
 }
 
-/* ===== TABLET (768px – 1023px): 3 SP / HÀNG ===== */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* ===== DESKTOP (>= 1024px): 4 SP / HÀNG ===== */
-@media (min-width: 1024px) {
-  .product-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
