@@ -1407,7 +1407,7 @@ body { font-family: 'Arial', sans-serif; line-height: 1.5; }
     /* 1. Tổng thể Footer: Thu gọn khoảng cách */
     footer {
         padding: 40px 0 20px 0; /* Padding vừa phải cho thoáng */
-        text-align: left;
+        text-align: center; /* Căn giữa toàn bộ nội dung */
     }
 
     /* 2. Thiết lập Lưới (Grid) thông minh */
