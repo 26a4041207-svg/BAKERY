@@ -46,7 +46,7 @@ function renderProducts() {
         const imagesHTML = p.images
             .map((img, i) => `<img src="${img}" class="slide ${i === 0 ? "active" : ""}">`)
             .join("");
-
+/* i===0 thì ảnh đầu tiên được active, hiện ra trước, sau đó ghép thành chuỗi và những cái sau class là slide */
         // Tạo HTML
         card.innerHTML = `
     <div class="product-image-wrapper relative">

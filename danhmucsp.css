@@ -1,7 +1,7 @@
 /* Reset và cơ bản */
 body {
     margin: 0;
-    padding-top: 0;
+    padding-top:0; /* Tăng để phù hợp với header lớn hơn */
     font-family: Arial, sans-serif; /* Thay đổi nếu cần */
     background-image: url("background-bakery.png");
     background-size: cover;
@@ -64,124 +64,6 @@ body {
 }
 
 
-/* Menu ở trung tâm */
-.menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 30px; /* Tăng khoảng cách giữa các mục */
-}
-
-.menu li {
-    position: relative;
-}
-
-.menu a {
-    color: inherit; /* Kế thừa màu từ header */
-    text-decoration: none;
-    padding: 15px 10px; /* Tăng padding để chữ lớn hơn */
-    font-size: 16px; /* Tăng font size để dễ đọc */
-    position: relative;
-    transition: all 0.3s ease; /* Hiệu ứng mượt mà */
-    transform-origin: center; /* Phóng to từ giữa chữ */
-}
-
-/* Hiệu ứng hover chỉ cho TRANG CHỦ: Dấu gạch chân màu trắng toả từ giữa ra, và chữ phóng to từ giữa */
-.home a::after {
-    content: '';
-    position: absolute;
-    bottom: 0; /* Ở dưới chữ */
-    left: 50%;
-    width: 100%;
-    height: 2px; /* Độ dày của underline */
-    background: white; /* Màu trắng */
-    transform: scaleX(0); /* Bắt đầu từ giữa (scaleX 0) */
-    transform-origin: center; /* Toả từ giữa ra */
-    transition: transform 0.3s ease;
-}
-
-.home a:hover {
-    transform: scale(1.1); /* Phóng to chữ từ giữa lên 1.1 lần */
-}
-
-.home a:hover::after {
-    transform: scaleX(1); /* Mở rộng underline ra khi hover */
-}
-
-/* Submenu cho dropdown */
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.dropdown:hover .submenu {
-    display: block;
-}
-
-.submenu li a {
-    color: black;
-    padding: 10px 15px;
-    display: block;
-}
-
-/* Right actions bên phải */
-.right-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Tăng khoảng cách */
-}
-
-.login-btn, .cart-btn {
-    color: inherit;
-    text-decoration: none;
-    padding: 15px 10px; /* Tăng padding để lớn hơn */
-    font-size: 16px; /* Tăng font size */
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.login-btn:hover, .cart-btn:hover {
-    background: rgba(255, 255, 255, 0.2); /* Hiệu ứng hover */
-}
-
-.cart-count {
-    background: #ffd700; /* Màu vàng cho số lượng giỏ hàng */
-    color: black;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-}
-
-/* Đảm bảo nội dung trang không bị che bởi header fixed */
-body {
-    padding-top: 100px; /* Tăng để phù hợp với header lớn hơn */
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", sans-serif;
-}
-
-body::before {
-    content:none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
 /* ========================
    CATEGORY BAR
 ======================== */
@@ -191,7 +73,7 @@ body::before {
     justify-content: space-around;
     align-items: flex-start;
     padding: 15px 0;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Cho phép xuống dòng khi không đủ chỗ ngang */
 }
 .category-bar a {
     text-decoration: none;      /* bỏ gạch chân */
@@ -216,7 +98,7 @@ body::before {
 .category-item img {
     height: 55px;
     margin-bottom: 15px;
-    object-fit: contain;
+    object-fit: contain; /*giữ nguyên tỉ lệ ảnh, kh méo kh cắt*/
 }
 
 .category-item p {
@@ -244,7 +126,7 @@ body::before {
 ======================== */
 .sidebar {
     width: 250px;
-    flex-shrink: 0;
+    flex-shrink: 0; /*KHÔNG cho sidebar bị co lại khi màn hình nhỏ*/
 }
 
 .filter-box {
@@ -275,11 +157,11 @@ body::before {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    flex-grow: 1;
+    flex-grow: 1; /* chiếm hết không gian còn lại */
 }
 
 .product-card {
-    background: transparent;
+    background: transparent; /* trong suốt, kh nền */
     border: none;
     padding: 10px;
     text-align: center;
@@ -320,7 +202,7 @@ body::before {
 }
 .add-to-cart {
     position: absolute;
-    bottom: -20px;
+    bottom: -40px;        /* Ẩn xuống dưới */
     left: 0;
     width: 100%;
     padding: 5px 0;
@@ -330,21 +212,17 @@ body::before {
     font-weight: bold;
     font-size: 11px;
     letter-spacing: 1px;
-    transition: bottom 0.35s ease;
     box-sizing: border-box;
     cursor: pointer;
-}
-/* FIX: thêm lại hiệu ứng trượt THÊM VÀO GIỎ */
-.product-card .add-to-cart {
-    bottom: -40px;
     opacity: 0;
-    transition: all 0.35s ease;
+    transition: all 0.3s ease;
 }
 
 .product-card:hover .add-to-cart {
-    bottom: 0;
+    bottom: 0;            /* Trượt lên */
     opacity: 1;
 }
+
 
 /* NÚT TRÁI TIM – KHÔNG NỀN, KHÔNG VIỀN */
 .wishlist-btn {
@@ -352,14 +230,13 @@ body::before {
     border: none !important;
     outline: none;
     box-shadow: none;
-
     padding: 0;
     cursor: pointer;
-
     position: absolute;
     top: 8px;
     right: 8px;
     z-index: 10;
+    border-radius: 0 !important;
 }
 
 /* ICON TRÁI TIM */
@@ -379,16 +256,6 @@ body::before {
     color: #e63946;
 }
 
-/* FIX: nút trong wishlist drawer bị CSS trang danh mục đè */
-#wishlist-drawer .wishlist-actions button {
-  border: none !important;
-  background: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 
 /* Slider ảnh */
 .image-slider {
@@ -405,7 +272,7 @@ body::before {
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease; /* Hiệu ứng mờ dần */
 }
 
 .image-slider img.active {
@@ -441,7 +308,7 @@ body::before {
 
 
 .content-area {
-    flex-grow: 1;
+    flex-grow: 1; /* chiếm hết không gian còn lại */
     display: flex;
     flex-direction: column;
 }
@@ -532,7 +399,7 @@ body::before {
 
 /* Hover: chữ trắng, nền be */
 .pagination button:hover {
-    background-color: #5D4037; /* be */
+    background-color: #5D4037; 
     color: #fff;                /* chữ trắng */
 }
 
@@ -553,46 +420,57 @@ body::before {
     font-size: 14px;
 }
 
-.page-btn.active {
-    background: #c9a24b;
-    color: white;
-    border-color: #c9a24b;
-}
-
-.page-btn:hover {
-    background: #f0e2c4;
-}
-
 /* ========================
    RESPONSIVE
 ======================== */
-/* ========================
-   MOBILE RESPONSIVE <768px
-======================== */
-/* =================================
-   RESPONSIVE – MOBILE FIRST
-================================= */
-
-/* ===== MOBILE (<= 767px): 2 SP / HÀNG ===== */
 @media (max-width: 767px) {
 
-  /* Layout chính */
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  /* ===== KHÓA TRÀN NGANG (CỰC KỲ QUAN TRỌNG) ===== */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
   }
 
-  .content-area {
+  /* ===== HEADER ĐÈ LÊN BANNER ===== */
+  #mainHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* ===== HERO BANNER ===== */
+  .hero-banner {
+    position: relative;
     width: 100%;
   }
 
-  /* CATEGORY BAR */
+  .hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Đẩy chữ xuống tránh header che */
+  .hero-banner .banner-text {
+    padding-top: 75px; /* đúng chiều cao header */
+  }
+
+  /* ===== KHÔNG ĐẨY BODY KHI CÓ BANNER ===== */
+  body:has(.hero-banner) {
+    padding-top: 0;
+  }
+
+  /* ===== CATEGORY BAR ===== */
   .category-bar {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     padding: 10px;
+    box-sizing: border-box;
     text-align: center;
   }
 
@@ -605,22 +483,28 @@ body::before {
     font-size: 12px;
   }
 
-  /* SIDEBAR */
+  /* ===== MAIN LAYOUT ===== */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .content-area,
   .sidebar {
     width: 100%;
-    padding: 10px;
     box-sizing: border-box;
   }
 
-  .sidebar .filter-box label {
-    display: block;
-    margin: 6px 0;
+  .sidebar {
+    padding: 10px;
   }
 
-  /* SORT BAR */
+  /* ===== SORT BAR ===== */
   .sort-bar {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Cho phép xuống dòng */
     justify-content: center;
     gap: 8px;
     margin-bottom: 16px;
@@ -631,15 +515,17 @@ body::before {
     padding: 6px 12px;
   }
 
-  /* ===== PRODUCT GRID – QUAN TRỌNG ===== */
+  /* ===== PRODUCT GRID (FIX TRÀN) ===== */
   .product-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .product-card {
-    width: 100%;
+    
     max-width: 100%;
     padding: 6px;
     box-sizing: border-box;
@@ -667,32 +553,9 @@ body::before {
     font-size: 15px;
   }
 
-  /* HEADER */
-  body {
-    padding-top: 75px;
-  }
-
+  /* ===== HEADER ICONS ===== */
   .logo img {
     height: 40px;
   }
-
-  .menu {
-    flex-wrap: wrap;
-    gap: 8px;
-    font-size: 12px;
-  }
 }
 
-/* ===== TABLET (768px – 1023px): 3 SP / HÀNG ===== */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* ===== DESKTOP (>= 1024px): 4 SP / HÀNG ===== */
-@media (min-width: 1024px) {
-  .product-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
