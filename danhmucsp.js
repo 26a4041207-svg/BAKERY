@@ -80,8 +80,8 @@ card.addEventListener('mouseleave', () => addBtn.classList.remove('opacity-100')
 
 // 👉 CLICK: thêm vào giỏ + mở drawer
 addBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    e.preventDefault(); /*Ngăn chặn hành vi mặc định của thẻ a*/
+    e.stopPropagation(); /*Ngăn chặn sự kiện nổi bọt lên thẻ cha*/
 
     const id = addBtn.dataset.id;
 
@@ -92,7 +92,7 @@ addBtn.addEventListener('click', (e) => {
     }
 });
 
-productGrid.appendChild(card);
+productGrid.appendChild(card); /*thêm phần tử card vào trong productGrid */
     });
 }
 
@@ -173,7 +173,7 @@ function applyFilters() {
         }
 
         // ===== LỌC GIÁ =====
-        const nums = text.match(/[\d\.]+/g)?.map(n => Number(n.replace(/\./g, ""))) || [];
+        const nums = text.match(/[\d\.]+/g)?.map(n => Number(n.replace(/\./g, ""))) || []; /*Tìm tất cả các số trong chuỗi, bỏ dấu chấm rồi chuyển thành số*/
 
         if (text.includes("trên") && nums[0]) {
             priceFilters.push({ min: nums[0], max: Infinity });
@@ -187,16 +187,16 @@ function applyFilters() {
         // ---- GIÁ ----
         const matchPrice =
             priceFilters.length === 0 ||
-            priceFilters.some(r => p.price >= r.min && p.price <= r.max);
+            priceFilters.some(r => p.price >= r.min && p.price <= r.max); /*some: chỉ cần 1 trong các điều kiện đúng là được*/
 
         // ---- TRẠNG THÁI ----
         const productStatus = Array.isArray(p.status)
-            ? p.status.map(s => s.toLowerCase())
-            : [String(p.status || "").toLowerCase()];
+            ? p.status.map(s => s.toLowerCase()) /*nếu p.status là mảng thì chuyển tất cả về chữ thường*/
+            : [String(p.status || "").toLowerCase()]; /*nếu p.status không phải mảng thì chuyển về mảng có 1 phần tử*/
 
         const matchStatus =
             statusFilters.length === 0 ||
-            statusFilters.some(s => productStatus.includes(s));
+            statusFilters.some(s => productStatus.includes(s)); /*kiểm tra xem có trạng thái nào của sản phẩm nằm trong các trạng thái đã lọc không*/
 
         return matchPrice && matchStatus;
     });
