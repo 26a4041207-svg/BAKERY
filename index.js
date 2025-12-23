@@ -31,20 +31,20 @@
 
         // --- 4. XỬ LÝ TÌM KIẾM THÔNG MINH ---
         const searchInput = document.getElementById('searchInput');
-        const btnSearch = document.getElementById('btnSearchAction');
+        // const btnSearch = document.getElementById('btnSearchAction');
         const suggestionsBox = document.getElementById('searchSuggestions');
 
         // Hàm chuyển hướng
-        function goToSearch(keyword) {
-            window.location.href = `search-results.html?q=${encodeURIComponent(keyword)}`;
-        }
+        // function goToSearch(keyword) {
+        //     window.location.href = `search-results.html?q=${encodeURIComponent(keyword)}`;
+        // }
 
         // Sự kiện khi gõ phím
         searchInput.addEventListener('input', function() {
             if (cakes.length === 0) return;
 
             const keyword = this.value.trim().toLowerCase();
-            suggestionsBox.innerHTML = ''; 
+            suggestionsBox.innerHTML = ''; // XOÁ sạch gợi ý cũ
 
             if (!keyword) {
                 suggestionsBox.style.display = 'none';
