@@ -11,45 +11,8 @@ function fadeInScroll() {
 }
 
 window.addEventListener("scroll", fadeInScroll);
+
 fadeInScroll();
-
-/*
-// Slider
-let index = 0;
-const slider = document.getElementById('reviewSlider');
-const dotsContainer = document.getElementById('reviewDots');
-const total = slider.children.length;
-
-// Create dots
-autoDots();
-function autoDots() {
-    for (let i = 0; i < total; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    }
-}
-
-function updateSlider() {
-    slider.style.transform = `translateX(-${index * 100}%)`;
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach(d => d.classList.remove('active'));
-    dots[index].classList.add('active');
-}
-
-function goToSlide(i) {
-    index = i;
-    updateSlider();
-}
-
-setInterval(() => {
-    index = (index + 1) % total;
-    updateSlider();
-}, 4000);
-*/
- // hiệu ứng fade-in cho review
 const reviewItems = document.querySelectorAll(".review-item");
 
 function fadeInReviews() {

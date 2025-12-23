@@ -130,19 +130,17 @@
     <nav class="flex text-gray-600 text-sm py-3" aria-label="Breadcrumb">
         <ol class="list-none p-0 inline-flex items-center space-x-2">
             <li class="flex items-center">
-                <a href="index.html" class="hover:text-gold transition-colors flex items-center">
+                <a href="index.html">
                     <i class="fa-solid fa-house mr-1"></i> Trang chủ
                 </a>
-                <i class="fa-solid fa-chevron-right mx-2 text-[10px] text-gray-400"></i>
+                <i class="fa-solid fa-chevron-right mx-2 text-gray-400"></i>
             </li>
-            
             <li class="flex items-center">
-                <a href="sanpham.html" class="hover:text-gold transition-colors" id="breadcrumb-category">Sản phẩm</a>
-                <i class="fa-solid fa-chevron-right mx-2 text-[10px] text-gray-400"></i>
+                <a href="sanpham.html">Sản phẩm</a>
+                <i class="fa-solid fa-chevron-right mx-2 text-gray-400"></i>
             </li>
-            
             <li class="flex items-center">
-                <span class="text-gray-400 font-medium truncate max-w-[200px] md:max-w-none" id="product-title">Đang tải...</span>
+                <span class="text-gray-400 font-medium">Chi tiết sản phẩm</span>
             </li>
         </ol>
     </nav>
@@ -152,43 +150,41 @@
 
     <div class="row">
         <div class="col-lg-5 mb-4">
-            <div class="shadow-lg rounded-lg overflow-hidden bg-white p-4">
+            <div class="shadow-lg bg-white p-4">
                 <div class="main-image-wrapper mb-4"> 
-                    <img id="main-image" src="" alt="" class="w-full h-auto rounded-lg mb-4 object-cover" >
+                    <img id="main-image" class="w-full h-auto rounded-lg mb-4 object-cover" >
                 </div>
                 <div class="flex space-x-3 mt-2 justify-center" id="thumbnail-container">
-                    <div class="col-3 px-1">
-                        <img src="" alt="Thumbnail 1" class="thumbnail-img active rounded-md" data-full-image="" onclick="changeImage(this)">
-                    </div>
+                    <!-- Thumbnails will be injected here by product2.js -->
                 </div> 
             </div> 
-        </div>
+        </div> 
 
         <div class="col-lg-7">
-            <h1 class="text-4xl font-bold text-gray-900 mb-2" id="product-title"></h1>
+            <!--Tên sản phẩm-->
+            <h1 class="text-5xl font-bold text-gray-900 mb-2" id="product-name"></h1>
             <p class="text-base text-gray-500 mb-4">Loại: <span class="font-semibold text-gold" id="product-category"></span> | Tình trạng: <span class="font-semibold text-gold">Còn hàng</span></p>
 
             <div class="mb-4">
-                <span class="text-4xl font-semibold text-gold" id="product-price">390.000₫</span>
+                <span class="text-5xl font-semibold text-gold" id="product-price"></span>
             </div>
-
+            <!--Thanh hiển thị thêm/bớt số lượng sản phẩm-->
             <div class="flex items-center mb-6">
                 <label for="quantity" class="text-lg font-semibold text-gray-700 me-3">Số lượng:</label>
-                <div class="quantity-input-group flex border border-gray-300 rounded-lg overflow-hidden">
-                    <button id="decrement-btn" class="text-xl font-medium text-white hover:bg-white-200">-</button>
-                    <input type="number" id="quantity" value="1" min="1" class="h-10 w-12 text-center text-lg font-medium border-x border-gray-300 focus:outline-none" readonly>
-                    <button id="increment-btn" class="text-xl font-medium text-white hover:bg-white-200">+</button>
+                <div class="quantity-input-group flex border">
+                    <button id="decrement-btn" class="text-xl font-medium text-white">-</button>
+                    <input type="number" id="quantity" value="1" min="1" class="h-10 w-12 text-center text-lg font-medium border-x border-gray-300" readonly>
+                    <button id="increment-btn" class="text-xl font-medium text-white">+</button>
                 </div>
             </div>
 
             <div class="d-flex gap-3 mb-6">
-                <button class="flex-grow-1 flex items-center justify-center p-3 rounded-lg bg-gold hover:bg-opacity-90 text-white font-semibold shadow-md transition-colors" onclick="addToCart()">
+                <button class="flex-grow-1 flex items-center justify-center p-3 rounded-lg bg-gold text-white font-semibold" onclick="addToCart()">
                     <i class="fas fa-shopping-bag me-2"></i>
-                    THÊM VÀO GIỎ
-                    <span class="ms-2 text-sm">(Giao hàng tận nơi miễn phí)</span>
+                    THÊM VÀO GIỎ HÀNG
                 </button>
-                <button class="p-3 rounded-lg border !border-gold text-gold hover:bg-yellow-50 transition-colors" onclick="addToWishlistMain(this)">
-                    <i id="main-product-heart" class="far fa-heart text-2xl"></i>
+                <button class="p-3 rounded-lg border !border-gold text-gold" onclick="addToWishlistMain(this)">
+                    <i id="main-product-heart" class="far fa-heart text-3xl"></i>
                 </button>
             </div>
 
@@ -201,9 +197,8 @@
                     </div>
 
                     <p class="promo-title text-lg font-bold bg-gold text-white py-2 px-4 flex items-center w-full">
-                        Khuyến mãi đặc biệt !!!
+                        Khuyến mãi đặc biệt
                     </p>
-
                 </div>
 
                 <ul class="list-unstyled space-y-2 text-gray-700 p-4">
@@ -213,7 +208,6 @@
                 </ul>
 
             </div>
-
 
             <div class="grid grid-cols-2 gap-3 mb-6">
                 <div class="col p-3 border border-gray-200 rounded-lg bg-white shadow-sm icon-box flex items-start space-x-3">

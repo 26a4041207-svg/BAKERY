@@ -35,10 +35,7 @@ if (quantityInput && decrementBtn && incrementBtn) {
     // 4. Chức năng Thêm vào giỏ hàng
     function addToCart() {
     if (!currentProduct) return;
-
     const quantity = Number(quantityInput.value) || 1;
-
-    // chỉ thêm vào giỏ – KHÔNG hiện popup
     GioHangAdd(currentProduct.id, quantity);
 }
 
@@ -49,20 +46,18 @@ if (quantityInput && decrementBtn && incrementBtn) {
         const heartIcon = buttonElement.querySelector('#main-product-heart');
         const id = currentProduct.id;
 
-        // Toggle in storage via Wishlist API if available
+
         if (heartIcon.classList.contains('far')) {
             heartIcon.classList.remove('far');
             heartIcon.classList.add('fas', 'text-red-600');
             if (window.WishlistAdd) window.WishlistAdd(id);
-            showModal('Yêu thích', `Sản phẩm '${currentProduct.name}' đã được thêm vào danh sách yêu thích của bạn!`);
+
         } else {
             heartIcon.classList.remove('fas', 'text-red-600');
             heartIcon.classList.add('far');
             if (window.WishlistRemove) window.WishlistRemove(id);
-            showModal('Yêu thích', `Đã xóa sản phẩm '${currentProduct.name}' khỏi danh sách yêu thích.`);
         }
     }
-
 
 // 7. Chức năng chuyển đổi Tab 
 function setupTabSwitching() {
@@ -251,7 +246,7 @@ async function loadProductDetails(productId) {
         allProducts = products;
 
         // populate product details in the page if those elements exist
-        const titleEl = document.getElementById('product-title');
+        const titleEl = document.getElementById('product-name');
         const priceEl = document.getElementById('product-price');
         const categoryEl = document.getElementById('product-category');
         const breadcrumbName = document.getElementById('breadcrumb-product-name');
