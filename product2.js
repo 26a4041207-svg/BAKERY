@@ -99,16 +99,15 @@ function setupTabSwitching() {
 }
 
 // 6. Chức năng Thêm/Xóa Yêu thích từ thẻ sản phẩm
-// 6. Chức năng Thêm/Xóa Yêu thích từ thẻ sản phẩm (Sản phẩm liên quan/vừa xem)
 function addToWishlistFromCard(event, productName) {
     event.stopPropagation(); 
     event.preventDefault(); 
     
     // Lấy ID sản phẩm từ thuộc tính href của thẻ <a> gần nhất
     const card = event.currentTarget.closest('.product-card');
-    const anchor = card.parentElement; // Vì bạn bọc card trong anchor
+    const anchor = card.parentElement; 
     let id = null;
-    
+    // lấy id từ URL
     if (anchor && anchor.href) {
         const url = new URL(anchor.href);
         id = url.searchParams.get('id');
@@ -137,12 +136,13 @@ function addToWishlistFromCard(event, productName) {
     const mainImageWrapper = document.querySelector('.main-image-wrapper');
     const mainImage = document.getElementById('main-image');
     
-    const zoomLevel = 1.6; 
-    const transitionDuration = 0.2; 
+    const zoomLevel = 1.6;  // Mức độ zoom
+    const transitionDuration = 0.2;  // Thời gian chuyển đổi (giây)
     
-    mainImage.style.transition = `transform ${transitionDuration}s ease-out`;
+    mainImage.style.transition = `transform ${transitionDuration}s ease-out`;  
 
     if (mainImageWrapper) {
+        
         mainImageWrapper.addEventListener('mousemove', (e) => {
             const rect = mainImageWrapper.getBoundingClientRect();
             const x = (e.clientX - rect.left) / rect.width;
@@ -155,22 +155,22 @@ function addToWishlistFromCard(event, productName) {
             mainImage.style.transformOrigin = 'center center'; 
             mainImage.style.cursor = 'crosshair'; 
         });
-
+        // Reset khi chuột rời khỏi ảnh
         mainImageWrapper.addEventListener('mouseleave', () => {
             mainImage.style.transform = 'scale(1)';
             mainImage.style.cursor = 'zoom-in';
         });
     }
 
+// 9. Load sản phẩm khi trang được tải và gắn sự kiện cho nút giỏ hàng + wishlist
 
-    // 9. KHỞI TẠO TAB & TẢI DỮ LIỆU SẢN PHẨM: 
 document.addEventListener('DOMContentLoaded', () => {
     setupTabSwitching();
     // GỌI HÀM LẤY ID TỪ URL
     const productId = getProductIdFromUrl();
     loadProductDetails(productId);
 
-    // Bind cart open button (if giohang.js is loaded it will expose GioHangOpen)
+    // mở giỏ hàng khi nhấn nút
     const cartBtn = document.getElementById('open-cart-btn');
     if (cartBtn) {
         cartBtn.addEventListener('click', (e) => {
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Bind wishlist open button
+    // mở wishlist khi nhấn nút
     const wishBtn = document.getElementById('open-wishlist-btn');
     if (wishBtn) {
         wishBtn.addEventListener('click', (e) => {
@@ -191,29 +191,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// -- Shared current product state --
+// biến toàn cục lưu trữ sản phẩm hiện tại
 let currentProduct = null;
-// allProducts stores the full list loaded from product.json (or inline fallback)
+// biến toàn cục lưu trữ tất cả sản phẩm từ product.json
 let allProducts = [];
 
-// Helper: parse 'id' param from the current page URL
+// lấy product id từ URL
 function getProductIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get('id') || null;
 }
 
-// Format number to currency string like 390.000₫
+// Định dạng giá tiền với dấu chấm ngăn cách hàng nghìn và thêm ký hiệu ₫
 function formatPrice(value) {
     if (typeof value !== 'number') return value;
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '₫';
 }
 
-// Load product details from product.json and populate the page
+// Tải chi tiết sản phẩm từ product.json 
 async function loadProductDetails(productId) {
     try {
         let products = null;
 
-        // try network fetch (works when the site is served via http://)
+        // Try fetching product.json
         try {
             const res = await fetch('./product.json');
             if (!res.ok) throw new Error('Không thể tải product.json');
@@ -245,7 +245,7 @@ async function loadProductDetails(productId) {
         // keep a copy of the full product list for lookups (used by recently viewed)
         allProducts = products;
 
-        // populate product details in the page if those elements exist
+        // gắn dữ liệu sản phẩm vào các phần tử HTML nếu tồn tại
         const titleEl = document.getElementById('product-name');
         const priceEl = document.getElementById('product-price');
         const categoryEl = document.getElementById('product-category');
@@ -264,7 +264,7 @@ async function loadProductDetails(productId) {
         if (categoryEl) categoryEl.textContent = product.category || '';
         if (breadcrumbName) breadcrumbName.textContent = product.name;
 
-        // Update description and ingredients/nutrition if present
+        // cập nhật mô tả và thành phần
         if (descriptionText) {
             descriptionText.textContent = product.description || 'Không có mô tả cho sản phẩm này.';
         }
@@ -282,19 +282,19 @@ async function loadProductDetails(productId) {
                 ingredientsList.appendChild(li);
             }
         }
-
+        // cập nhật thông tin dinh dưỡng
         if (nutriCalories) nutriCalories.textContent = (product.nutrition && product.nutrition.calories) ? `${product.nutrition.calories} Kcal` : 'N/A';
         if (nutriFat) nutriFat.textContent = (product.nutrition && product.nutrition.fat) ? `${product.nutrition.fat} g` : 'N/A';
         if (nutriCarb) nutriCarb.textContent = (product.nutrition && product.nutrition.carb) ? `${product.nutrition.carb} g` : 'N/A';
         if (nutriProtein) nutriProtein.textContent = (product.nutrition && product.nutrition.protein) ? `${product.nutrition.protein} g` : 'N/A';
 
         if (mainImg && product.images && product.images.length > 0) {
-            // encodeURI to support spaces/diacritics in paths
+            // đặt encoded URL để tránh lỗi với dấu cách  
             mainImg.src = encodeURI(product.images[0]);
             mainImg.alt = product.name;
         }
 
-        // build thumbnails
+        // xây dựng thumbnails
         if (thumbnailContainer) {
             thumbnailContainer.innerHTML = '';
             (product.images || []).forEach((imgSrc, idx) => {
@@ -313,13 +313,11 @@ async function loadProductDetails(productId) {
             });
         }
 
-        // render related products by category (limit to 8 items)
+        // sản phẩm liên quan dựa trên cùng danh mục và chỉ hiển thị tối đa 10 sản phẩm
         const related = products.filter(p => p.category === product.category && p.id !== product.id);
         renderRelatedProducts(related, 10);
 
-        // --- RECENTLY VIEWED handling ---
-        // When the user navigates from one product to another, we want to add the previous product
-        // into the recently viewed list. We use sessionStorage.currentProductId to know the previous one.
+        // sản phẩm đã xem gần đây
         const previousProductId = sessionStorage.getItem('currentProductId');
         if (previousProductId && previousProductId !== product.id) {
             addToRecentlyViewed(previousProductId, 10);
@@ -331,7 +329,7 @@ async function loadProductDetails(productId) {
         // Save current product id into sessionStorage so next navigation will consider it the "previous"
         sessionStorage.setItem('currentProductId', product.id);
 
-        // Reflect wishlist state on main heart if present
+        // đồng bộ trạng thái wishlist của sản phẩm chính
         try {
             const list = JSON.parse(localStorage.getItem('wishlist_ids') || '[]');
             const heart = document.getElementById('main-product-heart');
@@ -354,9 +352,9 @@ async function loadProductDetails(productId) {
     }
 }
 
-// Render related products into the #related-products element
-// Render related products into the #related-products element
-// limit -> number of items to display (default 8)
+// 10. hiển thị sản phẩm liên quan
+// items -> mảng sản phẩm liên quan 
+// limit -> số sản phẩm tối đa để hiển thị
 function renderRelatedProducts(items, limit = 10) {
     const container = document.getElementById('related-products');
     if (!container) return;
@@ -419,7 +417,7 @@ function renderRelatedProducts(items, limit = 10) {
     });
 }
 
-// --- Recently viewed utilities ---
+// 11. sản phẩm đã xem gần đây (recently viewed) lưu trong localStorage dưới dạng mảng id
 const RECENTLY_KEY = 'recentlyViewedIds';
 
 function getRecentlyViewedIds() {
