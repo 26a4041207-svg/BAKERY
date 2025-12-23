@@ -9,6 +9,7 @@
     "description": "Bánh cà rốt mềm mượt, kết hợp kem phô mai mát ngọt, thích hợp cho tiệc sinh nhật và dịp lễ.",
     "ingredients": ["Bột mì", "Cà rốt tươi", "Trứng", "Đường", "Kem phô mai"],
     "nutrition": { "calories": 350, "fat": 20, "carb": 38, "protein": 5 }
+  
   }, 
   {
     "id": "002",
@@ -31,6 +32,7 @@
     "description": "Bánh chocolate sang trọng, trang trí macaron giòn rụm trên đỉnh bánh.",
     "ingredients": ["Bột mì", "Sô cô la", "Trứng", "Hạnh nhân", "Đường"],
     "nutrition": { "calories": 380, "fat": 22, "carb": 35, "protein": 5 }
+ 
   }, 
   {
     "id": "004",
@@ -42,6 +44,7 @@
     "description": "Bánh confetti vui mắt, thích hợp cho lễ kỷ niệm và trẻ em.",
     "ingredients": ["Bột mì", "Trứng", "Đường", "Màu thực phẩm", "Kem tươi"],
     "nutrition": { "calories": 360, "fat": 18, "carb": 42, "protein": 5 }
+
   }, 
   {
     "id": "005",
@@ -52,6 +55,7 @@
     "description": "Một sự kết hợp giữa brownie và toffee, mềm và dẻo cùng lớp chocolate phủ trên cùng.",
     "ingredients": ["Sô cô la", "Bơ", "Đường", "Trứng", "Toffee"],
     "nutrition": { "calories": 450, "fat": 28, "carb": 50, "protein": 7 }
+
   },  
   {
     "id": "006",
@@ -62,6 +66,7 @@
     "description": "Bánh German Chocolate truyền thống với lớp nhân dừa béo ngậy.",
     "ingredients": ["Bột mì", "Dừa nạo", "Sữa đặc", "Đường", "Trứng"],
     "nutrition": { "calories": 410, "fat": 24, "carb": 44, "protein": 6 }
+
   }, 
   {
     "id": "007",
@@ -73,6 +78,7 @@
     "description": "Bánh táo thơm mùi quế, sử dụng táo tươi và gia vị tự nhiên.",
     "ingredients": ["Táo", "Bột mì", "Quế", "Đường", "Bơ"],
     "nutrition": { "calories": 300, "fat": 12, "carb": 46, "protein": 4 }
+
   }, 
   {
     "id": "008",
@@ -83,6 +89,7 @@
     "description": "Hummingbird Cake truyền thống với trái cây nhiệt đới, cực kỳ thơm ngon.",
     "ingredients": ["Chuối", "Dứa", "Bột mì", "Đường", "Kem tươi"],
     "nutrition": { "calories": 370, "fat": 20, "carb": 44, "protein": 5 }
+
   },  
   {
     "id": "009",
@@ -93,6 +100,7 @@
     "description": "Bánh Macaron Fraisier thanh nhã, lớp kem nhẹ và macaron giòn trên cùng.",
     "ingredients": ["Bột mì", "Macaron", "Trứng", "Đường", "Kem tươi"],
     "nutrition": { "calories": 340, "fat": 16, "carb": 38, "protein": 4 }
+
   }, 
   {
     "id": "010",
@@ -103,6 +111,7 @@
     "description": "Bánh hạt dẻ cười (pistachio) beo béo, màu xanh nhẹ nhàng, thơm vị hạt.",
     "ingredients": ["Pistachio", "Bột mì", "Đường", "Trứng", "Kem tươi"],
     "nutrition": { "calories": 400, "fat": 26, "carb": 32, "protein": 6 }
+
   },  
   {
     "id": "011",
@@ -114,6 +123,7 @@
     "description": "Bánh Red Velvet mềm mịn, phủ kem phô mai truyền thống.",
     "ingredients": ["Bột mì", "Sữa", "Đường", "Bơ", "Kem phô mai"],
     "nutrition": { "calories": 380, "fat": 21, "carb": 39, "protein": 5 }
+
   },  
   {
     "id": "012",
@@ -124,20 +134,29 @@
     "description": "Reindeer Cake trang trí Giáng sinh, phù hợp cho mùa lễ hội.",
     "ingredients": ["Bột mì", "Mứt trái cây", "Đường", "Kem tươi"],
     "nutrition": { "calories": 360, "fat": 18, "carb": 40, "protein": 5 }
+
   },  
   {
     "id": "013",
     "name": "Snowman Cake",
     "price": 260000,
     "category": "Bánh Kem",
-    "images": ["/assets/img/Products/Bánh Kem/Snowman Cake 1.webp", "/assets/img/Products/Bánh Kem/Snowman Cake 2.webp", "/assets/img/Products/Bánh Kem/Snowman Cake 3.webp"]
+    "images": ["/assets/img/Products/Bánh Kem/Snowman Cake 1.webp", "/assets/img/Products/Bánh Kem/Snowman Cake 2.webp", "/assets/img/Products/Bánh Kem/Snowman Cake 3.webp"],
+    "description": "Snowman Cake ngộ nghĩnh, lý tưởng cho tiệc Giáng sinh và mùa đông.",
+    "ingredients": ["Bột mì", "Đường", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 330, "fat": 16, "carb": 38, "protein": 4 }
+
   },  
   {
     "id": "014",
     "name": "Vanilla Cake",
     "price": 420000,
     "category": "Bánh Kem",
-    "images": ["/assets/img/Products/Bánh Kem/Vanilla Cake 1.webp", "/assets/img/Products/Bánh Kem/Vanilla Cake 2.webp", "/assets/img/Products/Bánh Kem/Vanilla Cake 3.webp"]
+    "images": ["/assets/img/Products/Bánh Kem/Vanilla Cake 1.webp", "/assets/img/Products/Bánh Kem/Vanilla Cake 2.webp", "/assets/img/Products/Bánh Kem/Vanilla Cake 3.webp"],
+    "description": "Bánh Vanilla cổ điển, thơm mùi vani tự nhiên, phù hợp cho mọi dịp.",
+    "ingredients": ["Bột mì", "Vani", "Đường", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 340, "fat": 15, "carb": 42, "protein": 4 }
+
   }, 
     {
     "id": "015",
@@ -145,14 +164,24 @@
     "price": 140000,
     "category": "Bánh Mousse",
     "status": ["Sale"],
-    "images": ["/assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 1.jpg", "/assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 2.jpg"]
+    "images": ["/assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 1.jpg", "/assets/img/Products/Bánh Mousse/Berry Fruit Vanilla 2.jpg"],
+    "description": "Bánh mousse vani kết hợp với lớp trái cây mọng nước tươi ngon.",
+    "ingredients": ["Bột mì", "Vani", "Trứng", "Đường", "Trái cây tươi"],
+    "nutrition": { "calories": 250, "fat": 12, "carb": 30, "protein": 3 }
+
+
   },
   {
     "id": "016",
     "name": "Burnt Caramel",
     "price": 120000,
     "category": "Bánh Mousse",
-    "images": ["/assets/img/Products/Bánh Mousse/Burnt Caramel 1.jpg", "/assets/img/Products/Bánh Mousse/Burnt Caramel 2.jpg"]
+    "images": ["/assets/img/Products/Bánh Mousse/Burnt Caramel 1.jpg", "/assets/img/Products/Bánh Mousse/Burnt Caramel 2.jpg"],
+    "description": "Bánh mousse caramel cháy với lớp vỏ caramel giòn rụm.",
+    "ingredients": ["Bột mì", "Caramel", "Trứng", "Đường", "Kem tươi"],
+    "nutrition": { "calories": 270, "fat": 14, "carb": 28, "protein": 4 }
+  
+
   },
   {
     "id": "017",
@@ -160,7 +189,11 @@
     "price": 100000,
     "category": "Bánh Mousse",
     "status": ["New"],
-    "images": ["/assets/img/Products/Bánh Mousse/Burnt Caramel Signature 1.png", "/assets/img/Products/Bánh Mousse/Burnt Caramel Signature 2.jpg"]
+    "images": ["/assets/img/Products/Bánh Mousse/Burnt Caramel Signature 1.png", "/assets/img/Products/Bánh Mousse/Burnt Caramel Signature 2.jpg"],
+    "description": "Phiên bản đặc biệt của bánh mousse caramel cháy với hương vị đậm đà hơn.",
+    "ingredients": ["Bột mì", "Caramel", "Trứng", "Đường", "Kem tươi"],
+    "nutrition": { "calories": 290, "fat": 16, "carb": 30, "protein": 4 }
+
   },
   {
     "id": "018",
@@ -168,21 +201,33 @@
     "price": 80000,
     "category": "Bánh Mousse",
     "status": ["Flash Sale"],
-    "images": ["/assets/img/Products/Bánh Mousse/Passion Fruit 1.jpg", "/assets/img/Products/Bánh Mousse/Passion Fruit 2.png", "/assets/img/Products/Bánh Mousse/Passion Fruit 3.jpg"]
+    "images": ["/assets/img/Products/Bánh Mousse/Passion Fruit 1.jpg", "/assets/img/Products/Bánh Mousse/Passion Fruit 2.png", "/assets/img/Products/Bánh Mousse/Passion Fruit 3.jpg"],
+    "description": "Bánh mousse chanh dây tươi mát, thích hợp cho mùa hè.",
+    "ingredients": ["Bột mì", "Chanh dây", "Trứng", "Đường", "Kem tươi"],
+    "nutrition": { "calories": 240, "fat": 10, "carb": 32, "protein": 3 }
+
   },
   {
     "id": "019",
     "name": "Passion Mango chese",
     "price": 70000,
     "category": "Bánh Mousse",
-    "images": ["/assets/img/Products/Bánh Mousse/Passion Mango chese  1.png", "/assets/img/Products/Bánh Mousse/Passion Mango chese  2.jpg"]
+    "images": ["/assets/img/Products/Bánh Mousse/Passion Mango chese  1.png", "/assets/img/Products/Bánh Mousse/Passion Mango chese  2.jpg"],
+    "description": "Bánh mousse xoài chanh dây kết hợp vị chua ngọt hài hòa.",
+    "ingredients": ["Bột mì", "Xoài", "Chanh dây", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 260, "fat": 12, "carb": 30, "protein": 4 }
+
   },
   {
     "id": "020",
     "name": "Pink Guava",
     "price": 50000,
     "category": "Bánh Mousse",
-    "images": ["/assets/img/Products/Bánh Mousse/Pink Guava 1.png", "/assets/img/Products/Bánh Mousse/Pink Guava 2.jpg", "/assets/img/Products/Bánh Mousse/Pink Guava 3.jpg"]
+    "images": ["/assets/img/Products/Bánh Mousse/Pink Guava 1.png", "/assets/img/Products/Bánh Mousse/Pink Guava 2.jpg", "/assets/img/Products/Bánh Mousse/Pink Guava 3.jpg"],
+    "description": "Bánh mousse ổi hồng thơm ngon, giàu vitamin C.",
+    "ingredients": ["Bột mì", "Ổi hồng", "Trứng", "Đường", "Kem tươi"],
+    "nutrition": { "calories": 230, "fat": 11, "carb": 28, "protein": 3 }
+
   },
   {
     "id": "021",
@@ -190,14 +235,23 @@
     "price": 70000,
     "category": "Bánh Mousse",
     "status": ["Best Seller"],
-    "images": ["/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 1.png", "/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 2.jpg", "/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 3.png"]
+    "images": ["/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 1.png", "/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 2.jpg", "/assets/img/Products/Bánh Mousse/Strawberry Cherry Blossom 3.png"],
+    "description": "Bánh mousse dâu tây kết hợp với hương hoa anh đào nhẹ nhàng.",
+    "ingredients": ["Bột mì", "Dâu tây", "Hoa anh đào", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 250, "fat": 13, "carb": 29, "protein": 4 }
+
   },
   {
     "id": "022",
     "name": "Tiramisu De Caramel Socola",
     "price": 90000,
     "category": "Bánh Mousse",
-    "images": ["/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Socola 1.png", "/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Socola 2.jpg"]
+    "images": ["/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Socola 1.png", "/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Socola 2.jpg"],
+    "description": "Bánh mousse tiramisu kết hợp caramel và socola đậm đà.",
+    "ingredients": ["Bột mì", "Cà phê", "Caramel", "Socola", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 300, "fat": 18, "carb": 32, "protein": 5 }
+
+
   }, 
   {
     "id": "023",
@@ -205,14 +259,22 @@
     "price": 75000,
     "category": "Bánh Mousse",
     "status": ["Sold Out"],
-    "images": ["/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Vani 1.png", "/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Vani 2.jpg"]
+    "images": ["/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Vani 1.png", "/assets/img/Products/Bánh Mousse/Tiramisu De Caramel Vani 2.jpg"],
+    "description": "Bánh mousse tiramisu với hương vani và caramel ngọt ngào.",
+    "ingredients": ["Bột mì", "Cà phê", "Caramel", "Vani", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 280, "fat": 16, "carb": 30, "protein": 4 }
+
   }, 
     {
     "id": "024",
     "name": "Tropical Coconut",
     "price": 65000,
     "category": "Bánh Mousse",
-    "images": ["assets/img/Products/Bánh Mousse/Tropical Coconut 1.png", "assets/img/Products/Bánh Mousse/Tropical Coconut 2.jpg"]
+    "images": ["assets/img/Products/Bánh Mousse/Tropical Coconut 1.png", "assets/img/Products/Bánh Mousse/Tropical Coconut 2.jpg"],
+    "description": "Bánh mousse dừa nhiệt đới thơm ngon, mát lành.",
+    "ingredients": ["Bột mì", "Dừa", "Trứng", "Đường", "Kem tươi"],
+    "nutrition": { "calories": 240, "fat": 14, "carb": 26, "protein": 3 }
+
   }, 
     {
     "id": "025",
@@ -220,14 +282,22 @@
     "price": 60000,
     "category": "Bánh Ngọt",
     "status": ["Best Seller"],
-    "images": ["assets/img/Products/Bánh Ngọt/Almond Pastry.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Almond Pastry.jpg"],
+    "description": "Bánh ngọt hạnh nhân giòn rụm, lớp kem bơ thơm ngon.",
+    "ingredients": ["Bột mì", "Hạnh nhân", "Bơ", "Đường", "Trứng"],
+    "nutrition": { "calories": 320, "fat": 18, "carb": 30, "protein": 6 }
+
   }, 
     {
     "id": "026",
     "name": "Blueberry Cream Cheese Pastry",
     "price": 150000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Blueberry Cream Cheese Pastry.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Blueberry Cream Cheese Pastry.jpg"],
+    "description": "Bánh ngọt việt quất kết hợp kem phô mai béo ngậy.",
+    "ingredients": ["Bột mì", "Việt quất", "Kem phô mai", "Đường", "Trứng"],
+    "nutrition": { "calories": 340, "fat": 20, "carb": 32, "protein": 5 }
+
   }, 
     {
     "id": "027",
@@ -235,14 +305,23 @@
     "price": 95000,
     "category": "Bánh Ngọt",
     "status": ["Flash Sale"],
-    "images": ["assets/img/Products/Bánh Ngọt/Butter Cream Bread.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Butter Cream Bread.jpg"],
+    "description": "Bánh mì bơ kem mềm mịn, thơm lừng vị bơ.",
+    "ingredients": ["Bột mì", "Bơ", "Kem tươi", "Đường", "Trứng"],
+    "nutrition": { "calories": 310, "fat": 16, "carb": 28, "protein": 4 }
+
+
   }, 
     {
     "id": "028",
     "name": "Cheese Tart",
     "price": 90000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Cheese Tart.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Cheese Tart.jpg"],
+    "description": "Bánh tart phô mai béo ngậy, lớp vỏ giòn tan.",
+    "ingredients": ["Bột mì", "Phô mai", "Bơ", "Đường", "Trứng"],
+    "nutrition": { "calories": 330, "fat": 19, "carb": 29, "protein": 6 }
+
   }, 
     {
     "id": "029",
@@ -250,21 +329,32 @@
     "price": 100000,
     "category": "Bánh Ngọt",
     "status": ["New"],
-    "images": ["assets/img/Products/Bánh Ngọt/Cherry Greek Yogurt Danish.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Cherry Greek Yogurt Danish.jpg"],
+    "description": "Bánh ngọt cherry kết hợp sữa chua Hy Lạp tươi mát.",
+    "ingredients": ["Bột mì", "Cherry", "Sữa chua Hy Lạp", "Đường", "Trứng"],
+    "nutrition": { "calories": 300, "fat": 15, "carb": 35, "protein": 5 }
+
   }, 
     {
     "id": "030",
     "name": "Cherry Greek Yogurt Danish",
     "price": 120000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Cherry Greek Yogurt Danish.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Cherry Greek Yogurt Danish.jpg"],
+    "description": "Bánh ngọt cherry kết hợp sữa chua Hy Lạp tươi mát.",
+    "ingredients": ["Bột mì", "Cherry", "Sữa chua Hy Lạp", "Đường", "Trứng"],
+    "nutrition": { "calories": 300, "fat": 15, "carb": 35, "protein": 5 }
   },
     {
     "id": "031",
     "name": "Chocolate Cream Bread",
     "price": 140000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Chocolate Cream Bread.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Chocolate Cream Bread.jpg"],
+    "description": "Bánh mì kem socola mềm mịn, vị socola đậm đà.",
+    "ingredients": ["Bột mì", "Socola", "Kem tươi", "Đường", "Trứng"],
+    "nutrition": { "calories": 320, "fat": 18, "carb": 30, "protein": 4 }
+
   }, 
     {
     "id": "032",
@@ -272,35 +362,54 @@
     "price": 130000,
     "category": "Bánh Ngọt",
     "status": ["New"],
-    "images": ["assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 1.webp", "assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 2.webp", "assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 3.webp"]
+    "images": ["assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 1.webp", "assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 2.webp", "assets/img/Products/Bánh Ngọt/Chocolate Hazelnut Kiss 3.webp"],
+    "description": "Bánh ngọt socola hạt phỉ thơm ngon, lớp kem mịn màng.",
+    "ingredients": ["Bột mì", "Socola", "Hạt phỉ", "Đường", "Trứng"],
+    "nutrition": { "calories": 350, "fat": 20, "carb": 32, "protein": 5 }
+
   }, 
     {
     "id": "033",
     "name": "Coffee Bun",
     "price": 120000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Coffee Bun.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Coffee Bun.jpg"],
+    "description": "Bánh mì cà phê thơm lừng, vị cà phê đậm đà.",
+    "ingredients": ["Bột mì", "Cà phê", "Đường", "Trứng", "Bơ"],
+    "nutrition": { "calories": 310, "fat": 14, "carb": 34, "protein": 4 }
   }, 
     {
     "id": "034",
     "name": "Fruit Bite Raspberry",
     "price": 110000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Fruit Bite Raspberry.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Fruit Bite Raspberry.jpg"],
+    "description": "Bánh ngọt chanh dây và mâm xôi tươi ngon.",
+    "ingredients": ["Bột mì", "Chanh dây", "Mâm xôi", "Đường", "Trứng"],
+    "nutrition": { "calories": 290, "fat": 12, "carb":  12, "protein": 4 }
+
   }, 
     {
     "id": "035",
     "name": "Fruit Bite Raspberry",
     "price": 200000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Fruit Bite Raspberry.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Fruit Bite Raspberry.jpg"],
+    "description": "Bánh ngọt chanh dây và mâm xôi tươi ngon.",
+    "ingredients": ["Bột mì", "Chanh dây", "Mâm xôi", "Đường", "Trứng"],
+    "nutrition": { "calories": 290, "fat": 12, "carb":  12, "protein": 4 }
+
   }, 
     {
     "id": "036",
     "name": "Fruit pastry",
     "price": 80000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Fruit pastry.jpg"]
+    "images": ["assets/img/Products/Bánh Ngọt/Fruit pastry.jpg"],
+    "description": "Bánh ngọt trái cây tươi ngon, lớp kem nhẹ nhàng.",
+    "ingredients": ["Bột mì", "Trái cây tươi", "Đường", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 280, "fat": 14, "carb": 30, "protein": 4 }
+
   }, 
     {
     "id": "037",
@@ -308,22 +417,31 @@
     "price": 60000,
     "category": "Bánh Ngọt",
     "status": ["Sale"],
-    "images": ["assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 1.webp", "assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 2.webp", "assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 3.webp"]
-  }, 
+    "images": ["assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 1.webp", "assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 2.webp", "assets/img/Products/Bánh Ngọt/Opla No Baked Cheesecake 3.webp"],
+    "description": "Bánh cheesecake không nướng, vị chua nhẹ và kem mịn.",
+    "ingredients": ["Bột mì", "Phô mai", "Đường", "Trứng", "Kem tươi"],
+    "nutrition": { "calories": 300, "fat": 16, "carb": 28, "protein": 5 }
+    }, 
     {
     "id": "038",
     "name": "Pastel De Nata",
     "price": 80000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Pastel De Nata.jpg"]
-  }, 
+    "images": ["assets/img/Products/Bánh Ngọt/Pastel De Nata.jpg"],
+    "description": "Bánh ngọt Bồ Đào Nha với lớp vỏ giòn và nhân kem trứng béo ngậy.",
+    "ingredients": ["Bột mì", "Trứng", "Đường", "Sữa", "Bơ"],
+    "nutrition": { "calories": 320, "fat": 18, "carb": 30, "protein": 4 }
+    }, 
     {
     "id": "039",
     "name": "Strawberry Croissant",
     "price": 100000,
     "category": "Bánh Ngọt",
-    "images": ["assets/img/Products/Bánh Ngọt/Strawberry Croissant.jpg"]
-  }, 
+    "images": ["assets/img/Products/Bánh Ngọt/Strawberry Croissant.jpg"],
+    "description": "Bánh croissant nhân dâu tây ngọt ngào, lớp vỏ giòn rụm.",
+    "ingredients": ["Bột mì", "Dâu tây", "Đường", "Trứng", "Bơ"],
+    "nutrition": { "calories": 310, "fat": 15, "carb": 32, "protein": 4 }
+    }, 
     {
     "id": "040",
     "name": "Teddy Bear Chou",
