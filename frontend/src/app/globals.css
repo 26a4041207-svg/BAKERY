@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #5d4037;
+  --color-primary-dark: #3e2723;
+  --color-primary-light: #8d6e63;
+  --color-gold: #c58a1c;
+  --color-gold-hover: #b07812;
+  --color-warm-bg: #fcfaf7;
+  --color-warm-card: #f8f5f0;
+  --color-footer-bg: #4e342e;
+
+  --font-serif: "Times New Roman", Times, serif;
+}
+
+/* Base resets */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15.5px;
+  line-height: 1.6;
+  background-color: #fcfaf7;
+  color: #333333;
+}
+
+/* Đảm bảo toàn bộ tiêu đề font-serif hiển thị chuẩn tiếng Việt (tránh lỗi font Georgia tách dấu) */
+.font-serif {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-scaleUp {
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

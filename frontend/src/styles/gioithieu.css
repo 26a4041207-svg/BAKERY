@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #333;
+}
+
+.hero-banner {
+    width: 100%;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0; /* FIX: banner nằm sát cạnh trên để header đè lên */
+}
+.hero-banner .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);     /* Làm tối để chữ nổi bật */
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Arial, sans-serif;
+}
+
+.banner-title {
+    font-size: 58px;
+    font-weight: 700;
+    margin: 10px 0 0;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    font-family: Arial, sans-serif;
+}
+
+.breadcrumb {
+    font-size: 25px;
+    opacity: 0.8;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: #ffffff; /* hoặc màu bạn đang dùng trên banner */
+    transition: 0.2s;
+    font-family: Arial, sans-serif;
+}
+
+.breadcrumb a:hover {
+    color: black;
+}
+
+
+/* ABOUT SECTION */
+.about-section {
+    padding: 15px 8%;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-title {
+    text-align: left;
+    font-size: 32px;
+    color: #bc9669;
+    margin-bottom: 15px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-line {
+    border: none;
+    border-top: 1px solid #bc9669;
+    margin-bottom: 10px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.about-line2 {
+    border: none;
+    border-top: 0.1px solid #bc9669;
+    margin-bottom: 10px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* EN TEXT */
+.about-main-en {
+    font-size: 32px;
+    color: #bc9669;
+    margin-bottom: 50px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* VI TEXT */
+.about-main-vi {
+    font-size: 32px;
+    color: #bc9669;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+
+.hero-text p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+/* Tùy chỉnh chung cho Sứ Mệnh và Câu Chuyện Thương Hiệu */
+.mission.section,
+.story.section,
+.process.section {
+    padding-top: 30px;       /* Khoảng cách phía trên toàn section */
+    padding-bottom: 30px;    /* Khoảng cách phía dưới toàn section */
+}
+
+.mission .text h2,
+.process .text h2,
+.story .text h2 {
+    font-size: 32px;         /* Tăng kích thước tiêu đề */
+    font-weight: 700;        /* Chữ đậm hơn */
+    margin-top: 10px;        /* Cách phần phía trên tiêu đề */
+    margin-bottom: 25px;     /* Cách đoạn văn đầu tiên */
+}
+
+.mission .text p,
+.mission .text ul,
+.story .text p,
+.story .text ul,
+.process .text p,
+.process .text ul {
+    line-height: 1.8;        /* Giãn dòng cho tất cả đoạn văn + danh sách */
+    margin-bottom: 8px;     /* Tăng khoảng cách giữa các đoạn */
+}
+
+
+
+
+/* SECTION BASE */
+.section {
+    padding: 50px 10%;
+    text-align: justify;
+}
+.container {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+}
+.container.reverse {
+    flex-direction: row-reverse;
+}
+.container .text {
+    flex: 1;
+}
+.container .image {
+    flex: 1;
+    overflow: visible;
+}
+.container .image img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+
+/* VALUES */
+.center {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+.value-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.value-item {
+    width: 32%;
+    text-align: center;
+}
+.value-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+.value-item h3 {
+    margin-top: 17px;
+    font-weight: 600;
+}
+
+
+/* ==== PRODUCT GRID ==== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+.product-item img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+.product-item img:hover {
+    transform: scale(1.05);
+}
+.product-item p {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #bc9669;
+}
+/* Tablet & màn hình nhỏ hơn — chia 3 ô */
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Điện thoại — chia 2 ô */
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+    .value-list {
+        flex-direction: column;
+    }
+    .value-item {
+        width: 100%;
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width: 600px) {
+    .hero-img {
+        height: 350px;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* HIỆU ỨNG HÌNH ẢNH ZOOM + NHÔ LÊN */
+.img-pop {
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    cursor: pointer;
+}
+
+.img-pop:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.20);
+    z-index: 10;
+}
+
+/* RESPONSIVE - Cấu hình cho máy tính bảng và điện thoại */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column !important; /* Ép buộc xuống hàng */
+        gap: 30px; /* Thu hẹp khoảng cách giữa chữ và ảnh */
+        text-align: left; /* Căn lề trái cho dễ đọc trên mobile */
+    }
+
+    /* Hiệu ứng đảo ngược: Chữ trên, ảnh dưới cho các phần có class .reverse */
+    .container.reverse {
+        flex-direction: column !important; 
+    }
+
+    /* Đảm bảo ảnh không bị méo và chiếm hết chiều ngang */
+    .container .image, .container .text {
+        width: 100%;
+        flex: none;
+    }
+
+    .container .image img {
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Chỉnh lại các mục giá trị cốt lõi xuống hàng */
+    .value-list {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .value-item {
+        width: 100%;
+    }
+
+    /* Chỉnh lại tiêu đề banner nhỏ lại trên mobile */
+    .banner-title {
+        font-size: 35px;
+    }
+    
+    .breadcrumb {
+        font-size: 18px;
+    }
+}
+
+/* Cấu hình riêng cho điện thoại nhỏ */
+@media (max-width: 600px) {
+    .about-section {
+        padding: 20px 5%;
+    }
+    
+    .about-main-en, .about-main-vi, .about-title {
+        font-size: 24px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}

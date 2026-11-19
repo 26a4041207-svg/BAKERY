@@ -1,0 +1,142 @@
+/* Wishlist drawer styles */
+#wishlist-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s;
+  z-index: 1210; /* above header */
+}
+#wishlist-overlay.active { opacity: 1; visibility: visible; }
+
+#wishlist-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 420px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -6px 0 20px rgba(0,0,0,0.12);
+  transition: 0.3s ease;
+  z-index: 1211;
+  overflow-y: auto;
+}
+#wishlist-drawer.active { right: 0; }
+
+.wishlist-header { padding: 16px; border-bottom: 1px solid #eee; display:flex; align-items:center; justify-content:space-between; }
+.wishlist-body { padding: 16px; }
+.wishlist-item { display:flex; gap:12px; margin-bottom:14px; align-items:center; }
+.wishlist-item img { width:68px; height:68px; object-fit:cover; border-radius:6px; }
+.wishlist-item .meta { flex:1; }
+.wishlist-item .meta .name { font-weight:600; }
+.wishlist-item .meta .price { color:#c8a97e; margin-top:6px; }
+.wishlist-actions { display:flex; gap:8px; }
+.wishlist-remove { background:none; border:none; color:#b71c1c; cursor:pointer; }
+.wishlist-footer { padding:16px; display:flex; gap:8px; justify-content:space-between; border-top:1px solid #eee; }
+.wishlist-btn { padding:10px 14px; border-radius:6px; border:1px solid #d4af37; background:#fff; cursor:pointer; }
+.wishlist-btn.primary { background:#c8a97e; color:#fff; border:none; }
+
+.empty-msg { text-align:center; color:#666; padding:40px 0; }
+
+.wishlist-drawer-btn {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #d4af37;
+  background: #fff;
+  cursor: pointer;
+}
+
+.wishlist-drawer-btn.primary {
+  background: #c8a97e;
+  color: #fff;
+  border: none;
+}
+/* =================================
+   WISHLIST RESPONSIVE – MOBILE
+================================= */
+@media (max-width: 768px) {
+
+  /* Overlay full màn */
+  #wishlist-overlay {
+    z-index: 3000;
+  }
+
+  /* Drawer full width */
+  #wishlist-drawer {
+    width: 100%;
+    right: -100%;
+    z-index: 3001;
+  }
+
+  #wishlist-drawer.active {
+    right: 0;
+  }
+
+  /* Header */
+  .wishlist-header {
+    padding: 14px;
+  }
+
+  .wishlist-header h3 {
+    font-size: 16px;
+  }
+
+  #wishlist-close {
+    font-size: 22px;
+  }
+
+  /* Body */
+  .wishlist-body {
+    padding: 12px;
+  }
+
+  /* Item */
+  .wishlist-item {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .wishlist-item img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .wishlist-item .meta .name {
+    font-size: 14px;
+  }
+
+  .wishlist-item .meta .price {
+    font-size: 13px;
+  }
+
+  /* Actions: cho xuống dòng khi hẹp */
+  .wishlist-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .wishlist-actions button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* Footer */
+  .wishlist-footer {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .wishlist-footer .wishlist-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Empty msg */
+  .empty-msg {
+    padding: 30px 10px;
+    font-size: 14px;
+  }
+}
